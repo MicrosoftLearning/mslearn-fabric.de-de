@@ -33,7 +33,7 @@ Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Datentechn
 
     Nach etwa einer Minute ist ein neues leeres Lakehouse fertig. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-3. Laden Sie die Datendatei für diese Übung von [https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) herunter, und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
+3. Laden Sie die Datendatei für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter, und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
 
 4. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **products**.
 
@@ -183,7 +183,7 @@ Der Transaktionsverlauf für Deltatabellen wird in JSON-Dateien im Ordner **delt
 
 1. Fügen Sie dem Notebook eine neue Codezelle hinzu, und führen Sie den folgenden Code aus:
 
-    ```Python
+    ```sql
    %%sql
 
    UPDATE products
