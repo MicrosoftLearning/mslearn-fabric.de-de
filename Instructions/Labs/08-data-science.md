@@ -21,7 +21,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
 
-    ![Screenshot eines leeren Arbeitsbereichs in Power BI](./Images/new-workspace.png)
+    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
 
 ## Erstellen eines Lakehouse und Hochladen von Dateien
 
@@ -209,8 +209,8 @@ Wenn Sie Modelle mit MLflow trainiert und nachverfolgt haben, können Sie die ML
 
 Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell untersuchen.
 
-1. Navigieren Sie zur Startseite **Data Science**.
-1. Wählen Sie das `experiment-churn`-Experiment aus, um es zu öffnen.
+1. Navigieren Sie im linken Bereich zu Ihrem Arbeitsbereich.
+1. Wählen Sie das Experiment `experiment-churn` aus der Liste aus.
 
     > **Tipp:** Wenn keine protokollierten Experimentausführungen angezeigt werden, aktualisieren Sie die Seite.
 
