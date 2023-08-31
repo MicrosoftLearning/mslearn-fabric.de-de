@@ -12,13 +12,13 @@ In Microsoft Fabric stellt ein Lakehouse hochgradig skalierbaren Dateispeicher i
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Geschäfts-* , *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis**: Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit der aktivierten Fabric-Testversion.
+Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
+1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,7 +29,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit der 
 
 Da Sie über einen Arbeitsbereich verfügen, können Sie nun zu *Datentechnik* im Portal wechseln und ein Data Lakehouse für Ihre Datendateien erstellen.
 
-1. Wechseln Sie unten links im Power BI-Portal zur **Datentechnik**-Benutzeroberfläche.
+1. Wechseln Sie unten links im Power BI-Portal zur **Datentechnik**-Benutzeroberfläche. Wenn die Umgebung für die Datentechnik nicht angezeigt wird, bitten Sie Ihren Fabric-Administrator, [Fabric zu aktivieren](https://learn.microsoft.com/fabric/admin/fabric-switch).
 
     Die Datentechnik-Startseite enthält Kacheln zum Erstellen häufig verwendeter Datentechnikressourcen.
 
@@ -173,5 +173,5 @@ In dieser Übung haben Sie ein Lakehouse erstellt und Daten in das Lakehouse imp
 Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die Option **Arbeitsbereichseinstellungen** aus.
+2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
 3. Klicken Sie im Abschnitt **Andere** auf **Diesen Arbeitsbereich entfernen**.
