@@ -365,7 +365,7 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
     
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimDate_gold.head(10))
+    display(dfdimCustomer_silver .head(10))
     ```
 
      Hier haben Sie ein neues DataFrame dfdimCustomer_silver erstellt, indem Sie verschiedene Transformationen durchführten, z. B. Ablegen von Duplikaten, Auswählen bestimmter Spalten und Aufteilen der Spalte „CustomerName“, um die Spalten „Vorname“ und „Nachname“ zu erstellen. Das Ergebnis ist ein DataFrame mit bereinigten und strukturierten Kundendaten, einschließlich separater Spalten „Vorname“ und „Nachname“, die aus der Spalte „CustomerName“ extrahiert wurden.
@@ -385,7 +385,7 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
 
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimDate_gold.head(10))
+    display(dfdimCustomer_gold.head(10))
     ```
 
     Hier bereinigen und transformieren Sie Kundendaten (dfdimCustomer_silver), indem Sie eine linke Anti-Verknüpfung ausführen, um Duplikate auszuschließen, die bereits in der dimCustomer_gold-Tabelle vorhanden sind, und dann eindeutige CustomerID-Werte mithilfe der Funktion monotonically_increasing_id() zu generieren.
@@ -473,13 +473,13 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
 14. Ähnlich wie bei den anderen Dimensionen müssen Sie sicherstellen, dass Ihre Produkttabelle immer auf dem neuesten Stand bleibt, wenn neue Daten eingehen. Fügen Sie Folgendes **in einen neuen Codeblock** ein und führen Sie ihn aus:
 
     ```python
-       from delta.tables import *
+    from delta.tables import *
     
-       deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
+    deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
             
-      dfUpdates = dfdimProduct_gold
+    dfUpdates = dfdimProduct_gold
             
-      deltaTable.alias('silver') \
+    deltaTable.alias('silver') \
       .merge(
             dfUpdates.alias('updates'),
             'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
