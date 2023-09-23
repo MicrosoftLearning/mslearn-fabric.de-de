@@ -19,9 +19,9 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser leer sein, wie hier gezeigt:
+4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
 
-    ![Screenshot: Ein leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
 
 ## Erstellen eines Lakehouse
 
@@ -54,17 +54,21 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
  ![Eine Abfrage im Power Query-Editor](./Images/power-query.png)
 
-4. Wählen Sie wie folgt auf der Symbolleiste die Registerkarte **Spalte hinzufügen** aus. Wählen Sie dann **Benutzerdefinierte Spalte** aus, und erstellen Sie eine neue Spalte namens **MonthNo**, die eine Zahl basierend auf der Formel `Date.Month([OrderDate])` enthält:
+4. Wählen Sie im Menüband der Symbolleiste die Registerkarte **Spalte hinzufügen**. Wählen Sie dann **Benutzerdefinierte Spalte** und erstellen Sie eine neue Spalte.
+
+5. Legen Sie den *Neuen Spaltennamen* auf `MonthNo` fest, legen Sie den *Datentyp* auf **Ganze Zahl** fest und fügen Sie dann die folgende Formel hinzu: `Date.Month([OrderDate])` – wie hier gezeigt:
 
  ![Erstellen einer benutzerdefinierten Spalte in Power Query](./Images/custom-column.png)
 
- Der Schritt zum Hinzufügen der benutzerdefinierten Spalte wird der Abfrage hinzugefügt, und die erstellte Spalte wird im Datenbereich angezeigt:
+6. Wählen Sie **OK** aus, um die Spalte zu erstellen und zu sehen, wie der Schritt zum Hinzufügen der benutzerdefinierten Spalte zur Abfrage hinzugefügt wird. Die resultierende Spalte wird im Datenbereich angezeigt:
 
  ![Abfrage mit einem Schritt für eine benutzerdefinierte Spalte](./Images/custom-column-added.png)
 
 > **Tipp:** Beachten Sie im Bereich „Abfrageeinstellungen“ auf der rechten Seite, dass die **angewendeten Schritte** jeden Transformationsschritt enthalten. Unten können Sie auch die Schaltfläche **Diagrammfluss** umschalten, um das visuelle Diagramm der Schritte zu aktivieren.
 >
 > Schritte können nach oben oder unten verschoben oder durch Auswählen des Zahnradsymbols bearbeitet werden. Sie können jeden Schritt auswählen, um zu sehen, wie die Transformationen im Vorschaubereich angewendet werden.
+
+7. Überprüfen Sie und vergewissern Sie sich, dass der Datentyp für die Spalte **OrderDate** auf **Datum** und der Datentyp für die neu erstellte Spalte **MonthNo** auf **Ganze Zahl** festgelegt ist.
 
 ## Hinzufügen eines Datenziels für einen Dataflow
 
@@ -80,24 +84,18 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
    ![Datenzielkonfigurationsseite](./Images/data-destination-target.png)
 
-   > **Hinweis:** Beachten Sie auf der Seite **Zieleinstellungen**, dass „OrderDate“ und „MonthNo“ in der Spaltenzuordnung nicht ausgewählt sind und eine Informationsmeldung angezeigt wird: *Änderung an Datum/Uhrzeit*.
+4. Wählen Sie auf der Seite **Zieleinstellungen wählen**die Option **Anfügen** aus und dann **Einstellungen speichern**.
+    > **Hinweis:** Sie sollten den *Power Query-Editor* zum Aktualisieren von Datentypen verwenden. Sie können dies aber auch auf dieser Seite tun, wenn Sie möchten.
 
-   ![Seite „Datenzieleinstellungen“](./Images/destination-settings.png)
+    ![Seite „Datenzieleinstellungen“](./Images/destination-settings.png)
 
-1. Brechen Sie diese Aktion ab, und wechseln Sie dann zurück zu den Spalten „OrderDate“ und „MonthNo“ in Power Query Online. Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift und auf **Typ ändern**.
-
-    - OrderDate = Date/Time
-    - MonthNo = Ganze Zahl
-
-1. Wiederholen Sie nun den zuvor beschriebenen Prozess, um ein Lakehouseziel hinzuzufügen.
-
-8. Wählen Sie auf der Seite **Zieleinstellungen**die Option **Anfügen** aus, und speichern Sie dann die Einstellungen.  Das Ziel **Lakehouse** wird in der Abfrage im Power Query-Editor als Symbol angegeben.
+5. Öffnen Sie in der Menüleiste die Option **Ansicht** und wählen Sie **Diagrammansicht** aus. Beachten Sie, dass das Ziel **Lakehouse** in der Abfrage im Power Query-Editor als Symbol angegeben wird.
 
    ![Abfrage mit einem Lakehouseziel](./Images/lakehouse-destination.png)
 
-9. Wählen Sie **Veröffentlichen** aus, um den Bericht zu veröffentlichen. Warten Sie dann, bis der **Dataflow 1**-Dataflow in Ihrem Arbeitsbereich erstellt wird.
+6. Wählen Sie **Veröffentlichen** aus, um den Bericht zu veröffentlichen. Warten Sie dann, bis der **Dataflow 1**-Dataflow in Ihrem Arbeitsbereich erstellt wird.
 
-1. Nach der Veröffentlichung können Sie mit der rechten Maustaste auf den Dataflow in Ihrem Arbeitsbereich klicken, **Eigenschaften** auswählen und Ihren Dataflow umbenennen.
+7. Nach der Veröffentlichung können Sie mit der rechten Maustaste auf den Dataflow in Ihrem Arbeitsbereich klicken, **Eigenschaften** auswählen und Ihren Dataflow umbenennen.
 
 ## Hinzufügen eines Dataflows zu einer Pipeline
 
