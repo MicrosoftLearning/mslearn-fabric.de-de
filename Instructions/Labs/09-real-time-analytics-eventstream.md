@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Erste Schritte mit Eventstream in Real-Time Analytics und Microsoft Fabric
-  module: Get started with Eventstream in Real-Time Analytics and Microsoft Fabric
+  title: Erste Schritte mit Echtzeitanalysen in Microsoft Fabric
+  module: Get started with Real-Time Analytics in Microsoft Fabric
 ---
 # Erste Schritte mit Eventstream in Real-Time Analytics (RTA)
 
@@ -63,38 +63,38 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Wählen Sie unter **Echtzeitanalyse** das Feld **KQL-Datenbank** aus.
 
-   ![Auswählen von „KQL-Datenbank“](./Images/select-kqldatabase.png)
+   ![Abbildung der Auswahl der kqldatabase](./Images/select-kqldatabase.png)
 
 2. Sie werden aufgefordert, einen **Namen** für die KQL-Datenbank festzulegen.
 
-   ![Benennen der KQL-Datenbank](./Images/name-kqldatabase.png)
+   ![Abbildung des Namens der kqldatabase](./Images/name-kqldatabase.png)
 
 3. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **MyStockData**), und klicken Sie auf **Erstellen**.
 
 1. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
 
-   ![Aktivieren von OneLake](./Images/enable-onelake-availability.png)
+   ![Abbildung der Aktivierung von OneLake](./Images/enable-onelake-availability.png)
 
 2. Stellen Sie sicher, dass Sie die Schaltfläche auf **Aktiv** umgeschaltet haben, und klicken Sie dann auf **Fertig**.
 
-   ![Aktivieren der OneLake-Umschaltfläche](./Images/enable-onelake-toggle.png)
+   ![Abbildung der Umschaltfläche zur Aktivierung von OneLake](./Images/enable-onelake-toggle.png)
 
 ## Erstellen eines Eventstreams
 
 1. Wählen Sie auf der Menüleiste **Echtzeitanalyse** aus (Symbol ähnelt dem ![rta-Logo](./Images/rta_logo.png)).
 2. Wählen Sie unter **Neu** die Option **Eventstream (Vorschau)** aus.
 
-   ![Auswählen von Eventstream](./Images/select-eventstream.png)
+   ![Abbildung der Auswahl des Eventstreams](./Images/select-eventstream.png)
 
 3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem Eventstream einen Namen, den Sie sich gut merken können (z. B. ***MyStockES**), und klicken Sie auf die Schaltfläche **Erstellen**.
 
-   ![Benennen des Eventstreams](./Images/name-eventstream.png)
+   ![Abbildung des Namens des Eventstreams](./Images/name-eventstream.png)
 
 ## Einrichten einer Ereignisstreamquelle und eines Ereignisstreamziels
 
 1. Klicken Sie im Eventstream-Canvas in der Dropdownliste auf **Neue Quelle**, und wählen Sie dann **Beispieldaten** aus.
 
-   ![Eventstream-Canvas](./Images/real-time-analytics-canvas.png)
+   ![Abbildung des EventStream-Zeichenbereichs](./Images/real-time-analytics-canvas.png)
 
 2. Geben Sie wie in der folgenden Tabelle gezeigt die Werte für Ihre Beispieldaten ein, und wählen Sie dann **Hinzufügen und konfigurieren** aus.
 
@@ -105,7 +105,7 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 3. Fügen Sie nun ein Ziel hinzu, indem Sie **Neues Ziel** und dann **KQL-Datenbank** auswählen.
 
-   ![Eventstream-Ziel](./Images/new-kql-destination.png)
+   ![Abbildung des Eventstream-Ziels](./Images/new-kql-destination.png)
 
 4. Verwenden Sie bei der Konfiguration der KQL-Datenbank die folgende Tabelle, um die Konfiguration abzuschließen.
 
@@ -121,22 +121,22 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Klicken Sie auf der Dialogfeldseite **Daten erfassen** auf **Neue Tabelle**, und geben Sie „MyStockData“ ein.
 
-   ![Einfügen von Aktiendaten](./Images/ingest-stream-data-to-kql.png)
+   ![Abbildung der Eingabe der Bestandsdaten](./Images/ingest-stream-data-to-kql.png)
 
 2. Wählen Sie die Option **Weiter: Quelle** aus.
 3. Bestätigen Sie auf der Seite **Quelle** den **Namen der Datenverbindung**, und wählen Sie dann **Weiter: Schema** aus.
 
-   ![Datenquellenname (data source name)](./Images/ingest-data.png)
+   ![Abbildung des Datenquellennamens](./Images/ingest-data.png)
 
 4. Die eingehenden Daten werden für Beispieldaten dekomprimiert, behalten Sie also den dekomprimierten Status als Komprimierungstyp bei.
 5. Wählen Sie in der Dropdownliste **Datenformat** die Option **JSON** aus.
 
-   ![Ändern in JSON](./Images/injest-as-json.png)
+   ![Abbildung der Änderung in JSON](./Images/injest-as-json.png)
 
 6. Danach kann es erforderlich sein, einige oder alle Datentypen von Ihrem eingehenden Stream in Ihre Zieltabellen zu ändern.
 7. Gehen Sie hierfür wie folgt vor: **Pfeil nach unten > Datentyp ändern**. Überprüfen Sie dann, ob die Spalten den richtigen Datentyp aufweisen:
 
-   ![Ändern der Datentypen](./Images/change-data-type-in-es.png)
+   ![Abbildung der Änderung der Datentypen](./Images/change-data-type-in-es.png)
 
 8. Wenn Sie fertig sind, wählen Sie **Weiter: Zusammenfassung** aus.
 
@@ -153,15 +153,15 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte
 1. Navigieren Sie zu Ihrer neu erstellten und aktualisierten KQL-Datenbank namens ***MyStockData***.
 2. Wählen Sie in der Datenstruktur das Menü „Mehr“ (...) für die Tabelle „MyStockData“ aus. Gehen Sie dann wie folgt vor: „Tabelle abfragen > Alle 100 Datensätze anzeigen“.
 
-   ![KQL-Abfragen](./Images/kql-query-sample.png)
+   ![Abbildung des KQL-Abfragesatzes](./Images/kql-query-sample.png)
 
 3. Die Beispielabfrage wird im Bereich **Untersuchen Ihrer Daten** geöffnet, wobei der Tabellenkontext bereits aufgefüllt ist. Diese erste Abfrage verwendet den take-Operator, um eine Beispielanzahl von Datensätzen zurückzugeben. Zudem ist sie nützlich, um einen ersten Überblick über die Datenstruktur und mögliche Werte zu erhalten. Die automatisch aufgefüllten Beispielabfragen werden automatisch ausgeführt. Sie können die Abfrageergebnisse im Ergebnisbereich anzeigen.
 
-   ![KQL-Abfrageergebnisse](./Images/kql-query-results.png)
+   ![Abbildung der KQL-Abfrageergebnisse](./Images/kql-query-results.png)
 
 4. Kehren Sie zur Datenstruktur zurück, um die nächste Abfrage auszuwählen, die den where- und den between-Operator verwendet, um Datensätze zurückzugeben, die in den letzten 24 Stunden erfasst wurden.
 
-   ![KQL-Abfrageergebnisse der letzten 24 Stunden](./Images/kql-query-results-last24.png)
+   ![Abbildung der KQL-Abfrageergebnisse der letzten 24 Stunden](./Images/kql-query-results-last24.png)
 
 > **Hinweis**: Beachten Sie, dass die Volumen der Streamingdaten die Abfragegrenzwerte überschreiten. Dieses Verhalten kann abhängig von der Datenmenge variieren, die in Ihre Datenbank gestreamt wird.
 
@@ -173,11 +173,11 @@ Der Abfrage-Editor unterstützt die Verwendung von T-SQL zusätzlich zur Kusto-A
 
 1. Wählen Sie in der Datenstruktur das Menü **Mehr** (...) für die Tabelle „MyStockData“ aus. Gehen Sie dann wie folgt vor: **Tabelle abfragen > SQL > Alle 100 Datensätze anzeigen**.
 
-   ![SQL-Abfragebeispiel](./Images/sql-query-sample.png)
+   ![Abbildung des SQL-Abfragebeispiels](./Images/sql-query-sample.png)
 
 2. Platzieren Sie den Cursor an einer beliebigen Stelle in der Abfrage, und wählen Sie **Ausführen** aus, oder drücken Sie **UMSCHALT+EINGABETASTE**.
 
-   ![SQL-Abfrageergebnisse](./Images/sql-query-results.png)
+   ![Abbildung der SQL-Abfrageergebnisse](./Images/sql-query-results.png)
 
 Sie können weiterhin mit den integrierten Funktionen navigieren und sich mit den Daten mithilfe von SQL oder KQL vertraut machen. Sie haben das Ende der Lerneinheit erreicht.
 

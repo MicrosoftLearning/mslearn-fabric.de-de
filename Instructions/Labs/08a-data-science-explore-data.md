@@ -8,7 +8,7 @@ lab:
 
 In diesem Lab verwenden wir Notebooks für die Datenuntersuchung. Notebooks sind ein leistungsstarkes Tool zum interaktiven Untersuchen und Analysieren von Daten. In dieser Übung erfahren Sie, wie Sie Notebooks erstellen und verwenden, um ein Dataset zu untersuchen, Zusammenfassungsstatistiken zu generieren und Visualisierungen zu erstellen, um die Daten besser zu verstehen. Am Ende dieses Labs haben Sie ein fundiertes Verständnis für die Verwendung von Notebooks für die Datenuntersuchung und -analyse.
 
-Dieses Lab dauert ungefähr **45** Minuten.
+Dieses Lab dauert ungefähr **30** Minuten.
 
 > **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -27,7 +27,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bieten eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) als *Experimente* schreiben und ausführen können.
 
-1. Wählen Sie unten links im Power BI-Portal das **Datentechnik**-Symbol aus, und wechseln Sie zu **Data Science**.
+1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Data Science**.
 
 1. Erstellen Sie auf der **Data Science**-Startseite ein neues **Notebook**.
 
@@ -49,7 +49,7 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 
 Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**Diabetesdataset**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe, eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
 
-1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie dann den folgenden Code ein:
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
 
     ```python
     # Azure storage access info for open dataset diabetes
@@ -138,7 +138,7 @@ Nun generieren wir beschreibende Statistiken, um die Verteilung numerischer Vari
     print(desc_stats)
     ```
 
-    Der durchschnittliche Wert für den `age` beträgt ca. 48,5 Jahre mit einer Standardabweichung von 13,1 Jahren. Die jüngste Person ist 19 Jahre alt und die älteste ist 79 Jahre alt. Der Durchschnitt des `BMI` liegt bei etwa 26,4, was nach [WHO-Standards](https://www.who.int/health-topics/obesity#tab=tab_1) in die Kategorie **Übergewicht** fällt. Der niedrigste `BMI`-Wert ist 18 und der Maximalwert ist 42,2.
+    Das durchschnittliche Alter beträgt ca. 48,5 Jahre, mit einer Standardabweichung von 13,1 Jahren. Die jüngste Person ist 19 Jahre alt und die älteste ist 79 Jahre alt. Der Durchschnitt des `BMI` liegt bei etwa 26,4, was nach [WHO-Standards](https://www.who.int/health-topics/obesity#tab=tab_1) in die Kategorie **Übergewicht** fällt. Der niedrigste `BMI`-Wert ist 18 und der Maximalwert ist 42,2.
 
 ## Zeichnen der Datenverteilung
 
@@ -152,12 +152,12 @@ Nun generieren wir beschreibende Statistiken, um die Verteilung numerischer Vari
     import numpy as np
     
     # Calculate the mean, median of the BMI variable
-    mean = df_pnd['BMI'].mean()
-    median = df_pnd['BMI'].median()
+    mean = df['BMI'].mean()
+    median = df['BMI'].median()
     
     # Histogram of the BMI variable
     plt.figure(figsize=(8, 6))
-    plt.hist(df_pnd['BMI'], bins=20, color='skyblue', edgecolor='black')
+    plt.hist(df['BMI'], bins=20, color='skyblue', edgecolor='black')
     plt.title('BMI Distribution')
     plt.xlabel('BMI')
     plt.ylabel('Frequency')
@@ -203,7 +203,7 @@ Generieren wir nun Visualisierungen wie Punktdiagramme und Boxplots, um Muster u
     fig, ax = plt.subplots(figsize=(7, 5))
     
     # Replace numeric values with labels
-    df_pnd['SEX'] = df_pnd['SEX'].replace({1: 'Male', 2: 'Female'})
+    df['SEX'] = df['SEX'].replace({1: 'Male', 2: 'Female'})
     
     sns.boxplot(x='SEX', y='BP', data=df, ax=ax)
     ax.set_title('Blood pressure across Gender')
