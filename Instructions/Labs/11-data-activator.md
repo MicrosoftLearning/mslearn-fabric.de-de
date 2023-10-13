@@ -25,7 +25,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 In diesem Lab verwenden Sie den Data Activator in Fabric, um einen *Reflex* zu erstellen. Data Activator stellt Ihnen bequem einen Beispieldatensatz zur Verfügung, mit dem Sie die Möglichkeiten von Data Activator erkunden können. Sie verwenden diese Beispieldaten, um einen *Reflex* zu erstellen, der einige Echtzeitdaten analysiert und einen Trigger erstellt, um eine E-Mail zu versenden, wenn eine Bedingung erfüllt ist.
 
-> **Hinweis**: Der Data Activator-Beispielprozess erzeugt im Hintergrund einige Zufallsdaten.  Je komplexer die Bedingungen und Filter sind, die Sie erstellen, desto wahrscheinlicher ist es, dass noch keine Ereignisse die Triggerbedingungen und Filter erfüllt haben. Wenn im Graphen keine Daten angezeigt werden, warten Sie ein paar Minuten und aktualisieren Sie die Seite. Sie müssen jedoch nicht warten, bis die Daten in den Graphen angezeigt werden, um mit dem Lab fortzufahren.
+> **Hinweis**: Der Data Activator-Beispielprozess erzeugt im Hintergrund einige Zufallsdaten. Je komplexer Ihre Bedingungen und Filter sind, desto mehr Zeit dauert es, sie auszulösen. Wenn im Graphen keine Daten angezeigt werden, warten Sie ein paar Minuten und aktualisieren Sie die Seite. Sie müssen jedoch nicht warten, bis die Daten in den Graphen angezeigt werden, um mit dem Lab fortzufahren.
 
 ## Szenario
 
@@ -45,7 +45,7 @@ In diesem Szenario sind Sie ein*e Datenanalyst*in für ein Unternehmen, das eine
 
     ![Screenshot des Bildschirms „Daten abrufen“ des Data Activator.](./Images/data-activator-get-started.png)
 
-1. Standardmäßig erstellt Data Activator Ihren Reflex mit dem Namen *Reflex JJJJ-MM-TT hh:mm:ss*. Da in Ihrem Arbeitsbereich möglicherweise mehrere Reflexe vorhanden sind, sollten Sie den Standardnamen von Reflex in einen aussagekräftigeren Namen ändern. Wählen Sie das Pulldown-Menü neben dem aktuellen Reflex-Namen in der oberen linken Ecke und ändern Sie den Namen für unser Beispiel in ***Contoso Versand-Reflex***.
+1. Standardmäßig erstellt Data Activator Ihren Reflex mit dem Namen *Reflex JJJJ-MM-TT hh:mm:ss*. Da in Ihrem Arbeitsbereich möglicherweise mehrere Reflexe vorhanden sind, sollten Sie den Standardnamen von Reflex in einen aussagekräftigeren ändern. Wählen Sie das Pulldown-Menü neben dem aktuellen Reflex-Namen in der oberen linken Ecke und ändern Sie den Namen für unser Beispiel in ***Contoso Versand-Reflex***.
 
     ![Screenshot des Reflex-Startbildschirms von Data Activator.](./Images/data-activator-reflex-home-screen.png)
 
@@ -65,11 +65,11 @@ Um sich mit dem *Entwurfsmodus* vertraut zu machen, wählen Sie die verschiedene
 
 ### Datenmodus
 
-1. Wenn Sie sich derzeit nicht im *Datenmodus* befinden, wählen Sie unten links auf dem Bildschirm die Registerkarte **Daten** aus. In einem realen Beispiel würden Sie hier Ihre eigenen Datenquellen aus Ihren EventStreams- und Power BI-Visuals hinzufügen. Für dieses Lab verwenden Sie die von Data Activator bereitgestellten Beispieldaten. Die von Data Activator bereitgestellten Beispieldaten sind bereits mit drei EventStreams eingerichtet, die den Paketübermittlungsstatus überwachen.
+Wenn Sie sich derzeit nicht im *Datenmodus* befinden, wählen Sie unten links auf dem Bildschirm die Registerkarte **Daten** aus. In einem realen Beispiel würden Sie hier Ihre eigenen Datenquellen aus Ihren EventStreams- und Power BI-Visuals hinzufügen. Für dieses Lab verwenden Sie die von Data Activator bereitgestellten Beispieldaten. Das Beispiel ist bereits mit drei EventStreams eingerichtet, die den Paketübermittlungsstatus überwachen.
 
 ![Screenshot des Datenmodus des Data Activator-Reflexes.](./Images/data-activator-data-tab.png)
 
-1. Wählen Sie jedes der Ereignisse aus, um die jeweils davon verarbeiteten Daten anzuzeigen.
+Wählen Sie jedes der verschiedenen Ereignisse aus und beobachten Sie die Daten, die im Stream verwendet werden.
 
 ![Screenshot des Datenmodusereignisses des Data Activator-Reflexes.](./Images/data-activator-get-data-tab-event-2.png)
 
@@ -99,21 +99,23 @@ In einem realen Szenario ist es möglicherweise nicht erforderlich, ein neues Ob
 
 1. Sie sollten sich jetzt wieder im *Entwurfsmodus* befinden. Ein neues Objekt mit dem Namne ***Redmond-Pakete*** wurde hinzugefügt. Wählen Sie dieses neue Objekt aus, erweitern Sie dessen *Ereignisse* und wählen Sie das Ereignis **Paket auf dem Transportweg** aus.
 
-    ![Screenshot des Entwurfsmodus des Data Activaor-Reflexes mit dem neuem Objekt.](./Images/data-activator-design-tab-new-object.png)
+    ![Screenshot des Entwurfsmodus des Data Activaor-Reflexes mit dem neuen Objekt.](./Images/data-activator-design-tab-new-object.png)
 
 Jetzt erstellen Sie Ihren Trigger.
 
 ## Erstellen eines Triggers
 
-Sehen wir uns an, was Ihr Trigger tun soll: *Sie möchten einen Reflex erstellen, der eine E-Mail an die Versandabteilung sendet, wenn die Temperatur eines Pakets, das ein Medikament enthält, einen bestimmten Schwellenwert über- oder unterschreitet. Die ideale Temperatur sollte zwischen 0,5 und 5 Grad liegen. Da die Reflex-Ereignisse bereits einen ähnlichen Trigger enthalten, erstellen Sie einen speziell für die Pakete, die an die Stadt Redmond versandt werden.*
+Sehen wir uns an, was Ihr Trigger tun soll: *Sie möchten einen Reflex erstellen, der eine E-Mail an die Versandabteilung sendet, wenn die Temperatur eines Pakets, das ein Medikament enthält, einen bestimmten Schwellenwert über- oder unterschreitet. Die ideale Temperatur sollte zwischen 0,5 und 5 Grad liegen. Da die Reflex-Ereignisse bereits einen ähnlichen Trigger enthalten, werden Sie einen speziell für die Pakete erstellen, die an die Stadt Redmond versandt werden.*
 
-1. Wählen Sie oben im Menü die Schaltfläche **Neuer Trigger** aus. Es wird ein neuer Trigger mit dem Standardnamen *Unbenannt* erstellt. Ändern Sie den Namen in ***Medikamententemperatur außerhalb des Bereichs***, um Ihren Trigger näher zu definieren.
+1. Wählen Sie im Ereignis *Paket während der Übertragung* des **Redmond-Pakete**-Objekts im oberen Menü die Schaltfläche **Neuer Trigger** aus. Es wird ein neuer Trigger mit dem Standardnamen *Unbenannt* erstellt. Ändern Sie den Namen in ***Medikamententemperatur außerhalb des Bereichs***, um Ihren Trigger näher zu definieren.
 
     ![Screenshot des Vorgangs Erstellen eines neuen Triggers im Entwurfsmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-new.png)
 
-1. Jetzt wählen Sie die Eigenschaft oder Ereignisspalte, die Ihren Reflex auslöst. Da Sie beim Erstellen des Objekts mehrere Eigenschaften erstellt haben, wählen Sie die Schaltfläche **Vorhandene Eigenschaft** und dann die Eigenschaft ***Temperatur*** aus. Wenn Sie diese Eigenschaft auswählen, sollte ein Graph mit historischen Beispieltemperaturwerten zurückgegeben werden.
+1. Jetzt wählen Sie die Eigenschaft oder Ereignisspalte, die Ihren Reflex auslöst. Da Sie beim Erstellen des Objekts mehrere Eigenschaften erstellt haben, wählen Sie die Schaltfläche **Vorhandene Eigenschaft** und dann die Eigenschaft ***Temperatur*** aus. 
 
     ![Screenshot des Vorgangs Auswahl einer Eigenschaft im Designmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-select-property.png)
+
+    Wenn Sie diese Eigenschaft auswählen, sollte ein Graph mit historischen Beispieltemperaturwerten zurückgegeben werden.
 
     ![Screenshot des Data Activator-Eigenschaftsgraphen mit historischen Werten.](./Images/data-activator-trigger-property-sample-graph.png)
 
@@ -125,11 +127,11 @@ Sehen wir uns an, was Ihr Trigger tun soll: *Sie möchten einen Reflex erstellen
 
     ![Screenshot der Eingabe von Bedingungswerten im Entwurfsmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-select-condition-define.png)
 
-1. Bisher haben Sie die Eigenschaft und Bedingung definiert, für die der Trigger ausgelöst werden soll. Das sind aber noch nicht alle erforderlichen Parameter. Sie müssen weiterhin sicherstellen, dass der Trigger nur für die *Stadt* **Redmond** und für die erforderliche Art der*besonderen Behandlung* für **Medikamente** ausgelöst wird. Fahren wir fort und fügen wir einige Filter für diese Bedingungen hinzu.  Wählen Sie die Schaltfläche **Filter hinzufügen** und dann die Eigenschaft ***Stadt*** aus. Geben Sie als Wert ***Redmond*** ein. Wählen Sie dann erneut die Schaltfläche **Filter hinzufügen** und wählen Sie die Eigenschaft ***BesondereBehandlung*** aus. Geben Sie als Wert ***Medikament*** ein.
+1. Bisher haben Sie die Eigenschaft und Bedingung definiert, für die der Trigger ausgelöst werden soll. Das sind aber noch nicht alle erforderlichen Parameter. Sie müssen weiterhin sicherstellen, dass der Trigger nur für die *Stadt* **Redmond** und für die erforderliche Art der*besonderen Behandlung* für **Medikamente** ausgelöst wird. Fahren wir fort und fügen wir einige Filter für diese Bedingungen hinzu.  Wählen Sie die Schaltfläche **Filter hinzufügen** aus, legen Sie die Eigenschaft auf ***Stadt*** fest, legen Sie die Beziehung auf ***Gleich*** fest, und geben Sie ***Redmond*** als Wert ein. Fügen Sie dann einen neuen Filter mit der ***SpecialCare***-Eigenschaft hinzu, legen Sie ihn auf ***Gleich*** fest, und geben Sie ***Medizin*** als Wert ein.
 
     ![Screenshot des Vorgangs Hinzufügen eines Filters im Entwurfsmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-select-condition-add-filter.png)
 
-1. Fügen wir noch einen weiteren Filter hinzu, um sicherzustellen, dass das Medikament gekühlt wird. Wählen Sie die Schaltfläche **Filter hinzufügen** und dann die Eigenschaft ***KühlkettenArt*** aus. Geben Sie als Wert ***gekühlt*** ein.
+1. Fügen wir noch einen weiteren Filter hinzu, um sicherzustellen, dass das Medikament gekühlt wird. Wählen Sie die Schaltfläche **Filter hinzufügen** aus, legen Sie die ***ColdChainType***-Eigenschaft fest, legen Sie sie auf ***Gleich*** fest, und geben Sie ***Gekühlt*** als Wert ein.
 
     ![Screenshot des Vorgangs Hinzufügen eines Filters im Entwurfsmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-select-condition-add-filter-additional.png)
 
@@ -144,13 +146,13 @@ Sehen wir uns an, was Ihr Trigger tun soll: *Sie möchten einen Reflex erstellen
     - **Überschrift**: *Temperatur zu hoch oder zu niedrig*
     - **Zusätzliche Informationen**: Wählen Sie aus der Liste der Kontrollkästchen die Eigenschaft *Temperatur* aus.
 
-    ![Screenshot des Vorgangs Aktivieren eines Triggers im Entwurfsmodus des Data Activator-Reflexes.](./Images/data-activator-trigger-start.png)
+    ![Screenshot der Aktion „Data Activator definieren“.](./Images/data-activator-trigger-define-action.png)
 
 1. Wählen Sie **Speichern** und dann im oberen Menü **Aktivieren** aus.
 
 Sie haben nun in Data Activator einen Trigger erstellt und aktiviert.
 
-## Aktualisieren eines Triggers
+## Aktualisieren und Beenden eines Triggers
 
 Das einzige Problem bei diesem Trigger besteht darin, dass der Trigger zwar eine E-Mail mit der Temperatur gesendet hat, jedoch nicht die *PaketId* des Pakets. Fahren wir fort und aktualisieren wir den Trigger, dass er die *PaketId* sendet.
 
@@ -172,11 +174,7 @@ Das einzige Problem bei diesem Trigger besteht darin, dass der Trigger zwar eine
 
     ![Screenshot des Vorgangs Trigger aktualisieren in Data Activator.](./Images/data-activator-trigger-updated.png)
 
-Ihr Trigger wurde aktualisiert.
-
-## Einen Trigger beenden
-
-Um den Trigger zu beenden, wählen Sie im oberen Menü die Schaltfläche **Beenden** aus.
+1. Um den Trigger zu beenden, wählen Sie im oberen Menü die Schaltfläche **Beenden** aus.
 
 ## Bereinigen von Ressourcen
 
