@@ -134,8 +134,7 @@ Nun generieren wir beschreibende Statistiken, um die Verteilung numerischer Vari
 1. Verwenden Sie das Symbol **+ Code** unterhalb der Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie den folgenden Code ein.
 
     ```python
-    desc_stats = df.describe()
-    print(desc_stats)
+    df.describe()
     ```
 
     Das durchschnittliche Alter beträgt ca. 48,5 Jahre, mit einer Standardabweichung von 13,1 Jahren. Die jüngste Person ist 19 Jahre alt und die älteste ist 79 Jahre alt. Der Durchschnitt des `BMI` liegt bei etwa 26,4, was nach [WHO-Standards](https://www.who.int/health-topics/obesity#tab=tab_1) in die Kategorie **Übergewicht** fällt. Der niedrigste `BMI`-Wert ist 18 und der Maximalwert ist 42,2.

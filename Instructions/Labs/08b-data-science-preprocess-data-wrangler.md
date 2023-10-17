@@ -171,7 +171,7 @@ Als Nächstes generieren wir den Code, um die Transformation für die One-Hot-Co
 
 1. Starten Sie Data Wrangler im oberen Menü für den `df`-Dataframe.
 
-1. Wählen Sie im Raster das Feature `Brand` aus. 
+1. Wählen Sie im Raster das Feature `Brand` aus.
 
 1. Erweitern Sie im Bereich **Vorgänge** die Option **Formeln** und wählen Sie dann **One-Hot-Encode** aus.
 
@@ -183,7 +183,7 @@ Als Nächstes generieren wir den Code, um die Transformation für die One-Hot-Co
 
 ## Sortier- und Filtervorgänge
 
-Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft überprüfen und dann die Produktpreise sortieren. In den folgenden Schritten verwenden wir Data Wrangler, um den `df`-Dataframe zu filtern und zu analysieren. 
+Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft überprüfen und dann die Produktpreise sortieren. In den folgenden Schritten verwenden wir Data Wrangler, um den `df`-Dataframe zu filtern und zu analysieren.
 
 1. Starten Sie Data Wrangler für den `df`-Dataframe.
 
@@ -250,9 +250,9 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 
 1. Wählen Sie **Mittelwert** für die Eigenschaft **Aggregationstyp** aus.
 
-1. Wählen Sie **Übernehmen**. 
+1. Wählen Sie **Übernehmen**.
 
-1. Wählen Sie **Code zu Notebook hinzufügen** aus. 
+1. Wählen Sie **Code zu Notebook hinzufügen** aus.
 
 1. Kombinieren Sie den Code aus der Variablentransformation `Brand` mit dem Code, der durch den Aggregationsschritt in der Funktion `clean_data(df)` generiert wird. Der finale Codeblock sollte wie folgt aussehen:
  
@@ -277,7 +277,7 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 
     ```python
     print(df)
-    ``` 
+    ```
 
     Ergebnisse:
     ```
