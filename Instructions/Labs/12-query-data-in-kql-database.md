@@ -49,19 +49,10 @@ In diesem Lab verwenden Sie Real-Time Analytics (RTA) in Fabric, um eine KQL-Dat
 
 7. Sobald die Daten geladen wurden, überprüfen Sie, ob die Daten in die KQL-Datenbank geladen wurden. Wählen Sie dazu die Auslassungspunkte rechts neben der Tabelle aus, navigieren Sie zur **Abfragetabelle**, und wählen Sie **Alle 100 Datensätze anzeigen** aus.
 
-    <div><video controls src="./Images/check-kql-sample-dataset.mp4" muted="false" autoplay loop></video></div>
+    ![Abbildung der Auswahl der obersten 100 Dateien aus der Tabelle RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
 > **HINWEIS**: Wenn Sie dies zum ersten Mal ausführen, kann die Zuordnung von Computeressourcen mehrere Sekunden dauern.
 
 ## Szenario
-In diesem Szenario sind Sie ein Analyst, der mit der Abfrage eines Beispieldatasets beauftragt ist, das Sie in der Fabric-Umgebung implementieren werden.
+In diesem Szenario sind Sie ein Analyst, der mit der Abfrage eines Beispieldatasets von Rohmetriken von einem hyhpothetischen SQL-Server beauftragt ist, den Sie in der Fabric-Umgebung implementieren werden. Sie verwenden KQL und T-SQL, um diese Daten abzufragen und Informationen zu sammeln, um Informationen zu den Daten zu erhalten.
 
-
-
-Eine Kusto-Abfrage ist eine Möglichkeit, Daten zu lesen, zu verarbeiten und die Ergebnisse anzuzeigen. Die Abfrage ist in Nur-Text geschrieben, der einfach zu verarbeiten ist. Eine Kusto-Abfrage kann eine oder mehrere Anweisungen enthalten, die Daten als eine Tabelle oder ein Diagramm anzeigen.
-
-Eine Table-Anweisung verfügt über einige Operatoren, die Tabellendaten verwenden. Jeder Operator verwendet eine Tabelle als Eingabe und gibt eine Tabelle als Ausgabe zurück. Operatoren werden durch ein Pipe-Symbol (|) verbunden. Daten wechseln von einem Operator zum anderen. Jeder Operator ändert die Daten in irgendeiner Weise und gibt sie weiter.
-
-Sie können sich den Prozess wie einen Trichter vorstellen, bei dem Sie mit einer vollständigen Tabelle mit Daten beginnen. Jeder Operator filtert, sortiert oder fasst die Daten zusammen. Die Reihenfolge der Operatoren ist wichtig, da sie nacheinander arbeiten. Am Ende des Trichters erhalten Sie eine endgültige Ausgabe.
-
-Die Operatoren sind KQL-spezifisch, können jedoch SQL oder anderen Sprachen ähneln.
