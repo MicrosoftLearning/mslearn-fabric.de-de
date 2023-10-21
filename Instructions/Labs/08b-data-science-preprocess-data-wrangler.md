@@ -4,7 +4,7 @@ lab:
   module: Preprocess data with Data Wrangler in Microsoft Fabric
 ---
 
-# Verwenden von Notebooks zum Trainieren eines Modells in Microsoft Fabric
+# Vorverarbeiten von Daten mit Data Wrangler in Microsoft Fabric
 
 In diesem Lab erfahren Sie, wie Sie Data Wrangler in Microsoft Fabric verwenden, um Daten vorzuverarbeiten und Code mithilfe einer Bibliothek allgemeiner Data Science-Vorgänge zu generieren.
 
@@ -23,26 +23,11 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
     ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
 
-## Erstellen eines Lakehouse und Hochladen von Dateien
-
-Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Data Science* im Portal wechseln und ein Data Lakehouse für die zu analysierenden Datendateien erstellen.
-
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Datentechnik**.
-1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
-
-    Nach etwa einer Minute wird ein neues Lakehouse ohne **Tabellen** oder **Dateien** erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach einen Ordner mit Textdateien auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
-
-1. Laden Sie für diese Übung die CSV-Datei `dominicks_OJ.csv` von [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/XXXXX.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/XXXXX.csv) herunter und speichern Sie sie.
-
-
-1. Kehren Sie zum Webbrowser-Tab mit Ihrem Lakehouse zurück und wählen Sie im **...** -Menü für den Knoten **Dateien** im Bereich **Lake-Ansicht** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **dominicks_OJ.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
-6. Erweitern Sie nach dem Hochladen der Dateien den Eintrag **Dateien**, und überprüfen Sie, ob die CSV-Datei hochgeladen wurde.
-
 ## Erstellen eines Notebooks
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bieten eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) als *Experimente* schreiben und ausführen können.
 
-1. Wählen Sie unten links im Power BI-Portal das **Datentechnik**-Symbol aus, und wechseln Sie zu **Data Science**.
+1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Data Science**.
 
 1. Erstellen Sie auf der **Data Science**-Startseite ein neues **Notebook**.
 
@@ -55,58 +40,88 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 1. Verwenden Sie die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie dann den Inhalt und geben Sie den folgenden Text ein:
 
     ```text
-   # Train a machine learning model and track with MLflow
+   # Perform data exploration for data science
 
-   Use the code in this notebook to train and track models.
+   Use the code in this notebook to perform data exploration for data science.
     ``` 
 
 ## Laden von Daten in einen Dataframe
 
-Jetzt können Sie Code ausführen, um Daten aufzubereiten und ein Modell zu trainieren. Um mit Daten zu arbeiten, verwenden Sie *Dataframes*. Dataframes in Spark ähneln Pandas-Dataframes in Python und bieten eine gemeinsame Struktur für die Arbeit mit Daten in Zeilen und Spalten.
+Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**OJ Sales-Dataset**](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-oj-sales-simulated?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie sie in einen Pandas Dataframe, eine Struktur, die von Data Wrangler unterstützt wird.
 
-1. Wählen Sie im Bereich **Lakehouse hinzufügen** die Option **Hinzufügen** aus, um ein Lakehouse hinzuzufügen.
-1. Wählen Sie **Vorhandenes Lakehouse** und **Hinzufügen** aus.
-1. Wählen Sie das Lakehouse aus, das Sie in einem vorherigen Abschnitt erstellt haben.
-1. Erweitern Sie den Ordner **Dateien**, sodass die CSV-Datei neben dem Notebook-Editor aufgeführt wird.
-1. Wählen Sie im Menü **...** für **churn.csv** die Option **Daten laden** > **Pandas** aus. Dem Notebook sollte eine neue Codezelle mit folgendem Code hinzugefügt werden:
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
 
     ```python
-    import pandas as pd
-    df = pd.read_csv("/lakehouse/default/" + "Files/dominicks_OJ.csv") 
-    display(df.head(5))
+    # Azure storage access info for open dataset diabetes
+    blob_account_name = "azureopendatastorage"
+    blob_container_name = "ojsales-simulatedcontainer"
+    blob_relative_path = "oj_sales_data"
+    blob_sas_token = r"" # Blank since container is Anonymous access
+    
+    # Set Spark config to access  blob storage
+    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+    print("Remote blob path: " + wasbs_path)
+    
+    # Spark reads csv
+    df = spark.read.csv(wasbs_path, header=True)
     ```
 
-    > **Tipp**: Sie können den Bereich mit den Dateien auf der linken Seite ausblenden, indem Sie das **<<** -Symbol verwenden. Dies hilft Ihnen, sich auf das Notebook zu konzentrieren.
-
-1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen.
+1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen. Alternativ können Sie `SHIFT` + `ENTER` auf Ihrer Tastatur drücken, um eine Zelle auszuführen.
 
     > **Hinweis**: Da Sie Spark-Code zum ersten Mal in dieser Sitzung ausführen, muss der Spark-Pool gestartet werden. Dies bedeutet, dass die erste Ausführung in der Sitzung etwa eine Minute dauern kann. Nachfolgende Ausführungen erfolgen schneller.
 
+1. Verwenden Sie das Symbol **+ Code** unterhalb der Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie darin den folgenden Code ein:
+
+    ```python
+    import pandas as pd
+
+    df = df.toPandas()
+    df = df.sample(n=500, random_state=1)
+    
+    df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
+    df['Quantity'] = df['Quantity'].astype('int')
+    df['Advert'] = df['Advert'].astype('int')
+    df['Price'] = df['Price'].astype('float')
+    df['Revenue'] = df['Revenue'].astype('float')
+    
+    df = df.reset_index(drop=True)
+    df.head(4)
+    ```
+
+1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
+
+    ```
+        WeekStarting    Store   Brand       Quantity    Advert  Price   Revenue
+    0   1991-10-17      947     minute.maid 13306       1       2.42    32200.52
+    1   1992-03-26      1293    dominicks   18596       1       1.94    36076.24
+    2   1991-08-15      2278    dominicks   17457       1       2.14    37357.98
+    3   1992-09-03      2175    tropicana   9652        1       2.07    19979.64
+    ```
+
+    Die Ausgabe zeigt die ersten vier Zeilen des Datasets OJ Sales.
+
 ## Anzeigen von Zusammenfassungsstatistiken
 
-Beim Starten von Data Wrangler wird im Bereich „Zusammenfassung“ eine beschreibende Übersicht über den angezeigten Dataframe generiert. 
+Nachdem wir die Daten geladen haben, besteht der nächste Schritt darin, sie mithilfe von Data Wrangler vorzuverarbeiten. Die Vorverarbeitung ist ein wichtiger Schritt in jedem Machine Learning-Workflow. Es umfasst das Bereinigen der Daten und die Transformation in ein Format, das in ein Machine Learning-Modell eingespeist werden kann.
 
-1. Wählen Sie im oberen Menü **Daten** und dann die Dropdownliste **Data Wrangler** aus, um das `df`-Dataset zu durchsuchen.
+1. Wählen Sie im Menüband des Notebooks die Option **Daten** und dann die Dropdownliste **Data Wrangler starten** aus.
 
-    ![Screenshot der Option „Data Wrangler starten“.](./Images/launch-data-wrangler.png)
+1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert. 
 
-1. Wählen Sie die Spalte **Große HH** aus und beobachten Sie, wie einfach Sie die Datenverteilung dieses Features bestimmen können.
+1. Wählen Sie das Feature **Einnahmen** und beobachten Sie die Datenverteilung dieses Features.
 
-    ![Screenshot der Seite „Data Wrangler“ mit der Datenverteilung für eine bestimmte Spalte.](./Images/data-wrangler-distribution.png)
-
-    Beachten Sie, dass dieses Feature einer Normalenverteilung folgt.
-
-1. Überprüfen Sie den Seitenbereich „Zusammenfassung“, und beachten Sie die Perzentilbereiche. 
+1. Überprüfen Sie die Details der **Zusammenfassung** im Seitenbereich und sehen Sie sich die Statistikwerte genauer an.
 
     ![Screenshot der Seite „Data Wrangler“ mit den Details des Bereichs „Zusammenfassung“.](./Images/data-wrangler-summary.png)
 
-    Sie können sehen, dass die meisten Daten zwischen **0,098** und **0,132** liegen und dass 50 % der Datenwerte innerhalb dieses Bereichs liegen.
+    Welche Erkenntnisse können Sie daraus ziehen? Der durchschnittliche Umsatz liegt bei etwa **33.459,54 US-Dollar** mit einer Standardabweichung von **8.032,23 US-Dollar**. Dies bedeutet, dass die Einnahmen in einem Bereich von etwa **8.032,23 US-Dollar** um den Mittelwert herum verteilt sind.
 
 ## Formatieren von Textdaten
 
 Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
 
-1. Wählen Sie auf der Seite **Data Wrangler** das `Brand`-Feature aus.
+1. Wählen Sie im **Data Wrangler**-Dashboard im Raster das Feature `Brand` aus.
 
 1. Navigieren Sie zum Bereich **Vorgänge**, erweitern Sie **Suchen und Ersetzen** und wählen Sie dann **Suchen und Ersetzen** aus.
 
@@ -115,49 +130,62 @@ Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
     - **Alter Wert:** „.“
     - **Neuer Wert:** „ “ (Leerzeichen)
 
-    ![Screenshot der Seite „Data Wrangler“ mit dem Bereich „Suchen und Ersetzen“.](./Images/data-wrangler-find.png)
-
     Die Ergebnisse des Vorgangs werden automatisch in der Vorschau im Anzeigeraster angezeigt.
 
-1. Klicken Sie auf **Übernehmen**.
+1. Wählen Sie **Übernehmen**.
 
 1. Kehren Sie zum Bereich **Vorgänge** und erweitern Sie **Format**.
 
-1. Wählen Sie **Text in Großbuchstaben konvertieren** aus.
-
-1. Wählen Sie im Bereich **Text in Großbuchstaben konvertieren** **Übernehmen** aus.
+1. Wählen Sie **Text in Großbuchstaben konvertieren** aus. Schalten Sie den Schalter **Alle Wörter groß schreiben** um und wählen Sie dann **Anwenden** aus.
 
 1. Wählen Sie **Code zu Notebook hinzufügen** aus. Darüber hinaus können Sie das transformierte Dataset auch als .csv-Datei speichern.
 
-    Beachten Sie, dass der Code automatisch in die Notebookzelle kopiert wird und einsatzbereit ist.
+    >**Hinweis:** Der Code wird automatisch in die Notebookzelle kopiert und ist sofort einsatzbereit. 
 
-1. Führen Sie den Code aus.
+1. Ersetzen Sie die Zeilen 10 und 11 durch den Code `df = clean_data(df)`, da der in Data Wrangler generierte Code den ursprünglichen Dataframe nicht überschreibt. Der finale Codeblock sollte wie folgt aussehen:
+ 
+    ```python
+    def clean_data(df):
+        # Replace all instances of "." with " " in column: 'Brand'
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+        # Convert text to capital case in column: 'Brand'
+        df['Brand'] = df['Brand'].str.title()
+        return df
+    
+    df = clean_data(df)
+    ```
 
-> **Wichtig:** Der generierte Code überschreibt den ursprünglichen Dataframe nicht. 
+1. Führen Sie die Codezelle aus und überprüfen Sie die Variable `Brand`.
 
-Sie haben gelernt, wie Sie mithilfe von Data Wrangler-Vorgängen auf einfache Weise Code generieren und Textdaten bearbeiten können. 
+    ```python
+    df['Brand'].unique()
+    ```
+
+    Das Ergebnis zeigt *Minute Maid*, *Dominicks* und *Tropicana*.
+
+Sie haben gelernt, wie Sie Textdaten grafisch bearbeiten und mithilfe von Data Wrangler ganz einfach Code generieren.
 
 ## Anwenden der Transformation mit One-Hot-Encoder
 
-Nun generieren wir den Code, um die Transformation mit One-Hot-Encoder als Vorverarbeitungsschritt anzuwenden.
+Als Nächstes generieren wir den Code, um die Transformation für die One-Hot-Codierung im Rahmen der Vorverarbeitungsschritte auf unsere Daten anzuwenden. Um unser Szenario praktischer zu gestalten, generieren wir zunächst einige Beispieldaten. So können wir eine reale Situation simulieren und erhalten ein funktionsfähiges Feature.
 
-1. Wählen Sie im oberen Menü **Daten** und dann die Dropdownliste **Data Wrangler** aus, um das `df`-Dataset zu durchsuchen.
+1. Starten Sie Data Wrangler im oberen Menü für den `df`-Dataframe.
 
-1. Erweitern Sie im Bereich **Vorgänge** die Option **Formeln**.
+1. Wählen Sie im Raster das Feature `Brand` aus.
 
-1. Wählen Sie **One-Hot-Encode** aus.
+1. Erweitern Sie im Bereich **Vorgänge** die Option **Formeln** und wählen Sie dann **One-Hot-Encode** aus.
 
 1. Wählen Sie im Bereich **One-Hot-Encode** **Übernehmen** aus.
 
-    Gehen Sie zum Ende des Data Wrangler-Anzeigerasters. Beachten Sie, dass drei neue Features hinzugefügt und das Feature `Brand` entfernt wurde.
+    Gehen Sie zum Ende des Data Wrangler-Anzeigerasters. Sie sehen, dass drei neue Features hinzugefügt (`Brand_Dominicks`, `Brand_Minute Maid` und `Brand_Tropicana`) und das Feature `Brand` entfernt wurden.
 
-1. Wählen Sie **Code zu Notebook hinzufügen** aus.
-
-1. Führen Sie den Code aus.
+1. Schließen Sie Data Wrangler, ohne den Code zu generieren.
 
 ## Sortier- und Filtervorgänge
 
-1. Wählen Sie im oberen Menü **Daten** und dann die Dropdownliste **Data Wrangler** aus, um das `df`-Dataset zu durchsuchen.
+Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft überprüfen und dann die Produktpreise sortieren. In den folgenden Schritten verwenden wir Data Wrangler, um den `df`-Dataframe zu filtern und zu analysieren.
+
+1. Starten Sie Data Wrangler für den `df`-Dataframe.
 
 1. Erweitern Sie im Bereich **Vorgänge** die Option **Sortieren und Filtern**.
 
@@ -167,48 +195,34 @@ Nun generieren wir den Code, um die Transformation mit One-Hot-Encoder als Vorve
     
     - **Zielspalte:** Store
     - **Vorgang:** Equal to
-    - **Wert:** 2
+    - **Wert:** 1227
 
-1. Klicken Sie auf **Übernehmen**.
+1. Wählen Sie **Übernehmen** und sehen Sie sich die Änderungen im Data Wrangler-Anzeigeraster an.
 
-    Beobachten Sie die Änderungen im Data Wrangler-Anzeigeraster.
+1. Wählen Sie das Feature **Umsatz** aus und sehen Sie sich dann die Details der **Zusammenfassung** im Seitenbereich genauer an.
+
+    Welche Erkenntnisse können Sie daraus ziehen? Die Abweichung ist **-0,751**, was auf eine leichte Linksverschiebung (negative Abweichung) hinweist. Das bedeutet, dass der linke Ausläufer der Verteilung etwas länger ist als der rechte Ausläufer. Mit anderen Worten: Es gibt eine Reihe von Zeiträumen, in denen die Einnahmen deutlich unter dem Durchschnitt liegen.
 
 1. Kehren Sie zum Bereich **Vorgänge** zurück und erweitern Sie **Sortieren und Filtern**.
 
 1. Wählen Sie **Werte sortieren** aus.
 
-1. Fügen Sie im Bereich **Preis** die folgende Bedingung hinzu:
+1. Wählen Sie im Bereich **Werte sortieren** die folgenden Eigenschaften aus:
     
     - **Spaltenname:** Preis
     - **Sortierreihenfolge:** Absteigend
 
-1. Klicken Sie auf **Übernehmen**.
+1. Wählen Sie **Übernehmen**.
 
-    Beobachten Sie die Änderungen im Data Wrangler-Anzeigeraster.
-
-## Aggregieren von Daten
-
-1. Kehren Sie zum Bereich **Vorgänge** zurück und wählen Sie **Gruppieren nach und aggregieren** aus.
-
-1. Wählen Sie in der Eigenschaft **Spalten, nach denen gruppiert werden soll:** das Feature `Store` aus.
-
-1. Wählen Sie **Aggregation hinzufügen** aus.
-
-1. Wählen Sie in der Eigenschaft **Zu aggregierende Spalte** das Feature `Quantity` aus.
-
-1. Wählen Sie **Anzahl** für die Eigenschaft **Aggregationstyp** aus.
-
-1. Klicken Sie auf **Übernehmen**. 
-
-    Beobachten Sie die Änderungen im Data Wrangler-Anzeigeraster.
+    Der höchste Produktpreis für das Geschäft **1227** beträgt **2,68 US-Dollar**. Bei einer geringen Anzahl von Datensätzen ist es einfacher, den höchsten Produktpreis zu ermitteln, aber stellen Sie sich die Komplexität vor, wenn Sie es mit Tausenden von Ergebnissen zu tun haben.
 
 ## Schritte durchsuchen und entfernen
 
-Angenommen, Sie haben einen Fehler gemacht und müssen die Aggregation entfernen, die Sie im vorherigen Schritt erstellt haben. Führen Sie die folgenden Schritte aus, um sie zu entfernen:
+Angenommen, Sie haben einen Fehler gemacht und müssen die Sortierung, die Sie im vorherigen Schritt erstellt haben, entfernen. Führen Sie die folgenden Schritte aus, um sie zu entfernen:
 
-1. Erweitern Sie den Bereich **Schritte bereinigen**.
+1. Navigieren Sie zum Bereich **Schritte bereinigen**.
 
-1. Wählen Sie den Schritt **Gruppieren nach und aggregieren** aus.
+1. Wählen Sie den Schritt **Werte sortieren** aus.
 
 1. Wählen Sie das Löschsymbol aus, um den Schritt zu entfernen.
 
@@ -216,11 +230,62 @@ Angenommen, Sie haben einen Fehler gemacht und müssen die Aggregation entfernen
 
     > **Wichtig:** Die Rasteransicht und Zusammenfassung sind auf den aktuellen Schritt beschränkt.
 
-    Sie sehen, dass die Änderungen auf den vorherigen Schritt zurückgesetzt werden, nämlich auf den Schritt **Werte sortieren**.
+    Sie sehen, dass die Änderungen auf den vorherigen Schritt zurückgesetzt werden, nämlich auf den Schritt **Filtern**.
+
+1. Schließen Sie Data Wrangler, ohne den Code zu generieren.
+
+## Aggregieren von Daten
+
+Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. In den folgenden Schritten verwenden wir Data Wrangler, um einen „Gruppieren nach“-Vorgang für den `df`-Dataframe auszuführen.
+
+1. Starten Sie Data Wrangler für den `df`-Dataframe.
+
+1. Kehren Sie zum Bereich **Vorgänge** zurück und wählen Sie **Gruppieren nach und aggregieren** aus.
+
+1. Wählen Sie in der Eigenschaft **Spalten, nach denen gruppiert werden soll:** das Feature `Brand` aus.
+
+1. Wählen Sie **Aggregation hinzufügen** aus.
+
+1. Wählen Sie in der Eigenschaft **Zu aggregierende Spalte** das Feature `Revenue` aus.
+
+1. Wählen Sie **Mittelwert** für die Eigenschaft **Aggregationstyp** aus.
+
+1. Wählen Sie **Übernehmen**.
 
 1. Wählen Sie **Code zu Notebook hinzufügen** aus.
 
-1. Führen Sie den Code aus.
+1. Kombinieren Sie den Code aus der Variablentransformation `Brand` mit dem Code, der durch den Aggregationsschritt in der Funktion `clean_data(df)` generiert wird. Der finale Codeblock sollte wie folgt aussehen:
+ 
+    ```python
+    def clean_data(df):
+        # Replace all instances of "." with " " in column: 'Brand'
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+        # Convert text to capital case in column: 'Brand'
+        df['Brand'] = df['Brand'].str.title()
+
+        # Performed 1 aggregation grouped on column: 'Brand'
+        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()
+
+        return df
+    
+    df = clean_data(df)
+    ```
+
+1. Führen Sie den Zellcode aus.
+
+1. Überprüfen Sie die Daten im Dataframe.
+
+    ```python
+    print(df)
+    ```
+
+    Ergebnisse:
+    ```
+             Brand  Revenue_mean
+    0    Dominicks  33206.330958
+    1  Minute Maid  33532.999632
+    2    Tropicana  33637.863412
+    ```
 
 Sie haben den Code für einige der Vorverarbeitungsvorgänge generiert und als Funktion im Notebook gespeichert, die Sie dann bei Bedarf wiederverwenden oder ändern können.
 
