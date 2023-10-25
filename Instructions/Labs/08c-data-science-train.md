@@ -10,7 +10,7 @@ In diesem Lab trainieren Sie ein Machine Learning-Modell, um ein quantitatives M
 
 Bei diesem Lab sammeln Sie praktische Erfahrung mit maschinellem Lernen und der Modellnachverfolgung und lernen, wie Sie in Microsoft Fabric mit *Notebooks*, *Experimenten* und *Modellen* arbeiten.
 
-Dieses Lab dauert ungefähr **45** Minuten.
+Dieses Lab dauert ungefähr **25** Minuten.
 
 > **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,7 +29,7 @@ Erstellen Sie vor dem Arbeiten mit Modellen in Fabric einen Arbeitsbereich mit a
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks sind eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) schreiben und ausführen können.
 
-1. Wählen Sie unten links im Fabric-Portal das **Datentechnik**-Symbol aus, und wechseln Sie zum Bereich **Data Science**.
+1. Wählen Sie unten links im Fabric-Portal das **Power BI**-Symbol aus und wechseln Sie zu **Data Science**.
 
 1. Erstellen Sie auf der **Data Science**-Startseite ein neues **Notebook**.
 
@@ -213,7 +213,7 @@ Wenn Sie Modelle mit MLflow trainiert und nachverfolgt haben, können Sie die ML
 
 Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell untersuchen.
 
-1. Navigieren Sie zur Startseite **Data Science**.
+1. Navigieren Sie über die Hubmenüleiste auf der linken Seite zu Ihrem Arbeitsbereich.
 1. Wählen Sie das `experiment-diabetes`-Experiment aus, um es zu öffnen.
 
     > **Tipp:** Wenn keine protokollierten Experimentausführungen angezeigt werden, aktualisieren Sie die Seite.
@@ -237,7 +237,7 @@ Nach dem Vergleichen von Machine Learning-Modellen, die Sie experimentübergreif
 1. Stellen Sie in der Experimentübersicht sicher, dass die Registerkarte **Ansicht** ausgewählt ist.
 1. Wählen Sie **Ausführungsdetails** aus.
 1. Wählen Sie die Ausführung mit dem höchsten R2-Score aus.
-1. Wählen Sie im Feld **Als Modell speichern** die Option **Speichern** aus.
+1. Wählen Sie die Option **Speichern** im Feld **Als Modell speichern** aus.
 1. Wählen Sie im neu geöffneten Popupfenster die Option **Neues Modell erstellen** aus.
 1. Wählen Sie den Ordner `model` aus.
 1. Nennen Sie das Modell `model-diabetes`, und wählen Sie **Speichern** aus.
@@ -249,7 +249,7 @@ Beachten Sie, dass das Modell, das Experiment und die Experimentausführung verk
 
 Nachdem Sie das Training und die Auswertung der Modelle abgeschlossen haben, können Sie das Notebook unter einem aussagekräftigen Namen speichern und die Spark-Sitzung beenden.
 
-1. Verwenden Sie in der Menüleiste des Notebooks das Symbol ⚙️ **Einstellungen**, um die Einstellungen des Notebooks anzuzeigen.
+1. Kehren Sie zu Ihrem Notebook zurück und verwenden Sie auf der Menüleiste des Notebooks das Symbol ⚙️ **Einstellungen**, um die Einstellungen des Notebooks anzuzeigen.
 2. Legen Sie den **Namen** des Notebooks auf **Trainieren und Vergleichen von Modellen** fest, und schließen Sie dann den Einstellungsbereich.
 3. Wählen Sie im Notebookmenü **Sitzung beenden** aus, um die Spark-Sitzung zu beenden.
 
