@@ -1,20 +1,22 @@
 ---
 lab:
-  title: Trainieren eines Klassifizierungsmodells zur Vorhersage der Kundenabwanderung
+  title: Grundlegendes zu Data Science in Microsoft Fabric
   module: Get started with data science in Microsoft Fabric
 ---
 
-# Verwenden von Notebooks zum Trainieren eines Modells in Microsoft Fabric
+# Grundlegendes zu Data Science in Microsoft Fabric
 
-In diesem Lab verwenden wir Microsoft Fabric, um ein Notebook zu erstellen und ein Machine Learning-Modell zu trainieren, das die Kundenabwanderung vorhersagt. Wir werden Scikit-Learn verwenden, um das Modell zu trainieren, und MLflow, um seine Leistung zu verfolgen. Kundenabwanderung ist ein kritisches Geschäftsproblem, mit dem viele Unternehmen konfrontiert sind, und die Vorhersage, welche Kunden wahrscheinlich abwandern werden, kann Unternehmen helfen, ihre Kunden zu halten und den Umsatz zu steigern. Bei diesem Lab sammeln Sie praktische Erfahrung mit maschinellem Lernen und der Modellnachverfolgung und lernen, wie Sie mit Microsoft Fabric ein Notebook für Ihre Projekte erstellen können.
+In diesem Lab erfassen Sie Daten, untersuchen die Daten in einem Notebook, verarbeiten die Daten mit dem Data Wrangler und trainieren zwei Arten von Modellen. Durch das Befolgen dieser Schritte lernen Sie die Data Science-Features in Microsoft Fabric kennen.
 
-Dieses Lab dauert ungefähr **45** Minuten.
+Bei diesem Lab sammeln Sie praktische Erfahrung mit maschinellem Lernen und der Modellnachverfolgung und lernen, wie Sie in Microsoft Fabric mit *Notebooks*, *Data Wrangler*, *Experimenten* und *Modellen* arbeiten.
+
+Dieses Lab dauert ungefähr **20** Minuten.
 
 > **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
+Erstellen Sie vor dem Arbeiten mit Modellen in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
 1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
@@ -23,26 +25,11 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
     ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
 
-## Erstellen eines Lakehouse und Hochladen von Dateien
-
-Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Data Science* im Portal wechseln und ein Data Lakehouse für die zu analysierenden Datendateien erstellen.
-
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Datentechnik**.
-1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
-
-    Nach etwa einer Minute wird ein neues Lakehouse ohne **Tabellen** oder **Dateien** erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach einen Ordner mit Textdateien auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
-
-1. Laden Sie die `churn.csv`-CSV-Datei für diese Übung von herunter, und speichern Sie sie unter [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/churn.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/churn.csv).
-
-
-1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Knoten **Dateien** im Bereich **Lake-Ansicht** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **churn.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
-6. Erweitern Sie nach dem Hochladen der Dateien den Eintrag **Dateien**, und überprüfen Sie, ob die CSV-Datei hochgeladen wurde.
-
 ## Erstellen eines Notebooks
 
-Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bieten eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) als *Experimente* schreiben und ausführen können.
+Zum Ausführen von Code können Sie ein *Notebook* erstellen. Notebooks sind eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) schreiben und ausführen können.
 
-1. Wählen Sie unten links im Power BI-Portal das **Datentechnik**-Symbol aus, und wechseln Sie zu **Data Science**.
+1. Wählen Sie unten links im Fabric-Portal das **Power BI**-Symbol aus und wechseln Sie zu **Data Science**.
 
 1. Erstellen Sie auf der **Data Science**-Startseite ein neues **Notebook**.
 
@@ -55,189 +42,192 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 1. Verwenden Sie die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie dann den Inhalt und geben Sie den folgenden Text ein:
 
     ```text
-   # Train a machine learning model and track with MLflow
-
-   Use the code in this notebook to train and track models.
-    ``` 
-
-## Laden von Daten in einen Dataframe
-
-Jetzt können Sie Code ausführen, um Daten aufzubereiten und ein Modell zu trainieren. Um mit Daten zu arbeiten, verwenden Sie *Dataframes*. Dataframes in Spark ähneln Pandas-Dataframes in Python und bieten eine gemeinsame Struktur für die Arbeit mit Daten in Zeilen und Spalten.
-
-1. Wählen Sie im Bereich **Lakehouse hinzufügen** die Option **Hinzufügen** aus, um ein Lakehouse hinzuzufügen.
-1. Wählen Sie **Vorhandenes Lakehouse** und **Hinzufügen** aus.
-1. Wählen Sie das Lakehouse aus, das Sie in einem vorherigen Abschnitt erstellt haben.
-1. Erweitern Sie den Ordner **Dateien**, sodass die CSV-Datei neben dem Notebook-Editor aufgeführt wird.
-1. Wählen Sie im Menü **...** für **churn.csv** die Option **Daten laden** > **Pandas** aus. Dem Notebook sollte eine neue Codezelle mit folgendem Code hinzugefügt werden:
-
-    ```python
-   import pandas as pd
-   # Load data into pandas DataFrame from "/lakehouse/default/" + "Files/churn.csv"
-   df = pd.read_csv("/lakehouse/default/" + "Files/churn.csv")
-   display(df)
+   # Data science in Microsoft Fabric
     ```
 
-    > **Tipp**: Sie können den Bereich mit den Dateien auf der linken Seite ausblenden, indem Sie das **<<** -Symbol verwenden. Dies hilft Ihnen, sich auf das Notebook zu konzentrieren.
+## Abrufen von Daten
 
-1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen.
+Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainieren. Sie arbeiten mit dem [Diabetesdataset](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe. Dabei handelt es sich um eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
+
+1. Wählen Sie in Ihrem Notebook das Symbol **+ Code** unterhalb der aktuellen Zellenausgabe aus, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie in dieser den folgenden Code ein:
+
+    ```python
+    # Azure storage access info for open dataset diabetes
+    blob_account_name = "azureopendatastorage"
+    blob_container_name = "mlsamples"
+    blob_relative_path = "diabetes"
+    blob_sas_token = r"" # Blank since container is Anonymous access
+    
+    # Set Spark config to access  blob storage
+    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+    print("Remote blob path: " + wasbs_path)
+    
+    # Spark read parquet, note that it won't load any data yet by now
+    df = spark.read.parquet(wasbs_path)
+    ```
+
+1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen. Alternativ können Sie `SHIFT` + `ENTER` auf Ihrer Tastatur drücken, um eine Zelle auszuführen.
 
     > **Hinweis**: Da Sie Spark-Code zum ersten Mal in dieser Sitzung ausführen, muss der Spark-Pool gestartet werden. Dies bedeutet, dass die erste Ausführung in der Sitzung etwa eine Minute dauern kann. Nachfolgende Ausführungen erfolgen schneller.
-
-1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
-
-    |Index|CustomerID|years_with_company|total_day_calls|total_eve_calls|total_night_calls|total_intl_calls|average_call_minutes|total_customer_service_calls|age|Churn|
-    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-    |1|1000038|0|117|88|32|607|43.90625678|0.810828179|34|0|
-    |2|1000183|1|164|102|22|40|49.82223317|0.294453889|35|0|
-    |3|1000326|3|116|43|45|207|29.83377967|1.344657937|57|1|
-    |4|1000340|0|92|24|11|37|31.61998183|0.124931779|34|0|
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-
-    Die Ausgabe zeigt die Zeilen und Spalten der Kundendaten aus der churn.csv-Datei an.
-
-## Trainieren eines Machine Learning-Modells
-
-Nachdem Sie die Daten geladen haben, können Sie sie verwenden, um ein Machine Learning-Modell zu trainieren und Kundenabwanderungen vorherzusagen. Sie trainieren ein Modell mithilfe der Scikit-Learn-Bibliothek und verfolgen das Modell mit MLflow nach. 
 
 1. Verwenden Sie das Symbol **+ Code** unterhalb der Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie darin den folgenden Code ein:
 
     ```python
-   from sklearn.model_selection import train_test_split
-
-   print("Splitting data...")
-   X, y = df[['years_with_company','total_day_calls','total_eve_calls','total_night_calls','total_intl_calls','average_call_minutes','total_customer_service_calls','age']].values, df['churn'].values
-   
-   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+    display(df)
     ```
 
-1. Führen Sie die hinzugefügte Codezelle aus, und beachten Sie, dass Sie „CustomerID“ aus dem Dataset weglassen und die Daten in ein Trainings- und Testdataset aufteilen.
-1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
-    
+1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
+
+    |AGE|SEX|BMI|BP|S1|S2|S3|S4|S5|S6|J|
+    |---|---|---|--|--|--|--|--|--|--|--|
+    |59|2|32,1|101.0|157|93.2|38,0|4,0|4.8598|87|151|
+    |48|1|21.6|87,0|183|103.2|70,0|3.0|3.8918|69|75|
+    |72|2|30.5|93.0|156|93.6|41.0|4,0|4.6728|85|141|
+    |24|1|25.3|84.0|198|131.4|40.0|5.0|4.8903|89|206|
+    |50|1|23.0|101.0|192|125,4|52.0|4,0|4.2905|80|135|
+    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+    Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
+
+1. Im oberen Bereich der gerenderten Tabelle befinden sich zwei Registerkarten: **Tabelle** und **Diagramm**. Wählen Sie **Diagramm** aus.
+1. Wählen Sie rechts oben im Diagramm **Optionen anzeigen** aus, um die Visualisierung zu ändern.
+1. Ändern Sie die folgenden Einstellungen für das Diagramm:
+    * **Diagrammtyp**: `Box plot`
+    * **Schlüssel**: *leer lassen*
+    * **Werte**: `Y`
+1. Wählen Sie **Anwenden** aus, um die neue Visualisierung zu rendern und die Ausgabe zu untersuchen.
+
+## Vorbereiten der Daten
+
+Nachdem Sie die Daten erfasst und untersucht haben, können Sie sie transformieren. Sie können entweder Code in einem Notebook ausführen oder den Data Wrangler verwenden, um Code für Sie zu generieren.
+
+1. Die Daten werden als Spark-Dataframe geladen. Zum Starten des Data Wrangler müssen Sie die Daten in einen Pandas-Dataframe konvertieren. Führen Sie den folgenden Code in Ihrem Notebook aus:
+
     ```python
-   import mlflow
-   experiment_name = "experiment-churn"
-   mlflow.set_experiment(experiment_name)
+    df = df.toPandas()
+    df.head()
     ```
+
+1. Wählen Sie im Menüband des Notebooks die Option **Daten** und dann die Dropdownliste **Data Wrangler starten** aus.
+1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert.
+
+    Derzeit ist die Bezeichnungsspalte `Y`, also eine fortlaufende Variable. Um ein Machine Learning-Modell zu trainieren, das Y vorhersagt, müssen Sie ein Regressionsmodell trainieren. Die (vorhergesagten) Werte von Y sind möglicherweise schwer zu interpretieren. Stattdessen könnten wir das Training eines Klassifizierungsmodells untersuchen, das vorhersagt, ob jemand ein niedriges oder hohes Risiko für die Entwicklung von Diabetes aufweist. Um ein Klassifizierungsmodell trainieren zu können, müssen Sie eine binäre Bezeichnungsspalte basierend auf den Werten aus `Y` erstellen.
+
+1. Wählen Sie die Spalte `Y` im Data Wrangler aus. Beachten Sie, dass die Häufigkeit für den `220-240`-Bin verringert wird. Das 75. Perzentil `211.5` entspricht ungefähr dem Übergang der beiden Regionen im Histogramm. Verwenden wir diesen Wert als Schwellenwert für niedriges und hohes Risiko.
+1. Navigieren Sie zum Bereich **Vorgänge**, erweitern Sie **Formeln**, und wählen Sie dann **Spalte aus Formel erstellen** aus.
+1. Erstellen Sie eine neue Spalte mit den folgenden Einstellungen:
+    * **Spaltenname**: `Risk`
+    * **Spaltenformel**: `(df['Y'] > 211.5).astype(int)`
+1. Überprüfen Sie die neue Spalte `Risk`, die der Vorschau hinzugefügt wird. Vergewissern Sie sich, dass die Anzahl der Zeilen mit dem Wert `1` ungefähr 25 % aller Zeilen beträgt (da es sich um das 75. Perzentil von `Y` handelt).
+1. Wählen Sie **Übernehmen**.
+1. Wählen Sie **Code zu Notebook hinzufügen** aus.
+1. Führen Sie die Zelle mit dem Code aus, der vom Data Wrangler generiert wird.
+1. Führen Sie den folgenden Code in einer neuen Zelle aus, um zu überprüfen, ob die Spalte `Risk` wie erwartet aussieht:
+
+    ```python
+    df_clean.describe()
+    ```
+
+## Trainieren von Machine Learning-Modellen
+
+Nachdem Sie die Daten aufbereitet haben, können Sie sie verwenden, um ein Machine Learning-Modell zu trainieren, das Diabetes vorhersagt. Wir können zwei verschiedene Modelltypen mit unserem Dataset trainieren: ein Regressionsmodell (Vorhersage von `Y`) oder ein Klassifizierungsmodell (Vorhersage von `Risk`). Sie trainieren die Modelle mithilfe der Scikit-learn-Bibliothek und verfolgen das Modell mit MLflow nach.
+
+### Trainieren eines Regressionsmodells
+
+1. Führen Sie den folgenden Code aus, um die Daten in ein Trainings- und Testdataset aufzuteilen und die Features von der Bezeichnung `Y` zu trennen, die Sie vorhersagen möchten:
+
+    ```python
+    from sklearn.model_selection import train_test_split
     
-    Der Code erstellt ein MLflow-Experiment namens `experiment-churn`. Ihre Modelle werden in diesem Experiment nachverfolgt.
+    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
+    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+    ```
 
 1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
 
     ```python
-   from sklearn.linear_model import LogisticRegression
-   
-   with mlflow.start_run():
+    import mlflow
+    experiment_name = "diabetes-regression"
+    mlflow.set_experiment(experiment_name)
+    ```
+
+    Der Code erstellt ein MLflow-Experiment namens `diabetes-regression`. Ihre Modelle werden in diesem Experiment nachverfolgt.
+
+1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
+
+    ```python
+    from sklearn.linear_model import LinearRegression
+    
+    with mlflow.start_run():
        mlflow.autolog()
-
-       model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
-
-       mlflow.log_param("estimator", "LogisticRegression")
-    ```
     
-    Der Code trainiert ein Klassifizierungsmodell mithilfe der logistischen Regression. Parameter, Metriken und Artefakte werden automatisch mit MLflow protokolliert. Darüber hinaus protokollieren Sie einen Parameter namens `estimator`mit dem Wert `LogisticRegression`.
+       model = LinearRegression()
+       model.fit(X_train, y_train)
+    ```
+
+    Der Code trainiert ein Regressionsmodell mithilfe der linearen Regression. Parameter, Metriken und Artefakte werden automatisch mit MLflow protokolliert.
+
+### Trainieren eines Klassifizierungsmodells
+
+1. Führen Sie den folgenden Code aus, um die Daten in ein Trainings- und Testdataset aufzuteilen und die Features von der Bezeichnung `Risk` zu trennen, die Sie vorhersagen möchten:
+
+    ```python
+    from sklearn.model_selection import train_test_split
+    
+    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
+    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+    ```
 
 1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
 
     ```python
-   from sklearn.tree import DecisionTreeClassifier
-   
-   with mlflow.start_run():
-       mlflow.autolog()
-
-       model = DecisionTreeClassifier().fit(X_train, y_train)
-   
-       mlflow.log_param("estimator", "DecisionTreeClassifier")
+    import mlflow
+    experiment_name = "diabetes-classification"
+    mlflow.set_experiment(experiment_name)
     ```
 
-    Der Code trainiert ein Klassifizierungsmodell mithilfe des Entscheidungsstrukturklassifizierers. Parameter, Metriken und Artefakte werden automatisch mit MLflow protokolliert. Darüber hinaus protokollieren Sie einen Parameter namens `estimator`mit dem Wert `DecisionTreeClassifier`.
+    Der Code erstellt ein MLflow-Experiment namens `diabetes-classification`. Ihre Modelle werden in diesem Experiment nachverfolgt.
 
-## Verwenden von MLflow zum Suchen und Anzeigen Ihrer Experimente
-
-Wenn Sie Modelle mit MLflow trainiert und nachverfolgt haben, können Sie die MLflow-Bibliothek verwenden, um Ihre Experimente und die zugehörigen Details abzurufen.
-
-1. Verwenden Sie den folgenden Code, um alle Experimente aufzulisten:
+1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
 
     ```python
-   import mlflow
-   experiments = mlflow.search_experiments()
-   for exp in experiments:
-       print(exp.name)
+    from sklearn.linear_model import LogisticRegression
+    
+    with mlflow.start_run():
+        mlflow.sklearn.autolog()
+
+        model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
     ```
 
-1. Ein bestimmtes Experiment können Sie anhand seines Namens abrufen:
-
-    ```python
-   experiment_name = "experiment-churn"
-   exp = mlflow.get_experiment_by_name(experiment_name)
-   print(exp)
-    ```
-
-1. Mithilfe eines Experimentnamens können Sie alle Aufträge dieses Experiments abrufen:
-
-    ```python
-   mlflow.search_runs(exp.experiment_id)
-    ```
-
-1. Um Auftragsausführungen und -ausgaben einfacher zu vergleichen, können Sie die Suche so konfigurieren, dass die Ergebnisse sortiert werden. Die folgende Zelle sortiert die Ergebnisse beispielsweise anhand von `start_time` und zeigt maximal `2` Ergebnisse: 
-
-    ```python
-   mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)
-    ```
-
-1. Schließlich können Sie die Auswertungsmetriken mehrerer Modelle nebeneinander zeichnen, um Modelle einfach zu vergleichen:
-
-    ```python
-   import matplotlib.pyplot as plt
-   
-   df_results = mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)[["metrics.training_accuracy_score", "params.estimator"]]
-   
-   fig, ax = plt.subplots()
-   ax.bar(df_results["params.estimator"], df_results["metrics.training_accuracy_score"])
-   ax.set_xlabel("Estimator")
-   ax.set_ylabel("Accuracy")
-   ax.set_title("Accuracy by Estimator")
-   for i, v in enumerate(df_results["metrics.training_accuracy_score"]):
-       ax.text(i, v, str(round(v, 2)), ha='center', va='bottom', fontweight='bold')
-   plt.show()
-    ```
-
-    Die Ausgabe sollte dem folgenden Bild entsprechen:
-
-    ![Screenshot der gezeichneten Auswertungsmetriken](./Images/plotted-metrics.png)
+    Der Code trainiert ein Klassifizierungsmodell mithilfe der logistischen Regression. Parameter, Metriken und Artefakte werden automatisch mit MLflow protokolliert.
 
 ## Erkunden der Experimente
 
 Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell untersuchen.
 
-1. Navigieren Sie im linken Bereich zu Ihrem Arbeitsbereich.
-1. Wählen Sie das Experiment `experiment-churn` aus der Liste aus.
+1. Navigieren Sie über die Hubmenüleiste auf der linken Seite zu Ihrem Arbeitsbereich.
+1. Wählen Sie das `diabetes-regression`-Experiment aus, um es zu öffnen.
 
     > **Tipp:** Wenn keine protokollierten Experimentausführungen angezeigt werden, aktualisieren Sie die Seite.
 
-1. Wählen Sie die Registerkarte **Ansicht** aus.
-1. Wählen Sie **Ausführungsliste** aus. 
-1. Wählen Sie die beiden neuesten Ausführungen aus, indem Sie jedes Kontrollkästchen aktivieren.
-    Dadurch werden Ihre beiden letzten Ausführungen im Bereich **Metrikvergleich** miteinander verglichen. Standardmäßig werden die Metriken nach Ausführungsname gezeichnet. 
-1. Wählen Sie die Schaltfläche **&#128393;** (Bearbeiten) des Diagramms aus, um die Genauigkeit für jede Ausführung zu visualisieren. 
-1. Ändern Sie den **Visualisierungstyp** in `bar`. 
-1. Ändern Sie die **X-Achse** in `estimator`. 
-1. Wählen Sie **Ersetzen** aus, und erkunden Sie das neue Diagramm.
-
-Indem Sie die Genauigkeit pro protokolliertem Schätzer darstellen, können Sie überprüfen, welcher Algorithmus zu einem besseren Modell geführt hat.
+1. Sehen Sie sich die **Ausführungsmetriken** an, um die Genauigkeit Ihres Regressionsmodells zu ermitteln.
+1. Navigieren Sie zurück zur Startseite, und wählen Sie das Experiment `diabetes-classification` aus, um es zu öffnen.
+1. Sehen Sie sich die **Ausführungsmetriken** an, um die Genauigkeit des Klassifizierungsmodells zu ermitteln. Es sind andere Metriken vorhanden, da Sie einen anderen Modelltyp trainiert haben.
 
 ## Speichern des Modells
 
-Nach dem Vergleichen von Machine Learning-Modellen, die Sie experimentübergreifend trainiert haben, können Sie das Modell mit der besten Leistung auswählen. Um das Modell mit der besten Leistung zu verwenden, speichern Sie das Modell, und verwenden Sie es, um Vorhersagen zu generieren.
+Nach dem Vergleichen der Machine Learning-Modelle, die Sie experimentübergreifend trainiert haben, können Sie das Modell mit der besten Leistung auswählen. Um das Modell mit der besten Leistung zu verwenden, speichern Sie das Modell, und verwenden Sie es, um Vorhersagen zu generieren.
 
-1. Stellen Sie in der Experimentübersicht sicher, dass die Registerkarte **Ansicht** ausgewählt ist.
-1. Wählen Sie **Ausführungsdetails** aus.
-1. Wählen Sie die Ausführung mit der höchsten Genauigkeit aus. 
 1. Wählen Sie im Feld **Als Modell speichern** die Option **Speichern** aus.
 1. Wählen Sie im neu geöffneten Popupfenster die Option **Neues Modell erstellen** aus.
-1. Nennen Sie das Modell `model-churn`, und wählen Sie **Erstellen** aus. 
-1. Wählen Sie **Modell anzeigen** in der Benachrichtigung aus, die beim Erstellen des Modells oben rechts auf dem Bildschirm angezeigt wird. Sie können das Fenster auch aktualisieren. Das gespeicherte Modell ist unter **Registrierte Version** verknüpft. 
+1. Wählen Sie den Ordner `model` aus.
+1. Nennen Sie das Modell `model-diabetes`, und wählen Sie **Speichern** aus.
+1. Wählen Sie **Modell anzeigen** in der Benachrichtigung aus, die beim Erstellen des Modells oben rechts auf dem Bildschirm angezeigt wird. Sie können das Fenster auch aktualisieren. Das gespeicherte Modell ist unter **Modellversionen** verknüpft.
 
-Beachten Sie, dass das Modell, das Experiment und die Experimentausführung verknüpft sind, sodass Sie überprüfen können, wie das Modell trainiert wird. 
+Beachten Sie, dass das Modell, das Experiment und die Experimentausführung verknüpft sind, sodass Sie überprüfen können, wie das Modell trainiert wird.
 
 ## Speichern des Notebooks und Beenden der Spark-Sitzung
 
@@ -249,9 +239,9 @@ Nachdem Sie das Training und die Auswertung der Modelle abgeschlossen haben, kö
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie ein Notebook erstellt und ein Machine Learning-Modell trainiert. Sie haben Scikit-Learn verwendet, um das Modell zu trainieren, und MLflow, um seine Leistung zu verfolgen.
+In dieser Übung haben Sie ein Notebook erstellt und ein Machine Learning-Modell trainiert. Sie haben Scikit-learn verwendet, um das Modell zu trainieren, und MLflow, um seine Leistung zu verfolgen.
 
-Wenn Sie das Modell und die Experimente abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
+Wenn Sie mit dem Modell und den Experimenten fertig sind, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
