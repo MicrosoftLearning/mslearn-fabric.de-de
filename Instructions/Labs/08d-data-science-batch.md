@@ -10,7 +10,7 @@ In diesem Lab verwenden Sie ein Machine Learning-Modell, um ein quantitatives Me
 
 Bei diesem Lab sammeln Sie praktische Erfahrung mit dem Generieren von Vorhersagen und der Visualisierung der Ergebnisse.
 
-Dieses Lab dauert ungefähr **45** Minuten.
+Dieses Lab dauert ungefähr **20** Minuten.
 
 > **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,13 +29,13 @@ Erstellen Sie vor dem Arbeiten mit Modellen in Fabric einen Arbeitsbereich mit a
 
 Um Daten zu erfassen, zu trainieren und ein Modell zu registrieren, führen Sie die Zellen in einem Notebook aus. Sie können das Notebook in Ihren Arbeitsbereich hochladen.
 
-1. Wählen Sie unten links im Fabric-Portal das **Datentechnik**-Symbol aus, und wechseln Sie zum Bereich **Data Science**.
+1. Navigieren Sie in einer neuen Browserregisterkarte zu dem Notebook [Generate-Predictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb), und laden Sie es in einen Ordner Ihrer Wahl herunter.
+1. Kehren Sie zur Registerkarte „Fabric-Browser“ zurück, und wählen Sie unten links im Fabric-Portal das Symbol **Power BI** aus, und wechseln Sie zur Benutzeroberfläche **Data Science**.
 1. Wählen Sie auf der **Data Science-Startseite** die Option **Notebook importieren** aus.
 
     Sie erhalten eine Benachrichtigung, wenn das Notebook erfolgreich importiert wurde.
 
 1. Wechseln Sie zum importierten Notebook mit dem Namen `Generate-Predictions`.
-
 1. Lesen Sie die Anweisungen im Notebook sorgfältig durch, und führen Sie jede Zelle einzeln aus.
 
 ## Bereinigen von Ressourcen
