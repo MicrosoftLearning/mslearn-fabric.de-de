@@ -29,7 +29,8 @@ Erstellen Sie vor dem Arbeiten mit Modellen in Fabric einen Arbeitsbereich mit a
 
 Um Daten zu erfassen, zu trainieren und ein Modell zu registrieren, führen Sie die Zellen in einem Notebook aus. Sie können das Notebook in Ihren Arbeitsbereich hochladen.
 
-1. Navigieren Sie in einer neuen Browserregisterkarte zu dem Notebook [Generate-Predictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb), und laden Sie es in einen Ordner Ihrer Wahl herunter.
+1. Navigieren Sie in einer neuen Browserregisterkarte zu `https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb`.
+1. Wählen Sie das Symbol **Rohdatei herunterladen** aus, um das Notebook `Generate-Predictions` in einen Ordner Ihrer Wahl herunterzuladen.
 1. Kehren Sie zur Registerkarte „Fabric-Browser“ zurück, und wählen Sie unten links im Fabric-Portal das Symbol **Power BI** aus, und wechseln Sie zur Benutzeroberfläche **Data Science**.
 1. Wählen Sie auf der **Data Science-Startseite** die Option **Notebook importieren** aus.
 

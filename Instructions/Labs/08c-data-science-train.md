@@ -107,7 +107,6 @@ Nachdem Sie die Daten geladen haben, können Sie sie verwenden, um ein Machine L
     ```python
     from sklearn.model_selection import train_test_split
     
-    print("Splitting data...")
     X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
@@ -207,13 +206,13 @@ Wenn Sie Modelle mit MLflow trainiert und nachverfolgt haben, können Sie die ML
 
     Die Ausgabe sollte dem folgenden Bild entsprechen:
 
-    ![Screenshot der gezeichneten Auswertungsmetriken](./Images/plotted-metrics.png)
+    ![Screenshot der gezeichneten Auswertungsmetriken](./Images/data-science-metrics.png)
 
 ## Erkunden der Experimente
 
 Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell untersuchen.
 
-1. Navigieren Sie über die Hubmenüleiste auf der linken Seite zu Ihrem Arbeitsbereich.
+1. Navigieren Sie über die Menüleiste auf der linken Seite zu Ihrem Arbeitsbereich.
 1. Wählen Sie das `experiment-diabetes`-Experiment aus, um es zu öffnen.
 
     > **Tipp:** Wenn keine protokollierten Experimentausführungen angezeigt werden, aktualisieren Sie die Seite.
@@ -221,7 +220,9 @@ Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell
 1. Wählen Sie die Registerkarte **Ansicht** aus.
 1. Wählen Sie **Ausführungsliste** aus.
 1. Wählen Sie die beiden neuesten Ausführungen aus, indem Sie jedes Kontrollkästchen aktivieren.
+
     Dadurch werden Ihre beiden letzten Ausführungen im Bereich **Metrikvergleich** miteinander verglichen. Standardmäßig werden die Metriken nach Ausführungsname gezeichnet.
+
 1. Wählen Sie die Schaltfläche **&#128393;** (Bearbeiten) des Diagramms aus, um die mittlere absolute Abweichung für jede Ausführung zu visualisieren.
 1. Ändern Sie den **Visualisierungstyp** in `bar`.
 1. Ändern Sie die **X-Achse** in `estimator`.
