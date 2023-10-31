@@ -43,7 +43,7 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
    # Perform data exploration for data science
 
    Use the code in this notebook to perform data exploration for data science.
-    ``` 
+    ```
 
 ## Laden von Daten in einen Dataframe
 
@@ -91,13 +91,13 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**O
 
 1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
 
-    ```
-        WeekStarting    Store   Brand       Quantity    Advert  Price   Revenue
-    0   1991-10-17      947     minute.maid 13306       1       2.42    32200.52
-    1   1992-03-26      1293    dominicks   18596       1       1.94    36076.24
-    2   1991-08-15      2278    dominicks   17457       1       2.14    37357.98
-    3   1992-09-03      2175    tropicana   9652        1       2.07    19979.64
-    ```
+    |   |WeekStarting|Speicher|Marke|Menge|Anzeige|Preis|Umsatz|
+    |---|---|---|---|---|---|---|---|
+    |0|1991-10-17|947|minute.maid|13306|1|2,42|32200.52|
+    |1|1992-03-26|1293|dominicks|18596|1|1,94|36076.24|
+    |2|1991-08-15|2278|dominicks|17457|1|2.14|37357.98|
+    |3|1992-09-03|2175|tropicana|9652|1|2,07|19979.64|
+    |...|...|...|...|...|...|...|...|
 
     Die Ausgabe zeigt die ersten vier Zeilen des Datasets OJ Sales.
 
@@ -107,7 +107,7 @@ Nachdem wir die Daten geladen haben, besteht der nächste Schritt darin, sie mit
 
 1. Wählen Sie im Menüband des Notebooks die Option **Daten** und dann die Dropdownliste **Data Wrangler starten** aus.
 
-1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert. 
+1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert.
 
 1. Wählen Sie das Feature **Einnahmen** und beobachten Sie die Datenverteilung dieses Features.
 
@@ -121,14 +121,14 @@ Nachdem wir die Daten geladen haben, besteht der nächste Schritt darin, sie mit
 
 Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
 
-1. Wählen Sie im **Data Wrangler**-Dashboard im Raster das Feature `Brand` aus.
+1. Wählen Sie im **Data Wrangler**-Dashboard im Raster die Funktion `Brand` aus.
 
 1. Navigieren Sie zum Bereich **Vorgänge**, erweitern Sie **Suchen und Ersetzen** und wählen Sie dann **Suchen und Ersetzen** aus.
 
 1. Ändern Sie im Bereich **Suchen und Ersetzen** die folgenden Eigenschaften:
-    
-    - **Alter Wert:** „.“
-    - **Neuer Wert:** „ “ (Leerzeichen)
+
+    - **Alter Wert:** „`.`“
+    - **Neuer Wert:** „` `“ (Leerzeichen)
 
     Die Ergebnisse des Vorgangs werden automatisch in der Vorschau im Anzeigeraster angezeigt.
 
@@ -136,19 +136,19 @@ Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
 
 1. Kehren Sie zum Bereich **Vorgänge** und erweitern Sie **Format**.
 
-1. Wählen Sie **Text in Großbuchstaben konvertieren** aus. Schalten Sie den Schalter **Alle Wörter groß schreiben** um und wählen Sie dann **Anwenden** aus.
+1. Wählen Sie **Erstes Zeichen groß schreiben** aus. Schalten Sie **Alle Wörter groß schreiben** ein und wählen Sie dann **Anwenden** aus.
 
-1. Wählen Sie **Code zu Notebook hinzufügen** aus. Darüber hinaus können Sie das transformierte Dataset auch als .csv-Datei speichern.
+1. Wählen Sie **Code zu Notebook hinzufügen** aus. Darüber hinaus können Sie den Code auch kopieren und das transformierte Dataset als CSV-Datei speichern.
 
-    >**Hinweis:** Der Code wird automatisch in die Notebookzelle kopiert und ist sofort einsatzbereit. 
+    >**Hinweis:** Der Code wird automatisch in die Notebookzelle kopiert und ist sofort einsatzbereit.
 
 1. Ersetzen Sie die Zeilen 10 und 11 durch den Code `df = clean_data(df)`, da der in Data Wrangler generierte Code den ursprünglichen Dataframe nicht überschreibt. Der finale Codeblock sollte wie folgt aussehen:
- 
+
     ```python
     def clean_data(df):
         # Replace all instances of "." with " " in column: 'Brand'
         df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Convert text to capital case in column: 'Brand'
+        # Capitalize the first character in column: 'Brand'
         df['Brand'] = df['Brand'].str.title()
         return df
     
@@ -161,7 +161,7 @@ Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
     df['Brand'].unique()
     ```
 
-    Das Ergebnis zeigt *Minute Maid*, *Dominicks* und *Tropicana*.
+    Das Ergebnis sollte die Werte *Minute Maid*, *Dominicks* und *Tropicana* anzeigen.
 
 Sie haben gelernt, wie Sie Textdaten grafisch bearbeiten und mithilfe von Data Wrangler ganz einfach Code generieren.
 
@@ -175,11 +175,11 @@ Als Nächstes generieren wir den Code, um die Transformation für die One-Hot-Co
 
 1. Erweitern Sie im Bereich **Vorgänge** die Option **Formeln** und wählen Sie dann **One-Hot-Encode** aus.
 
-1. Wählen Sie im Bereich **One-Hot-Encode** **Übernehmen** aus.
+1. Wählen Sie im Bereich **One-hot encode** die Option **Anwenden** aus.
 
     Gehen Sie zum Ende des Data Wrangler-Anzeigerasters. Sie sehen, dass drei neue Features hinzugefügt (`Brand_Dominicks`, `Brand_Minute Maid` und `Brand_Tropicana`) und das Feature `Brand` entfernt wurden.
 
-1. Schließen Sie Data Wrangler, ohne den Code zu generieren.
+1. Beenden Sie Data Wrangler, ohne den Code zu generieren.
 
 ## Sortier- und Filtervorgänge
 
@@ -192,10 +192,11 @@ Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft 
 1. Wählen Sie **Filtern** aus.
 
 1. Fügen Sie im Bereich **Filter** die folgende Bedingung hinzu:
-    
-    - **Zielspalte:** Store
-    - **Vorgang:** Equal to
-    - **Wert:** 1227
+
+    - **Zielspalte**: `Store`
+    - **Vorgang**: `Equal to`
+    - **Wert**: `1227`
+    - **Aktion**: `Keep matching rows`
 
 1. Wählen Sie **Übernehmen** und sehen Sie sich die Änderungen im Data Wrangler-Anzeigeraster an.
 
@@ -208,9 +209,9 @@ Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft 
 1. Wählen Sie **Werte sortieren** aus.
 
 1. Wählen Sie im Bereich **Werte sortieren** die folgenden Eigenschaften aus:
-    
-    - **Spaltenname:** Preis
-    - **Sortierreihenfolge:** Absteigend
+
+    - **Spaltenname**: `Price`
+    - **Sortierreihenfolge**: `Descending`
 
 1. Wählen Sie **Übernehmen**.
 
@@ -232,7 +233,7 @@ Angenommen, Sie haben einen Fehler gemacht und müssen die Sortierung, die Sie i
 
     Sie sehen, dass die Änderungen auf den vorherigen Schritt zurückgesetzt werden, nämlich auf den Schritt **Filtern**.
 
-1. Schließen Sie Data Wrangler, ohne den Code zu generieren.
+1. Beenden Sie Data Wrangler, ohne den Code zu generieren.
 
 ## Aggregieren von Daten
 
@@ -242,32 +243,34 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 
 1. Kehren Sie zum Bereich **Vorgänge** zurück und wählen Sie **Gruppieren nach und aggregieren** aus.
 
-1. Wählen Sie in der Eigenschaft **Spalten, nach denen gruppiert werden soll:** das Feature `Brand` aus.
+1. Wählen Sie im Bereich **Spalten, nach denen gruppiert werden soll** die Funktion `Brand` aus.
 
 1. Wählen Sie **Aggregation hinzufügen** aus.
 
 1. Wählen Sie in der Eigenschaft **Zu aggregierende Spalte** das Feature `Revenue` aus.
 
-1. Wählen Sie **Mittelwert** für die Eigenschaft **Aggregationstyp** aus.
+1. Wählen Sie `Mean` für die Eigenschaft **Aggregationstyp** aus.
 
 1. Wählen Sie **Übernehmen**.
 
-1. Wählen Sie **Code zu Notebook hinzufügen** aus.
+1. Wählen Sie **Kopieren in die Zwischenablage** aus.
+
+1. Beenden Sie Data Wrangler, ohne den Code zu generieren.
 
 1. Kombinieren Sie den Code aus der Variablentransformation `Brand` mit dem Code, der durch den Aggregationsschritt in der Funktion `clean_data(df)` generiert wird. Der finale Codeblock sollte wie folgt aussehen:
- 
+
     ```python
-    def clean_data(df):
-        # Replace all instances of "." with " " in column: 'Brand'
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Convert text to capital case in column: 'Brand'
+    def clean_data(df):    
+        # Replace all instances of "." with " " in column: 'Brand'    
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
+        # Capitalize the first character in column: 'Brand'    
         df['Brand'] = df['Brand'].str.title()
-
-        # Performed 1 aggregation grouped on column: 'Brand'
-        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()
-
-        return df
-    
+        
+        # Performed 1 aggregation grouped on column: 'Brand'    
+        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
+        
+        return df    
+        
     df = clean_data(df)
     ```
 
@@ -280,14 +283,14 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
     ```
 
     Ergebnisse:
-    ```
-             Brand  Revenue_mean
-    0    Dominicks  33206.330958
-    1  Minute Maid  33532.999632
-    2    Tropicana  33637.863412
-    ```
 
-Sie haben den Code für einige der Vorverarbeitungsvorgänge generiert und als Funktion im Notebook gespeichert, die Sie dann bei Bedarf wiederverwenden oder ändern können.
+    |   |Marke|Revenue_mean|
+    |---|---|---|
+    |0|Dominicks|33206.330958|
+    |1|Minute Maid|33532.999632|
+    |2|Tropicana|33637.863412|
+
+Sie haben den Code für einige der Vorverarbeitungsvorgänge generiert und den Code als Funktion zurück in das Notebook kopiert, die Sie dann ausführen, wiederverwenden oder nach Bedarf ändern können.
 
 ## Speichern des Notebooks und Beenden der Spark-Sitzung
 
