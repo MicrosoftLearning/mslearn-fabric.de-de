@@ -3,55 +3,74 @@ lab:
   title: Abfragen von Daten aus einer KQL-Datenbank
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
+
 # Erste Schritte beim Abfragen einer Kusto-Datenbank in Microsoft Fabric
+
 Ein KQL-Abfrageset ist ein Tool, mit dem Sie Abfragen ausführen, ändern und Abfrageergebnisse aus einer KQL-Datenbank anzeigen können. Sie können jede Registerkarte im KQL-Abfrageset mit einer anderen KQL-Datenbank verknüpfen und Ihre Abfragen für die zukünftige Verwendung speichern oder für die Datenanalyse freigeben. Sie können die KQL-Datenbank auch für eine beliebige Registerkarte wechseln, sodass Sie die Abfrageergebnisse aus verschiedenen Datenquellen vergleichen können.
 
-Das KQL-Abfrageset verwendet die Kusto-Abfragesprache, die mit vielen SQL-Funktionen kompatibel ist, um Abfragen zu erstellen. Um mehr über die [Kusto-Abfragesprache (Kusto Query Language, KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext) zu erfahren, 
+Das KQL-Abfrageset verwendet die Kusto-Abfragesprache, die mit vielen SQL-Funktionen kompatibel ist, um Abfragen zu erstellen. Weitere Informationen zur [Kusto-Abfragesprache (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
 
-Dieses Lab dauert ungefähr **25** Minuten.
+Sie werden ungefähr **25** Minuten für dieses Lab benötigen.
+
+## Szenario
+
+In diesem Szenario sind Sie ein*e Analyst*in, der/die damit beauftragt ist, ein Beispieldataset mit Rohdaten zu Taxifahrten in New York abzufragen, aus dem Sie zusammenfassende Statistiken (Profilerstellung) der Daten aus der Fabric-Umgebung ziehen. Sie verwenden KQL, um diese Daten abzufragen und Informationen zu sammeln, um Informationen zu den Daten zu erhalten.
+
+> **Hinweis**: Für diese Übung benötigen Sie ein *Geschäfts-* , *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Aktivieren einer Microsoft Fabric-Testversion
+
+1. Rufen Sie nach der Registrierung eines Microsoft Fabric-Kontos das Microsoft Fabric-Portal unter [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com) auf.
+1. Wählen Sie das Symbol **Konto-Manager** (das *Benutzerbild* oben rechts) aus.
+1. Wählen Sie im Menü „Konto-Manager“ die Option **Testversion starten** aus, um eine Microsoft Fabric-Testversion zu starten.
+1. Nach einem erfolgreichen Upgrade auf Microsoft Fabric gelangen Sie über **Fabric-Startseite** zur Startseite.
 
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
-2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Echtzeitanalyse** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-In diesem Lab verwenden Sie Real-Time Analytics (RTA) in Fabric, um eine KQL-Datenbank anhand eines Beispiel-Ereignisstream zu erstellen. Real-Time Analytics bietet ein Beispieldataset, mit dem Sie die Funktionen von RTA erkunden können. Sie verwenden diese Beispieldaten, um die Kusto-Abfragesprache | SQL-Abfragen und -Abfragesets zu erstellen, die Echtzeitdaten analysieren und eine zusätzliche Verwendung in nachgelagerten Prozessen ermöglichen.
+In diesem Lab verwenden Sie Echtzeitanalysen (Real-Time Analytics, RTA) in Fabric, um eine KQL-Datenbank aus einem Beispiel-Eventstream zu erstellen. Im Bereich „Echtzeitanalyse“ ist ein praktisches Beispieldataset vorhanden, mit dem Sie die Funktionen der Echtzeitanalyse kennenlernen können. Sie verwenden diese Beispieldaten, um KQL/SQL-Abfragen und Abfragesätze zu erstellen, die Echtzeitdaten analysieren und andere Verwendungen in nachgelagerten Prozessen ermöglichen.
 
 ## Erstellen einer KQL-Datenbank
 
 1. Wählen Sie unter **Echtzeitanalyse** das Feld **KQL-Datenbank** aus.
 
-   ![Abbildung der Auswahl der kqldatabase](./Images/select-kqldatabase.png)
+   ![Abbildung der Auswahl der KQL-Datenbank](./Images/select-kqldatabase.png)
 
-2. Sie werden aufgefordert, einen **Namen** für die KQL-Datenbank festzulegen.
+1. Sie werden aufgefordert, einen **Namen** für die KQL-Datenbank anzugeben.
 
-   ![Abbildung des Namens der kqldatabase](./Images/name-kqldatabase.png)
+   ![Abbildung des Namens der KQL-Datenbank](./Images/name-kqldatabase.png)
 
-3. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **MyStockData**), und klicken Sie auf **Erstellen**.
+1. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **MyStockData**), und klicken Sie auf **Erstellen**.
 
-4. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
+1. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
 
    ![Abbildung der Aktivierung von OneLake](./Images/enable-onelake-availability.png)
 
-5. Wählen Sie das Feld mit **Beispieldaten** aus den Optionen von ***Rufen Sie zunächst Daten ab*** aus.
- 
+   Verwenden Sie dann den Schieberegler, um die Verfügbarkeit zu aktivieren.
+
+   ![Abbildung: Auswahl des Schiebereglers in Data Lake](./images/data-availability-data-lake.png)
+
+1. Wählen Sie das Feld mit **Beispieldaten** aus den Optionen von ***Rufen Sie zunächst Daten ab*** aus.
+
    ![Abbildung der Auswahloptionen mit hervorgehobenen Beispieldaten](./Images/load-sample-data.png)
 
-6. Wählen Sie das Feld **Metrikanalysen für Automobilbranche** aus den Optionen für Beispieldaten aus.
+   Wählen Sie das dann Feld **Automotive operations analytics** aus den Optionen für Beispieldaten aus.
 
    ![Abbildung der Auswahl von Analysedaten für das Lab](./Images/create-sample-data.png)
 
-7. Nachdem die Daten geladen wurden, können wir überprüfen, ob die KQL-Datenbank aufgefüllt ist.
+1. Nachdem die Daten geladen wurden, können wir überprüfen, ob die KQL-Datenbank mit Daten gefüllt ist.
 
    ![Daten werden in die KQL-Datenbank geladen](./Images/choose-automotive-operations-analytics.png)
 
-7. Sobald die Daten geladen wurden, überprüfen Sie, ob die Daten in die KQL-Datenbank geladen wurden. Wählen Sie dazu die Auslassungspunkte rechts neben der Tabelle aus, navigieren Sie zur **Abfragetabelle**, und wählen Sie **Alle 100 Datensätze anzeigen** aus.
+1. Sobald die Daten geladen wurden, überprüfen Sie, ob die Daten in die KQL-Datenbank geladen wurden. Wählen Sie dazu die Auslassungspunkte rechts neben der Tabelle aus, navigieren Sie zur **Abfragetabelle** und wählen Sie **100 Datensätze anzeigen** aus.
 
     ![Abbildung der Auswahl der obersten 100 Dateien aus der Tabelle RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
@@ -59,23 +78,19 @@ In diesem Lab verwenden Sie Real-Time Analytics (RTA) in Fabric, um eine KQL-Dat
 
     ![Abbildung der 100 Datensätze aus den Daten](./Images/explore-with-kql-take-100.png)
 
-
-## Szenario
-In diesem Szenario sind Sie ein Analyst, der mit der Abfrage eines Beispieldatensatzes roher Metriken zu NYC-Taxifahrten beauftragt ist, aus dem Sie zusammenfassende Statistiken (Profiling) der Daten aus der Fabric-Umgebung abrufen werden. Sie verwenden KQL, um diese Daten abzufragen und Informationen zu sammeln, um Informationen zu den Daten zu erhalten.
-
 ## Einführung in Kusto-Abfragesprache (Kusto Query Language, KQL) und deren Syntax
 
-Kusto-Abfragesprache (KQL) ist eine Abfragesprache, die zum Analysieren von Daten im Microsoft Azure Data Explorer verwendet wird, der Teil von Azure Fabric ist. KQL ist einfach und intuitiv konzipiert, sodass Anfänger sie leicht lernen und verwenden können. Gleichzeitig ist sie auch sehr flexibel und anpassbar, sodass fortgeschrittene Benutzer komplexe Abfragen und Analysen durchführen können.
+Kusto-Abfragesprache (KQL) ist eine Abfragesprache, die zum Analysieren von Daten im Microsoft Azure Data Explorer verwendet wird, der Teil von Azure Fabric ist. KQL ist einfach und intuitiv konzipiert, sodass Anfänger sie leicht lernen und verwenden können. Gleichzeitig ist es sehr flexibel und anpassbar, so dass fortgeschrittene Benutzer*innen komplexe Abfragen und Analysen durchführen können.
 
 KQL basiert auf einer Syntax ähnlich wie SQL, aber mit einigen wichtigen Unterschieden. KQL verwendet beispielsweise einen Pipeoperator (|) anstelle eines Semikolons (;) zum Trennen von Befehlen und verwendet einen anderen Satz von Funktionen und Operatoren zum Filtern und Bearbeiten von Daten.
 
-Eines der wichtigsten Features von KQL ist die Fähigkeit, große Datenmengen schnell und effizient zu verarbeiten. Dies macht sie ideal für die Analyse von Protokollen, Telemetriedaten und anderen Arten von Big Data. KQL unterstützt auch eine Vielzahl von Datenquellen, einschließlich strukturierter und unstrukturierter Daten, was sie zu einem vielseitigen Tool für die Datenanalyse macht.
+Eines der wichtigsten Features von KQL ist die Fähigkeit, große Datenmengen schnell und effizient zu verarbeiten. Durch diese Funktion ist es ideal für die Analyse von Protokollen, Telemetriedaten und anderen Arten von Big Data. KQL unterstützt auch eine Vielzahl von Datenquellen, einschließlich strukturierter und unstrukturierter Daten, was sie zu einem vielseitigen Tool für die Datenanalyse macht.
 
 Im Kontext von Microsoft Fabric kann KQL zum Abfragen und Analysieren von Daten aus verschiedenen Quellen wie Anwendungsprotokollen, Leistungsmetriken und Systemereignissen verwendet werden. Dies kann Ihnen helfen, Einblicke in die Integrität und Leistung Ihrer Anwendungen und Infrastruktur zu erhalten und Probleme und Optimierungsmöglichkeiten zu identifizieren.
 
 Insgesamt ist KQL eine leistungsstarke und flexible Abfragesprache, mit der Sie schnell und einfach Einblicke in Ihre Daten gewinnen können, unabhängig davon, ob Sie mit Microsoft Fabric oder anderen Datenquellen arbeiten. Mit seiner intuitiven Syntax und leistungsstarken Funktionen ist KQL auf jeden Fall eine nähere Erkundung wert.
 
-In diesem Modul konzentrieren wir uns auf die Grundlagen der Abfragen an die KQL-Datenbank Sie werden schnell sehen, dass es in KQL kein ```SELECT``` gibt. Wir können einfach den Tabellennamen verwenden und „Ausführen“ drücken. Wir behandeln zuerst die Schritte einer einfachen Analyse mit KQL und dann SQL für dieselbe KQL-Datenbank, die auf Azure Data Explorer basiert.
+In diesem Modul konzentrieren wir uns auf die Grundlagen von Abfragen gegen eine KQL-Datenbank, wobei wir zuerst KQL und dann T-SQL verwenden. Wir werden uns auf die grundlegenden Elemente der T-SQL-Syntax konzentrieren, die für Abfragen verwendet werden:
 
 **SELECT**-Abfragen, die zum Abrufen von Daten aus einer oder mehreren Tabellen verwendet werden. Beispielsweise können Sie eine SELECT-Abfrage verwenden, um die Namen und Gehälter aller Mitarbeiter in einem Unternehmen abzurufen.
 
@@ -87,63 +102,77 @@ In diesem Modul konzentrieren wir uns auf die Grundlagen der Abfragen an die KQL
 
    > **ACHTUNG:** Sie können keine Power BI-Berichte aus Abfragesets mit **T-SQL** erstellen, da Power BI T-SQL nicht als Datenquelle unterstützt. **Power BI unterstützt nur KQL als native Abfragesprache für Abfragesets**. Wenn Sie T-SQL zum Abfragen Ihrer Daten in Microsoft Fabric verwenden möchten, müssen Sie den T-SQL-Endpunkt verwenden, der Microsoft SQL Server emuliert und Ihnen das Ausführen von T-SQL-Abfragen an Ihren Daten ermöglicht. Der T-SQL-Endpunkt weist jedoch einige Einschränkungen und Unterschiede zum nativen SQL Server auf und unterstützt das Erstellen oder Veröffentlichen von Berichten in Power BI nicht.
 
+> **HINWEIS**: Neben der oben gezeigten Methode, ein Abfragefenster aufzurufen, können Sie im Hauptfenster der KQL-Datenbank auch auf die Schaltfläche **Daten durchsuchen** klicken.
+
+   ![Abbildung der Schaltfläche „Daten durchsuchen“](./Images/explore-your-data.png)
+
 ## ```SELECT``` Daten aus unserem Beispieldataset mithilfe von KQL
 
-1. In dieser Abfrage werden 100 Datensätze aus der Tabelle „Trips“ (Fahrten) abgerufen. Wir verwenden das Schlüsselwort ```take```, um das Modul aufzufordern, 100 Datensätze zurückzugeben.
+1. In dieser Abfrage werden 100 Datensätze aus der Tabelle „Trips“ abgerufen. Wir verwenden das Schlüsselwort ```take```, um das Modul aufzufordern, 100 Datensätze zurückzugeben.
 
-```kql
-Trips
-| take 100
-```
-  > **HINWEIS:** Das Pipe-Zeichen (```|```) wird für zwei Zwecke in KQL verwendet, einschließlich der Trennung von Abfrageoperatoren in einer tabellarischen Ausdrucksanweisung. Er wird auch als logischer OR-Operator in eckigen oder runden Klammern verwendet, um anzugeben, dass Sie eines der durch das Pipe-Zeichen getrennten Elemente angeben können. 
+    ```kusto
     
-2. Wir können präziser sein, indem wir einfach bestimmte Attribute hinzufügen, die wir mithilfe des ```project```-Schlüsselworts abfragen möchten, und dann das ```take```-Schlüsselwort verwenden, um dem Modul mitzuteilen, wie viele Datensätze zurückgegeben werden sollen.
+    Trips
+    | take 100
+    ```
 
-> **HINWEIS:** Die Verwendung von ```//``` kennzeichnet Kommentare, die im Microsoft Fabric-Abfragetool ***Untersuchen Ihrer Daten*** verwendet werden.
+    > **HINWEIS:** Das Pipe-Zeichen (```|```) wird für zwei Zwecke in KQL verwendet, einschließlich der Trennung von Abfrageoperatoren in einer tabellarischen Ausdrucksanweisung. Er wird auch als logischer OR-Operator in eckigen oder runden Klammern verwendet, um anzugeben, dass Sie eines der durch das Pipe-Zeichen getrennten Elemente angeben können.
 
-```
-// Use 'project' and 'take' to view a sample number of records in the table and check the data.
-Trips 
-| project vendor_id, trip_distance
-| take 10
-```
+1. Wir können genauer sein, indem wir mit dem Schlüsselwort ```project``` bestimmte Attribute hinzufügen, die wir abfragen möchten, und dann mit dem Schlüsselwort ```take``` der Engine mitteilen, wie viele Datensätze sie zurückgeben soll.
 
-3. Eine weitere gängige Methode in der Analyse ist das Umbenennen von Spalten in unserem Abfrageset, um sie benutzerfreundlicher zu gestalten. Dies kann erreicht werden, indem Sie den neuen Spaltennamen gefolgt von dem Gleichheitszeichen und der Spalte verwenden, die wir umbenennen möchten.
+    > **HINWEIS:** Die Verwendung von ```//``` kennzeichnet Kommentare, die im Microsoft Fabric-Abfragetool ***Untersuchen Ihrer Daten*** verwendet werden.
 
-```
-Trips 
-| project vendor_id, ["Trip Distance"] = trip_distance
-| take 10
-```
+    ```kusto
+    
+    // Use 'project' and 'take' to view a sample number of records in the table and check the data.
+    Trips 
+    | project vendor_id, trip_distance
+    | take 10
+    ```
 
-4. Eventuell möchten wir auch die Fahrten zusammenfassen, um zu sehen, wie viele Meilen zurückgelegt wurden:
+1. Eine weitere gängige Methode in der Analyse ist das Umbenennen von Spalten in unserem Abfrageset, um sie benutzerfreundlicher zu gestalten. Dies kann erreicht werden, indem Sie den neuen Spaltennamen gefolgt von dem Gleichheitszeichen und der Spalte verwenden, die wir umbenennen möchten.
 
-```
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance)
-```
-## ```GROUP BY```-Daten aus unserem Beispieldataset mithilfe von KQL
+    ```kusto
+    
+    Trips 
+    | project vendor_id, ["Trip Distance"] = trip_distance
+    | take 10
+    ```
 
-1. Dann möchten wir eventuell nach dem Abholort ***gruppieren***, was wir mit dem ```summarize```-Operator tun. Wir können auch den ```project```-Operator verwenden, der es uns ermöglicht, die Spalten auszuwählen und umzubenennen, die Sie in Ihre Ausgabe aufnehmen möchten. In diesem Fall gruppieren wir nach Bezirk innerhalb des NY Taxi-Systems, um unseren Benutzern die von den einzelnen Bezirken zurückgelegte Gesamtdistanz bereitzustellen.
+1. Eventuell möchten wir auch die Fahrten zusammenfassen, um zu sehen, wie viele Meilen zurückgelegt wurden:
 
-```
+    ```kusto
+    
+    Trips
+    | summarize ["Total Trip Distance"] = sum(trip_distance)
+    ```
+
+## ```GROUP BY``` Daten aus unserem Beispieldataset mithilfe von KQL
+
+1. Dann können wir nach dem Abholort ***gruppieren***, was wir mit dem Operator ```summarize``` durchführen. Wir können auch den ```project``` Operator verwenden, der es uns ermöglicht, die Spalten auszuwählen und umzubenennen, die Sie in Ihre Ausgabe einschließen möchten. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
+
+```kusto
+
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = pickup_boroname, ["Total Trip Distance"]
 ```
 
-2. Sie werden feststellen, dass wir einen leeren Wert haben, was für die Analyse nie gut ist, und wir können die ```case```-Funktion zusammen mit den Funktionen ```isempty``` und ```isnull``` verwenden, um diese in unseren 
-```
+1. In diesem Fall haben wir einen leeren Wert, was nie gut für die Analyse ist. Wir können die Funktion ```case``` zusammen mit den Funktionen ```isempty``` und ```isnull``` verwenden, um diese leeren Werte zur Nachverfolgung in einer eigenen Kategorie mit dem Titel ***Nicht identifiziert*** zu erfassen.
+
+```kusto
+
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
 | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
 ```
 
-## ```ORDER BY```-Daten aus unserem Beispieldataset mithilfe von KQL zu kategorisieren
+## ```ORDER BY``` Daten aus unserem Beispieldataset mithilfe von KQL
 
-1. Um unsere Daten sinnvoller zu machen, sortieren wir sie in der Regel nach einer Spalte, und dies geschieht in KQL entweder mit einem ```sort by```- oder ```order by```-Operator, und sie beide agieren auf die gleiche Weise.
+Um unsere Daten besser zu verstehen, sortieren wir sie in der Regel nach einer Spalte. Dieser Vorgang wird in KQL entweder mit einem ```sort by```- oder einem ```order by```-Operator durchgeführt, die beide auf dieselbe Weise funktionieren.
  
-```
+```kusto
+
 // using the sort by operators
 Trips
 | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
@@ -159,9 +188,10 @@ Trips
 
 ## ```WHERE``` -Klausel zum Filtern von Daten in unserer KQL-Beispielabfrage
 
-1. Im Gegensatz zu SQL wird die WHERE-Klausel sofort in unserer KQL-Abfrage aufgerufen. Wir können weiterhin sowohl die ```and``` als auch die ```or``` logischen Operatoren in Ihrer WHERE-Klausel verwenden. Dies wird für die Tabelle zu true oder false ausgewertet und kann ein einfacher oder komplexer Ausdruck sein, der mehrere Spalten, Operatoren und Funktionen umfassen kann.
+Im Gegensatz zu SQL wird die WHERE-Klausel sofort in unserer KQL-Abfrage aufgerufen. Wir können weiterhin die logischen Operatoren ```and``` und ```or``` in der Where-Klausel verwenden. Der Vorgang wird in der Tabelle als wahr oder falsch ausgewertet und kann einfach oder ein komplexer Ausdruck sein, der mehrere Spalten, Operatoren und Funktionen umfassen kann.
 
-```
+```kusto
+
 // let's filter our dataset immediately from the source by applying a filter directly after the table.
 Trips
 | where pickup_boroname == "Manhattan"
@@ -173,34 +203,114 @@ Trips
 
 ## Verwenden von T-SQL zum Abfragen von Zusammenfassungsinformationen
 
-KQL-Datenbank unterstützt T-SQL nicht nativ, bietet jedoch einen T-SQL-Endpunkt, der Microsoft SQL Server emuliert und das Ausführen von T-SQL-Abfragen an Ihren Daten ermöglicht. Der T-SQL-Endpunkt weist jedoch einige Einschränkungen und Unterschiede zum nativen SQL Server auf. Beispielsweise wird das Erstellen, Ändern oder Verwerfen von Tabellen oder das Einfügen, Aktualisieren oder Löschen von Daten nicht unterstützt. Außerdem werden einige T-SQL-Funktionen und -Syntax, die nicht mit KQL kompatibel sind, nicht unterstützt. Es wurde erstellt, um Systemen, die KQL nicht unterstützt haben, die Verwendung von T-SQL zum Abfragen der Daten in einer KQL-Datenbank zu ermöglichen. Daher wird empfohlen, KQL als primäre Abfragesprache für KQL-Datenbanken zu verwenden, da es mehr Funktionen und Leistung als T-SQL bietet. Sie können auch einige SQL-Funktionen verwenden, die von KQL unterstützt werden, z. B. count, sum, avg, min, max usw. 
+KQL Database unterstützt T-SQL nicht von Haus aus, aber es bietet einen T-SQL-Endpunkt, der Microsoft SQL Server emuliert und es Ihnen ermöglicht, T-SQL-Abfragen über Ihre Daten durchzuführen. Der T-SQL-Endpunkt weist jedoch einige Einschränkungen und Unterschiede zum nativen SQL Server auf. Er unterstützt zum Beispiel nicht das Erstellen, Ändern oder Löschen von Tabellen oder das Einfügen, Aktualisieren oder Löschen von Daten. Außerdem werden einige T-SQL-Funktionen und -Syntaxen nicht unterstützt, die nicht mit KQL kompatibel sind. Es wurde erstellt, um Systemen, die KQL nicht unterstützt haben, die Verwendung von T-SQL zum Abfragen der Daten in einer KQL-Datenbank zu ermöglichen. Sie sollten daher KQL als primäre Abfragesprache für die KQL-Datenbank verwenden, da diese mehr Möglichkeiten und Leistung bietet als T-SQL. Sie können auch einige SQL-Funktionen verwenden, die von KQL unterstützt werden, z. B. count, sum, avg, min, max usw. 
 
 ## ```SELECT```-Daten aus unserem Beispieldataset mithilfe von T-SQL
-1.
 
-```
-SELECT * FROM Trips
+1. In dieser Abfrage rufen wir die ersten 100 Datensätze aus der Tabelle **Trips** mit der ```TOP```-Klausel ab. 
 
-// We can also use the TOP keyword to limit the number of records returned
+    ```sql
+    // We can use the TOP clause to limit the number of records returned
+    
+    SELECT TOP 100 * from Trips
+    ```
 
-SELECT TOP 10 * from Trips
-```
+1. Wenn Sie ```//``` verwenden (ein Kommentar im Tool ***Daten durchsuchen** in der KQL-Datenbank), können Sie es bei der Ausführung von T-SQL-Abfragen nicht hervorheben, sondern sollten die Standard-Notation ```--``` für SQL-Kommentare verwenden. Dieser doppelte Bindestrich sagt der KQL Engine auch, dass sie im Azure Data Explorer T-SQL erwarten soll.
 
-2. Wenn Sie den ```//``` verwenden, wobei es sich um einen Kommentar im Tool ***Untersuchen Ihrer Daten** innerhalb der KQL-Datenbank handelt, können Sie ihn beim Ausführen von T-SQL-Abfragen nicht hervorheben. Stattdessen sollten Sie die standardmäßige ```--```-SQL-Kommentarnotation verwenden. Dadurch wird auch die KQL-Engine angewiesen, T-SQL in Azure Data Explorer zu erwarten.
+    ```sql
+    -- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
+    SELECT TOP 10 vendor_id, trip_distance
+    FROM Trips
+    ```
 
-```
--- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
-SELECT TOP 10 vendor_id, trip_distance
-FROM Trips
-```
+1. Auch hier sehen Sie, dass T-SQL-Standardfeatures mit der Abfrage einwandfrei funktionieren, bei der wir trip_distance in einen benutzerfreundlicheren Namen umbenennen.
 
-3. Auch hier sehen Sie, dass T-SQL-Standardfeatures mit der Abfrage einwandfrei funktionieren, bei der wir trip_distance in einen benutzerfreundlicheren Namen umbenennen.
+    ```sql
+    
+    -- No need to use the 'project' or 'take' operators as standard T-SQL Works
+    SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
+    from Trips
+    ```
 
--- Keine Notwendigkeit, die Operatoren „project“ oder „take“ als Standard T-SQL Works SELECT TOP 10 vendor_id, trip_distance als [Trip Distance] von Trips zu verwenden
+1. Eventuell möchten wir auch die Fahrten zusammenfassen, um zu sehen, wie viele Meilen zurückgelegt wurden:
+
+    ```sql
+    Select sum(trip_distance) as [Total Trip Distance]
+    from Trips
+    ```
+     >**HINWEIS:** Die Verwendung von Anführungszeichen ist in T-SQL im Vergleich zu KQL-Abfragen nicht erforderlich. Beachten Sie außerdem, dass die Befehle `summarize` und `sort by` in T-SQL nicht verfügbar sind.
+
+## ```GROUP BY```-Daten aus unserem Beispieldataset mithilfe von T-SQL
+
+1. Dann könnten wir nach dem Abholort ***gruppieren***. Dies tun wir mit dem ```GROUP BY```-Operator. Wir können auch den ```AS``` Operator verwenden, der es uns ermöglicht, die Spalten auszuwählen und umzubenennen, die Sie in Ihre Ausgabe einschließen möchten. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
+
+    ```sql
+    SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY pickup_boroname
+    ```
+
+1. In diesem Fall haben wir einen leeren Wert, was nie gut für die Analyse ist. Wir können die Funktion ```CASE``` zusammen mit den Funktionen ```IS NULL``` und ```''```, um diese leeren Werte zur Nachverfolgung in einer eigenen Kategorie mit dem Titel ***Nicht identifiziert*** zu erfassen. 
+
+    ```sql
+    
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
+               ELSE pickup_boroname
+             END;
+    ```
+
+## ```ORDER BY```-Daten aus unserem Beispieldataset mithilfe von T-SQL
+
+1. Um unsere Daten besser zu verstehen, sortieren wir sie in der Regel nach einer Spalte. Dieser Vorgang wird in T-SQL mit einem ```ORDER BY``` Operator durchgeführt. In T-SQL gibt es keinen ***SORT BY***-Operator.
+ 
+    ```sql
+    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+               ELSE pickup_boroname
+             END
+    -- Add an ORDER BY clause to sort by Borough in ascending order
+    ORDER BY Borough ASC;
+    ```
+    ## Die ```WHERE```-Klausel zum Filtern von Daten in unserer T-SQL-Beispielabfrage
+    
+1. Im Gegensatz zu KQL würde unsere ```WHERE```-Klausel am Ende der T-SQL-Anweisung stehen. In diesem Fall haben wir jedoch eine ```GROUP BY```-Klausel, für die wir die ```HAVING```-Anweisung verwenden müssen, und wir verwenden den neuen Namen der Spalte, in diesem Fall **Borough**, als Spaltennamen, nach dem gefiltert wird.
+
+    ```sql
+    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
+    SELECT CASE
+             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+             ELSE pickup_boroname
+           END AS Borough,
+           SUM(trip_distance) AS [Total Trip Distance]
+    FROM Trips
+    GROUP BY CASE
+               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
+               ELSE pickup_boroname
+             END
+    -- Add a having clause due to the GROUP BY statement
+    HAVING Borough = 'Manhattan'
+    -- Add an ORDER BY clause to sort by Borough in ascending order
+    ORDER BY Borough ASC;
+    
+    ```
 
 ## Bereinigen von Ressourcen
 
 In dieser Übung haben Sie eine KQL-Datenbank erstellt und ein Beispieldataset für Abfragen eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
-1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
-2. Wählen Sie im Menü „...“ auf der Symbolleiste die Option „Arbeitsbereichseinstellungen“ aus.
-3. Wählen Sie im Abschnitt „Andere“ die Option „Diesen Arbeitsbereich entfernen“ aus.
+1. Wählen Sie auf der Leiste auf der linken Seite das **Symbol** für Ihren Arbeitsbereich aus.
+2. Wählen Sie im Menü ... auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
