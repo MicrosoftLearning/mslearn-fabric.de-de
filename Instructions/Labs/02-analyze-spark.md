@@ -10,34 +10,32 @@ Apache Spark ist eine Open-Source-Engine für verteilte Datenverarbeitung und wi
 
 Dieses Lab dauert ungefähr **45** Minuten.
 
-> **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Geschäfts-* , *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit der aktivierten Fabric-Testversion.
+Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
-2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 ## Erstellen eines Lakehouse und Hochladen von Dateien
 
-Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Datentechnik* im Portal wechseln und ein Data Lakehouse für die zu analysierenden Datendateien erstellen.
+Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für die Datendateien zu erstellen, die analysiert werden sollen.
 
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Datentechnik**.
-
-2. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach einen Ordner mit Textdateien auf Ihren lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-3. Laden Sie die Datendateien für diese Übung von [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) herunter, und extrahieren Sie sie.
+1. Laden Sie die Datendateien für diese Übung von [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) herunter, und extrahieren Sie sie.
 
-4. Stellen Sie nach dem Extrahieren des gezippten Archivs sicher, dass Sie über einen Ordner namens **orders** verfügen, der CSV-Dateien mit den Namen **2019.csv**, **2020.csv** und **2021.csv** enthält.
-5. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Optionen **Hochladen** und **Ordner hochladen** aus. Laden Sie dann den Ordner **orders** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
-6. Nachdem die Dateien hochgeladen wurden, erweitern Sie **Dateien**, und wählen Sie den Ordner **orders** aus. Überprüfen Sie dann wie im Folgenden gezeigt, ob die CSV-Dateien hochgeladen wurden:
+1. Stellen Sie nach dem Extrahieren des gezippten Archivs sicher, dass Sie über einen Ordner namens **orders** verfügen, der CSV-Dateien mit den Namen **2019.csv**, **2020.csv** und **2021.csv** enthält.
+1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Optionen **Hochladen** und **Ordner hochladen** aus. Laden Sie dann den Ordner **orders** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
+1. Nachdem die Dateien hochgeladen wurden, erweitern Sie **Dateien**, und wählen Sie den Ordner **orders** aus. Überprüfen Sie dann wie im Folgenden gezeigt, ob die CSV-Dateien hochgeladen wurden:
 
     ![Screenshot: Hochgeladene Dateien in einem Lakehouse](./Images/uploaded-files.png)
 
@@ -157,9 +155,9 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 10. Der Dataframe enthält nur die Daten aus der Datei **2019.csv**. Ändern Sie den Code so, dass der Dateipfad einen \*-Platzhalter verwendet, um die Auftragsdaten aus allen Dateien im Ordner **orders** zu lesen:
 
     ```python
-   from pyspark.sql.types import *
+    from pyspark.sql.types import *
 
-   orderSchema = StructType([
+    orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -171,8 +169,8 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
        StructField("Tax", FloatType())
        ])
 
-   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-   display(df)
+    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+    display(df)
     ```
 
 11. Führen Sie die geänderte Codezelle aus, und überprüfen Sie die Ausgabe, die jetzt die Umsätze für 2019, 2020 und 2021 enthalten sollte.
@@ -570,7 +568,7 @@ Mit **matplotlib** können Sie zwar komplexe Diagramme mit mehreren Typen erstel
    # Clear the plot area
    plt.clf()
 
-   # Create a bar chart
+   # Create a line chart
    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
    plt.show()
     ```
@@ -594,5 +592,5 @@ In dieser Übung haben Sie gelernt, wie Sie Spark verwenden, um mit Daten in Mic
 Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die Option **Arbeitsbereichseinstellungen** aus.
-3. Klicken Sie im Abschnitt **Andere** auf **Diesen Arbeitsbereich entfernen**.
+2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.

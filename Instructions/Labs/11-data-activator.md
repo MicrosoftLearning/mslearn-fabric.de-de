@@ -10,18 +10,18 @@ Data Activator in Microsoft Fabric ergreift Maßnahmen auf der Grundlage dessen,
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
-2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Data Activator** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 In diesem Lab verwenden Sie den Data Activator in Fabric, um einen *Reflex* zu erstellen. Data Activator stellt Ihnen bequem einen Beispieldatensatz zur Verfügung, mit dem Sie die Möglichkeiten von Data Activator erkunden können. Sie verwenden diese Beispieldaten, um einen *Reflex* zu erstellen, der einige Echtzeitdaten analysiert und einen Trigger erstellt, um eine E-Mail zu versenden, wenn eine Bedingung erfüllt ist.
 
@@ -29,15 +29,11 @@ In diesem Lab verwenden Sie den Data Activator in Fabric, um einen *Reflex* zu e
 
 ## Szenario
 
-In diesem Szenario sind Sie ein*e Datenanalyst*in für ein Unternehmen, das eine Reihe von Produkten verkauft und versendet.  Sie sind für die Daten aller Sendungen und Verkäufe an die Stadt Redmond verantwortlich. Sie möchten einen Reflex erstellen, der die Pakete überwacht, die ausgeliefert werden sollen. Eine Kategorie von Produkten, die Sie versenden, sind Medikamente, die während des Transports bei einer bestimmten Temperatur gekühlt werden müssen. Sie möchten einen Reflex erstellen, der eine E-Mail an die Versandabteilung sendet, wenn die Temperatur eines Pakets, das ein Medikament enthält, über oder unter einem bestimmten Schwellenwert liegt. Die ideale Temperatur sollte zwischen 0,5 und 5 Grad liegen. Da die Reflex-Ereignisse bereits einen ähnlichen Trigger haben, erstellen Sie einen speziell für die Pakete, die an die Stadt Redmond geliefert werden. Jetzt geht‘s los!
+In diesem Szenario sind Sie ein*e Datenanalyst*in für ein Unternehmen, das eine Reihe von Produkten verkauft und versendet.  Sie sind für die Daten aller Sendungen und Verkäufe an die Stadt Redmond verantwortlich. Sie möchten einen Reflex erstellen, der die Pakete überwacht, die ausgeliefert werden sollen. Eine Kategorie von Produkten, die Sie versenden, sind Medikamente, die während des Transports bei einer bestimmten Temperatur gekühlt werden müssen. Sie möchten einen Reflex erstellen, der eine E-Mail an die Versandabteilung sendet, wenn die Temperatur eines Pakets, das ein Medikament enthält, über oder unter einem bestimmten Schwellenwert liegt. Die ideale Temperatur sollte zwischen 0,5 und 5 Grad liegen. Da die Reflex-Ereignisse bereits einen ähnlichen Trigger haben, erstellen Sie einen speziell für die Pakete, die an die Stadt Redmond geliefert werden. Legen wir los.
 
 ## Erstellen eines Reflexes
 
-1. Wählen Sie im **Microsoft Fabric**-Oberflächenportal die **Data Activator**-Oberfläche aus, indem Sie zunächst das aktuelle Fabric-Oberflächensymbol in der unteren linken Ecke des Bildschirms und dann **Data Activator** aus dem Menü auswählen. Im folgenden Screenshot ist die aktuelle Fabric-Oberfläche zum Beispiel **Power BI**.
-
-    ![Screenshot der Auswahl der Data Activator-Oberfläche.](./Images/data-activator-select-experience.png)
-
-1. Sie sollten sich jetzt auf dem Startbildschirm des Data Activator befindet. Das Fabric Oberflächensymbol unten rechts wurde ebenfalls zu das Data Activator-Symbol geändert. Erstellen Sie einen neuen Reflex, indem Sie die Schaltfläche **Reflex (Vorschau)** auswählen.
+1. Suchen Sie unten rechts nach dem Data Activator-Symbol, um sich zu vergewissern, dass Sie sich auf dem Data Activator-Startbildschirm befinden. Erstellen Sie einen neuen Reflex, indem Sie die Schaltfläche **Reflex (Vorschau)** auswählen.
 
     ![Screenshot des Startbildschirms von Data Activator.](./Images/data-activator-home-screen.png)
 
@@ -75,7 +71,7 @@ Wählen Sie jedes der verschiedenen Ereignisse aus und beobachten Sie die Daten,
 
 Es ist an der Zeit, unserem Reflex einen Trigger hinzuzufügen. Zunächst erstellen wir aber ein neues Objekt.
 
-## Erstellen eines Objekts
+## Erstellen eines -Objekts
 
 In einem realen Szenario ist es möglicherweise nicht erforderlich, ein neues Objekt für diesen Reflex zu erstellen, da das Data Activator-Beispiel bereits ein Objekt namens *Paket* enthält. Für dieses Lab erstellen wir jedoch ein neues Objekt, um zu veranschaulichen, wie ein Objekt erstellt wird. Wir erstellen ein neues Objekt mit dem Namen *Redmond-Pakete*.
 
@@ -103,7 +99,7 @@ In einem realen Szenario ist es möglicherweise nicht erforderlich, ein neues Ob
 
 Jetzt erstellen Sie Ihren Trigger.
 
-## Erstellen eines Triggers
+## Trigger erstellen
 
 Sehen wir uns an, was Ihr Trigger tun soll: *Sie möchten einen Reflex erstellen, der eine E-Mail an die Versandabteilung sendet, wenn die Temperatur eines Pakets, das ein Medikament enthält, einen bestimmten Schwellenwert über- oder unterschreitet. Die ideale Temperatur sollte zwischen 0,5 und 5 Grad liegen. Da die Reflex-Ereignisse bereits einen ähnlichen Trigger enthalten, werden Sie einen speziell für die Pakete erstellen, die an die Stadt Redmond versandt werden.*
 

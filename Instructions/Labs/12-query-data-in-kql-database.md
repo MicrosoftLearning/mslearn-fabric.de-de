@@ -16,14 +16,7 @@ Sie werden ungefähr **25** Minuten für dieses Lab benötigen.
 
 In diesem Szenario sind Sie ein*e Analyst*in, der/die damit beauftragt ist, ein Beispieldataset mit Rohdaten zu Taxifahrten in New York abzufragen, aus dem Sie zusammenfassende Statistiken (Profilerstellung) der Daten aus der Fabric-Umgebung ziehen. Sie verwenden KQL, um diese Daten abzufragen und Informationen zu sammeln, um Informationen zu den Daten zu erhalten.
 
-> **Hinweis**: Für diese Übung benötigen Sie ein *Geschäfts-* , *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Aktivieren einer Microsoft Fabric-Testversion
-
-1. Rufen Sie nach der Registrierung eines Microsoft Fabric-Kontos das Microsoft Fabric-Portal unter [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com) auf.
-1. Wählen Sie das Symbol **Konto-Manager** (das *Benutzerbild* oben rechts) aus.
-1. Wählen Sie im Menü „Konto-Manager“ die Option **Testversion starten** aus, um eine Microsoft Fabric-Testversion zu starten.
-1. Nach einem erfolgreichen Upgrade auf Microsoft Fabric gelangen Sie über **Fabric-Startseite** zur Startseite.
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -36,7 +29,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-In diesem Lab verwenden Sie Echtzeitanalysen (Real-Time Analytics, RTA) in Fabric, um eine KQL-Datenbank aus einem Beispiel-Eventstream zu erstellen. Im Bereich „Echtzeitanalyse“ ist ein praktisches Beispieldataset vorhanden, mit dem Sie die Funktionen der Echtzeitanalyse kennenlernen können. Sie verwenden diese Beispieldaten, um KQL/SQL-Abfragen und Abfragesätze zu erstellen, die Echtzeitdaten analysieren und andere Verwendungen in nachgelagerten Prozessen ermöglichen.
+In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenbank anhand eines Beispiel-Eventstreams zu erstellen. Im Bereich „Echtzeitanalyse“ ist ein praktisches Beispieldataset vorhanden, mit dem Sie die Funktionen der Echtzeitanalyse kennenlernen können. Sie verwenden diese Beispieldaten, um KQL/SQL-Abfragen und Abfragesätze zu erstellen, die Echtzeitdaten analysieren und andere Verwendungen in nachgelagerten Prozessen ermöglichen.
 
 ## Erstellen einer KQL-Datenbank
 
@@ -74,7 +67,7 @@ In diesem Lab verwenden Sie Echtzeitanalysen (Real-Time Analytics, RTA) in Fabri
 
     ![Abbildung der Auswahl der obersten 100 Dateien aus der Tabelle RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
-   > **HINWEIS**: Wenn Sie dies zum ersten Mal ausführen, kann die Zuordnung von Computeressourcen mehrere Sekunden dauern.
+   > **HINWEIS:** Wenn Sie dies zum ersten Mal ausführen, kann die Zuordnung von Computeressourcen mehrere Sekunden dauern.
 
     ![Abbildung der 100 Datensätze aus den Daten](./Images/explore-with-kql-take-100.png)
 
@@ -149,7 +142,7 @@ In diesem Modul konzentrieren wir uns auf die Grundlagen von Abfragen gegen eine
 
 ## ```GROUP BY``` Daten aus unserem Beispieldataset mithilfe von KQL
 
-1. Dann können wir nach dem Abholort ***gruppieren***, was wir mit dem Operator ```summarize``` durchführen. Wir können auch den ```project``` Operator verwenden, der es uns ermöglicht, die Spalten auszuwählen und umzubenennen, die Sie in Ihre Ausgabe einschließen möchten. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
+1. Dann können wir nach dem Abholort ***gruppieren***, was wir mit dem Operator ```summarize``` durchführen. Wir können auch den ```project```-Operator verwenden, mit dem wir die Spalten, die Sie in Ihre Ausgabe aufnehmen möchten, auswählen und umbenennen können. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
 
 ```kusto
 
@@ -242,7 +235,7 @@ KQL Database unterstützt T-SQL nicht von Haus aus, aber es bietet einen T-SQL-E
 
 ## ```GROUP BY```-Daten aus unserem Beispieldataset mithilfe von T-SQL
 
-1. Dann könnten wir nach dem Abholort ***gruppieren***. Dies tun wir mit dem ```GROUP BY```-Operator. Wir können auch den ```AS``` Operator verwenden, der es uns ermöglicht, die Spalten auszuwählen und umzubenennen, die Sie in Ihre Ausgabe einschließen möchten. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
+1. Dann könnten wir nach dem Abholort ***gruppieren***. Dies tun wir mit dem ```GROUP BY```-Operator. Wir können auch den ```AS```-Operator verwenden, mit dem wir die Spalten, die Sie in Ihre Ausgabe aufnehmen möchten, auswählen und umbenennen können. In diesem Fall gruppieren wir innerhalb des Taxisystems von New York nach Stadtbezirken, um unseren Benutzer*innen die zurückgelegte Gesamtstrecke für jeden Stadtbezirk anzuzeigen.
 
     ```sql
     SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
@@ -312,5 +305,5 @@ KQL Database unterstützt T-SQL nicht von Haus aus, aber es bietet einen T-SQL-E
 
 In dieser Übung haben Sie eine KQL-Datenbank erstellt und ein Beispieldataset für Abfragen eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 1. Wählen Sie auf der Leiste auf der linken Seite das **Symbol** für Ihren Arbeitsbereich aus.
-2. Wählen Sie im Menü ... auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+2. Wählen Sie auf der Symbolleiste im Menü „...“ die Option **Arbeitsbereichseinstellungen** aus.
 3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
