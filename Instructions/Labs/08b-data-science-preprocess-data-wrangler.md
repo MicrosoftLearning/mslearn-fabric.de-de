@@ -10,26 +10,25 @@ In diesem Lab erfahren Sie, wie Sie Data Wrangler in Microsoft Fabric verwenden,
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
-2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com` zur Willkommensseite von Microsoft Fabric, und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
+1. Wählen Sie auf der Willkommensseite von Fabric die Option **Synapse Data Science** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 ## Erstellen eines Notebooks
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bieten eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) als *Experimente* schreiben und ausführen können.
 
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Data Science**.
-
-1. Erstellen Sie auf der **Data Science**-Startseite ein neues **Notebook**.
+1. Erstellen Sie auf der Startseite von **Data Science mit Synapse** ein neues **Notebook**.
 
     Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen *Zelle* geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die *Code* oder *Markdown* (formatierten Text) enthalten können.
 
@@ -37,7 +36,7 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 
     Wenn die Zelle in eine Markdownzelle geändert wird, wird der enthaltene Text gerendert.
 
-1. Verwenden Sie die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie dann den Inhalt und geben Sie den folgenden Text ein:
+1. Verwenden Sie bei Bedarf die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie anschließend den Inhalt, und geben Sie den folgenden Text ein:
 
     ```text
    # Perform data exploration for data science
@@ -52,19 +51,19 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**O
 1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
 
     ```python
-    # Azure storage access info for open dataset diabetes
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "ojsales-simulatedcontainer"
-    blob_relative_path = "oj_sales_data"
-    blob_sas_token = r"" # Blank since container is Anonymous access
+   # Azure storage access info for open dataset diabetes
+   blob_account_name = "azureopendatastorage"
+   blob_container_name = "ojsales-simulatedcontainer"
+   blob_relative_path = "oj_sales_data"
+   blob_sas_token = r"" # Blank since container is Anonymous access
     
-    # Set Spark config to access  blob storage
-    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
-    print("Remote blob path: " + wasbs_path)
+   # Set Spark config to access  blob storage
+   wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+   spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+   print("Remote blob path: " + wasbs_path)
     
-    # Spark reads csv
-    df = spark.read.csv(wasbs_path, header=True)
+   # Spark reads csv
+   df = spark.read.csv(wasbs_path, header=True)
     ```
 
 1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen. Alternativ können Sie `SHIFT` + `ENTER` auf Ihrer Tastatur drücken, um eine Zelle auszuführen.
@@ -74,19 +73,19 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**O
 1. Verwenden Sie das Symbol **+ Code** unterhalb der Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie darin den folgenden Code ein:
 
     ```python
-    import pandas as pd
+   import pandas as pd
 
-    df = df.toPandas()
-    df = df.sample(n=500, random_state=1)
+   df = df.toPandas()
+   df = df.sample(n=500, random_state=1)
     
-    df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
-    df['Quantity'] = df['Quantity'].astype('int')
-    df['Advert'] = df['Advert'].astype('int')
-    df['Price'] = df['Price'].astype('float')
-    df['Revenue'] = df['Revenue'].astype('float')
+   df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
+   df['Quantity'] = df['Quantity'].astype('int')
+   df['Advert'] = df['Advert'].astype('int')
+   df['Price'] = df['Price'].astype('float')
+   df['Revenue'] = df['Revenue'].astype('float')
     
-    df = df.reset_index(drop=True)
-    df.head(4)
+   df = df.reset_index(drop=True)
+   df.head(4)
     ```
 
 1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
@@ -94,14 +93,14 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**O
     |   |WeekStarting|Speicher|Marke|Menge|Anzeige|Preis|Umsatz|
     |---|---|---|---|---|---|---|---|
     |0|1991-10-17|947|minute.maid|13306|1|2,42|32200.52|
-    |1|1992-03-26|1293|dominicks|18596|1|1,94|36076.24|
+    |1|1992-03-26|1.293|dominicks|18596|1|1,94|36076.24|
     |2|1991-08-15|2278|dominicks|17457|1|2.14|37357.98|
     |3|1992-09-03|2175|tropicana|9652|1|2,07|19979.64|
     |...|...|...|...|...|...|...|...|
 
     Die Ausgabe zeigt die ersten vier Zeilen des Datasets OJ Sales.
 
-## Anzeigen von Zusammenfassungsstatistiken
+## Zusammenfassungsstatistiken anzeigen
 
 Nachdem wir die Daten geladen haben, besteht der nächste Schritt darin, sie mithilfe von Data Wrangler vorzuverarbeiten. Die Vorverarbeitung ist ein wichtiger Schritt in jedem Machine Learning-Workflow. Es umfasst das Bereinigen der Daten und die Transformation in ein Format, das in ein Machine Learning-Modell eingespeist werden kann.
 
@@ -140,25 +139,25 @@ Nun wenden wir einige Transformationen auf das **Brand**-Feature an.
 
 1. Wählen Sie **Code zu Notebook hinzufügen** aus. Darüber hinaus können Sie den Code auch kopieren und das transformierte Dataset als CSV-Datei speichern.
 
-    >**Hinweis:** Der Code wird automatisch in die Notebookzelle kopiert und ist sofort einsatzbereit.
+    >**Hinweis:** Der Code wird automatisch in die Notebookzelle kopiert und kann verwendet werden.
 
 1. Ersetzen Sie die Zeilen 10 und 11 durch den Code `df = clean_data(df)`, da der in Data Wrangler generierte Code den ursprünglichen Dataframe nicht überschreibt. Der finale Codeblock sollte wie folgt aussehen:
 
     ```python
-    def clean_data(df):
-        # Replace all instances of "." with " " in column: 'Brand'
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Capitalize the first character in column: 'Brand'
-        df['Brand'] = df['Brand'].str.title()
-        return df
+   def clean_data(df):
+       # Replace all instances of "." with " " in column: 'Brand'
+       df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+       # Capitalize the first character in column: 'Brand'
+       df['Brand'] = df['Brand'].str.title()
+       return df
     
-    df = clean_data(df)
+   df = clean_data(df)
     ```
 
 1. Führen Sie die Codezelle aus und überprüfen Sie die Variable `Brand`.
 
     ```python
-    df['Brand'].unique()
+   df['Brand'].unique()
     ```
 
     Das Ergebnis sollte die Werte *Minute Maid*, *Dominicks* und *Tropicana* anzeigen.
@@ -189,7 +188,7 @@ Stellen Sie sich vor, wir müssen die Umsatzdaten für ein bestimmtes Geschäft 
 
 1. Erweitern Sie im Bereich **Vorgänge** die Option **Sortieren und Filtern**.
 
-1. Wählen Sie **Filtern** aus.
+1. Wählen Sie **Filter** aus.
 
 1. Fügen Sie im Bereich **Filter** die folgende Bedingung hinzu:
 
@@ -235,7 +234,7 @@ Angenommen, Sie haben einen Fehler gemacht und müssen die Sortierung, die Sie i
 
 1. Beenden Sie Data Wrangler, ohne den Code zu generieren.
 
-## Aggregieren von Daten
+## Aggregatdaten
 
 Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. In den folgenden Schritten verwenden wir Data Wrangler, um einen „Gruppieren nach“-Vorgang für den `df`-Dataframe auszuführen.
 
@@ -249,7 +248,7 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 
 1. Wählen Sie in der Eigenschaft **Zu aggregierende Spalte** das Feature `Revenue` aus.
 
-1. Wählen Sie `Mean` für die Eigenschaft **Aggregationstyp** aus.
+1. Wählen Sie für die Eigenschaft **Aggregationstyp** `Mean` aus.
 
 1. Wählen Sie **Übernehmen**.
 
@@ -260,18 +259,18 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 1. Kombinieren Sie den Code aus der Variablentransformation `Brand` mit dem Code, der durch den Aggregationsschritt in der Funktion `clean_data(df)` generiert wird. Der finale Codeblock sollte wie folgt aussehen:
 
     ```python
-    def clean_data(df):    
-        # Replace all instances of "." with " " in column: 'Brand'    
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
-        # Capitalize the first character in column: 'Brand'    
-        df['Brand'] = df['Brand'].str.title()
+   def clean_data(df):    
+       # Replace all instances of "." with " " in column: 'Brand'    
+       df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
+       # Capitalize the first character in column: 'Brand'    
+       df['Brand'] = df['Brand'].str.title()
         
-        # Performed 1 aggregation grouped on column: 'Brand'    
-        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
+       # Performed 1 aggregation grouped on column: 'Brand'    
+       df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
         
-        return df    
+       return df    
         
-    df = clean_data(df)
+   df = clean_data(df)
     ```
 
 1. Führen Sie den Zellcode aus.
@@ -279,7 +278,7 @@ Angenommen, wir müssen den durchschnittlichen Umsatz jeder Marke analysieren. I
 1. Überprüfen Sie die Daten im Dataframe.
 
     ```python
-    print(df)
+   print(df)
     ```
 
     Ergebnisse:

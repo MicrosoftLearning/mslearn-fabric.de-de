@@ -5,23 +5,26 @@ lab:
   title: Echtzeitdashboards
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
+
 # Erste Schritte beim Abfragen einer Kusto-Datenbank in Microsoft Fabric
 Echtzeitdashboards ermöglichen es Ihnen, Einblicke aus Microsoft Fabric mithilfe der Kusto-Abfragesprache (KQL) zu gewinnen, um sowohl strukturierte als auch unstrukturierte Daten abzurufen und in Diagrammen, Scatterplots, Tabellen usw. in Panels zu rendern, die eine Verknüpfung ähnlich wie Slicer in Power BI ermöglichen. 
 
 Dieses Lab dauert ungefähr **25** Minuten.
 
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
-2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Echtzeitanalyse** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenbank anhand eines Beispiel-Eventstream zu erstellen. Real-Time Analytics bietet ein Beispieldataset, mit dem Sie die Funktionen von RTA erkunden können. Sie verwenden diese Beispieldaten, um die KGL-/SQL-Abfragen und -Abfragesets zu erstellen, die Echtzeitdaten analysieren und eine zusätzliche Verwendung in nachgelagerten Prozessen ermöglichen.
+In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenbank anhand eines Beispiel-Eventstreams zu erstellen. Real-Time Analytics bietet ein Beispieldataset, mit dem Sie die Funktionen von RTA erkunden können. Sie verwenden diese Beispieldaten, um die KGL-/SQL-Abfragen und -Abfragesets zu erstellen, die Echtzeitdaten analysieren und eine zusätzliche Verwendung in nachgelagerten Prozessen ermöglichen.
 
 ## Erstellen einer KQL-Datenbank
 
@@ -47,15 +50,15 @@ In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenb
 
    ![Abbildung der Auswahl von Analysedaten für das Lab](./Images/create-sample-data.png)
 
-7. Nachdem die Daten geladen wurden, können wir überprüfen, ob die KQL-Datenbank aufgefüllt wird.
+7. Nachdem die Daten geladen wurden, können wir überprüfen, ob die KQL-Datenbank mit Daten gefüllt ist.
 
    ![Daten werden in die KQL-Datenbank geladen](./Images/choose-automotive-operations-analytics.png)
 
-7. Sobald die Daten geladen wurden, überprüfen Sie, ob die Daten in die KQL-Datenbank geladen wurden. Wählen Sie dazu die Auslassungspunkte rechts neben der Tabelle aus, navigieren Sie zur **Abfragetabelle**, und wählen Sie **Alle 100 Datensätze anzeigen** aus.
+7. Sobald die Daten geladen wurden, überprüfen Sie, ob die Daten in die KQL-Datenbank geladen wurden. Wählen Sie dazu die Auslassungspunkte rechts neben der Tabelle aus, navigieren Sie zur **Abfragetabelle** und wählen Sie **100 Datensätze anzeigen** aus.
 
     ![Abbildung der Auswahl der obersten 100 Dateien aus der Tabelle RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
-   > **HINWEIS**: Wenn Sie dies zum ersten Mal ausführen, kann die Zuordnung von Computeressourcen mehrere Sekunden dauern.
+   > **HINWEIS:** Wenn Sie dies zum ersten Mal ausführen, kann die Zuordnung von Computeressourcen mehrere Sekunden dauern.
 
     ![Abbildung der 100 Datensätze aus den Daten](./Images/explore-with-kql-take-100.png)
 
@@ -78,7 +81,7 @@ Trips
 
 ```
 3. Drücken Sie die Schaltfläche „Ausführen“, und vergewissern Sie sich, dass Ihre Abfrage keine Fehler aufweist.
-4. Wählen Sie rechts im Bereich die Registerkarte **Visuelle Formatierung** aus, und füllen Sie den ***Kachelnamen*** und ***Visualtyp*** aus.
+4. Wählen Sie rechts im Bereich die Registerkarte **Visualformatierung** aus, und füllen Sie den ***Kachelnamen*** und ***Visualtyp*** aus.
 
-   ![Abbildung der Kachel „Visuelle Formatierung“.](./Images/visual-formatting-tile.png)
+   ![Abbildung der Kachel „Visualformatierung“.](./Images/visual-formatting-tile.png)
 

@@ -10,35 +10,33 @@ Die Tabellen in einem Microsoft Fabric-Lakehouse basieren auf dem Open-Source-Fo
 
 Diese Übung dauert ca. **40** Minuten.
 
-> **Hinweis**: Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot eines leeren Arbeitsbereichs in Power BI](./Images/new-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 ## Erstellen eines Lakehouse und Hochladen von Daten
 
-Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Datentechnik* im Portal wechseln und ein Data Lakehouse für die zu analysierenden Daten erstellen.
+Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für die Daten zu erstellen, die analysiert werden sollen.
 
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Datentechnik**.
-
-2. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute ist ein neues leeres Lakehouse fertig. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-3. Laden Sie die Datendatei für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter, und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
+1. Laden Sie die Datendatei für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter, und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
 
-4. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **products**.
+1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **products**.
 
-5. Wählen Sie im Menü **...** für den Ordner **products** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **products.csv** von Ihrem lokalen Computer (oder ggf. einer Lab-VM) in das Lakehouse hoch.
-6. Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **products**, und vergewissern Sie sich, dass die Datei **products.csv** hochgeladen wurde, wie hier gezeigt:
+1. Wählen Sie im Menü **...** für den Ordner **products** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **products.csv** von Ihrem lokalen Computer (oder ggf. einer Lab-VM) in das Lakehouse hoch.
+1. Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **products**, und vergewissern Sie sich, dass die Datei **products.csv** hochgeladen wurde, wie hier gezeigt:
 
     ![Screenshot der hochgeladenen products.csv-Datei in einem Lakehouse](./Images/products-file.png)
 
@@ -69,7 +67,7 @@ Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zu *Datentechn
 
 6. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
 
-    | Index | ProductID | ProductName | Category | ListPrice |
+    | Index | ProductID | ProductName | Kategorie | ListPrice |
     | -- | -- | -- | -- | -- |
     | 1 | 771 | Mountain-100 Silver, 38 | Mountainbikes | 3399.9900 |
     | 2 | 772 | Mountain-100 Silver, 42 | Mountainbikes | 3399.9900 |
@@ -99,7 +97,7 @@ Sie können auch *externe* Tabellen erstellen, für die die Schemametadaten im M
 1. Fügen Sie eine weitere neue Codezelle hinzu, und fügen Sie ihr den folgenden Code hinzu:
 
     ```python
-   df.write.format("delta").saveAsTable("external_products", path="<abfs_path>/external_products")
+   df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
     ```
 
 2. Wählen Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Files** die Option **ABFS-Pfad kopieren** aus.
@@ -322,4 +320,4 @@ Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, 
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Klicken Sie im Abschnitt **Andere** auf **Diesen Arbeitsbereich entfernen**.
+3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.

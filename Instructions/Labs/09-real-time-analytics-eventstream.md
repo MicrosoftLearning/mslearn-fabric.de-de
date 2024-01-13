@@ -66,7 +66,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
    ![Abbildung der Auswahl des Eventstreams](./Images/select-eventstream.png)
 
-3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem Eventstream einen Namen, den Sie sich gut merken können (z. B. ***MyStockES**), und klicken Sie auf die Schaltfläche **Erstellen**.
+3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem Ereignisstream einen Namen, den Sie sich gut merken können (z. B. **MyStockES**), und wählen Sie die Schaltfläche **Erstellen** aus.
 
    ![Abbildung des Namens des Eventstreams](./Images/name-eventstream.png)
 
@@ -76,7 +76,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
    ![Abbildung des EventStream-Zeichenbereichs](./Images/real-time-analytics-canvas.png)
 
-2. Geben Sie wie in der folgenden Tabelle gezeigt die Werte für Ihre Beispieldaten ein, und wählen Sie dann **Hinzufügen und konfigurieren** aus.
+2. Geben Sie wie in der folgenden Tabelle gezeigt die Werte für Ihre Beispieldaten ein, und wählen Sie dann **Hinzufügen** aus.
 
    | Feld       | Empfohlener Wert |
    | ----------- | ----------------- |
@@ -95,7 +95,7 @@ In diesem Tutorial lernen Sie Folgendes:
    | Arbeitsbereich        | Arbeitsbereich, in dem Sie eine KQL-Datenbank erstellt haben |
    | KQL-Datenbank     | MyStockData                                    |
 
-3. Wählen Sie **Hinzufügen und konfigurieren** aus.
+3. Wählen Sie **Erstellen und konfigurieren** aus.
 
 ## Konfigurieren der Datenerfassung
 
@@ -130,7 +130,7 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte
 
 > **Hinweis**: Der KQL-Editor enthält sowohl Syntax- als auch IntelliSense-Hervorhebungen, mit denen Sie sich schnell Kenntnisse im Zusammenhang mit der Kusto-Abfragesprache (KQL) aneignen können.
 
-1. Navigieren Sie zu Ihrer neu erstellten und aktualisierten KQL-Datenbank namens ***MyStockData***.
+1. Navigieren Sie zu Ihrer neu erstellten und aktualisierten KQL-Datenbank namens **MyStockData**.
 2. Wählen Sie in der Datenstruktur das Menü „Mehr“ (...) für die Tabelle „MyStockData“ aus. Gehen Sie dann wie folgt vor: „Tabelle abfragen > Alle 100 Datensätze anzeigen“.
 
    ![Abbildung des KQL-Abfragesatzes](./Images/kql-query-sample.png)
@@ -166,4 +166,4 @@ Sie können weiterhin mit den integrierten Funktionen navigieren und sich mit de
 In dieser Übung haben Sie eine KQL-Datenbank erstellt und das kontinuierliche Streaming mit einem Ereignisstream eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
 2. Wählen Sie im Menü „...“ auf der Symbolleiste die Option „Arbeitsbereichseinstellungen“ aus.
-3. Wählen Sie im Abschnitt „Andere“ die Option „Diesen Arbeitsbereich entfernen“ aus.
+3. Wählen Sie im Abschnitt Andere die Option Diesen Arbeitsbereich entfernen aus.

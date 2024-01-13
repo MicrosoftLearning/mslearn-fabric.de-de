@@ -10,41 +10,40 @@ In dieser Übung werden Sie mithilfe von Notebooks eine Medaillon-Architektur in
 
 Diese Übung dauert ca. **45** Minuten.
 
-> **Hinweis**: Sie benötigen eine Microsoft Fabric-Lizenz, um diese Übung durchführen zu können. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Dazu benötigen Sie ein *Schul-* , *Geschäfts-* oder Unikonto von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
-## Erstellen eines Arbeitsbereichs und Aktivieren der Datenmodellbearbeitung
+## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Melden Sie sich bei [Microsoft Fabric](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` an, und wählen Sie **Power BI** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
-4. Beim Öffnen Ihres neuen Arbeitsbereichs sollte dieser wie im Folgenden gezeigt leer sein:
+4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-   ![Screenshot: Leerer Arbeitsbereich in Power BI](./Images/new-workspace-medallion.png)
+   ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace-medallion.png)
+
 5. Navigieren Sie zu den Arbeitsbereichseinstellungen, und aktivieren Sie die Previewfunktion **Datenmodellbearbeitung**. Dadurch können Sie Beziehungen zwischen Tabellen in Ihrem Lakehouse mit einem Power BI-Dataset erstellen.
 
-    ![Screenshot der Seite mit den Arbeitsbereichseinstellungen in Power BI.](./Images/workspace-settings.png)
+    ![Screenshot der Seite mit den Arbeitsbereichseinstellungen in Fabric](./Images/workspace-settings.png)
 
     > **Hinweis**: Möglicherweise müssen Sie die Browserregisterkarte aktualisieren, nachdem Sie die Previewfunktion aktiviert haben.
 
 ## Erstellen eines Lakehouses und Hochladen von Daten in die Bronzeschicht
 
-Nachdem Sie nun über einen Arbeitsbereich verfügen, können Sie zur *Datentechnik*-Erfahrung im Fabric-Portal wechseln und ein Data Lakehouse für die Daten erstellen, die Sie analysieren werden.
+Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für die Daten zu erstellen, die analysiert werden sollen.
 
-1. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zu **Datentechnik**. Wenn die Umgebung für die Datentechnik nicht angezeigt wird, bitten Sie Ihren Fabric-Administrator, [Fabric zu aktivieren](https://learn.microsoft.com/fabric/admin/fabric-switch).
-
-2. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** namens **Sales**.
+1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** namens **Sales**.
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-3. Laden Sie die Datendateien für diese Übung von `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip` herunter. Extrahieren Sie die Dateien, und speichern Sie diese mit ihren ursprünglichen Namen auf Ihrem lokalen Computer (oder ggf. einer Lab-VM). Es sollten 3 Dateien mit Vertriebsdaten für 3 Jahre vorhanden sein: 2019.csv, 2020.csv und 2021.csv.
+1. Laden Sie die Datendateien für diese Übung von `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip` herunter. Extrahieren Sie die Dateien, und speichern Sie diese mit ihren ursprünglichen Namen auf Ihrem lokalen Computer (oder ggf. einer Lab-VM). Es sollten 3 Dateien mit Vertriebsdaten für 3 Jahre vorhanden sein: 2019.csv, 2020.csv und 2021.csv.
 
-4. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Dateien** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **Bronze**.
+1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Dateien** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **Bronze**.
 
-5. Wählen Sie im Menü **...** für den Ordner **Bronze** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die 3 Dateien (2019.csv, 2020.csv und 2021.csv) von Ihrem lokalen Computer (oder ggf. einer Lab-VM) in das Lakehouse hoch. Verwenden Sie die Umschalttaste, um alle drei Dateien gleichzeitig hochzuladen.
+1. Wählen Sie im Menü **...** für den Ordner **Bronze** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die 3 Dateien (2019.csv, 2020.csv und 2021.csv) von Ihrem lokalen Computer (oder ggf. einer Lab-VM) in das Lakehouse hoch. Verwenden Sie die Umschalttaste, um alle drei Dateien gleichzeitig hochzuladen.
 
-6. Nachdem die Dateien hochgeladen wurden, wählen Sie den Ordner **Bronze** aus, und überprüfen Sie dann wie im Folgenden gezeigt, dass die CSV-Dateien hochgeladen wurden:
+1. Nachdem die Dateien hochgeladen wurden, wählen Sie den Ordner **Bronze** aus, und überprüfen Sie dann wie im Folgenden gezeigt, dass die CSV-Dateien hochgeladen wurden:
 
     ![Screenshot der hochgeladenen products.csv-Datei in einem Lakehouse](./Images/bronze-files.png)
 
@@ -120,8 +119,6 @@ Nachdem Sie nun einige Daten in der Bronzeschicht Ihres Lakehouses haben, könne
     ```
 
     Die erste Zeile des Codes importiert die erforderlichen Funktionen aus PySpark. Anschließend fügen Sie dem DataFrame neue Spalten hinzu, sodass Sie den Quelldateinamen nachverfolgen können, ob die Bestellung als vor dem betreffenden Geschäftsjahr liegend gekennzeichnet wurde, und wann die Zeile erstellt und geändert wurde.
-
-    Sie fügen auch Spalten für die CustomerID und die ItemID hinzu, die später aufgefüllt werden.
 
     Schließlich aktualisieren Sie die Spalte CustomerName auf „Unbekannt“, wenn sie NULL oder leer ist.
 
@@ -228,7 +225,7 @@ Nachdem die Silberebene nun Daten enthält, können Sie den SQL-Endpunkt verwend
     ORDER BY YEAR(OrderDate)
     ```
 
-    Diese Abfrage berechnet den Gesamtumsatz für jedes Jahr in der Tabelle „sales_silver“. Die Ergebnisse sollten wie folgt aussehen:
+    Diese Abfrage berechnet den Gesamtumsatz für jedes Jahr in der Tabelle „sales_silver“. Ihre Ergebnisse sollten folgendermaßen aussehen:
 
     ![Screenshot der Ergebnisse einer SQL-Abfrage in einem Lakehouse.](./Images/total-sales-sql.png)
 
@@ -357,7 +354,7 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
     ```python
     from pyspark.sql.functions import col, split
     
-    # Create customer_gold dataframe
+    # Create customer_silver dataframe
     
     dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
         .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
@@ -365,7 +362,7 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
     
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimCustomer_silver .head(10))
+    display(dfdimCustomer_silver.head(10))
     ```
 
      Hier haben Sie ein neues DataFrame dfdimCustomer_silver erstellt, indem Sie verschiedene Transformationen durchführten, z. B. Ablegen von Duplikaten, Auswählen bestimmter Spalten und Aufteilen der Spalte „CustomerName“, um die Spalten „Vorname“ und „Nachname“ zu erstellen. Das Ergebnis ist ein DataFrame mit bereinigten und strukturierten Kundendaten, einschließlich separater Spalten „Vorname“ und „Nachname“, die aus der Spalte „CustomerName“ extrahiert wurden.
@@ -435,12 +432,12 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
         .execute()
     ```
 
-12. **Fügen Sie einen weiteren Codeblock hinzu**, um das **customer_gold**-DataFrame zu erstellen. Sie verwenden dieses später in der Verknüpfung für Vertrieb.
+12. Fügen Sie **einen weiteren Codeblock** hinzu, um den Dataframe **product_silver** zu erstellen.
   
     ```python
     from pyspark.sql.functions import col, split, lit
     
-    # Create Customer_gold dataframe, this dataframe will be used later on on the Sales join
+    # Create product_silver dataframe
     
     dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
         .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
@@ -470,6 +467,8 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
     display(dfdimProduct_gold.head(10))
     ```
 
+      Dadurch wird die nächste verfügbare Produkt-ID basierend auf den aktuellen Daten in der Tabelle berechnet, diese neuen IDs den Produkten zugewiesen und dann die aktualisierten Produktinformationen angezeigt.
+
 14. Ähnlich wie bei den anderen Dimensionen müssen Sie sicherstellen, dass Ihre Produkttabelle immer auf dem neuesten Stand bleibt, wenn neue Daten eingehen. Fügen Sie Folgendes **in einen neuen Codeblock** ein und führen Sie ihn aus:
 
     ```python
@@ -498,8 +497,6 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
               ) \
               .execute()
       ```
-
-      Dadurch wird die nächste verfügbare Produkt-ID basierend auf den aktuellen Daten in der Tabelle berechnet, diese neuen IDs den Produkten zugewiesen und dann die aktualisierten Produktinformationen angezeigt (wenn die Auskommentierung des Anzeigebefehls aufgehoben ist).
 
       **Nachdem Sie nun Ihre Dimensionen aufgebaut haben, besteht der letzte Schritt darin, die Faktentabelle zu erstellen.**
 
@@ -615,4 +612,4 @@ Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, 
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Klicken Sie im Abschnitt **Andere** auf **Diesen Arbeitsbereich entfernen**.
+3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.

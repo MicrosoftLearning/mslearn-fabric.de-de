@@ -14,25 +14,22 @@ In dieser Übung erstellen Sie den Code über mehrere Notebook-Codezellen hinweg
 
 Da Sie außerdem mit einem Beispieldataset arbeiten, entspricht die Optimierung möglicherweise nicht dem Ergebnis in einer größeren Produktionsumgebung. Dennoch ist die Verbesserung sichtbar, und wenn es auf jede Millisekunde ankommt, ist die Optimierung der Schlüssel.
 
-> **Hinweis**: Für diese Übung benötigen Sie eine **Microsoft Fabric-Lizenz**. Weitere Informationen zum Aktivieren einer kostenlosen Fabric-Testlizenz finden Sie unter [Erste Schritte mit Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
->
-> Außerdem brauchen Sie dazu ein *Schul-* oder *Geschäftskonto* von Microsoft. Wenn Sie kein Microsoft-Konto haben, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Erstellen eines Arbeitsbereichs
+
+Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
+
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
+
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 ## Erstellen eines Arbeitsbereichs und eines Lakehouse-Ziels
 
-Erstellen Sie zunächst einen Arbeitsbereich mit aktivierter Fabric-Testversion, ein neues Lakehouse und einen Zielordner im Lakehouse.
-
-1. Melden Sie sich unter `https://app.fabric.microsoft.com` bei [Microsoft Fabric](https://app.fabric.microsoft.com) an, und wählen Sie **Datentechnik** aus.
-
-    ![Screenshot: Datentechnik mit Synapse](Images/data-engineering-home.png)
-
-1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** aus.
-
-1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazität aus (*Testversion*, *Premium* oder *Fabric*).
-
-1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein, und neben dem Namen sollte sich eine Raute befinden, wie hier gezeigt:
-
-    ![Screenshot: neuer und leerer Arbeitsbereich](Images/new-workspace.png)
+Erstellen Sie zunächst ein neues Lakehouse und dann einen Zielordner im Lakehouse.
 
 1. Wählen Sie in Ihrem Arbeitsbereich **+ Neu > Lakehouse** aus, geben Sie einen Namen an, und wählen Sie **Erstellen** aus.
 
@@ -232,4 +229,4 @@ Wenn Sie die Untersuchung abgeschlossen haben, können Sie den Arbeitsbereich l�
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Klicken Sie im Abschnitt **Andere** auf **Diesen Arbeitsbereich entfernen**.
+3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
