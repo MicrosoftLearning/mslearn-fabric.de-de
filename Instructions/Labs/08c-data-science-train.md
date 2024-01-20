@@ -18,8 +18,8 @@ Dieses Lab dauert ungefähr **25** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie zur Startseite von Microsoft Fabric unter `https://app.fabric.microsoft.com` in einem Browser und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
-1. Wählen Sie auf der Fabric-Startseite die Option **Data Science mit Synapse** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com` zur Willkommensseite von Microsoft Fabric, und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
+1. Wählen Sie auf der Willkommensseite von Fabric die Option **Synapse Data Science** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -38,7 +38,7 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks sin
 
     Wenn die Zelle in eine Markdownzelle geändert wird, wird der enthaltene Text gerendert.
 
-1. Falls erforderlich, verwenden Sie die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie dann den Inhalt und geben Sie den folgenden Text ein:
+1. Verwenden Sie bei Bedarf die Schaltfläche **&#128393;** (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu versetzen, löschen Sie anschließend den Inhalt, und geben Sie den folgenden Text ein:
 
     ```text
    # Train a machine learning model and track with MLflow
@@ -46,7 +46,7 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks sin
 
 ## Laden von Daten in einen Dataframe
 
-Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainieren. Sie arbeiten mit dem [Diabetes-Dataset](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) von Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe. Dabei handelt es sich um eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
+Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainieren. Sie arbeiten mit dem [Diabetesdataset](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe. Dabei handelt es sich um eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
 
 1. Wählen Sie in Ihrem Notebook das Symbol **+ Code** unterhalb der aktuellen Zellenausgabe aus, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie in dieser den folgenden Code ein:
 
@@ -119,7 +119,7 @@ Nachdem Sie die Daten geladen haben, können Sie sie verwenden, um ein Machine L
    mlflow.set_experiment(experiment_name)
     ```
 
-    Der Code erstellt ein MLflow-Experiment namens `experiment-diabetes`. Ihre Modelle werden in diesem Experiment nachverfolgt.
+    Mit dem Code wird ein MLflow-Experiment namens **experiment-diabetes** erstellt. Ihre Modelle werden in diesem Experiment nachverfolgt.
 
 1. Fügen Sie dem Notebook eine weitere neue Codezelle hinzu, geben Sie den folgenden Code darin ein, und führen Sie ihn aus:
 
