@@ -48,7 +48,11 @@ Sie verwenden in dieser Übung ein *Notebook* zum Trainieren und Verwenden eines
 
 Als Erstes trainieren wir ein Machine Learning-Modell, das einen *Regressionsalgorithmus* verwendet, um die relevanten Antworten für Diabetespatienten vorherzusagen (ein quantitatives Maß für das Fortschreiten der Krankheit ein Jahr nach der Baseline)
 
-1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um Daten zu laden und vorzubereiten und diese zum Trainieren eines Modells zu verwenden.
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen.
+
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
+
+1. Geben Sie den folgenden Code ein, um Daten zu laden und vorzubereiten und diese zum Trainieren eines Modells zu verwenden.
 
     ```python
    import pandas as pd

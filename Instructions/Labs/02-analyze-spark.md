@@ -146,7 +146,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     Jetzt enthält der Dataframe die richtigen Spaltennamen (zusätzlich zum **Index**, der eine integrierte Spalte in allen Dataframes basierend auf der Ordnungsposition jeder Zeile ist). Die Datentypen der Spalten werden mithilfe einer Reihe von Standardtypen angegeben, die in der Spark SQL-Bibliothek definiert sind und am Anfang der Zelle importiert wurden.
 
-9. Vergewissern Sie sich, dass Ihre Änderungen auf die Daten angewendet wurden, indem Sie den Dataframe anzeigen. Führen Sie die folgende Zelle aus:
+9. Vergewissern Sie sich, dass Ihre Änderungen auf die Daten angewendet wurden, indem Sie den Dataframe anzeigen. Führen Sie den folgenden Code in einer neuen Codezelle aus:
 
     ```python
    display(df)
