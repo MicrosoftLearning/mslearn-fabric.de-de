@@ -112,7 +112,7 @@ Nachdem Sie die Daten erfasst und untersucht haben, können Sie sie transformier
    df.head()
     ```
 
-1. Wählen Sie im Menüband des Notebooks die Option **Daten** und dann die Dropdownliste **Data Wrangler starten** aus.
+1. Wählen Sie **Daten** im Menüband des Notebooks und dann in der Dropdownliste die Option**Datenrahmen in Data Wrangler transformieren** aus.
 1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert.
 
     Derzeit ist die Bezeichnungsspalte `Y`, also eine fortlaufende Variable. Um ein Machine Learning-Modell zu trainieren, das Y vorhersagt, müssen Sie ein Regressionsmodell trainieren. Die (vorhergesagten) Werte von Y sind möglicherweise schwer zu interpretieren. Stattdessen könnten wir das Training eines Klassifizierungsmodells untersuchen, das vorhersagt, ob jemand ein niedriges oder hohes Risiko für die Entwicklung von Diabetes aufweist. Um ein Klassifizierungsmodell trainieren zu können, müssen Sie eine binäre Bezeichnungsspalte basierend auf den Werten aus `Y` erstellen.
@@ -224,11 +224,11 @@ Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell
 
 Nach dem Vergleichen der Machine Learning-Modelle, die Sie experimentübergreifend trainiert haben, können Sie das Modell mit der besten Leistung auswählen. Um das Modell mit der besten Leistung zu verwenden, speichern Sie das Modell, und verwenden Sie es, um Vorhersagen zu generieren.
 
-1. Wählen Sie im Feld **Als Modell speichern** die Option **Speichern** aus.
-1. Wählen Sie im neu geöffneten Popupfenster die Option **Neues Modell erstellen** aus.
+1. Wählen Sie im Menüband „Experiment die Option **Als ML-Modell speichern** aus.
+1. Wählen Sie in dem neu geöffneten Popup-Fenster die Option **Neues ML-Modell erstellen** aus.
 1. Wählen Sie den Ordner `model` aus.
 1. Nennen Sie das Modell `model-diabetes`, und wählen Sie **Speichern** aus.
-1. Wählen Sie **Modell anzeigen** in der Benachrichtigung aus, die beim Erstellen des Modells oben rechts auf dem Bildschirm angezeigt wird. Sie können das Fenster auch aktualisieren. Das gespeicherte Modell ist unter **Modellversionen** verknüpft.
+1. Wählen Sie **ML-Modell anzeigen** in der Benachrichtigung aus, die beim Erstellen des Modells oben rechts auf dem Bildschirm angezeigt wird. Sie können das Fenster auch aktualisieren. Das gespeicherte Modell ist unter **ML-Modellversionen** verknüpft.
 
 Beachten Sie, dass das Modell, das Experiment und die Experimentausführung verknüpft sind, sodass Sie überprüfen können, wie das Modell trainiert wird.
 

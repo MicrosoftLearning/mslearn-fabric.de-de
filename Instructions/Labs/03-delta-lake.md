@@ -16,7 +16,7 @@ Diese Übung dauert ca. **40** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` die Option **Datentechnik mit Synapse** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -31,7 +31,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
     Nach etwa einer Minute ist ein neues leeres Lakehouse fertig. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-1. Laden Sie die Datendatei für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter, und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
+1. Laden Sie die [Datendatei](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
 
 1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **products**.
 
@@ -82,13 +82,17 @@ Sie können einen Dataframe als Deltatabelle speichern, indem Sie die `saveAsTab
 
 *Verwaltete* Tabellen sind Tabellen, für die sowohl die Schemametadaten als auch die Datendateien von Fabric verwaltet werden. Die Datendateien für die Tabelle werden im Ordner **Tabellen** erstellt.
 
-1. Verwenden Sie unter den von der ersten Codezelle zurückgegebenen Ergebnissen die Schaltfläche **+ Code**, um eine neue Codezelle hinzuzufügen, sofern noch keine Zelle vorhanden ist. Geben Sie dann den folgenden Code in die neue Zelle ein, und führen Sie sie aus:
+1. Verwenden Sie unter den Ergebnissen, die von der ersten Codezelle zurückgegeben werden, das Symbol **+ Code**, um eine neue Codezelle hinzuzufügen, falls noch keine vorhanden ist.
+
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
+
+2. Geben Sie den folgenden Code in die neue Zelle ein und führen Sie ihn aus:
 
     ```python
    df.write.format("delta").saveAsTable("managed_products")
     ```
 
-2. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und überprüfen Sie, ob die **managed_products**-Tabelle erstellt wurde.
+3. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und überprüfen Sie, ob die **managed_products**-Tabelle erstellt wurde.
 
 ### Erstellen einer *externen* Tabelle
 
