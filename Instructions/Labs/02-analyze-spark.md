@@ -16,9 +16,9 @@ Dieses Lab dauert ungefähr **45** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` die Option **Datentechnik mit Synapse** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
@@ -31,7 +31,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach einen Ordner mit Textdateien auf Ihren lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
-1. Laden Sie die Datendateien für diese Übung von [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) herunter, und extrahieren Sie sie.
+1. Laden Sie die [Datendateien](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip` herunter und extrahieren Sie diese.
 
 1. Stellen Sie nach dem Extrahieren des gezippten Archivs sicher, dass Sie über einen Ordner namens **orders** verfügen, der CSV-Dateien mit den Namen **2019.csv**, **2020.csv** und **2021.csv** enthält.
 1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Optionen **Hochladen** und **Ordner hochladen** aus. Laden Sie dann den Ordner **orders** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
@@ -71,7 +71,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     ![Screenshot: Notebook mit dem Bereich „Dateien“](./Images/notebook-files.png)
 
-2. Wählen Sie im Menü **...** für **2019.csv** die Option **Daten laden** > **Spark** aus. Dem Notebook sollte eine neue Codezelle mit folgendem Code hinzugefügt werden:
+1. Wählen Sie im Menü **...** für **2019.csv** die Option **Daten laden** > **Spark** aus. Dem Notebook sollte eine neue Codezelle mit folgendem Code hinzugefügt werden:
 
     ```python
    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
@@ -81,11 +81,11 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     > **Tipp:** Sie können die Lakehouse-Explorer-Bereiche auf der linken Seite ausblenden, indem Sie jeweils das Symbol **<<** verwenden. Dies hilft Ihnen, sich auf das Notebook zu konzentrieren.
 
-3. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen.
+1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen.
 
     > **Hinweis:** Da Sie zum ersten Mal Spark-Code ausführen, muss eine Spark-Sitzung gestartet werden. Dies bedeutet, dass die erste Ausführung in der Sitzung etwa eine Minute dauern kann. Nachfolgende Ausführungen erfolgen schneller.
 
-4. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
+1. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
 
     | Index | SO43701 | 11 | 01.07.2019 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271.9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -95,7 +95,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     Die Ausgabe zeigt die Zeilen und Spalten der Daten aus der Datei „2019.csv“ an. Beachten Sie jedoch, dass die Spaltenüberschriften nicht richtig dargestellt werden. Der Standardcode zum Laden der Daten in einen Dataframe geht davon aus, dass die CSV-Datei die Spaltennamen in der ersten Zeile enthält, aber in diesem Fall enthält die CSV-Datei nur die Daten ohne header-Informationen.
 
-5. Ändern Sie den Code wie folgt, um die Option **header** auf **false** festzulegen:
+1. Ändern Sie den Code wie folgt, um die Option **header** auf **false** festzulegen:
 
     ```python
    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
@@ -103,7 +103,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
    display(df)
     ```
 
-6. Führen Sie die Zelle erneut aus, und überprüfen Sie die Ausgabe, die in etwa wie folgt aussehen sollte:
+1. Führen Sie die Zelle erneut aus, und überprüfen Sie die Ausgabe, die in etwa wie folgt aussehen sollte:
 
    | Index | _c0 | _c1 | _c2 | _c3 | _c4 | _c5 | _c6 | _c7 | _c8 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -114,7 +114,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     Jetzt schließt der Dataframe die erste Zeile als Datenwerte korrekt ein, aber die Spaltennamen werden automatisch generiert und sind nicht sehr hilfreich. Damit die Daten Sinn ergeben, müssen Sie explizit das richtige Schema und den richtigen Datentyp für die Datenwerte in der Datei definieren.
 
-7. Ändern Sie den Code wie folgt, um ein Schema zu definieren und dieses beim Laden der Daten anzuwenden:
+1. Ändern Sie den Code wie folgt, um ein Schema zu definieren und dieses beim Laden der Daten anzuwenden:
 
     ```python
    from pyspark.sql.types import *
@@ -135,7 +135,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
    display(df)
     ```
 
-8. Führen Sie die bearbeitete Zelle aus, und überprüfen Sie die Ausgabe, die in etwa wie folgt aussehen sollte:
+1. Führen Sie die bearbeitete Zelle aus, und überprüfen Sie die Ausgabe, die in etwa wie folgt aussehen sollte:
 
    | Index | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | E-Mail | Element | Quantity (Menge) | UnitPrice (Stückpreis) | Tax (Steuern) |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -146,13 +146,15 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     Jetzt enthält der Dataframe die richtigen Spaltennamen (zusätzlich zum **Index**, der eine integrierte Spalte in allen Dataframes basierend auf der Ordnungsposition jeder Zeile ist). Die Datentypen der Spalten werden mithilfe einer Reihe von Standardtypen angegeben, die in der Spark SQL-Bibliothek definiert sind und am Anfang der Zelle importiert wurden.
 
-9. Vergewissern Sie sich, dass Ihre Änderungen auf die Daten angewendet wurden, indem Sie den Dataframe anzeigen. Führen Sie die folgende Zelle aus:
+1. Vergewissern Sie sich, dass Ihre Änderungen auf die Daten angewendet wurden, indem Sie den Dataframe anzeigen.
 
-    ```python
+1. Fügen Sie eine neue Codezelle hinzu, indem Sie den **Link +Code** verwenden, der angezeigt wird, wenn Sie die Maus auf der linken Seite der Ausgabe der aktuellen Zelle bewegen (oder auf der Menüleiste, auf der Registerkarte **Bearbeiten** die Option **+Codezelle hinzufügen**) auswählen. Führen Sie dann den folgenden Code in der neuen Codezelle aus:
+
+    ```Python
    display(df)
     ```
 
-10. Der Dataframe enthält nur die Daten aus der Datei **2019.csv**. Ändern Sie den Code so, dass der Dateipfad einen \*-Platzhalter verwendet, um die Auftragsdaten aus allen Dateien im Ordner **orders** zu lesen:
+1. Der Dataframe enthält nur die Daten aus der Datei **2019.csv**. Ändern Sie den Code so, dass der Dateipfad einen \*-Platzhalter verwendet, um die Auftragsdaten aus allen Dateien im Ordner **orders** zu lesen:
 
     ```python
     from pyspark.sql.types import *
@@ -173,7 +175,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
     display(df)
     ```
 
-11. Führen Sie die geänderte Codezelle aus, und überprüfen Sie die Ausgabe, die jetzt die Umsätze für 2019, 2020 und 2021 enthalten sollte.
+1. Führen Sie die geänderte Codezelle aus, und überprüfen Sie die Ausgabe, die jetzt die Umsätze für 2019, 2020 und 2021 enthalten sollte.
 
     **Hinweis:** Es wird nur eine Teilmenge der Zeilen angezeigt, sodass Sie möglicherweise keine Beispiele für alle Jahre anzeigen können.
 
@@ -228,7 +230,7 @@ Das Dataframeobjekt enthält eine Vielzahl von Funktionen, mit denen Sie die dar
    display(yearlySales)
     ```
 
-4. Führen Sie die hinzugefügte Codezelle aus, und beachten Sie, dass in den Ergebnissen die Anzahl der Verkaufsaufträge pro Jahr angezeigt wird. Beachten Sie, dass die **select**-Methode die SQL-Funktion **year** zum Extrahieren der year-Komponente des *OrderDate*-Felds enthält (weshalb der Code eine **import**-Anweisung zum Importieren von Funktionen aus der Spark SQL-Bibliothek enthält). Anschließend wird die **alias**-Methode verwendet, um dem extrahierten year-Wert einen Spaltennamen zuzuweisen. Die Daten werden dann nach der abgeleiteten *Year*-Spalte gruppiert, und die Anzahl der Zeilen in jeder Gruppe wird berechnet, bevor schließlich die **orderBy**-Methode verwendet wird, um den resultierenden Dataframe zu sortieren.
+4. Führen Sie die hinzugefügte Codezelle aus, und beachten Sie, dass in den Ergebnissen die Anzahl der Verkaufsaufträge pro Jahr angezeigt wird. Beachten Sie, dass die **select**-Methode die SQL-Funktion **year** zum Extrahieren der year-Komponente des *OrderDate*-Felds enthält (weshalb der Code eine **import**-Anweisung zum Importieren von Funktionen aus der Spark SQL-Bibliothek enthält). Es verwendet dann eine **Alias**-Methode, um dem extrahierten Jahreswert einen Spaltennamen zuzuweisen. Die Daten werden dann nach der abgeleiteten *Year*-Spalte gruppiert, und die Anzahl der Zeilen in jeder Gruppe wird berechnet, bevor schließlich die **orderBy**-Methode verwendet wird, um den resultierenden Dataframe zu sortieren.
 
 ## Verwenden von Spark zum Transformieren von Datendateien
 
@@ -269,7 +271,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
 1. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu, um den transformierten Dataframe im Parquet-Format zu speichern (Daten werden überschrieben, falls bereits vorhanden):
 
-    ```python
+    ```Python
    transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
    print ("Transformed data saved!")
     ```
@@ -282,7 +284,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
 3. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu, um einen neuen Dataframe aus den Parquet-Dateien im Ordner **transformed_orders/orders** zu laden:
 
-    ```python
+    ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
    display(orders_df)
     ```
@@ -293,7 +295,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
 1. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu. Dadurch wird der Dataframe gespeichert, und die Daten werden nach **Year** und **Month** partitioniert:
 
-    ```python
+    ```Python
    orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
    print ("Transformed data saved!")
     ```
@@ -306,7 +308,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
 3. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu, um einen neuen Dataframe aus der Datei **orders.parquet** zu laden:
 
-    ```python
+    ```Python
    orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
    display(orders_2021_df)
     ```

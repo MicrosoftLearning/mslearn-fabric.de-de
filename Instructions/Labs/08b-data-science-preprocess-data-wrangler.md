@@ -48,7 +48,11 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 
 Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**OJ Sales-Dataset**](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-oj-sales-simulated?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie sie in einen Pandas Dataframe, eine Struktur, die von Data Wrangler unterstützt wird.
 
-1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen.
+
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
+
+1. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
 
     ```python
    # Azure storage access info for open dataset diabetes

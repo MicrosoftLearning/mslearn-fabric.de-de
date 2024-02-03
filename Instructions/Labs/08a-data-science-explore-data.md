@@ -48,7 +48,11 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bie
 
 Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**Diabetesdataset**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe, eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
 
-1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zelle, um dem Notebook eine neue Codezelle hinzuzufügen.
+
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
+
+1. Geben Sie den folgenden Code ein, um das Dataset in einen Datenrahmen zu laden.
 
     ```python
    # Azure storage access info for open dataset diabetes
@@ -66,7 +70,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**D
    df = spark.read.parquet(wasbs_path)
     ```
 
-1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen. Alternativ können Sie auf Ihrer Tastatur **UMSCHALT** + **EINGABETASTE** drücken, um eine Zelle auszuführen.
+1. Verwenden Sie die Schaltfläche **&#9655; Zelle ausführen** links neben der Zelle, um diese auszuführen. Alternativ können Sie **SHIFT** + **ENTER** auf Ihrer Tastatur drücken, um eine Zelle auszuführen.
 
     > **Hinweis**: Da Sie Spark-Code zum ersten Mal in dieser Sitzung ausführen, muss der Spark-Pool gestartet werden. Dies bedeutet, dass die erste Ausführung in der Sitzung etwa eine Minute dauern kann. Nachfolgende Ausführungen erfolgen schneller.
 
@@ -112,7 +116,7 @@ Nachdem Sie die Daten geladen haben, können Sie die Struktur des Datasets über
    print(df.dtypes)
     ```
 
-    Das Dataset enthält **442 Zeilen** und **11 Spalten**. Dies bedeutet, dass Sie über 442 Beispiele und 11 Features oder Variablen in Ihrem Dataset verfügen. Die `SEX`-Variable enthält wahrscheinlich kategorische Daten oder Zeichenfolgendaten.
+    Das Dataset enthält **442 Zeilen** und **11 Spalten**. Dies bedeutet, dass Sie über 442 Beispiele und 11 Features oder Variablen in Ihrem Dataset verfügen. Die Variable **SEX** enthält wahrscheinlich kategorische Daten oder Zeichenfolgendaten.
 
 ## Überprüfen auf fehlende Daten
 

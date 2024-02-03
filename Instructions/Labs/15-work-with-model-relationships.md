@@ -26,9 +26,10 @@ In dieser Übung öffnen Sie eine vordefinierte Power BI Desktop-Lösung, um meh
 
 ### Herunterladen der Starterdatei
 
-1. Öffnen Sie die [Starterdatei zur Vertriebsanalyse](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/15/Starter/Sales%20Analysis%20-%20Work%20with%20model%20relationships.pbix), und speichern Sie sie an einem Speicherort, den Sie sich merken können.
+1. Laden Sie die [Verkaufsanalyse-Starterdatei](https://aka.ms/fabric-relationships-starter) aus `https://aka.ms/fabric-relationships-starter` herunter, und speichern Sie sie auf Ihrem lokalen Computer (in einem beliebigen Ordner).
 
 1. Navigieren Sie zu der heruntergeladenen Datei, und öffnen Sie sie in Power BI Desktop.
+    >Hinweis: Ignorieren und schließen Sie die Warnung, in der Sie aufgefordert werden, Änderungen anzuwenden.
 
 ### Überprüfen Sie das Datenmodell
 
@@ -165,8 +166,6 @@ In dieser Aufgabe verwenden Sie die Funktion USERELATIONSHIP, um eine inaktive B
 
 2. Ersetzen Sie den Text in der Formelleiste (unter der Registerkarte) mit der folgenden Measure-Definition und drücken Sie dann die **Eingabetaste**.
 
-    *Tipp: Alle Formeln können aus der Datei **D:\fabric\Allfiles\Labs\15\Assets\Snippets.txt** kopiert und eingefügt werden.*
-
     ```DAX
     Sales Shipped =
     CALCULATE (
@@ -213,9 +212,7 @@ In dieser Aufgabe entfernen Sie die vorhandene Beziehung zur Spalte **ShipDateKe
 
     ![](Images/work-with-model-relationships-image27.png)
 
-3. Wenn Sie aufgefordert werden, den Löschvorgang zu bestätigen, wählen Sie **OK** aus.
-
-    ![](Images/work-with-model-relationships-image28.png)
+3. Wenn Sie aufgefordert werden, den Löschvorgang zu bestätigen, klicken Sie auf **Ja**.
 
     *Das Löschen der Beziehung führt zu einem Fehler mit dem Measure **Waren versandt**. Sie schreiben die Measureformel später in dieser Übung neu.*
 
@@ -245,17 +242,17 @@ In dieser Aufgabe deaktivieren Sie zwei Beziehungsoptionen.
 
 In dieser Aufgabe erstellen Sie eine Abfrage, um dem Modell eine weitere Datumstabelle hinzuzufügen.
 
-1. Wählen Sie auf dem Menüband **Home** in der Gruppe **Abfragen** das Symbol **Daten transformieren** aus.
+1. Wählen Sie auf der Registerkarte des Menübands **Start** in der Gruppe **Abfragen** das Symbol **Daten transformieren** aus, wodurch der **Power Query-Editor** geöffnet wird.
 
     ![](Images/work-with-model-relationships-image33.png)
 
-    *Wenn Sie aufgefordert werden, anzugeben, wie eine Verbindung hergestellt werden soll, **bearbeiten Sie Anmeldeinformationen **und geben Sie an, wie sie sich anmelden.*
+    *Wenn Sie aufgefordert werden, anzugeben, wie die Verbindung hergestellt werden soll, **bearbeiten Sie die Anmeldeinformationen**.*
 
     ![](Images/work-with-model-relationships-image52.png)
 
-    *Wählen Sie **Verbinden*** aus.
+    *Übernehmen Sie die Standardverbindungseinstellungen für Windows als „Aktuelle Anmeldeinformationen verwenden“, und **stellen Sie dann die Verbindung her**.*
 
-     ![](Images/work-with-model-relationships-image53.png)
+     ![](Images/work-with-model-relationships-image53.png) *Wählen Sie **Ja** aus, um die Warnmeldung zu schließen.*
 
 2. Klicken Sie im Fenster **Power Query-Editor** im Bereich **Abfragen** (links) mit der rechten Maustaste auf die **Datumsabfrage**, und wählen Sie dann **Referenz** aus.
 

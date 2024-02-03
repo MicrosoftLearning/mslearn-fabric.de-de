@@ -48,7 +48,11 @@ Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks sin
 
 Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainieren. Sie arbeiten mit dem [Diabetesdataset](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) aus Azure Open Datasets. Nachdem Sie die Daten geladen haben, konvertieren Sie diese in einen Pandas-Dataframe. Dabei handelt es sich um eine gängige Struktur für die Arbeit mit Daten in Zeilen und Spalten.
 
-1. Wählen Sie in Ihrem Notebook das Symbol **+ Code** unterhalb der aktuellen Zellenausgabe aus, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie in dieser den folgenden Code ein:
+1. Verwenden Sie in Ihrem Notebook das Symbol **+ Code** unter der neuesten Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen.
+
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
+
+1. Geben Sie dann den folgenden Code ein:
 
     ```python
    # Azure storage access info for open dataset diabetes

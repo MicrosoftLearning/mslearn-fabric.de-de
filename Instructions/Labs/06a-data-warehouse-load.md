@@ -46,7 +46,7 @@ Da wir in unserem Szenario keine verfügbaren Daten haben, müssen wir Daten erf
 1. Geben Sie die folgenden Informationen im Dialogfeld **Datei in neue Tabelle laden** an.
     - **Name der neuen Tabelle:** staging_sales
     - **Kopfzeile für Spaltennamen:** Ausgewählt
-    - **Trennzeichen:** \n
+    - **Trennzeichen:** ,
 
 1. Wählen Sie **Laden** aus.
 
@@ -101,11 +101,6 @@ Erstellen wir nun die Faktentabellen und Dimensionen für die Sales-Daten. Auße
         );
         
     ALTER TABLE Sales.Dim_Item add CONSTRAINT PK_Dim_Item PRIMARY KEY NONCLUSTERED (ItemID) NOT ENFORCED
-    GO
-    
-    CREATE VIEW [Sales].[Staging_Sales]
-    AS
-        SELECT * FROM [ExternalData].[dbo].[staging_sales];
     GO
     ```
 
@@ -183,7 +178,7 @@ Führen wir nun analytische Abfragen aus, um die Daten im Warehouse zu überprü
     SELECT c.CustomerName, SUM(s.UnitPrice * s.Quantity) AS TotalSales
     FROM Sales.Fact_Sales s
     JOIN Sales.Dim_Customer c
-    ON s.SalesOrderNumber = c.SalesOrderNumber
+    ON s.CustomerID = c.CustomerID
     WHERE YEAR(s.OrderDate) = 2021
     GROUP BY c.CustomerName
     ORDER BY TotalSales DESC;

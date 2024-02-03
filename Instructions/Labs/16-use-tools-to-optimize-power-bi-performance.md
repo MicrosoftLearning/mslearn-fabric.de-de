@@ -66,15 +66,15 @@ Laden Sie das Tool Tabular Editor 2 herunter, und installieren Sie es, um die E
 
 In dieser Aufgabe öffnen Sie eine vordefinierte Power BI Desktop-Lösung.
 
-1. Öffnen Sie die [Starterdatei zur Vertriebsanalyse](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/16/Starter/Sales%20Analysis%20-%20Use%20tools%20to%20optimize%20Power%20BI%20performance.pbix), und speichern Sie sie an einem Speicherort, den Sie sich merken können.
+1. Laden Sie die [Sales Analysis-Starterdatei](https://aka.ms/fabric-optimize-starter) von `https://aka.ms/fabric-optimize-starter` herunter, und speichern Sie sie an einem Speicherort, den Sie sich merken können.
 
 1. Navigieren Sie zu der heruntergeladenen Datei, und öffnen Sie sie in Power BI Desktop.
 
-7. Wählen Sie die Registerkarte **Externe Tools** des Menübands aus.
+1. Wählen Sie die Registerkarte **Externe Tools** des Menübands aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image8.png)
 
-8. Über diese Registerkarte des Menübands können Sie Tabular Editor starten.
+1. Über diese Registerkarte des Menübands können Sie Tabular Editor starten.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image9.png)
 
@@ -115,8 +115,6 @@ In dieser Aufgabe laden Sie BPA-Regeln.
     ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
 3. Fügen Sie das folgende Skript ein.
-
-    *Tipp: Das Skript kann aus der Datei **D:\fabric\Allfiles\Labs\16\Assets\Snippets.txt** kopiert und eingefügt werden.*
 
     ```csharp
     System.Net.WebClient w = new System.Net.WebClient(); 
@@ -204,7 +202,7 @@ In dieser Aufgabe öffnen Sie den BPA und überprüfen die Ergebnisse der Überp
     *Tipp: Alle Formeln können aus der Datei **D:\fabric\Allfiles\Labs\16\Snippets.txt** kopiert und eingefügt werden.*
 
     ```dax
-    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )C#
+    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )
     ```
 
 7. Um die Modelländerungen zu speichern, wählen Sie auf der Symbolleiste den Befehl **Save changes to the connected database** aus (oder drücken Sie **STRG+S**).
@@ -255,6 +253,8 @@ In dieser Aufgabe öffnen Sie den BPA und überprüfen die Ergebnisse der Überp
 
     *Sie müssen auch die Power BI Desktop-Datei speichern, um sicherzustellen, dass die in Tabular Editor vorgenommenen Änderungen gespeichert werden.*
 
+    *Wählen Sie in der Nachricht zu ausstehenden Änderungen **Später anwenden** aus.*
+
 ## Verwenden von DAX Studio
 
 In dieser Übung verwenden Sie DAX Studio, um DAX-Abfragen in der Power BI-Berichtsdatei zu optimieren.
@@ -297,7 +297,7 @@ In dieser Aufgabe laden Sie DAX Studio herunter.
 1. Aktivieren Sie nach Abschluss der Installation **Launch DAX Studio**, und wählen Sie **Finish** aus. Dadurch wird DAX Studio geöffnet.
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31f.png)
 
-1. Wählen Sie im Fenster **Connect** die Option **PBI/SSDT Model** aus.
+1. Wählen Sie im Fenster **Connect** die Option **Power BI-/SSDT-Modell** aus.
 
 1. Vergewissern Sie sich, dass in der entsprechenden Dropdownliste das Modell **Sales Analysis - Use tools to optimize Power BI performance** ausgewählt ist.
 
@@ -317,45 +317,43 @@ In dieser Aufgabe optimieren Sie eine Abfrage mithilfe einer verbesserten Measur
 
 *Beachten Sie, dass die Optimierung einer Abfrage bei einem Datenmodell mit geringem Datenvolumen schwierig ist. Der Schwerpunkt dieser Übung liegt auf der Verwendung von DAX Studio und nicht auf der Optimierung von DAX-Abfragen.*
 
-1. Wählen Sie im Menü **File** die Option **Save** aus.
+1. Laden Sie in einem Browserfenster die Datei [Monthly Profit Growth.dax](https://aka.ms/fabric-optimize-dax) von `https://aka.ms/fabric-optimize-dax` herunter, und speichern Sie sie auf Ihrem lokalen Computer (in einem beliebigen Ordner).
 
-2. Navigieren Sie im Fenster **Öffnen** zum Ordner **D:\fabric\Allfiles\Labs\16\Assets**.
+   ![](https://github.com/MicrosoftLearning/mslearn-fabric/assets/34583336/58254cce-753e-4322-9060-536e12554aa7)
 
-3. Wählen Sie **Monthly Profit Growth.dax** aus.
-
-4. Wählen Sie **Öffnen** aus.
+3. Wechseln Sie zum Dax Studio-Fenster, und wählen Sie im Menü **Datei** die Option **Durchsuchen** aus, um zur Datei **Monthly Profit Growth.dax** zu navigieren und sie zu **öffnen**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image33.png)
 
-5. Lesen Sie die Kommentare am Anfang der Datei, und überprüfen Sie dann die folgende Abfrage.
+6. Lesen Sie die Kommentare am Anfang der Datei, und überprüfen Sie dann die folgende Abfrage.
 
     *Es ist nicht wichtig, dass Sie die Abfrage vollständig verstehen.*
 
     *Die Abfrage definiert zwei Measures, die das monatliche Gewinnwachstum ermitteln. Derzeit verwendet die Abfrage nur das erste Measure (in Zeile 72). Wenn ein Measure nicht verwendet wird, hat es keinen Einfluss auf die Abfrageausführung.*
 
-6. Um eine Serverablaufverfolgung zum Aufzeichnen detaillierter Zeitinformationen für die Leistungsprofilerstellung auszuführen, wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Traces** die Option **Server Timings** aus.
+7. Um eine Serverablaufverfolgung zum Aufzeichnen detaillierter Zeitinformationen für die Leistungsprofilerstellung auszuführen, wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Traces** die Option **Server Timings** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image34.png)
 
-7. Wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Query** das Symbol **Run** aus.
+8. Wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Query** das Symbol **Run** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image35.png)
 
-8. Überprüfen Sie im unteren Bereich das Abfrageergebnis.
+9. Überprüfen Sie im unteren Bereich das Abfrageergebnis.
 
     *Die letzte Spalte zeigt die Measureergebnisse.*
 
-9. Wählen Sie im unteren Bereich die Registerkarte **Server Timings** aus.
+10. Wählen Sie im unteren Bereich die Registerkarte **Server Timings** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image36.png)
 
-10. Überprüfen Sie die Statistiken, die auf der linken Seite angezeigt werden.
+11. Überprüfen Sie die Statistiken, die auf der linken Seite angezeigt werden.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image37.png)
 
     *Die Statistiken (von oben links nach unten rechts) geben die Ausführungsdauer der Abfrage in Millisekunden und die CPU-Dauer der Speicher-Engine (SE) an. In diesem Fall (Ihre Ergebnisse werden anders aussehen) wurden 73,5 % der Zeit von der Formel-Engine (FE) beansprucht und die restlichen 26,5 % von der SE. Es gab 34 SE-Einzelabfragen und 21 Cachetreffer.*
 
-11. Führen Sie die Abfrage erneut aus. Sie werden feststellen, dass alle SE-Abfragen aus dem SE-Cache stammen.
+12. Führen Sie die Abfrage erneut aus. Sie werden feststellen, dass alle SE-Abfragen aus dem SE-Cache stammen.
 
     *Das liegt daran, dass die Ergebnisse zur Wiederverwendung zwischengespeichert wurden. Mitunter möchten Sie bei Ihren Tests den Cache löschen. Wählen Sie in diesem Fall auf der Registerkarte **Home** des Menübands den Abwärtspfeil für den Befehl **Run** aus.*
 
@@ -363,15 +361,15 @@ In dieser Aufgabe optimieren Sie eine Abfrage mithilfe einer verbesserten Measur
 
     *Die zweite Measuredefinition bietet ein effizienteres Ergebnis. Jetzt aktualisieren Sie die Abfrage, um das zweite Measure zu verwenden.*
 
-12. Ersetzen Sie in Zeile 72 das Wort **Bad** durch **Better**.
+13. Ersetzen Sie in Zeile 72 das Wort **Bad** durch **Better**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image39.png)
 
-13. Führen Sie die Abfrage aus, und überprüfen Sie die Statistiken zu den Serverzeiten.
+14. Führen Sie die Abfrage aus, und überprüfen Sie die Statistiken zu den Serverzeiten.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image40.png)
 
-14. Führen Sie die Abfrage ein zweites Mal aus, um vollständige Cachetreffer zu erzielen.
+15. Führen Sie die Abfrage ein zweites Mal aus, um vollständige Cachetreffer zu erzielen.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image41.png)
 

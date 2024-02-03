@@ -6,7 +6,7 @@ lab:
 
 # Erstellen einer Medaillon-Architektur in einem Microsoft Fabric-Lakehouse
 
-In dieser Übung werden Sie mithilfe von Notebooks eine Medaillon-Architektur in einem Fabric-Lakehouse aufbauen. Sie werden einen Arbeitsbereich erstellen, ein Lakehouse erstellen, Daten in die Bronzeschicht hochladen, die Daten transformieren und sie in die Silber-Deltatabelle laden, die Daten weiter transformieren und in die Gold-Deltatabellen laden und dann das Dataset erkunden und Beziehungen erstellen.
+In dieser Übung werden Sie mithilfe von Notebooks eine Medaillon-Architektur in einem Fabric-Lakehouse aufbauen. Sie werden einen Arbeitsbereich erstellen, ein Lakehouse anlegen, Daten in die Bronzeschicht hochladen, die Daten transformieren und in die silberne Deltatabelle laden, die Daten weiter transformieren und in die goldenen Deltatabellen laden und dann das semantische Modell erkunden und Beziehungen erstellen.
 
 Diese Übung dauert ca. **45** Minuten.
 
@@ -23,7 +23,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace-medallion.png)
 
-5. Navigieren Sie zu den Arbeitsbereichseinstellungen, und aktivieren Sie die Previewfunktion **Datenmodellbearbeitung**. Dadurch können Sie Beziehungen zwischen Tabellen in Ihrem Lakehouse mit einem Power BI-Dataset erstellen.
+5. Navigieren Sie zu den Arbeitsbereichseinstellungen, und aktivieren Sie die Previewfunktion **Datenmodellbearbeitung**. Damit können Sie mithilfe eines semantischen Modells von Power BI Beziehungen zwischen Tabellen in Ihrem Lakehouse erstellen.
 
     ![Screenshot der Seite mit den Arbeitsbereichseinstellungen in Fabric](./Images/workspace-settings.png)
 
@@ -582,25 +582,24 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
 
 Sie verfügen jetzt über eine kuratierte, modellierte **Goldebene**, die für Berichterstellung und Analyse verwendet werden kann.
 
-## Erstellen eines Datasets
+## Erstellen eines semantischen Modells
 
-In Ihrem Arbeitsbereich können Sie jetzt die Goldschicht verwenden, um einen Bericht zu erstellen und die Daten zu analysieren. Sie können direkt in Ihrem Arbeitsbereich auf das Dataset zugreifen, um Beziehungen und Measures für die Berichterstellung zu erstellen.
+In Ihrem Arbeitsbereich können Sie jetzt die Goldschicht verwenden, um einen Bericht zu erstellen und die Daten zu analysieren. Sie können direkt in Ihrem Arbeitsbereich auf das semantische Modell zugreifen, um Beziehungen und Kennzahlen für die Berichterstattung zu erstellen.
 
-Beachten Sie, dass Sie nicht das **Standarddataset** verwenden können, das automatisch erstellt wird, wenn Sie ein Lakehouse erstellen. Sie müssen aus dem Lakehouse-Explorer ein neues Dataset erstellen, das die Goldtabellen enthält, die Sie in dieser Übung erstellt haben.
+Beachten Sie, dass Sie nicht das **Standard-Semantikmodell** verwenden können, das automatisch erstellt wird, wenn Sie ein Lakehouse erstellen. Sie müssen ein neues semantisches Modell erstellen, das die in dieser Übung erstellten Goldtabellen aus dem Lakehouse Explorer enthält.
 
 1. Navigieren Sie in Ihrem Arbeitsbereich zu Ihrem **Vertrieb**-Lakehouse.
-2. Wählen Sie im Menüband der Lakehouse-Exploreransicht die Option **Neues Power BI-Dataset** aus.
-3. Wählen Sie Ihre transformierten Goldtabellen aus, die in Ihr Dataset eingeschlossen werden sollen, und wählen Sie **Bestätigen** aus.
+2. Wählen Sie **Neues semantisches Modell** aus dem Menüband der Ansicht des Lakehouse Explorers.
+3. Weisen Sie Ihrem neuen semantischen Modell den Namen **Sales_Gold** zu.
+4. Wählen Sie die transformierten Goldtabellen aus, die Sie in Ihr semantisches Modell aufnehmen möchten, und wählen Sie **Bestätigen**.
    - dimdate_gold
    - dimcustomer_gold
    - dimproduct_gold
    - factsales_gold
 
-    Dadurch wird das Dataset in Fabric geöffnet, wo Sie Beziehungen und Measures erstellen können, wie hier dargestellt:
+    Dadurch wird das semantische Modell in Fabric geöffnet, wo Sie Beziehungen und Kennzahlen erstellen können, wie hier gezeigt:
 
-    ![Screenshot eines Datasets in Fabric.](./Images/dataset-relationships.png)
-
-4. Benennen Sie Ihr Dataset um, damit es einfacher zu identifizieren ist. Wählen Sie den Datasetnamen in der oberen linken Ecke des Fensters aus. Benennen Sie das Dataset in **Sales_Gold** um.
+    ![Screenshot eines semantischen Modells in Fabric.](./Images/dataset-relationships.png)
 
 Von hier aus können Sie oder andere Mitglieder Ihres Datenteams Berichte und Dashboards basierend auf den Daten in Ihrem Lakehouse erstellen. Diese Berichte werden direkt mit der Goldschicht Ihres Lakehouses verbunden, sodass sie immer die neuesten Daten widerspiegeln.
 
