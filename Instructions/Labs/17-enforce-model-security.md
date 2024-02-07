@@ -28,7 +28,7 @@ In dieser Übung bereiten Sie Ihre Umgebung vor.
 
 ### Herunterladen der Power BI-Starterdatei
 
-1. Öffnen Sie die [Starterdatei zur Vertriebsanalyse](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/17/Starter/Sales%20Analysis%20-%20Enforce%20model%20security.pbix), und speichern Sie sie an einem Speicherort, den Sie sich merken können.
+1. Laden Sie die [Sales Analysis-Starterdatei](https://aka.ms/fabric-security-starter) über `https://aka.ms/fabric-security-starter` herunter, und speichern Sie sie in einem beliebigen Ordner auf Ihrem lokalen Computer.
 
 1. Navigieren Sie zu der heruntergeladenen Datei, und öffnen Sie sie in Power BI Desktop.
 
@@ -38,7 +38,7 @@ In dieser Übung bereiten Sie Ihre Umgebung vor.
 
 In dieser Aufgabe melden Sie sich beim Power BI-Dienst an, starten eine Testlizenz und erstellen einen Arbeitsbereich.
 
-1. Navigieren Sie in einem Webbrowser zu [app.powerbi.com](https://app.powerbi.com/).
+1. Rufen Sie in einem Webbrowser `https://app.powerbi.com/` auf.
 
 2. Schließen Sie den Anmeldevorgang mit dem Konto ab, das Sie auch in Power BI Desktop verwendet haben.
 
@@ -50,17 +50,13 @@ In dieser Aufgabe melden Sie sich beim Power BI-Dienst an, starten eine Testliz
 
 In dieser Aufgabe erstellen Sie einen Arbeitsbereich.
 
-1. Um einen Arbeitsbereich zu erstellen, wählen Sie im Power BI-Dienst im Bereich **Navigation** auf der linken Seite **Arbeitsbereiche** und dann **Arbeitsbereich erstellen** aus.
+1. Wählen Sie zum Erstellen eines Arbeitsbereichs im Power BI-Dienst im Bereich **Navigation** auf der linken Seite die Option **Arbeitsbereiche** aus, und klicken Sie dann auf **+ Neuer Arbeitsbereich**.
 
-    ![](Images/enforce-model-security-image5.png)
-
-2. Geben Sie im Bereich **Arbeitsbereich erstellen** (auf der rechten Seite) im Feld **Arbeitsbereichsname** einen Namen für den Arbeitsbereich ein.
+2. Geben Sie im Bereich **Arbeitsbereich erstellen** auf der rechten Seite im Feld **Name** einen Namen für den Arbeitsbereich ein.
 
     *Der Arbeitsbereichsname muss innerhalb des Mandanten eindeutig sein.*
 
-    ![](Images/enforce-model-security-image6.png)
-
-3. Wählen Sie **Speichern**.
+3. Wählen Sie **Übernehmen**.
 
     *Nachdem der Arbeitsbereich erstellt wurde, wird er geöffnet. In einer späteren Übung veröffentlichen Sie ein Semantikmodell in diesem Arbeitsbereich.*
 
@@ -172,7 +168,7 @@ In dieser Aufgabe überprüfen Sie eine der statischen Rollen.
 
 In dieser Aufgabe wird der Bericht veröffentlicht.
 
-1. Speichern Sie die Power BI Desktop-Datei.
+1. Speichern Sie die Power BI Desktop-Datei. Wenn Sie aufgefordert werden, die ausstehenden Änderungen anzuwenden, klicken Sie auf **Später übernehmen**.
 
     ![](Images/enforce-model-security-image27.png)
 
@@ -283,6 +279,16 @@ In dieser Aufgabe fügen Sie dem Modell die Tabelle **Salesperson** hinzu.
 2. Wählen Sie auf dem Menüband **Home** in der Gruppe **Abfragen** das Symbol **Daten transformieren** aus.
 
     ![](Images/enforce-model-security-image44.png)
+
+    *Wenn Sie aufgefordert werden, anzugeben, wie eine Verbindung hergestellt werden soll, **bearbeiten Sie Anmeldeinformationen **und geben Sie an, wie sie sich anmelden.*
+
+    ![](Images/work-with-model-relationships-image52.png)
+
+    *Wählen Sie **Verbinden*** aus.
+
+     ![](Images/work-with-model-relationships-image53.png)
+
+    *Klicken Sie auf der Seite **Verschlüsselungsunterstützung** auf **OK**.*
 
 3. Klicken Sie im Fenster **Power Query-Editor** im Bereich **Abfragen** (auf der linken Seite) mit der rechten Maustaste auf die Abfrage **Customer**, und wählen Sie dann **Duplizieren** aus.
 
@@ -400,7 +406,7 @@ In dieser Aufgabe erstellen Sie eine dynamische Rolle, die Berechtigungen basier
 
     ![](Images/enforce-model-security-image65.png)
 
-6. Ersetzen Sie im Feld **Tabellenfilter-DAX-Ausdruck** den **Wert** durch **USERPRINCIPALNAME()**.
+6. Ersetzen Sie im Feld **Tabellenfilter-DAX-Ausdruck** die Angabe **"Value"** durch `USERPRINCIPALNAME()`.
 
     ![](Images/enforce-model-security-image66.png)
 
