@@ -18,9 +18,9 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` die Option **Datentechnik mit Synapse** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
@@ -45,7 +45,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Fabric bietet mehrere Möglichkeiten zum Laden von Daten in das Lakehouse (einschließlich integrierter Unterstützung für Pipelines, die externe Datenquellen und Datenflüsse (Gen 2) kopieren, die Sie mithilfe von visuellen Tools basierend auf Power Query definieren können). Eine der einfachsten Methoden zum Erfassen kleiner Datenmengen ist jedoch das Hochladen von Dateien oder Ordnern von Ihrem lokalen Computer (oder ggf. einer Lab-VM).
 
-1. Laden Sie die Datei **sales.csv** von [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) herunter, und speichern Sie sie als **sales.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
+1. Laden Sie die Datei [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) von `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv` herunter, und speichern Sie sie als **sales.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
 
    > **Hinweis:** Um die Datei herunterzuladen, öffnen Sie eine neue Registerkarte im Browser, und fügen Sie die URL ein. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle auf der Seite mit den Daten, und wählen Sie **Speichern als** aus, um die Seite als CSV-Datei zu speichern.
 
@@ -88,9 +88,7 @@ Die von Ihnen hochgeladenen Verkaufsdaten befinden sich in einer Datei, mit der 
 
 Wenn Sie ein Lakehouse erstellen und darin Tabellen definieren, wird automatisch ein SQL-Endpunkt erstellt, über den die Tabellen mithilfe von `SELECT`-SQL-Anweisungen abgefragt werden können.
 
-1. Wechseln Sie oben rechts auf der Lakehouseseite von **Lakehouse** zu **SQL-Endpunkt**. Warten Sie dann kurz, bis der SQL-Abfrageendpunkt für Ihr Lakehouse auf einer grafischen Benutzeroberfläche geöffnet wird, über die Sie wie im Folgenden gezeigt die zugehörigen Tabellen abfragen können:
-
-    ![Screenshot: Seite für den SQL-Endpunkt](./Images/lakehouse-sql-endpoint.png)
+1. Wechseln Sie oben rechts auf der Lakehouseseite von **Lakehouse** zu **SQL-Analyseendpunkt**. Warten Sie dann kurz, bis der SQL-Analyseendpunkt für Ihr Lakehouse auf einer grafischen Benutzeroberfläche geöffnet wird, über die Sie wie im Folgenden gezeigt die zugehörigen Tabellen abfragen können:
 
 2. Verwenden Sie die Schaltfläche **Neue SQL-Abfrage**, um einen neuen Abfrage-Editor zu öffnen, und geben Sie die folgende SQL-Abfrage ein:
 
@@ -131,13 +129,14 @@ Während viele Datenexpert*innen mit SQL vertraut sind, können Data Analysts mi
 
 ## Erstellen eines Berichts
 
-Die Tabellen in Ihrem Lakehouse werden automatisch zu einem Standarddataset hinzugefügt, das ein Datenmodell für die Berichterstellung mit Power BI definiert.
+Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Semantikmodell für die Berichterstellung mit Power BI hinzugefügt.
 
-1. Wählen Sie unten auf der Seite des SQL-Endpunkts die Registerkarte **Modell** aus. Das Datenmodellschema für das Dataset wird angezeigt.
 
-    ![Screenshot: Datenmodell](./Images/data-model.png)
+1. Wählen Sie unten auf der Seite „SQL-Endpunkt“ die Registerkarte **Modell** aus. Das Datenmodellschema für das semantische Modell wird angezeigt.
 
-    > **Hinweis:** In dieser Übung besteht das Datenmodell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
+    ![Screenshot eines semantischen Modells.](./Images/data-model.png)
+
+    > **Hinweis:** In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
 
 2. Klicken Sie auf dem Menüband auf die Registerkarte **Berichterstellung**, und wählen Sie dann **Neuer Bericht** aus. Eine neue Browserregisterkarte wird geöffnet, in der Sie Ihren Bericht entwerfen können.
 
@@ -158,13 +157,13 @@ Die Tabellen in Ihrem Lakehouse werden automatisch zu einem Standarddataset hinz
 5. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als **Item Sales Report** in dem Arbeitsbereich, den Sie zuvor erstellt haben.
 6. Schließen Sie die Browserregisterkarte mit dem Bericht, um zum SQL-Endpunkt für Ihr Lakehouse zurückzukehren. Wählen Sie dann links auf der Hubmenüleiste Ihren Arbeitsbereich aus, um zu überprüfen, ob er die folgenden Elemente enthält:
     - Ihr Lakehouse
-    - SQL-Endpunkt für Ihr Lakehouse
-    - Standarddataset für die Tabellen in Ihrem Lakehouse
+    - SQL-Analyseendpunkt für Ihr Lakehouse.
+    - Standardmäßiges Semantikmodell für die Tabellen in Ihrem Lakehouse.
     - Bericht **Item Sales Report**
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie ein Lakehouse erstellt und Daten in das Lakehouse importiert. Sie haben erfahren, dass ein Lakehouse aus Dateien und Tabellen besteht, die in einem OneLake-Datenspeicher gespeichert sind. Die verwalteten Tabellen können mithilfe von SQL abgefragt werden und sind in einem Standarddataset enthalten, um Datenvisualisierungen zu unterstützen.
+In dieser Übung haben Sie ein Lakehouse erstellt und Daten in das Lakehouse importiert. Sie haben erfahren, dass ein Lakehouse aus Dateien und Tabellen besteht, die in einem OneLake-Datenspeicher gespeichert sind. Die verwalteten Tabellen können mithilfe von SQL abgefragt werden und sind in einem standardmäßigen Semantikmodell enthalten, um Datenvisualisierungen zu unterstützen.
 
 Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 

@@ -6,7 +6,7 @@ lab:
 
 # Abfragen eines Data Warehouses in Microsoft Fabric
 
-In Microsoft Fabric stellt ein Data Warehouse eine relationale Datenbank für umfangreiche Analysen bereit. Data Warehouses in Microsoft Fabric umfassen XXXXXX.
+In Microsoft Fabric stellt ein Data Warehouse eine relationale Datenbank für umfangreiche Analysen bereit. Dank der umfangreichen Funktionen im Microsoft Fabric-Arbeitsbereich müssen die Benutzer*innen weniger Zeit aufwenden, um Erkenntnisse zu erhalten. Dies wird durch ein einfach zu verwendendes, immer verbundenes semantisches Modell ermöglicht, das im DirectLake-Modus mit Power BI integriert ist. 
 
 Dieses Lab dauert ungefähr **30** Minuten.
 

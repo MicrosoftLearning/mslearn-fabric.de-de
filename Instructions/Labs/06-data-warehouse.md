@@ -66,7 +66,7 @@ Ein Warehouse ist eine relationale Datenbank, in der Sie Tabellen und andere Obj
 
 5. Führen Sie die neue Abfrage aus, um drei Zeilen in die **DimProduct-Tabelle** einzufügen.
 6. Wenn die Abfrage abgeschlossen ist, wählen Sie unten auf der Seite im Data Warehouse die Registerkarte **Daten** aus. Wählen Sie im Bereich **Explorer** die Tabelle **DimProduct** aus, und vergewissern Sie sich, dass die drei Zeilen der Tabelle hinzugefügt wurden.
-7. Verwenden Sie auf der Registerkarte **Start** die Schaltfläche **Neue SQL-Abfrage**, um eine neue Abfrage zu erstellen. Kopieren Sie dann den Transact-SQL-Code aus [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt), und fügen Sie ihn in den neuen Abfragebereich ein.
+7. Verwenden Sie auf der Registerkarte **Start** die Schaltfläche **Neue SQL-Abfrage**, um eine neue Abfrage zu erstellen. Kopieren Sie dann den Transact-SQL-Code aus `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt`, und fügen Sie ihn in den neuen Abfragebereich ein.
 <!-- I had to remove the GO command in this query as well -->
 8. Führen Sie die Abfrage aus, die ein einfaches Data Warehouse-Schema erstellt und einige Daten lädt. Die Ausführung des Skripts sollte etwa 30 Sekunden dauern.
 9. Verwenden Sie die Schaltfläche **Aktualisieren** auf der Symbolleiste, um Metriken zu aktualisieren. Überprüfen Sie dann im Bereich **Explorer**, ob das **dbo**-Schema im Data Warehouse jetzt die folgenden vier Tabellen enthält:
