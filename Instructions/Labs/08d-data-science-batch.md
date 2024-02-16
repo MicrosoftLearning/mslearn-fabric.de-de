@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Generieren und Speichern von Batchvorhersagen
+  title: Generieren von Batchvorhersagen mithilfe eines bereitgestellten Modells in Microsoft Fabric
   module: Generate batch predictions using a deployed model in Microsoft Fabric
 ---
 
-# Generieren und Speichern von Batchvorhersagen
+# Generieren von Batchvorhersagen mithilfe eines bereitgestellten Modells in Microsoft Fabric
 
 In diesem Lab verwenden Sie ein Machine Learning-Modell, um ein quantitatives Measure für Diabetes vorherzusagen.
 

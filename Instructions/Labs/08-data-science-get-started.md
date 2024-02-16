@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Grundlegendes zu Data Science in Microsoft Fabric
+  title: Erste Schritte mit Data Science in Microsoft Fabric
   module: Get started with data science in Microsoft Fabric
 ---
 
-# Grundlegendes zu Data Science in Microsoft Fabric
+# Erste Schritte mit Data Science in Microsoft Fabric
 
 In diesem Lab erfassen Sie Daten, untersuchen die Daten in einem Notebook, verarbeiten die Daten mit dem Data Wrangler und trainieren zwei Arten von Modellen. Durch das Befolgen dieser Schritte lernen Sie die Data Science-Features in Microsoft Fabric kennen.
 
