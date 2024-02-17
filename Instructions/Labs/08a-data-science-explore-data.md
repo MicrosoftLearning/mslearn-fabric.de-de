@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Erstellen und Verwenden von Notebooks für die Datenuntersuchung
+  title: Erkunden von Daten für Data Science mit Notebooks in Microsoft Fabric
   module: Explore data for data science with notebooks in Microsoft Fabric
 ---
 
-# Verwenden von Notebooks zum Untersuchen von Daten in Microsoft Fabric
+# Erkunden von Daten für Data Science mit Notebooks in Microsoft Fabric
 
 In diesem Lab verwenden wir Notebooks für die Datenuntersuchung. Notebooks sind ein leistungsstarkes Tool zum interaktiven Untersuchen und Analysieren von Daten. In dieser Übung erfahren Sie, wie Sie Notebooks erstellen und verwenden, um ein Dataset zu untersuchen, Zusammenfassungsstatistiken zu generieren und Visualisierungen zu erstellen, um die Daten besser zu verstehen. Am Ende dieses Labs haben Sie ein fundiertes Verständnis für die Verwendung von Notebooks für die Datenuntersuchung und -analyse.
 

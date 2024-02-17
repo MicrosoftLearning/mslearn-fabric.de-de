@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Trainieren und Nachverfolgen eines Modells in Microsoft Fabric
+  title: Trainieren und Nachverfolgen von Machine Learning-Modellen mit MLflow in Microsoft Fabric
   module: Train and track machine learning models with MLflow in Microsoft Fabric
 ---
 
