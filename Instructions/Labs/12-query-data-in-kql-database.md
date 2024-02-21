@@ -49,8 +49,8 @@ In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenb
 
    Verwenden Sie dann den Schieberegler, um die Verfügbarkeit zu aktivieren.
 
-   ![Abbildung: Auswahl des Schiebereglers in Data Lake](./images/data-availability-data-lake.png)
-
+   ![Abbildung: Auswahl des Schiebereglers in Data Lake](./Images/data-availability-data-lake.png)
+   
 1. Wählen Sie das Feld mit **Beispieldaten** aus den Optionen von ***Rufen Sie zunächst Daten ab*** aus.
 
    ![Abbildung der Auswahloptionen mit hervorgehobenen Beispieldaten](./Images/load-sample-data.png)
