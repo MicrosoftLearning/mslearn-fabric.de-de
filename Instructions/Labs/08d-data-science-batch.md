@@ -129,7 +129,7 @@ Als Erstes trainieren wir ein Machine Learning-Modell, das einen *Regressionsalg
 
 Um das Modell zu verwenden, benötigen Sie ein Dataset mit Patientendaten, für die Sie eine Diabetesdiagnose vorhersagen müssen. Sie erstellen dieses Dataset als Tabelle in einem Microsoft Fabric Lakehouse.
 
-1. Wählen Sie im Notebook-Editor im Bereich **Lakehouses** auf der linken Seite **Hinzufügen** aus, um ein Lakehouse hinzuzufügen.
+1. Wählen Sie im Notebook-Editor im **Explorer**-Bereich auf der linken Seite **+ Datenquellen** aus, um ein Lakehouse hinzuzufügen.
 1. Wählen Sie **Neues Lakehouse** aus und dann **Hinzufügen**, und erstellen Sie ein neues **Lakehouse** mit einem gültigen Namen Ihrer Wahl.
 1. Wenn Sie aufgefordert werden, die aktuelle Sitzung zu beenden, wählen Sie **Jetzt beenden** aus, um das Notebook neu zu starten.
 1. Wenn das Lakehouse erstellt und an Ihr Notebook angefügt wird, fügen Sie eine neue Zeile hinzu und führen Sie den folgenden Code aus, um ein Dataset zu erstellen und in einer Tabelle im Lakehouse zu speichern:
