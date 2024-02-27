@@ -57,6 +57,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 2. Stellen Sie sicher, dass Sie die Schaltfläche auf **Aktiv** umgeschaltet haben, und klicken Sie dann auf **Fertig**.
 
+ > **Hinweis:** Sie müssen keinen Ordner auswählen, Fabric erstellt ihn für Sie.
+
    ![Abbildung der Umschaltfläche zur Aktivierung von OneLake](./Images/enable-onelake-toggle.png)
 
 ## Erstellen eines Eventstreams
@@ -94,35 +96,16 @@ In diesem Tutorial lernen Sie Folgendes:
    | Zielname | MyStockData                                    |
    | Arbeitsbereich        | Arbeitsbereich, in dem Sie eine KQL-Datenbank erstellt haben |
    | KQL-Datenbank     | MyStockData                                    |
+   | Zieltabelle| MyStockData                                    |
+   | Eingabedatenformat| Json                                           |
 
-3. Wählen Sie **Erstellen und konfigurieren** aus.
+3. Wählen Sie **Hinzufügen** aus.
 
-## Konfigurieren der Datenerfassung
-
-1. Klicken Sie auf der Dialogfeldseite **Daten erfassen** auf **Neue Tabelle**, und geben Sie „MyStockData“ ein.
-
-   ![Abbildung der Eingabe der Bestandsdaten](./Images/ingest-stream-data-to-kql.png)
-
-2. Wählen Sie die Option **Weiter: Quelle** aus.
-3. Bestätigen Sie auf der Seite **Quelle** den **Namen der Datenverbindung**, und wählen Sie dann **Weiter: Schema** aus.
-
-   ![Abbildung des Datenquellennamens](./Images/ingest-data.png)
-
-4. Die eingehenden Daten werden für Beispieldaten dekomprimiert, behalten Sie also den dekomprimierten Status als Komprimierungstyp bei.
-5. Wählen Sie in der Dropdownliste **Datenformat** die Option **JSON** aus.
-
-   ![Abbildung der Änderung in JSON](./Images/injest-as-json.png)
-
-6. Danach kann es erforderlich sein, einige oder alle Datentypen von Ihrem eingehenden Stream in Ihre Zieltabellen zu ändern.
-7. Gehen Sie hierfür wie folgt vor: **Pfeil nach unten > Datentyp ändern**. Überprüfen Sie dann, ob die Spalten den richtigen Datentyp aufweisen:
-
-   ![Abbildung der Änderung der Datentypen](./Images/change-data-type-in-es.png)
-
-8. Wenn Sie fertig sind, wählen Sie **Weiter: Zusammenfassung** aus.
+> **Hinweis:** Ihre Datenerfassung beginnt sofort.
 
 Warten Sie, bis alle Schritte mit grünen Häkchen gekennzeichnet sind. Der Seitentitel **Fortlaufende Erfassung von Eventstream eingerichtet** sollte angezeigt werden. Wählen Sie anschließend **Schließen** aus, um zu Ihrer Eventstream-Seite zurückzukehren.
 
-> **Hinweis**: Es kann erforderlich sein, die Seite zu aktualisieren, um Ihre Tabelle anzuzeigen, nachdem die Ereignisstreamverbindung hergestellt wurde.
+> **Hinweis:** Es kann erforderlich sein, die Seite zu aktualisieren, um Ihre Tabelle anzuzeigen, nachdem die Ereignisstreamverbindung hergestellt wurde.
 
 ## KQL-Abfragen
 
@@ -143,7 +126,7 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte
 
    ![Abbildung der KQL-Abfrageergebnisse der letzten 24 Stunden](./Images/kql-query-results-last24.png)
 
-> **Hinweis**: Beachten Sie, dass die Volumen der Streamingdaten die Abfragegrenzwerte überschreiten. Dieses Verhalten kann abhängig von der Datenmenge variieren, die in Ihre Datenbank gestreamt wird.
+> **Hinweis:** Möglicherweise wird eine Warnung angezeigt, dass Sie die Abfragegrenzwerte überschritten haben. Dieses Verhalten variiert abhängig von der Datenmenge, die in Ihre Datenbank gestreamt wird.
 
 Sie können weiterhin mit den integrierten Abfragefunktionen navigieren, um sich mit Ihren Daten vertraut zu machen.
 
@@ -165,5 +148,5 @@ Sie können weiterhin mit den integrierten Funktionen navigieren und sich mit de
 
 In dieser Übung haben Sie eine KQL-Datenbank erstellt und das kontinuierliche Streaming mit einem Ereignisstream eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
-2. Wählen Sie im Menü „...“ auf der Symbolleiste die Option „Arbeitsbereichseinstellungen“ aus.
+2. Wählen Sie auf der Symbolleiste im Menü „...“ die Option Arbeitsbereichseinstellungen aus.
 3. Wählen Sie im Abschnitt Andere die Option Diesen Arbeitsbereich entfernen aus.
