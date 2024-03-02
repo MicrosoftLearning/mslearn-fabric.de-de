@@ -33,7 +33,7 @@ Da wir in unserem Szenario keine verfügbaren Daten haben, müssen wir Daten erf
 
 1. Laden Sie die Dateien für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv` herunter.
 
-1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Optionen **Hochladen** und **Ordner hochladen** aus. Laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
+1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Dateien** im Bereich **Explorer** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) in das Lakehouse hoch.
 
 1. Nachdem die Dateien hochgeladen wurden, wählen Sie **Dateien** aus. Vergewissern Sie sich, dass die CSV-Datei wie hier gezeigt hochgeladen wurde:
 

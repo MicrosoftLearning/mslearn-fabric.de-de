@@ -67,7 +67,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
 > **Hinweis:** Spark unterstützt mehrere Programmiersprachen (unter anderem Scala und Java). In dieser Übung verwenden Sie *PySpark*. Hierbei handelt es sich um eine Spark-optimierte Variante von Python. PySpark ist eine der am häufigsten verwendeten Sprachen in Spark und ist die Standardsprache in Fabric-Notebooks.
 
-1. Wenn das Notebook sichtbar ist, erweitern Sie die Liste **Dateien**, und wählen Sie den Ordner **orders** aus, sodass die CSV-Dateien wie folgt neben dem Notebook-Editor aufgeführt werden:
+1. Wenn das Notebook sichtbar ist, erweitern Sie im Bereich **Explorer** die Option **Lakehouses** und dann die Liste **Dateien** für Ihr Lakehouse, und wählen Sie den Ordner **orders** aus, sodass die CSV-Dateien wie folgt neben dem Notebook-Editor aufgeführt werden:
 
     ![Screenshot: Notebook mit dem Bereich „Dateien“](./Images/notebook-files.png)
 
@@ -146,14 +146,6 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 
     Jetzt enthält der Dataframe die richtigen Spaltennamen (zusätzlich zum **Index**, der eine integrierte Spalte in allen Dataframes basierend auf der Ordnungsposition jeder Zeile ist). Die Datentypen der Spalten werden mithilfe einer Reihe von Standardtypen angegeben, die in der Spark SQL-Bibliothek definiert sind und am Anfang der Zelle importiert wurden.
 
-1. Vergewissern Sie sich, dass Ihre Änderungen auf die Daten angewendet wurden, indem Sie den Dataframe anzeigen.
-
-1. Fügen Sie eine neue Codezelle hinzu, indem Sie den **Link +Code** verwenden, der angezeigt wird, wenn Sie die Maus auf der linken Seite der Ausgabe der aktuellen Zelle bewegen (oder auf der Menüleiste, auf der Registerkarte **Bearbeiten** die Option **+Codezelle hinzufügen**) auswählen. Führen Sie dann den folgenden Code in der neuen Codezelle aus:
-
-    ```Python
-   display(df)
-    ```
-
 1. Der Dataframe enthält nur die Daten aus der Datei **2019.csv**. Ändern Sie den Code so, dass der Dateipfad einen \*-Platzhalter verwendet, um die Auftragsdaten aus allen Dateien im Ordner **orders** zu lesen:
 
     ```python
@@ -185,7 +177,7 @@ Das Dataframeobjekt enthält eine Vielzahl von Funktionen, mit denen Sie die dar
 
 ### Filtern eines Dataframes
 
-1. Verwenden Sie das Symbol **+ Code** unterhalb der Zellenausgabe, um dem Notebook eine neue Codezelle hinzuzufügen, und geben Sie darin den folgenden Code ein.
+1. Fügen Sie eine neue Codezelle hinzu, indem Sie den **Link +Code** verwenden, der angezeigt wird, wenn Sie die Maus auf der linken Seite der Ausgabe der aktuellen Zelle bewegen (oder auf der Menüleiste, auf der Registerkarte **Bearbeiten** die Option **+Codezelle hinzufügen**) auswählen. Geben Sie dann den folgenden Code ein.
 
     ```Python
    customers = df['CustomerName', 'Email']
@@ -278,7 +270,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
     > **Hinweis:** Das *Parquet*-Format wird in der Regel für Datendateien verwendet, die Sie für die weitere Analyse oder Erfassung in einem Analysespeicher verwenden. Parquet ist ein sehr effizientes Format, das von den meisten umfangreichen Datenanalysesystemen unterstützt wird. Tatsächlich kann Ihre Datentransformation manchmal einfach darin bestehen, Daten aus einem anderen Format (z. B. CSV) in Parquet zu konvertieren!
 
-2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Explorer** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und wählen Sie den Ordner **transformed_orders** aus, um zu überprüfen, ob er einen neuen Ordner namens **orders** enthält, der wiederum eine oder mehrere Parquet-Dateien enthält.
+2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Lakehouses** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und wählen Sie den Ordner **transformed_orders** aus, um zu überprüfen, ob er einen neuen Ordner namens **orders** enthält, der wiederum eine oder mehrere Parquet-Dateien enthält.
 
     ![Screenshot: Ordner mit Parquet-Dateien](./Images/saved-parquet.png)
 
@@ -300,7 +292,7 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
    print ("Transformed data saved!")
     ```
 
-2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Explorer** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und erweitern Sie den Ordner **partitioned_orders**, um sicherzustellen, dass er eine Hierarchie von Ordnern mit dem Namen **Year=* xxxx*** enthält, die jeweils Ordner mit dem Namen **Month=* xxxx*** enthalten. Jeder Monatsordner enthält eine Parquet-Datei mit den Bestellungen für den jeweiligen Monat.
+2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Lakehouses** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und erweitern Sie den Ordner **partitioned_orders**, um sicherzustellen, dass er eine Hierarchie von Ordnern mit dem Namen **Year=* xxxx*** enthält, die jeweils Ordner mit dem Namen **Month=* xxxx*** enthalten. Jeder Monatsordner enthält eine Parquet-Datei mit den Bestellungen für den jeweiligen Monat.
 
     ![Screenshot: Hierarchie partitionierter Datendateien](./Images/partitioned-files.png)
 
@@ -337,7 +329,7 @@ Tabellen in einem Spark-Metastore sind relationale Abstraktionen über Dateien i
 
 2. Führen Sie die Codezelle aus, und überprüfen Sie die Ausgabe, die die Definition der neuen Tabelle beschreibt.
 
-3. Klicken Sie im Bereich **Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tables**, und überprüfen Sie, ob die Tabelle **salesorders** erstellt wurde.
+3. Wählen Sie im Bereich **Lakehouses** im Menü **...** für den Ordner **Tables** die Option **Aktualisieren** aus. Erweitern Sie dann den Knoten **Tables**, und überprüfen Sie, ob die Tabelle **salesorders** erstellt wurde.
 
     ![Screenshot: Tabelle „salesorders“ im Explorer](./Images/table-view.png)
 
@@ -389,7 +381,7 @@ Ein Bild sagt sprichwörtlich mehr als tausend Worte, und ein Diagramm ist oft b
 
 2. Führen Sie den Code aus, und beachten Sie, dass er die Daten aus der **salesorders**-Ansicht zurückgibt, die Sie zuvor erstellt haben.
 3. Ändern Sie im Ergebnisabschnitt unterhalb der Zelle die Option **Ansicht** von **Tabelle** in **Diagramm**.
-4. Verwenden Sie die Schaltfläche **Ansichtsoptionen** oben rechts im Diagramm, um den Optionsbereich für das Diagramm anzuzeigen. Legen Sie dann die Optionen wie folgt fest, und klicken Sie auf **Anwenden**:
+4. Verwenden Sie die Schaltfläche **Diagramm anpassen** oben rechts im Diagramm, um den Optionsbereich für das Diagramm anzuzeigen. Legen Sie dann die Optionen wie folgt fest, und klicken Sie auf **Anwenden**:
     - **Diagrammtyp:** Balkendiagramm
     - **Schlüssel:** Element
     - **Werte:** Menge
