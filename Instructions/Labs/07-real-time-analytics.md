@@ -42,17 +42,34 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) wird verwendet, um statisch
 3. Wenn die neue Datenbank erstellt wurde, wählen Sie die Option zum Abrufen von Daten aus der **lokalen Datei** aus. Verwenden Sie dann den Assistenten, um die Daten in eine neue Tabelle zu importieren, indem Sie die folgenden Optionen auswählen:
     - **Ziel**:
         - **Datenbank**: *Die von Ihnen erstellte Datenbank ist bereits ausgewählt.*
-        - **Tabelle**: *Erstellen Sie eine neue Tabelle mit dem Namen* **Sales**.
-    - **Quelle**:
-        - **Quelltyp**: Datei
-        - **Dateien hochladen**: *Fügen Sie die Datei per Drag & Drop ein, oder suchen Sie nach der Datei, die Sie zuvor heruntergeladen haben.*
-    - **Schema:**
-        - **Komprimierungstyp**: Nicht komprimiert
-        - **Datenformat**: CSV
-        - **Ersten Datensatz ignorieren**: *Ausgewählt*
-        - **Zuordnungsname**: sales_mapping
-    - **Zusammenfassung**:
-        - *Überprüfen Sie die Vorschau der Tabelle, und schließen Sie den Assistenten.*
+        - **Table:** *Erstellen Sie eine neue Tabelle mit dem Namen* **sales**, indem Sie auf das +-Zeichen links neben ***Neue Tabelle*** klicken.
+
+        ![Schritt 1 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-1.png?raw=true)
+
+        - Sie sehen nun den Hyperlink **Dateien hier her ziehen oder nach Dateien suchen** im selben Fenster.
+
+        ![Schritt 2 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-2.png?raw=true)
+
+        - Suchen oder ziehen Sie ihre **sales.csv** auf den Bildschirm, und warten Sie, bis das Feld "Status" auf ein grünes Kontrollkästchen geändert wird. Wählen Sie dann **Weiter** aus.
+
+        ![Schritt 3 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-3.png?raw=true)
+
+        - Auf diesem Bildschirm sehen Sie, dass sich die Spaltenüberschriften in der ersten Zeile befinden. Obwohl das System sie erkannt hat, müssen wir den Schieberegler über diesen Zeilen **Erste Zeile ist Spaltenüberschrift** verschieben, um keine Fehler zu erhalten.
+        
+        ![Schritt 4 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-4.png?raw=true)
+
+        - Sobald Sie diesen Schieberegler ausgewählt haben, sehen Sie, dass alles gut aussieht. Wählen Sie unten rechts im Bereich die Schaltfläche **Fertig stellen** aus.
+
+        ![Schritt 5 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-5.png?raw=true)
+
+        - Warten Sie, bis die Schritte im Zusammenfassungsbildschirm abgeschlossen sind, die Folgendes umfassen:
+            - Tabelle erstellen (sales)
+            - Zuordnung erstellen (sales_mapping)
+            - Daten-Queuing
+            - Datenerfassung
+        - Klicken Sie auf die Schaltfläche **Schließen**.
+
+        ![Schritt 6 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-6.png?raw=true)
 
 > **Hinweis**: In diesem Beispiel haben Sie eine sehr kleine Menge statischer Daten aus einer Datei importiert, was für diese Übung ausreicht. Tatsächlich können Sie Kusto zur Analyse viel größerer Datenmengen verwenden, unter anderem für Echtzeitdaten aus einer Streamingquelle wie Azure Event Hubs.
 
