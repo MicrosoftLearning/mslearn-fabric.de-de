@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Erste Schritte mit Echtzeitanalysen in Microsoft Fabric
-  module: Get started with Real-Time Analytics in Microsoft Fabric
+  title: Erste Schritte mit Eventstream in Microsoft Fabric
+  module: Get started with Eventstream in Microsoft Fabric
 ---
 # Erste Schritte mit Eventstream in Real-Time Analytics (RTA)
 
@@ -9,7 +9,7 @@ Eventstream ist ein No-Code-Feature in Microsoft Fabric, das Echtzeitereignisse 
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 
