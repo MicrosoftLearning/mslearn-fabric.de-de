@@ -6,21 +6,18 @@ lab:
 
 # Erzwingen von Modellsicherheit
 
-## Überblick
+In dieser Übung aktualisieren Sie ein vorab entwickeltes Datenmodell, um Sicherheit zu erzwingen. Insbesondere sollen Vertriebsmitarbeitende des Unternehmens Adventure Works nur Verkaufsdaten anzeigen können, die mit der ihnen zugewiesenen Vertriebsregion zusammenhängen.
 
-**Die geschätzte Dauer dieses Labs beträgt 45 Minuten.**
-
-In diesem Lab aktualisieren Sie ein vorab entwickeltes Datenmodell, um Sicherheit zu erzwingen. Insbesondere sollen Vertriebsmitarbeitende des Unternehmens Adventure Works nur Verkaufsdaten anzeigen können, die mit der ihnen zugewiesenen Vertriebsregion zusammenhängen.
-
-In diesem Lab lernen Sie Folgendes:
+In dieser Übung lernen Sie Folgendes:
 
 - Erstellen statischer Rollen
-
 - Erstellen dynamischer Rollen
-
 - Überprüfen der Rollen
-
 - Zuordnen von Sicherheitsprinzipalen zu Rollen des Semantikmodells
+
+Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
+
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erste Schritte
 

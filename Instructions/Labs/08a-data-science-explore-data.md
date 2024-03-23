@@ -10,7 +10,7 @@ In diesem Lab verwenden wir Notebooks für die Datenuntersuchung. Notebooks sind
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -185,7 +185,7 @@ Generieren wir nun Visualisierungen wie Punktdiagramme und Boxplots, um Muster u
    import matplotlib.pyplot as plt
    import seaborn as sns
 
-   # Scatter plot of Quantity vs. Price
+   # Scatter plot of BMI vs. Target variable
    plt.figure(figsize=(8, 6))
    sns.scatterplot(x='BMI', y='Y', data=df)
    plt.title('BMI vs. Target variable')

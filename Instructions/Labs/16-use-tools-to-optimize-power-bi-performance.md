@@ -6,17 +6,16 @@ lab:
 
 # Verwenden von Tools zum Optimieren der Power BI-Leistung
 
-## Überblick
-
-**Die geschätzte Dauer dieses Labs beträgt 30 Minuten.**
-
 In diesem Lab erfahren Sie, wie Sie mit zwei externen Tools Datenmodelle und DAX-Abfragen entwickeln, verwalten und optimieren.
 
-In diesem Lab lernen Sie Folgendes zu verwenden:
+In dieser Übung lernen Sie die Verwendung von:
 
 - Best Practices Analyzer (BPA) in Tabular Editor
-
 - DAX Studio
+
+Dieses Lab dauert ungefähr **30** Minuten.
+
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erste Schritte
 

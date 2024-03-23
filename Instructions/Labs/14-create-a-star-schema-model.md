@@ -6,17 +6,17 @@ lab:
 
 # Erstellen und Untersuchen eines Semantikmodells
 
-## Überblick
-
-**Die geschätzte Dauer dieses Labs beträgt 30 Minuten.**
-
-In diesem Lab verwenden Sie die Fabric-Schnittstelle, um ein Datenmodell anhand der NYC Taxi-Beispieldaten in einem Fabric-Data Warehouse zu entwickeln.
+In dieser Übung verwenden Sie Microsoft Fabric, um ein Datenmodell für die Ny Taxi-Beispieldaten in einem Data Warehouse zu entwickeln.
 
 Sie üben Folgendes:
 
 - Erstellen eines benutzerdefinierten Semantikmodells aus einem Fabric-Data Warehouse
 - Erstellen von Beziehungen und Organisieren des Modelldiagramms
 - Untersuchen der Daten in Ihrem Semantikmodell direkt in Fabric
+
+Dieses Lab dauert ungefähr **30** Minuten.
+
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
