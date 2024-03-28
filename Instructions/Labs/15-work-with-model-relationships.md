@@ -6,19 +6,17 @@ lab:
 
 # Arbeiten mit Modellbeziehungen
 
-## Überblick
+In dieser Übung arbeiten Sie mit Modellbeziehungen, um die Anforderungen für Dimensionen mit unterschiedlichen Rollen zu erfüllen. Dabei arbeiten Sie mit aktiven und inaktiven Beziehungen sowie mit Data Analysis Expressions (DAX)-Funktionen, die das Verhalten von Beziehungen verändern.
 
-**Die geschätzte Dauer dieses Labs beträgt 45 Minuten.**
-
-In diesem Lab arbeiten Sie mit Modellbeziehungen speziell zusammen, um die Notwendigkeit von Rollenspieldimensionen zu beheben. Dabei arbeiten Sie mit aktiven und inaktiven Beziehungen sowie mit Data Analysis Expressions (DAX)-Funktionen, die das Verhalten von Beziehungen verändern.
-
-In diesem Lab lernen Sie Folgendes:
+In dieser Übung lernen Sie Folgendes:
 
 - Interpretieren von Beziehungseigenschaften im Modelldiagramm.
-
 - Festlegen der Beziehungseigenschaften.
+- Verwenden von DAX-Funktionen, die das Beziehungsverhalten ändern.
 
-- Verwenden Sie DAX-Funktionen, die das Beziehungsverhalten ändern.
+Dieses Lab dauert ungefähr **45** Minuten.
+
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erkunden von Modellbeziehungen
 

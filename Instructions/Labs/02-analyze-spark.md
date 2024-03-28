@@ -10,7 +10,7 @@ Apache Spark ist eine Open-Source-Engine für verteilte Datenverarbeitung und wi
 
 Dieses Lab dauert ungefähr **45** Minuten.
 
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -91,7 +91,7 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | 1 | SO43704 | 1 | 01.07.2019 | Julio Ruiz | julio1@adventure-works.com | Mountain-100 Black, 48 | 1 | 3374.99 | 269.9992 |
     | 2 | SO43705 | 1 | 01.07.2019 | Curtis Lu | curtis9@adventure-works.com | Mountain-100 Silver, 38 | 1 | 3399.99 | 271.9992 |
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | … | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     Die Ausgabe zeigt die Zeilen und Spalten der Daten aus der Datei „2019.csv“ an. Beachten Sie jedoch, dass die Spaltenüberschriften nicht richtig dargestellt werden. Der Standardcode zum Laden der Daten in einen Dataframe geht davon aus, dass die CSV-Datei die Spaltennamen in der ersten Zeile enthält, aber in diesem Fall enthält die CSV-Datei nur die Daten ohne header-Informationen.
 

@@ -12,7 +12,7 @@ Echtzeitdashboards ermöglichen es Ihnen, Einblicke aus Microsoft Fabric mithilf
 
 Dieses Lab dauert ungefähr **25** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -81,7 +81,7 @@ Trips
 | sort by Borough asc 
 
 ```
-3. Drücken Sie die Schaltfläche „Ausführen“, und vergewissern Sie sich, dass Ihre Abfrage keine Fehler aufweist.
+3. Drücken Sie die Schaltfläche **Ausführen** und vergewissern Sie sich, dass Ihre Abfrage keine Fehler aufweist.
 4. Wählen Sie rechts im Bereich die Registerkarte **Visualformatierung** aus, und füllen Sie den ***Kachelnamen*** und ***Visualtyp*** aus.
 
    ![Abbildung der Kachel „Visualformatierung“.](./Images/visual-formatting-tile.png)

@@ -10,7 +10,7 @@ In dieser Übung werden Sie mithilfe von Notebooks eine Medaillon-Architektur in
 
 Diese Übung dauert ca. **45** Minuten.
 
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -98,7 +98,7 @@ Nachdem Sie nun einige Daten in der Bronzeschicht Ihres Lakehouses haben, könne
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | 1 | SO49172 | 1 | 2021-01-01 | Brian Howard | brian23@adventure-works.com | Road-250 Red, 52 | 1 | 2443.35 | 195.468 |
     | 2 |  SO49173 | 1 | 2021-01-01 | Linda Alvarez | linda19@adventure-works.com | Mountain-200 Silver, 38 | 1 | 2071.4197 | 165.7136 |
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | … | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     Der von Ihnen ausgeführte Code hat die Daten aus den CSV-Dateien im Ordner **Bronze** in ein Spark-DataFrame geladen und dann die ersten Zeilen des DataFrames angezeigt.
 
