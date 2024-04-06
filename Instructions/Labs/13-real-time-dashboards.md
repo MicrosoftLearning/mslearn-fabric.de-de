@@ -12,7 +12,7 @@ Echtzeitdashboards ermöglichen es Ihnen, Einblicke aus Microsoft Fabric mithilf
 
 Dieses Lab dauert ungefähr **25** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 

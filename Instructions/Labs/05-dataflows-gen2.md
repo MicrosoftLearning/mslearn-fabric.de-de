@@ -10,7 +10,7 @@ In Microsoft Fabric stellen Dataflows (Gen2) eine Verbindung mit verschiedenen D
 
 Dieses Lab wurde entwickelt, um die verschiedenen Elemente von Dataflows (Gen2) vorzustellen. Das Lab soll keine komplexe Lösung erstellen, die möglicherweise in einem Unternehmen vorhanden ist. Dieses Lab dauert **ungefähr 30 Minuten**.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 
