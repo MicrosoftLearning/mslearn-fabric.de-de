@@ -8,15 +8,13 @@ lab:
 
 Ein KQL-Abfrageset ist ein Tool, mit dem Sie Abfragen ausführen, ändern und Abfrageergebnisse aus einer KQL-Datenbank anzeigen können. Sie können jede Registerkarte im KQL-Abfrageset mit einer anderen KQL-Datenbank verknüpfen und Ihre Abfragen für die zukünftige Verwendung speichern oder für die Datenanalyse freigeben. Sie können die KQL-Datenbank auch für eine beliebige Registerkarte wechseln, sodass Sie die Abfrageergebnisse aus verschiedenen Datenquellen vergleichen können.
 
+In dieser Übung sind Sie eine Analystin bzw. ein Analyst und damit beauftragt, ein Beispieldataset mit Rohdaten zu Taxifahrten in New York abzufragen, aus dem Sie zusammenfassende Statistiken (Profilerstellung) der Daten aus der Fabric-Umgebung ziehen. Sie verwenden KQL zum Abfragen dieser Daten und Sammeln von Informationen, um Erkenntnisse zu den Daten zu gewinnen.
+
 Das KQL-Abfrageset verwendet die Kusto-Abfragesprache, die mit vielen SQL-Funktionen kompatibel ist, um Abfragen zu erstellen. Weitere Informationen zur [Kusto-Abfragesprache (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
 
 Sie werden ungefähr **25** Minuten für dieses Lab benötigen.
 
-## Szenario
-
-In diesem Szenario sind Sie ein Analyst, der damit beauftragt ist, ein Beispieldataset mit Rohdaten zu Taxifahrten in New York abzufragen, aus dem Sie zusammenfassende Statistiken (Profilerstellung) der Daten aus der Fabric-Umgebung ziehen. Sie verwenden KQL zum Abfragen dieser Daten und Sammeln von Informationen, um Erkenntnisse zu den Daten zu gewinnen.
-
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -41,7 +39,7 @@ In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenb
 
    ![Abbildung des Namens der KQL-Datenbank](./Images/name-kqldatabase.png)
 
-1. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **MyStockData**), und klicken Sie auf **Erstellen**.
+1. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **TaxiData**), und wählen Sie **Erstellen** aus.
 
 1. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
 

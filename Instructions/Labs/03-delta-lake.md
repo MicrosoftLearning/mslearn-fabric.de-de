@@ -10,7 +10,7 @@ Die Tabellen in einem Microsoft Fabric-Lakehouse basieren auf dem Open-Source-Fo
 
 Diese Übung dauert ca. **40** Minuten.
 
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -72,7 +72,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
     | 1 | 771 | Mountain-100 Silver, 38 | Mountainbikes | 3399.9900 |
     | 2 | 772 | Mountain-100 Silver, 42 | Mountainbikes | 3399.9900 |
     | 3 | 773 | Mountain-100 Silver, 44 | Mountainbikes | 3399.9900 |
-    | ... | ... | ... | ... | ... |
+    | … | ... | ... | ... | ... |
 
 ## Erstellen von Deltatabellen
 

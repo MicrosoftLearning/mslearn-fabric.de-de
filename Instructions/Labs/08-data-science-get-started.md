@@ -12,7 +12,7 @@ Bei diesem Lab sammeln Sie praktische Erfahrung mit maschinellem Lernen und der 
 
 Dieses Lab dauert ungefähr **20** Minuten.
 
-> **Hinweis:** Für diese Übung benötigen Sie ein *Geschäfts-*, *Schul- oder Unikonto* von Microsoft. Wenn Sie über kein Microsoft-Konto verfügen, können Sie sich [für eine kostenlose Testversion von Microsoft Office 365 E3 oder höher registrieren](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -89,7 +89,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
     |72|2|30.5|93.0|156|93.6|41.0|4,0|4.6728|85|141|
     |24|1|25.3|84.0|198|131.4|40.0|5.0|4.8903|89|206|
     |50|1|23.0|101.0|192|125,4|52.0|4,0|4.2905|80|135|
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | … | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
 
