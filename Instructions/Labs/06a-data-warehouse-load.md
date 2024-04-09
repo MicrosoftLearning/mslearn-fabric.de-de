@@ -10,7 +10,7 @@ In Microsoft Fabric stellt ein Data Warehouse eine relationale Datenbank für um
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -237,7 +237,7 @@ Führen wir nun analytische Abfragen aus, um die Daten im Warehouse zu überprü
     ORDER BY TotalSales DESC;
     ```
 
-    > **Hinweis:** Die Ergebnisse dieser Abfrage zeigen den wichtigsten Kunden für jede der folgenden Kategorien an: Fahrrad, Helm und Handschuhe, basierend auf ihrem Gesamtumsatz. Beispielsweise ist **Carson Butler** der Top-Kunde für die Kategorie **Fahrrad**.
+    > **Hinweis:** Die Ergebnisse dieser Abfrage zeigen den wichtigsten Kunden für jede der folgenden Kategorien an: Fahrrad, Helm und Handschuhe, basierend auf ihrem Gesamtumsatz. Beispielsweise ist **Joan Coleman** die führende Kundin in der Kategorie **Gloves** (Handschuhe).
     >
     > Die Kategorieinformationen wurden aus der Spalte `ItemName` mithilfe von Zeichenfolgenmanipulation extrahiert, da in der Dimensionstabelle keine separate Kategoriespalte vorhanden ist. Bei diesem Ansatz wird davon ausgegangen, dass die Elementnamen einer konsistenten Namenskonvention entsprechen. Wenn die Elementnamen nicht einer konsistenten Namenskonvention folgen, spiegeln die Ergebnisse möglicherweise nicht die richtige Kategorie jedes Elements wider.
 
