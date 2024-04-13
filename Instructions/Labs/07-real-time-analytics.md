@@ -10,7 +10,7 @@ Microsoft Fabric stellt eine Runtime bereit, mit der Sie Daten mithilfe von Kust
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 

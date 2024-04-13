@@ -72,7 +72,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
     | 1 | 771 | Mountain-100 Silver, 38 | Mountainbikes | 3399.9900 |
     | 2 | 772 | Mountain-100 Silver, 42 | Mountainbikes | 3399.9900 |
     | 3 | 773 | Mountain-100 Silver, 44 | Mountainbikes | 3399.9900 |
-    | … | ... | ... | ... | ... |
+    | ... | ... | ... | ... | ... |
 
 ## Erstellen von Deltatabellen
 

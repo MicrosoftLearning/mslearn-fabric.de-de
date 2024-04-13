@@ -89,7 +89,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
     |72|2|30.5|93.0|156|93.6|41.0|4,0|4.6728|85|141|
     |24|1|25.3|84.0|198|131.4|40.0|5.0|4.8903|89|206|
     |50|1|23.0|101.0|192|125,4|52.0|4,0|4.2905|80|135|
-    | … | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
 

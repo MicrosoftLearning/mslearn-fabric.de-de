@@ -97,8 +97,8 @@ Ein relationales Data Warehouse besteht in der Regel aus *Fakt-* und *Dimensions
     - **Referentielle Integrität voraussetzen**: Nicht ausgewählt
 
 4. Wiederholen Sie den Vorgang, um n:1-Beziehungen zwischen den folgenden Tabellen zu erstellen:
-    - **FactOrderSales.CustomerKey** &#8594; **DimCustomer.CustomerKey**
-    - **FactOrderSales.SalesOrderDateKey** &#8594; **DimDate.DateKey**
+    - **FactSalesOrder.CustomerKey** &#8594; **DimCustomer.CustomerKey**
+    - **FactSalesOrder.SalesOrderDateKey** &#8594; **DimDate.DateKey**
 
     Wenn alle Beziehungen definiert wurden, sollte das Modell wie folgt aussehen:
 

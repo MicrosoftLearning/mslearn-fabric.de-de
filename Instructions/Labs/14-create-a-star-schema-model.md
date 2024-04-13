@@ -16,7 +16,7 @@ Sie üben Folgendes:
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -39,7 +39,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Warehouse
 
 1. In der Mitte der Data Warehouse-Benutzeroberfläche werden verschiedene Möglichkeiten zum Laden von Daten in Ihr Warehouse angezeigt. Wählen Sie **Beispieldaten** aus, um NYC Taxi-Daten in Ihr Data Warehouse zu laden. Dies dauert einige Minuten.
 
-1. Nachdem Ihre Beispieldaten geladen wurden, verwenden Sie den Bereich **Explorer** auf der rechten Seite, um zu sehen, welche Tabellen und Ansichten bereits im Beispiel-Data Warehouse vorhanden sind.
+1. Nachdem Ihre Beispieldaten geladen wurden, verwenden Sie den Bereich **Explorer** auf der linken Seite, um zu sehen, welche Tabellen und Ansichten bereits im Beispiel-Data Warehouse vorhanden sind.
 
 1. Wählen Sie auf dem Menüband die Registerkarte **Berichterstellung** und dann **Neues Semantikmodell** aus. Auf diese Weise können Sie ein neues Semantikmodell nur mit bestimmten Tabellen und Ansichten aus Ihrem Data Warehouse erstellen, das von Datenteams und vom Unternehmen zum Erstellen von Berichten verwendet werden kann.
 
@@ -65,7 +65,7 @@ Jetzt erstellen Sie Beziehungen zwischen den Tabellen, um Ihre Daten genau zu an
 
     *Nach dem Konzept des Sternschemas unterteilen wir die Tabellen in unserem Modell in eine Faktentabelle und Dimensionstabellen. In diesem Modell ist die Tabelle **Trip** unsere Faktentabelle, und unsere Dimensionen sind **Date**, **Geography** und **Weather**.*
 
-1. Erstellen Sie mithilfe der Spalte **DateID** eine Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip**. **Wählen Sie die Spalte „DateID“** in der Tabelle **Date** aus, und **ziehen Sie sie auf die Spalte „DateID“ in der Tabelle „Trip“**. Alternativ können Sie auf dem Menüband **Beziehungen verwalten** und anschließend **Neue Beziehung** auswählen.
+1. Erstellen Sie mithilfe der Spalte **DateID** eine Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip**. **Wählen Sie die Spalte „DateID“** in der Tabelle **Date** aus, und **ziehen Sie sie auf die Spalte „DateID“ in der Tabelle „Trip“, und legen Sie sie dort ab**. Alternativ können Sie auf dem Menüband **Beziehungen verwalten** und anschließend **Neue Beziehung** auswählen.
 
 1. Stellen Sie sicher, dass die Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip** eine Beziehung vom Typ **1:n** ist.
 
