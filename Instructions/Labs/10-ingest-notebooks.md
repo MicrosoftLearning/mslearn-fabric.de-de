@@ -39,7 +39,7 @@ Erstellen Sie zunächst ein neues Lakehouse und dann einen Zielordner im Lakehou
 
 1. Wählen Sie unter **Dateien** die Option **[...]** aus, um einen **neuen Unterordner** mit dem Namen **RawData** zu erstellen.
 
-1. Wählen Sie im Lakehouse-Explorer im Lakehouse **Dateien > ... > Eigenschaften** aus.
+1. Wählen Sie im Lakehouse-Explorer im Lakehouse **RawData > ... > Eigenschaften** aus.
 
 1. Kopieren Sie den **ABFS-Pfad** für den Ordner **RawData** zur späteren Verwendung in einen leeren Editor, der ungefähr wie folgt aussehen sollte: `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -217,7 +217,7 @@ In diesem Lab steht die Datenerfassung im Mittelpunkt, wobei der Prozess zum *Ex
     display(opttable_df.limit(10))
     ```
 
-1. Wählen Sie nun den Pfeil &#9660; neben der Schaltfläche **Zelle ausführen** für die erste dieser beiden Abfragen aus, und wählen Sie in der Dropdownliste **Diese und folgende Zellen ausführen** aus.
+1. Wählen Sie nun den Pfeil (&#9660;) neben der Schaltfläche **Zelle ausführen** für die erste dieser beiden Abfragen und dann in der Dropdownliste **Diese und alle folgenden Zellen ausführen** aus.
 
     Dadurch werden die letzten beiden Codezellen ausgeführt. Beachten Sie den Unterschied bei der Ausführungszeit zwischen der Abfrage der Tabelle mit nicht optimierten Daten und einer Tabelle mit optimierten Daten.
 
@@ -228,5 +228,5 @@ In dieser Übung haben Sie Notebooks mit PySpark in Fabric verwendet, um Daten z
 Wenn Sie die Untersuchung abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
+2. Wählen Sie auf der Seite des Arbeitsbereichs die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie unten im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
