@@ -135,6 +135,6 @@ Wenn Sie die Untersuchung von Dataflows in Microsoft Fabric abgeschlossen haben,
 
 1. Navigieren Sie in Ihrem Browser zu Microsoft Fabric.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-1. Wählen Sie auf der Seite des Arbeitsbereichs die **Arbeitsbereichseinstellungen** aus.
-1. Wählen Sie unten im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+1. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
 1. Speichern Sie die Änderungen nicht in Power BI Desktop, oder löschen Sie die PBIX-Datei, wenn sie bereits gespeichert wurde.
