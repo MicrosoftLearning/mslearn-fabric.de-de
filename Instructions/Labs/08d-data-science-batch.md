@@ -12,7 +12,7 @@ Bei diesem Lab sammeln Sie praktische Erfahrung mit dem Generieren von Vorhersag
 
 Dieses Lab dauert ungefähr **20** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 

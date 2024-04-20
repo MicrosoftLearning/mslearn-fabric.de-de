@@ -149,9 +149,9 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
 1. Der Dataframe enthält nur die Daten aus der Datei **2019.csv**. Ändern Sie den Code so, dass der Dateipfad einen \*-Platzhalter verwendet, um die Auftragsdaten aus allen Dateien im Ordner **orders** zu lesen:
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
+   orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -163,8 +163,8 @@ Jetzt können Sie Code ausführen, der die Daten in einen *Dataframe* lädt. Dat
        StructField("Tax", FloatType())
        ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+   display(df)
     ```
 
 1. Führen Sie die geänderte Codezelle aus, und überprüfen Sie die Ausgabe, die jetzt die Umsätze für 2019, 2020 und 2021 enthalten sollte.

@@ -198,6 +198,7 @@ Nachdem Sie nun einige Daten in der Bronzeschicht Ihres Lakehouses haben, könne
       ) \
       .execute()
     ```
+13. Führen Sie die Zelle aus, um den Code mithilfe der Schaltfläche ****&#9655;** (*Zelle ausführen*) auszuführen.
 
     Dieser Vorgang ist wichtig, da Sie damit vorhandene Datensätze in der Tabelle basierend auf den Werten bestimmter Spalten aktualisieren und neue Datensätze einfügen können, wenn keine Übereinstimmung gefunden wird. Dies ist eine häufige Anforderung, wenn Sie Daten aus einem Quellsystem laden, das möglicherweise Aktualisierungen für vorhandene sowie neue Datensätze enthält.
 
