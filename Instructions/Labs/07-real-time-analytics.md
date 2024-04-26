@@ -138,4 +138,4 @@ Wenn Sie Ihre KQL-Datenbank erkundet haben, können Sie den Arbeitsbereich lösc
 
 1. Wählen Sie auf der linken Leiste das Symbol für Ihren Arbeitsbereich aus.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
