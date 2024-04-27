@@ -43,7 +43,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 ## Hochladen einer Datei
 
-Fabric bietet mehrere Möglichkeiten zum Laden von Daten in das Lakehouse (einschließlich integrierter Unterstützung für Pipelines, die externe Datenquellen und Datenflüsse (Gen 2) kopieren, die Sie mithilfe von visuellen Tools basierend auf Power Query definieren können). Eine der einfachsten Methoden zum Erfassen kleiner Datenmengen ist jedoch das Hochladen von Dateien oder Ordnern von Ihrem lokalen Computer (oder ggf. einer Lab-VM).
+Fabric bietet mehrere Möglichkeiten zum Laden von Daten in das Lakehouse, einschließlich integrierter Unterstützung für Pipelines, die Daten von externen Datenquellen und Datenflüssen (Gen 2) kopieren, die Sie mithilfe von visuellen Tools basierend auf Power Query definieren können. Eine der einfachsten Methoden zum Erfassen kleiner Datenmengen ist jedoch das Hochladen von Dateien oder Ordnern von Ihrem lokalen Computer (oder ggf. einer Lab-VM).
 
 1. Laden Sie die Datei [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) von `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv` herunter, und speichern Sie sie als **sales.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
 
@@ -169,4 +169,4 @@ Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, 
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
