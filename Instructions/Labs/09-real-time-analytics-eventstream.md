@@ -148,5 +148,5 @@ Sie können weiterhin mit den integrierten Funktionen navigieren und sich mit de
 
 In dieser Übung haben Sie eine KQL-Datenbank erstellt und das kontinuierliche Streaming mit einem Ereignisstream eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
-2. Wählen Sie auf der Symbolleiste im Menü „...“ die Option Arbeitsbereichseinstellungen aus.
-3. Wählen Sie im Abschnitt Andere die Option Diesen Arbeitsbereich entfernen aus.
+2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
