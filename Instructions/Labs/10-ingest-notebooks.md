@@ -39,7 +39,7 @@ Erstellen Sie zunächst ein neues Lakehouse und dann einen Zielordner im Lakehou
 
 1. Wählen Sie unter **Dateien** die Option **[...]** aus, um einen **neuen Unterordner** mit dem Namen **RawData** zu erstellen.
 
-1. Wählen Sie im Lakehouse-Explorer im Lakehouse **Dateien > ... > Eigenschaften** aus.
+1. Wählen Sie im Lakehouse-Explorer im Lakehouse **RawData > ... > Eigenschaften** aus.
 
 1. Kopieren Sie den **ABFS-Pfad** für den Ordner **RawData** zur späteren Verwendung in einen leeren Editor, der ungefähr wie folgt aussehen sollte: `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
