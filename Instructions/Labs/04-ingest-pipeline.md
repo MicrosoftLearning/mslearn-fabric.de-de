@@ -39,7 +39,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivität **Daten kopieren** in einer Pipeline, um die Daten aus einer Quelle zu extrahieren und in eine Datei im Lakehouse zu kopieren.
 
-1. Wählen Sie auf der Seite **Start** für Ihr Lakehouse die Option **Neue Datenpipeline** aus, und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
+1. Wählen Sie auf der Seite **Home** für Ihr Lakehouse **Daten abrufen** aus und wählen Sie dann **Neue Datenpipeline** aus und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
 2. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren** aus.
 3. Wählen Sie im Assistenten **Daten kopieren** auf der Seite **Eine Datenquelle auswählen** im Abschnitt **Datenquellen** die Registerkarte **Generisches Protokoll** und dann **HTTP** aus.
 
