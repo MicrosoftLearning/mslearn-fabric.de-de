@@ -98,6 +98,7 @@ Wenn Sie ein Lakehouse erstellen und darin Tabellen definieren, wird automatisch
    GROUP BY Item
    ORDER BY Revenue DESC;
     ```
+> **Hinweis:** Wenn Sie sich in einer Lab-VM befinden und Probleme beim Eingeben der SQL-Abfrage haben, können Sie die [01-Snippets.txt](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt) Datei von `https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt` herunterladen und auf der VM speichern. Anschließend können Sie die Abfrage aus der Textdatei kopieren.
 
 3. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um die Abfrage auszuführen und die Ergebnisse anzuzeigen, die den Gesamtumsatz für jedes Produkt anzeigen sollten.
 
@@ -134,9 +135,11 @@ Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Se
 
 1. Wählen Sie unten auf der Seite „SQL-Endpunkt“ die Registerkarte **Modell** aus. Das Datenmodellschema für das semantische Modell wird angezeigt.
 
-    ![Screenshot eines semantischen Modells.](./Images/data-model.png)
+    ![Screenshot 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
 
-    > **Hinweis:** In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
+    > **Hinweis 1**: In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
+    
+    > **Hinweis 2**: Die Ansichten `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` und `exec_requests_history` sind Teil des `queryinsights` Schemas, das automatisch von Fabric erstellt wird. Es ist ein Feature, das eine ganzheitliche Ansicht der historischen Abfrageaktivität auf dem SQL-Analyseendpunkt bietet. Da dieses Feature außerhalb des Umfangs dieser Übung liegt, sollten diese Ansichten vorerst ignoriert werden.
 
 2. Klicken Sie auf dem Menüband auf die Registerkarte **Berichterstellung**, und wählen Sie dann **Neuer Bericht** aus. Eine neue Browserregisterkarte wird geöffnet, in der Sie Ihren Bericht entwerfen können.
 

@@ -181,6 +181,8 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
 
     ![Screenshot: Eine Pipeline mit einer Dataflowaktivität](./Images/pipeline-run.png)
 
+> Hinweis: Falls Sie die Fehlermeldung *Spark SQL-Abfragen sind nur im Kontext eines Lakehouses möglich erhalten. Bitte fügen Sie ein Lakehouse an, um fortzufahren*: Öffnen Sie Ihr Notebook, wählen Sie das Lakehouse aus, das Sie im linken Bereich erstellt haben, wählen Sie **Alle Lakehouses entfernen** aus, und fügen Sie es dann erneut hinzu. Kehren Sie zum Pipeline-Designer zurück, und wählen Sie **&#9655; Ausführen**.
+
 8. Wählen Sie in der Hubmenüleiste am linken Rand des Portals Ihr Lakehouse aus.
 9. Erweitern Sie dann im **Explorer** die Option **Tabellen**, und wählen Sie die Tabelle **new_sales** aus, um eine Vorschau der darin enthaltenen Daten anzuzeigen. Diese Tabelle wurde vom Notebook erstellt, als dieses von der Pipeline ausgeführt wurde.
 
