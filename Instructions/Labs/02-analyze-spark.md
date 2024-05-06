@@ -358,7 +358,7 @@ Obwohl es nützlich ist, SQL-Anweisungen in eine Zelle einzubetten, die PySpark-
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Führen Sie die Zelle aus, und überprüfen Sie die Ergebnisse. Beachten Sie, Folgendes:
     - Die Zeile `%%sql` am Anfang der Zelle (wird als *Magic-Befehl* bezeichnet) gibt an, dass anstelle von PySpark die Spark SQL-Runtime verwendet werden soll, um den Code in dieser Zelle auszuführen.
     - Der SQL-Code verweist auf die Tabelle **salesorders**, die Sie zuvor erstellt haben.
