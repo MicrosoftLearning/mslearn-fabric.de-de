@@ -94,7 +94,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
     Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
 
 1. Im oberen Bereich der gerenderten Tabelle befinden sich zwei Registerkarten: **Tabelle** und **Diagramm**. Wählen Sie **Diagramm** aus.
-1. Wählen Sie rechts oben im Diagramm **Optionen anzeigen** aus, um die Visualisierung zu ändern.
+1. Wählen Sie rechts oben im Diagramm **Diagramm anpassen** aus, um die Visualisierung zu ändern.
 1. Ändern Sie die folgenden Einstellungen für das Diagramm:
     * **Diagrammtyp**: `Box plot`
     * **Schlüssel**: *leer lassen*
@@ -112,8 +112,7 @@ Nachdem Sie die Daten erfasst und untersucht haben, können Sie sie transformier
    df.head()
     ```
 
-1. Wählen Sie **Daten** im Menüband des Notebooks und dann in der Dropdownliste die Option**Datenrahmen in Data Wrangler transformieren** aus.
-1. Wählen Sie das Dataset `df` aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert.
+1. Wählen Sie im Menüband des Notebooks **Data Wrangler** aus, und wählen Sie dann das `df`-Dataset aus. Beim Starten von Data Wrangler wird im Bereich **Zusammenfassung** eine beschreibende Übersicht über den angezeigten Dataframe generiert.
 
     Derzeit ist die Bezeichnungsspalte `Y`, also eine fortlaufende Variable. Um ein Machine Learning-Modell zu trainieren, das Y vorhersagt, müssen Sie ein Regressionsmodell trainieren. Die (vorhergesagten) Werte von Y sind möglicherweise schwer zu interpretieren. Stattdessen könnten wir das Training eines Klassifizierungsmodells untersuchen, das vorhersagt, ob jemand ein niedriges oder hohes Risiko für die Entwicklung von Diabetes aufweist. Um ein Klassifizierungsmodell trainieren zu können, müssen Sie eine binäre Bezeichnungsspalte basierend auf den Werten aus `Y` erstellen.
 

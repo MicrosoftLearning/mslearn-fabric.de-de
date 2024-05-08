@@ -49,6 +49,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Verbindung**: Neue Verbindung erstellen
     - **Name der Verbindung**: *Angeben eines eindeutigen Namens*
+    - **Datengateway**: (keine)
     - **Authentifizierungsart**: Basic (*Benutzername und Kennwort leer lassen*)
 5. Wählen Sie **Weiter** aus. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
     - **Relative URL**: *Nicht ausfüllen*
@@ -64,7 +65,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **Erste Zeile ist Überschrift**: Ausgewählt
     - **Komprimierungstyp**: Keiner
 7. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
-8. Wählen Sie auf der Seite **Datenziel auswählen** Ihr vorhandenes Lakehouse aus. Wählen Sie **Weiter**aus.
+8. Wählen Sie auf der Seite **Mit Datenziel verbinden** Ihr vorhandenes Lakehouse aus. Wählen Sie **Weiter**aus.
 9. Legen Sie die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
     - **Stammordner**: Files
     - **Ordnerpfadname**: new_data
