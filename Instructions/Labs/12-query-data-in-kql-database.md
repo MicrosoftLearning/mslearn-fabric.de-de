@@ -20,18 +20,18 @@ Sie werden ungefähr **25** Minuten für dieses Lab benötigen.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Echtzeitanalyse** aus.
+1. Wählen Sie auf der Startseite [Microsoft Fabric](https://app.fabric.microsoft.com) **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-In diesem Lab verwenden Sie Echtzeitanalysen (RTA) in Fabric, um eine KQL-Datenbank anhand eines Beispiel-Eventstreams zu erstellen. Real-Time Analytics bietet ein Beispieldataset, mit dem Sie die Funktionen von RTA erkunden können. Sie verwenden diese Beispieldaten, um KQL/SQL-Abfragen und Abfragesätze zu erstellen, die Echtzeitdaten analysieren und andere Verwendungen in nachgelagerten Prozessen ermöglichen.
+In diesem Lab verwenden Sie Real-Time Intelligence in Fabric, um eine KQL-Datenbank aus einem Beispiel-Eventstream zu erstellen. Echtzeitintelligenz bietet bequem ein Beispiel-Dataset, mit dem Sie die Funktionen von Real-Time Intelligence erkunden können. Sie verwenden diese Beispieldaten, um KQL/SQL-Abfragen und Abfragesätze zu erstellen, die Echtzeitdaten analysieren und andere Verwendungen in nachgelagerten Prozessen ermöglichen.
 
 ## Erstellen einer KQL-Datenbank
 
-1. Wählen Sie unter **Echtzeitanalyse** das Feld **KQL-Datenbank** aus.
+1. Wählen Sie innerhalb der **Real-Time Intelligence** das **KQL-Datenbankfeld** aus.
 
    ![Abbildung der Auswahl der KQL-Datenbank](./Images/select-kqldatabase.png)
 
