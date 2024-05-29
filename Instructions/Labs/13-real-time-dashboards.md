@@ -136,7 +136,7 @@ Das Erstellen eines Parameters beginnt einfach folgendermaßen:
 | **Wert „Alle auswählen“ hinzufügen** | Gilt für einzelne und mehrere Auswahlparametertypen - diese Option ruft Daten für alle Parameterwerte ab und muss in die Abfrage für die Funktionalität integriert werden. |
 | **Standardwert** | Der Standardwert des Filters, der beim anfänglichen Rendern des Dashboards festgelegt wird. |
 
-6. Fügen Sie den Parameter zu den einzelnen Abfragen in den Kacheln hinzu und wählen Sie dann **Änderungen übernehmen** aus.
+6. Vergewissern Sie sich, dass Sie den Parameter zu jeder der Abfragen innerhalb der Kacheln hinzufügen und wählen Sie dann **Änderungen übernehmen**.
 
 **Vor der KQL-Abfrage**
 ```kusto
