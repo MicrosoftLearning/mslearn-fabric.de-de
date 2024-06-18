@@ -1,43 +1,43 @@
 ---
 lab:
-    title: 'Secure data in a data warehouse'
-    module: 'Get started with data warehouses in Microsoft Fabric'
+  title: Sichern von Daten in einem Data Warehouse
+  module: Get started with data warehouses in Microsoft Fabric
 ---
 
-# Secure data in a data warehouse
+# Sichern von Daten in einem Data Warehouse
 
-Microsoft Fabric permissions and granular SQL permissions work together to govern Warehouse access and user permissions. In this exercise, you will secure data using granular permissions, column-level security, row-level security and dynamic data masking.
+Gemeinsam steuern Microsoft Fabric-Berechtigungen und granulare SQL-Berechtigungen den Warehouse-Zugriff und Benutzerberechtigungen. In dieser Übung sichern Sie Daten mithilfe präziser Berechtigungen, Sicherheit auf Spaltenebene, Sicherheit auf Zeilenebene und dynamischer Datenmaske.
 
-This lab will take approximately **45** minutes to complete.
+Dieses Lab dauert ungefähr **45** Minuten.
 
-> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
-## Create a workspace
+## Erstellen eines Arbeitsbereichs
 
-Before working with data in Fabric, create a workspace with the Fabric trial enabled.
+Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. On the [Microsoft Fabric home page](https://app.fabric.microsoft.com), select **Synapse Data Warehouse**.
-1. In the menu bar on the left, select **Workspaces** (the icon looks similar to &#128455;).
-1. Create a new workspace with a name of your choice, selecting a licensing mode that includes Fabric capacity (*Trial*, *Premium*, or *Fabric*).
-1. When your new workspace opens, it should be empty.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Screenshot of an empty workspace in Fabric.](./Images/new-empty-workspace.png)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-empty-workspace.png)
 
-## Create a data warehouse
+## Erstellen eines Data Warehouse
 
-Next, create a data warehouse in the workspace you just created. The Synapse Data Warehouse home page includes a shortcut to create a new warehouse:
+Erstellen Sie als Nächstes ein Data Warehouse im eben von Ihnen erstellten Arbeitsbereich. Die Startseite von „Data Warehouse mit Synapse“ enthält eine Verknüpfung zum Erstellen eines neuen Warehouse:
 
-1. On the **Synapse Data Warehouse** home page, create a new **Warehouse** with a name of your choice.
+1. Erstellen Sie auf der Startseite **Synapse Data Warehouse** ein neues **Warehouse** mit einem Namen Ihrer Wahl.
 
-    After a minute or so, a new warehouse will be created:
+    Nach einer Minute wird ein neues Warehouse erstellt:
 
-    ![Screenshot of a new warehouse.](./Images/new-empty-data-warehouse.png)
+    ![Screenshot eines neuen Warehouse](./Images/new-empty-data-warehouse.png)
 
-## Apply dynamic data masking to columns in a table
+## Anwenden dynamischer Datenmaskierung auf Spalten in einer Tabelle
 
-Dynamic data masking rules are applied on individual columns at the table level so all queries are affected by the masking. Users who do no have explicit permissions to view confidential data will see masked values in query results while users with explict permission to view the data will see it unobscured. There are four types of masks: default, email, random and custom string. In this exercise, you will apply a default mask, an email mask, and a custom string mask.
+Dynamische Datenmaskierungsregeln werden auf einzelne Spalten auf Tabellenebene angewendet, sodass alle Abfragen von der Maskierung betroffen sind. Benutzerinnen und Benutzer, die keine explizite Berechtigung zum Anzeigen vertraulicher Daten haben, sehen maskierte Werte in den Abfrageergebnissen, während Benutzerinnen und Benutzer mit einer expliziten Berechtigung zum Anzeigen der Daten diese ungeschwärzt sehen. Es gibt vier Arten von Masken: Standard, E-Mail, Zufall und benutzerdefinierte Zeichenfolge. In dieser Übung wenden Sie eine Standardmaske, eine E-Mail-Maske und eine Maske für benutzerdefinierte Zeichenfolge an.
 
-1. In your warehouse, select the **T-SQL** tile, and replace the default SQL code with the following T-SQL statements to create a table and to insert and view data.  The masks applied in the `CREATE TABLE` statement do the following:
+1. Wählen Sie in Ihrem neuen Warehouse die Kachel **T-SQL** aus, und ersetzen Sie den SQL-Standardcode durch die folgende T-SQL-Anweisung, um eine Tabelle zu erstellen und Daten einzufügen und anzuzeigen.  Die in der Anweisung `CREATE TABLE` angewendeten Masken führen folgende Aktionen aus:
 
     ```sql
     CREATE TABLE dbo.Customer
@@ -64,42 +64,42 @@ Dynamic data masking rules are applied on individual columns at the table level 
     GO
     ```
 
-2. Use the **&#9655; Run** button to run the SQL script, which creates a new table named **Customer** in the **dbo** schema of the data warehouse.
+2. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen, das eine neue Tabelle mit dem Namen **Customer** im **dbo**-Schema des Data Warehouse erstellt.
 
-3. Then, in the **Explorer** pane, expand **Schemas** > **dbo** > **Tables** and verify that the **Customer** table has been created. The SELECT statement returns unmasked data because you are connected as workspace admin which can see unmasked data.
+3. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **dbo** > **Tabellen**, und überprüfen Sie, ob die Tabelle **Customer** erstellt wurde. Die SELECT-Anweisung gibt unmaskierte Daten zurück, da Sie als Arbeitsbereichsadmin angemeldet sind, der unmaskierte Daten sehen kann.
 
-4. Connect as a test user that's a member of the **viewer** workspace role and run the following T-SQL statement.
+4. Stellen Sie eine Verbindung mit einem Testbenutzerkonto her, das Mitglied der Arbeitsbereichsrolle **Betrachter** ist, und führen Sie die folgende T-SQL-Anweisung aus.
 
     ```sql
     SELECT * FROM dbo.Customer;
     GO
     ```
 
-    This user has not been granted UNMASK permission so data returned for the FirstName, Phone and Email columns is masked because those columns were defined with a mask in the `CREATE TABLE` statement.
+    Dem Testbenutzerkonto wurde keine UNMASK-Berechtigung erteilt, sodass Daten, die für die Spalten „FirstName“, „Phone“ und „Email“ zurückgegeben werden, maskiert sind, da diese Spalten in der `CREATE TABLE`-Anweisung mit einer Maske definiert wurden.
 
-5. Reconnect as workspace admin and run the following T-SQL to unmask data for the test user.
+5. Stellen Sie wieder eine Verbindung als Arbeitsbereichsadmin her, und führen Sie die folgenden T-SQL-Dateien aus, um für das Testbenutzerkonto die Maske von den Daten zu entfernen.
 
     ```sql
     GRANT UNMASK ON dbo.Customer TO [testUser@testdomain.com];
     GO
     ```
 
-6. Connect as the test user again and run the following T-SQL statement.
+6. Stellen Sie erneut eine Verbindung mit dem Testbenutzerkonto her und führen Sie die folgende T-SQL-Anweisung aus.
 
     ```sql
     SELECT * FROM dbo.Customer;
     GO
     ```
 
-    The data is returned unmasked because the test user has been granted the `UNMASK` permission.
+    Die Daten werden unmaskiert zurückgegeben, da dem Testbenutzerkonto die `UNMASK`-Berechtigung erteilt wurde.
 
-## Apply row-level security
+## Anwenden von Sicherheitsmaßnahmen auf Zeilenebene
 
-Row-level security (RLS) can be used to limit access to rows based on the identity, or role of the user executing a query.  In this exercise, you will restrict access to rows by creating a security policy and a security predicate defined as an inline table-valued function.
+Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, um den Zugriff auf Zeilen basierend auf der Identität oder Rolle der Benutzerin bzw. des Benutzers zu beschränken, die oder der eine Abfrage ausführt.  In dieser Übung beschränken Sie den Zugriff auf Zeilen, indem Sie eine Sicherheitsrichtlinie und ein sicherheitsrelevantes Prädikat erstellen, das als Inlinetabellenwertfunktion definiert ist.
 
-1. In the warehouse you created in the last exercise, select the **New SQL Query** dropdown.  Under the dropdown under the header **Blank**, select **New SQL Query**.
+1. Wählen Sie im Warehouse, das Sie in der letzten Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus.  Wählen Sie in der Dropdownliste unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.
 
-2. Create a table and insert data into it. So that you can test row-level security in a later step, replace 'testuser1@mydomain.com' with a user name from your environment and replace 'testuser2@mydomain.com' with your user name.
+2. Erstellen Sie eine Tabelle, und fügen Sie Daten ein. Damit Sie die Sicherheit auf Zeilenebene in einem späteren Schritt testen können, ersetzen Sie „testuser1@mydomain.com“ durch einen Benutzernamen aus Ihrer Umgebung, und ersetzen Sie „testuser2@mydomain.com“ durch Ihren Benutzernamen.
     ```sql
     CREATE TABLE dbo.Sales  
     (  
@@ -124,10 +124,10 @@ Row-level security (RLS) can be used to limit access to rows based on the identi
     GO
     ```
 
-3. Use the **&#9655; Run** button to run the SQL script, which creates a new table named **Sales** in the **dbo** schema of the data warehouse.
+3. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen, das eine neue Tabelle mit dem Namen **Sales** im **dbo**-Schema des Data Warehouse erstellt.
 
-4. Then, in the **Explorer** pane, expand **Schemas** > **dbo** > **Tables** and verify that the **Sales** table has been created.
-5. Create a new schema, a security predicate defined as a function, and a security policy.  
+4. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **dbo** > **Tabellen**, und überprüfen Sie, ob die Tabelle **Sales** erstellt wurde.
+5. Erstellen Sie ein neues Schema, ein sicherheitsrelevantes Prädikat, das als Funktion definiert ist, und eine Sicherheitsrichtlinie.  
 
     ```sql
     --Create a separate schema to hold the row-level security objects (the predicate function and the security policy)
@@ -191,15 +191,15 @@ Column-level security allows you to designate which users can access specific co
     GO
  ```
 
-3. Deny permission to view a column in the table. The Transact SQL below will prevent '<testuser@mydomain.com>' from seeing the CreditCard column in the Orders table. In the `DENY` statement below, replace testuser@mydomain.com with a user name in your system who has Viewer permissions on the workspace.
+3. Verweigern Sie die Berechtigung zum Anzeigen einer Spalte in der Tabelle. Die T-SQL-Anweisung verhindert, dass <testuser@mydomain.com> die Spalte „CreditCard“ in der Tabelle „Orders“ sieht. Ersetzen Sie in der `DENY`-Anweisung unten testuser@mydomain.com durch einen Benutzernamen in Ihrem System, der über Betrachterberechtigungen für den Arbeitsbereich verfügt.
 
  ```sql
 DENY SELECT ON dbo.Orders (CreditCard) TO [testuser@mydomain.com];
  ```
 
-4. Test column-level security by logging in to Fabric as the user you denied select permissions to.
+4. Testen Sie die Sicherheit auf Spaltenebene, indem Sie sich bei Fabric mit dem Benutzerkonto anmelden, dem die Auswahlberechtigung verweigert wird.
 
-5. Query the Orders table to confirm that column-level security works as expected. The following query will return only the OrderID and CustomerID columns, not the CrediteCard column.  
+5. Fragen Sie die Tabelle „Orders“ ab, um zu bestätigen, dass die Sicherheit auf Spaltenebene wie erwartet funktioniert. Die folgende Abfrage gibt nur die Spalten „OrderID“ und „CustomerID“ zurück und nicht die Spalte „CreditCard“.  
 
     ```sql
     SELECT * FROM dbo.Orders;
@@ -210,13 +210,13 @@ DENY SELECT ON dbo.Orders (CreditCard) TO [testuser@mydomain.com];
     SELECT OrderID, CustomerID from dbo.Orders
     ```
 
-## Configure SQL granular permissions using T-SQL
+## Konfigurieren von granularen SQL-Berechtigungen mit T-SQL
 
-Fabric warehouse has a permissions model that allows you to control access to data at the workspace level, and at the item level. When you need more granular control of what users can do with securables in a Fabric warehouse, you can use the standard SQL data control language (DCL) commands `GRANT`,`DENY` and `REVOKE`. In this exercise, you will create objects, secure them using `GRANT`, and `DENY`, and then run queries to view the effect of applying granular permissions.
+Fabric Warehouse verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten auf Arbeitsbereichsebene und auf Elementebene steuern können. Wenn Sie eine genauere Kontrolle darüber benötigen, was Benutzerinnen und Benutzer mit sicherungsfähigen Daten in einem Fabric Warehouse tun können, können Sie die standardmäßigen DCL-Befehle (SQL Data Control Language) `GRANT`, `DENY` und `REVOKE` verwenden. In dieser Übung erstellen Sie Objekte, sichern sie mithilfe von `GRANT` und `DENY`, und führen dann Abfragen aus, um die Auswirkung der Anwendung präziser Berechtigungen anzuzeigen.
 
-1. In the warehouse you created in the earlier exercise, select the **New SQL Query** dropdown.  Under the header **Blank**, select **New SQL Query**.  
+1. Wählen Sie im Warehouse, das Sie in der vorherigen Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus.  Wählen Sie unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.  
 
-2. Create a stored procedure and a table.
+2. Erstellen Sie eine gespeicherten Prozedur und eine Tabelle.
 
  ```
     CREATE PROCEDURE dbo.sp_PrintMessage
@@ -244,7 +244,7 @@ Fabric warehouse has a permissions model that allows you to control access to da
     GO
   ```
 
-3. Next `DENY SELECT` permissions on the table to a user with who is a member of the Worksapce Viewer role and `GRANT EXECUTE` on the procedure to the same user.
+3. Wenden Sie als Nächstes `DENY SELECT`-Berechtigungen auf die Tabelle für ein Benutzerkonto an, das Mitglied der Rolle Arbeitsbereichsbetrachter ist und `GRANT EXECUTE` auf die Prozedur für dasselbe Benutzerkonto.
 
  ```sql
     DENY SELECT on dbo.Parts to [testuser@mydomain.com];
@@ -255,7 +255,7 @@ Fabric warehouse has a permissions model that allows you to control access to da
 
  ```
 
-4. Log in to Fabric as the user you specified in the DENY and GRANT statements above in place of [testuser@mydomain.com]. Then test the granular permissions you just applied by executing the stored procedure and querying the table.  
+4. Melden Sie sich bei Fabric mit dem Benutzerkonto an, das Sie in den Anweisungen DENY und GRANT oben anstelle von [testuser@mydomain.com] angegeben haben. Testen Sie dann die granularen Berechtigungen, die Sie eben angewendet haben, indem Sie die gespeicherte Prozedur ausführen und die Tabelle abfragen.  
 
  ```sql
     EXEC dbo.sp_PrintMessage;
@@ -264,10 +264,10 @@ Fabric warehouse has a permissions model that allows you to control access to da
     SELECT * FROM dbo.Parts
  ```
 
-## Clean up resources
+## Bereinigen von Ressourcen
 
-In this exercise, you have applied dynamic data masking to columns in a table, applied row-level security, implemented column-level security and configured SQL granular permissions using T-SQL.
+In dieser Übung haben Sie dynamische Datenmaskierung auf Spalten in einer Tabelle angewendet, die Sicherheit auf Zeilenebene angewendet, die Sicherheit auf Spaltenebene implementiert und granulare SQL-Berechtigungen mithilfe von T-SQL konfiguriert.
 
-1. In the bar on the left, select the icon for your workspace to view all of the items it contains.
-2. In the **...** menu on the toolbar, select **Workspace settings**.
-3. In the **General** section, select **Remove this workspace**.
+1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
+2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
