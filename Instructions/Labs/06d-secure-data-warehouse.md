@@ -44,7 +44,7 @@ Dynamische Datenformatierungsregeln werden auf einzelne Spalten auf Tabelleneben
 1. Wählen Sie in Ihrem neuen Warehouse die Kachel **T-SQL** aus, und ersetzen Sie den SQL-Standardcode durch die folgende T-SQL-Anweisung, um eine Tabelle zu erstellen und Daten einzufügen und anzuzeigen.  
 
     ```tsql
-    CREATE TABLE dbo.Customer
+    CREATE TABLE dbo.Customers
     (   
         CustomerID INT NOT NULL,   
         FirstName varchar(50) MASKED WITH (FUNCTION = 'partial(1,"XXXXXXX",0)') NULL,     
@@ -53,37 +53,37 @@ Dynamische Datenformatierungsregeln werden auf einzelne Spalten auf Tabelleneben
         Email varchar(50) MASKED WITH (FUNCTION = 'email()') NULL   
     );
     
-    INSERT dbo.Customer (CustomerID, FirstName, LastName, Phone, Email) VALUES
+    INSERT dbo.Customers (CustomerID, FirstName, LastName, Phone, Email) VALUES
     (29485,'Catherine','Abel','555-555-5555','catherine0@adventure-works.com'),
     (29486,'Kim','Abercrombie','444-444-4444','kim2@adventure-works.com'),
     (29489,'Frances','Adams','333-333-3333','frances0@adventure-works.com');
     
-    SELECT * FROM dbo.Customer;
+    SELECT * FROM dbo.Customers;
     
     ```
     Wenn Benutzer, die keine unmaskierten Daten sehen dürfen, die Tabelle abfragen, wird in der Spalte **FirstName** der erste Buchstabe der Zeichenfolge mit XXXXXXX und keines der letzten Zeichen angezeigt. In der Spalte **Phone** wird xxxx angezeigt. In der Spalte **Email** wird der erste Buchstabe der E-Mail-Adresse angezeigt, gefolgt von `XXX@XXX.com`. Mit diesem Ansatz wird sichergestellt, dass vertrauliche Daten vertraulich bleiben und Benutzer mit eingeschränktem Zugriff die Tabelle trotzdem abfragen können.
 
-2. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen, das eine neue Tabelle namens **Customer** im **dbo**-Schema des Data Warehouse erstellt.
+2. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen, das eine neue Tabelle mit dem Namen **Customers** im **dbo**-Schema des Data Warehouse erstellt.
 
-3. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **dbo** > **Tabellen**, und überprüfen Sie, ob die Tabelle **Customer** erstellt wurde. Die `SELECT`-Anweisung gibt Ihnen unmaskierte Daten zurück, da Sie als Arbeitsbereichsersteller Mitglied der Rolle „Arbeitsbereichsadministrator“ sind, die unmaskierte Daten sehen kann.
+3. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **dbo** > **Tabellen**, und vergewissern Sie sich, dass die Tabelle **Customers** erstellt wurde. Die `SELECT`-Anweisung gibt Ihnen unmaskierte Daten zurück, da Sie als Arbeitsbereichsersteller Mitglied der Rolle „Arbeitsbereichsadministrator“ sind, die unmaskierte Daten sehen kann.
 
 4. Stellen Sie eine Verbindung als Testbenutzer her, der Mitglied der Arbeitsbereichsrolle **Betrachter** ist, und führen Sie die folgende T-SQL-Anweisung aus.
 
     ```tsql
-    SELECT * FROM dbo.Customer;
+    SELECT * FROM dbo.Customers;
     ```
     Dem Testbenutzer wurde keine UNMASK-Berechtigung erteilt, sodass Daten, die für die Spalten "FirstName", "Phone" und "Email" zurückgegeben werden, maskiert sind, da diese Spalten in der `CREATE TABLE`-Anweisung mit einer Maske definiert wurden.
 
-5. Verbinden Sie sich als Arbeitsbereichsadministrator, und führen Sie die folgenden T-SQL-Dateien aus, um für den Testbenutzer die Maske von den Daten zu entfernen. Ersetzen Sie `[<username1>@<your_domain>.com]` durch den Namen des Benutzers, den Sie testen möchten und der Mitglied der Arbeitsbereichsrolle **Betrachter** ist. 
+5. Verbinden Sie sich als Arbeitsbereichsadministrator, und führen Sie die folgenden T-SQL-Dateien aus, um für den Testbenutzer die Maske von den Daten zu entfernen. Ersetzen Sie `<username>@<your_domain>.com` durch den Namen des Benutzers, den Sie testen möchten und der Mitglied der Arbeitsbereichsrolle **Betrachter** ist. 
 
     ```tsql
-    GRANT UNMASK ON dbo.Customer TO [<username1>@<your_domain>.com];
+    GRANT UNMASK ON dbo.Customers TO [<username>@<your_domain>.com];
     ```
 
 6. Verbinden Sie sich wieder als Testbenutzer und führen Sie die folgende T-SQL-Anweisung aus.
 
     ```tsql
-    SELECT * FROM dbo.Customer;
+    SELECT * FROM dbo.Customers;
     ```
 
     Die Daten werden unmaskiert zurückgegeben, da dem Testbenutzer die `UNMASK`-Berechtigung erteilt wurde.
@@ -94,7 +94,7 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
 
 1. Wählen Sie im Warehouse, das Sie in der letzten Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus.  Wählen Sie unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.
 
-2. Erstellen Sie eine Tabelle, und fügen Sie Daten ein. Damit Sie die Sicherheit auf Zeilenebene in einem späteren Schritt testen können, ersetzen Sie `[<username1>@<your_domain>.com]` durch einen Benutzernamen aus Ihrer Umgebung, und ersetzen Sie `[<username2>@<your_domain>.com]` durch Ihren Benutzernamen.
+2. Erstellen Sie eine Tabelle, und fügen Sie Daten ein. Damit Sie die Sicherheit auf Zeilenebene in einem späteren Schritt testen können, ersetzen Sie `<username1>@<your_domain>.com` durch einen Benutzernamen aus Ihrer Umgebung, und ersetzen Sie `<username2>@<your_domain>.com` durch Ihren Benutzernamen.
 
     ```tsql
     CREATE TABLE dbo.Sales  
@@ -107,12 +107,12 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
      
     --Populate the table with 6 rows of data, showing 3 orders for each test user. 
     INSERT dbo.Sales (OrderID, SalesRep, Product, Quantity) VALUES
-    (1, '[<username1>@<your_domain>.com]', 'Valve', 5),   
-    (2, '[<username1>@<your_domain>.com]', 'Wheel', 2),   
-    (3, '[<username1>@<your_domain>.com]', 'Valve', 4),  
-    (4, '[<username2>@<your_domain>.com]', 'Bracket', 2),   
-    (5, '[<username2>@<your_domain>.com]', 'Wheel', 5),   
-    (6, '[<username2>@<your_domain>.com]', 'Seat', 5);  
+    (1, '<username1>@<your_domain>.com', 'Valve', 5),   
+    (2, '<username1>@<your_domain>.com', 'Wheel', 2),   
+    (3, '<username1>@<your_domain>.com', 'Valve', 4),  
+    (4, '<username2>@<your_domain>.com', 'Bracket', 2),   
+    (5, '<username2>@<your_domain>.com', 'Wheel', 5),   
+    (6, '<username2>@<your_domain>.com', 'Seat', 5);  
      
     SELECT * FROM dbo.Sales;  
     ```
@@ -128,7 +128,7 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
     GO
     
     /*Create the security predicate defined as an inline table-valued function.
-    A predicate evalutes to true (1) or false (0). This security predicate returns 1,
+    A predicate evaluates to true (1) or false (0). This security predicate returns 1,
     meaning a row is accessible, when a row in the SalesRep column is the same as the user
     executing the query.*/
 
@@ -153,7 +153,7 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
 
 6. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen.
 7. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **rls** > **Funktionen**, und überprüfen Sie, ob die Funktion erstellt wurde.
-8. Melden Sie sich bei Fabric als der Benutzer an, den Sie durch `[<username1>@<your_domain>.com]` ersetzt haben (Tabelle „Sales“ `INSERT`Anweisung aus Schritt 9). Vergewissern Sie sich, dass Sie als dieser Benutzer angemeldet sind, indem Sie die folgende T-SQL-Datei ausführen.
+8. Melden Sie sich bei Fabric als der Benutzer an, durch den Sie `<username1>@<your_domain>.com` in der `INSERT`-Anweisung für die Tabelle „Sales“ ersetzt haben. Vergewissern Sie sich, dass Sie als dieser Benutzer angemeldet sind, indem Sie die folgende T-SQL-Datei ausführen.
 
     ```tsql
     SELECT USER_NAME();
@@ -179,7 +179,7 @@ Mithilfe der Sicherheit auf Spaltenebene können Sie festlegen, welche Benutzer 
         OrderID INT,   
         CustomerID INT,  
         CreditCard VARCHAR(20)      
-        );
+    );
 
     INSERT dbo.Orders (OrderID, CustomerID, CreditCard) VALUES
     (1234, 5678, '111111111111111'),
@@ -189,7 +189,7 @@ Mithilfe der Sicherheit auf Spaltenebene können Sie festlegen, welche Benutzer 
     SELECT * FROM dbo.Orders;
      ```
 
-3. Verweigern Sie die Berechtigung zum Anzeigen einer Spalte in der Tabelle. Die T-SQL-Anweisung verhindert, dass `[<username>@<your_domain>.com]` die Spalte „CreditCard“ in der Tabelle „Orders“ sieht. Ersetzen Sie in der `DENY`-Anweisung `[<username>@<your_domain>.com]` durch einen Benutzernamen in Ihrem System, der über **Betrachter**-Berechtigungen für den Arbeitsbereich verfügt.
+3. Verweigern Sie die Berechtigung zum Anzeigen einer Spalte in der Tabelle. Die T-SQL-Anweisung verhindert, dass `<username>@<your_domain>.com` die Spalte „CreditCard“ in der Tabelle „Orders“ sieht. Ersetzen Sie in der `DENY`-Anweisung `<username>@<your_domain>.com` durch einen Benutzernamen in Ihrem System, der über **Betrachter**-Berechtigungen für den Arbeitsbereich verfügt.
 
      ```tsql
     DENY SELECT ON dbo.Orders (CreditCard) TO [<username>@<your_domain>.com];
@@ -221,7 +221,8 @@ Fabric verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten
     CREATE PROCEDURE dbo.sp_PrintMessage
     AS
     PRINT 'Hello World.';
-  
+    GO
+
     CREATE TABLE dbo.Parts
     (
         PartID INT,
@@ -233,13 +234,16 @@ Fabric verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten
     (5678, 'Seat');
      GO
     
-    --Execute the stored procedure and select from the table and note the results you get as a member of the Workspace Admin role. Look for output from the stored procedure on the 'Messages' tab.
+    /*Execute the stored procedure and select from the table and note the results you get
+    as a member of the Workspace Admin role. Look for output from the stored procedure on 
+    the 'Messages' tab.*/
     EXEC dbo.sp_PrintMessage;
-    
+    GO
+
     SELECT * FROM dbo.Parts
      ```
 
-3. Wenden Sie als Nächstes `DENY SELECT`-Berechtigungen auf die Tabelle für einen Benutzer an, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist und `GRANT EXECUTE` auf die Prozedur für denselben Benutzer. Ersetzen Sie `[<username>@<your_domain>.com]` durch einen Benutzernamen aus Ihrer Umgebung, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist. 
+3. Wenden Sie als Nächstes `DENY SELECT`-Berechtigungen auf die Tabelle für einen Benutzer an, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist und `GRANT EXECUTE` auf die Prozedur für denselben Benutzer. Ersetzen Sie `<username>@<your_domain>.com` durch einen Benutzernamen aus Ihrer Umgebung, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist. 
 
      ```tsql
     DENY SELECT on dbo.Parts to [<username>@<your_domain>.com];
@@ -247,11 +251,12 @@ Fabric verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten
     GRANT EXECUTE on dbo.sp_PrintMessage to [<username>@<your_domain>.com];
      ```
 
-4. Melden Sie sich bei Fabric als der Benutzer an, den Sie in den `DENY`-und `GRANT`-Anweisungen anstelle von `[<username>@<your_domain>.com]` angegeben haben. Testen Sie dann die granularen Berechtigungen, die Sie angewendet haben, indem Sie die gespeicherte Prozedur ausführen und die Tabelle abfragen.  
+4. Melden Sie sich bei Fabric als der Benutzer an, den Sie in den `DENY`-und `GRANT`-Anweisungen anstelle von `<username>@<your_domain>.com` angegeben haben. Testen Sie dann die granularen Berechtigungen, die Sie angewendet haben, indem Sie die gespeicherte Prozedur ausführen und die Tabelle abfragen.  
 
      ```tsql
     EXEC dbo.sp_PrintMessage;
-       
+    GO
+   
     SELECT * FROM dbo.Parts;
      ```
 
