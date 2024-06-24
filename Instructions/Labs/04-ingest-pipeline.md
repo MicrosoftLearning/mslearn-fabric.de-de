@@ -50,7 +50,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **Verbindung**: Neue Verbindung erstellen
     - **Name der Verbindung**: *Angeben eines eindeutigen Namens*
     - **Datengateway**: (keine)
-    - **Authentifizierungsart**: Basic (*Benutzername und Kennwort leer lassen*)
+    - **Authentifizierungsart**: Anonym
 5. Wählen Sie **Weiter** aus. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
     - **Relative URL**: *Nicht ausfüllen*
     - **Anforderungsmethode**: GET
@@ -149,8 +149,7 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
     - **Allgemein:**
         - **Name**: Alte Dateien löschen
     - **Quelle**
-        - **Datenspeichertyp**: Arbeitsbereich
-        - **Arbeitsbereich-Datenspeicher**: *Ihr Lakehouse*
+        - **Verbindung**: *Ihr Lakehouse*
         - **Dateipfadtyp**: Platzhalterdateipfad
         - **Ordnerpfad**: Files/**new_data**
         - **Platzhalterdateiname**: *.csv        
