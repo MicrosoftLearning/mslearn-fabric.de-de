@@ -60,16 +60,23 @@ Jetzt erstellen Sie Beziehungen zwischen den Tabellen, um Ihre Daten genau zu an
      *Hinweis: Ein Standardsemantikmodell wird automatisch erstellt, wenn Sie einen Warehouse- oder SQL-Analyse-Endpunkt in Microsoft Fabric erstellen, und es erbt die Geschäftslogik vom übergeordneten Lakehouse oder Warehouse. Ein Semantikmodell, das Sie selbst erstellen (wie wir es hier getan haben), ist ein benutzerdefiniertes Modell, das Sie gemäß Ihren spezifischen Anforderungen und Präferenzen entwerfen und ändern können. Sie können ein benutzerdefiniertes Semantikmodell erstellen, indem Sie Power BI Desktop, den Power BI-Dienst oder andere Tools verwenden, die eine Verbindung mit Microsoft Fabric herstellen.*
 
 1. Wählen Sie auf dem Menüband **Datenmodell öffnen** aus.
-   
+
     Nun erstellen Sie Beziehungen zwischen den Tabellen. Wenn Sie sich mit dem Erstellen von Beziehungen in Power BI-Desktop auskennen, sieht dies vertraut aus.
 
     *Nach dem Konzept des Sternschemas unterteilen wir die Tabellen in unserem Modell in eine Faktentabelle und Dimensionstabellen. In diesem Modell ist die Tabelle **Trip** unsere Faktentabelle, und unsere Dimensionen sind **Date**, **Geography** und **Weather**.*
 
-1. Erstellen Sie mithilfe der Spalte **DateID** eine Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip**. **Wählen Sie die Spalte „DateID“** in der Tabelle **Date** aus, und **ziehen Sie sie auf die Spalte „DateID“ in der Tabelle „Trip“, und legen Sie sie dort ab**. Alternativ können Sie auf dem Menüband **Beziehungen verwalten** und anschließend **Neue Beziehung** auswählen.
+1. Erstellen Sie mithilfe der Spalte **DateID** eine Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip**.
 
-1. Stellen Sie sicher, dass die Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip** eine Beziehung vom Typ **1:n** ist.
+    **Wählen Sie die Spalte „DateID“** in der Tabelle **Date** aus, und *ziehen Sie sie auf die Spalte „DateID“ in der Tabelle „Trip“, und legen Sie sie dort ab*.
 
-1. Erstellen Sie Beziehungen zwischen der Faktentabelle **Trip** und den Dimensionen **Geography** und **Weather**, indem Sie den obigen Schritt wiederholen. Stellen Sie außerdem sicher, dass diese Beziehungen vom Typ **1:n** sind: Der Schlüssel soll in der Dimensionstabelle einmal und in der Faktentabelle mehrmals vorkommen. 
+    Stellen Sie sicher, dass die Beziehung zwischen der Tabelle **Date** und der Tabelle **Trip** eine Beziehung vom Typ **1:n** ist.
+
+1. Erstellen Sie zwei weitere Beziehungen zur **Trip**-Faktentabelle wie folgt:
+
+   - **Geography [GeographyID]** zu **Trip [DropoffGeographyID]** (1:Viele)
+   - **Weather [GeographyID]** zuo **Trip [DropoffGeographyID]** (1:Viele)
+
+    > **Hinweis**: Sie müssen die Standardkardinalität der Beziehung für beide Beziehungen in **1:Viele** ändern.
 
 1. Ziehen Sie die Tabellen an die entsprechende Position, sodass sich die Faktentabelle **Trip** am unteren Rand des Diagramms befindet und die verbleibenden Tabellen (d. h. die Dimensionstabellen) um die Faktentabelle herum angeordnet sind.
 
@@ -104,4 +111,3 @@ Sie verfügen jetzt über ein Semantikmodell, das anhand Ihres Warehouse erstell
 1. Nachdem Sie Ihre Untersuchung gespeichert haben, navigieren Sie zurück zu Ihrem Arbeitsbereich, um Ihr Data Warehouse, das Standardsemantikmodell, das von Ihnen erstellte Semantikmodell und Ihre Untersuchung anzuzeigen.
 
     ![Screenshot eines Arbeitsbereichs in Fabric mit einem Data Warehouse, einem Standardsemantikmodell, einem Semantikmodell und einer Datenuntersuchung.](./Images/semantic-model-workspace.png)
-

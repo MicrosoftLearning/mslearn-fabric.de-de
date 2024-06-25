@@ -93,7 +93,7 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
 6. Wählen Sie **Veröffentlichen** aus, um den Bericht zu veröffentlichen. Warten Sie dann, bis der **Dataflow 1**-Dataflow in Ihrem Arbeitsbereich erstellt wird.
 
-7. Nach der Veröffentlichung können Sie mit der rechten Maustaste auf den Dataflow in Ihrem Arbeitsbereich klicken, **Eigenschaften** auswählen und Ihren Dataflow umbenennen.
+7. Nach der Veröffentlichung können Sie die Auslassungspunkte **(…)** neben dem Dataflow in Ihrem Arbeitsbereich auswählen, dann **Eigenschaften** auswählen und Ihren Dataflow umbenennen.
 
 ## Hinzufügen eines Dataflows zu einer Pipeline
 
@@ -136,5 +136,4 @@ Wenn Sie die Untersuchung von Dataflows in Microsoft Fabric abgeschlossen haben,
 1. Navigieren Sie in Ihrem Browser zu Microsoft Fabric.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 1. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-1. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
-1. Speichern Sie die Änderungen nicht in Power BI Desktop, oder löschen Sie die PBIX-Datei, wenn sie bereits gespeichert wurde.
+1. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.

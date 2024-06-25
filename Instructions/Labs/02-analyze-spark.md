@@ -270,11 +270,11 @@ Eine häufige Aufgabe für Data Engineers besteht darin, Daten in einem bestimmt
 
     > **Hinweis:** Das *Parquet*-Format wird in der Regel für Datendateien verwendet, die Sie für die weitere Analyse oder Erfassung in einem Analysespeicher verwenden. Parquet ist ein sehr effizientes Format, das von den meisten umfangreichen Datenanalysesystemen unterstützt wird. Tatsächlich kann Ihre Datentransformation manchmal einfach darin bestehen, Daten aus einem anderen Format (z. B. CSV) in Parquet zu konvertieren!
 
-2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Lakehouses** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und wählen Sie den Ordner **transformed_orders** aus, um zu überprüfen, ob er einen neuen Ordner namens **orders** enthält, der wiederum eine oder mehrere Parquet-Dateien enthält.
+2. Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Klicken Sie dann im Bereich **Lakehouses** auf der linken Seite im Menü **...** für den Knoten **Files** auf die Option **Aktualisieren**, und wählen Sie den Ordner **transformed_data** aus, um zu überprüfen, ob er einen neuen Ordner namens **orders** enthält, der wiederum eine oder mehrere Parquet-Dateien enthält.
 
     ![Screenshot: Ordner mit Parquet-Dateien](./Images/saved-parquet.png)
 
-3. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu, um einen neuen Dataframe aus den Parquet-Dateien im Ordner **transformed_orders/orders** zu laden:
+3. Fügen Sie eine neue Zelle mit dem folgenden Code hinzu, um einen neuen Dataframe aus den Parquet-Dateien im Ordner **transformed_data/orders** zu laden:
 
     ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
@@ -358,7 +358,7 @@ Obwohl es nützlich ist, SQL-Anweisungen in eine Zelle einzubetten, die PySpark-
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Führen Sie die Zelle aus, und überprüfen Sie die Ergebnisse. Beachten Sie, Folgendes:
     - Die Zeile `%%sql` am Anfang der Zelle (wird als *Magic-Befehl* bezeichnet) gibt an, dass anstelle von PySpark die Spark SQL-Runtime verwendet werden soll, um den Code in dieser Zelle auszuführen.
     - Der SQL-Code verweist auf die Tabelle **salesorders**, die Sie zuvor erstellt haben.

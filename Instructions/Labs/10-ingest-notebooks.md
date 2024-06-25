@@ -39,7 +39,7 @@ Erstellen Sie zunächst ein neues Lakehouse und dann einen Zielordner im Lakehou
 
 1. Wählen Sie unter **Dateien** die Option **[...]** aus, um einen **neuen Unterordner** mit dem Namen **RawData** zu erstellen.
 
-1. Wählen Sie im Lakehouse-Explorer im Lakehouse **Dateien > ... > Eigenschaften** aus.
+1. Wählen Sie im Lakehouse-Explorer im Lakehouse **RawData > ... > Eigenschaften** aus.
 
 1. Kopieren Sie den **ABFS-Pfad** für den Ordner **RawData** zur späteren Verwendung in einen leeren Editor, der ungefähr wie folgt aussehen sollte: `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -229,4 +229,4 @@ Wenn Sie die Untersuchung abgeschlossen haben, können Sie den Arbeitsbereich l�
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.

@@ -39,7 +39,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivität **Daten kopieren** in einer Pipeline, um die Daten aus einer Quelle zu extrahieren und in eine Datei im Lakehouse zu kopieren.
 
-1. Wählen Sie auf der Seite **Start** für Ihr Lakehouse die Option **Neue Datenpipeline** aus, und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
+1. Wählen Sie auf der Seite **Home** für Ihr Lakehouse **Daten abrufen** aus und wählen Sie dann **Neue Datenpipeline** aus und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
 2. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren** aus.
 3. Wählen Sie im Assistenten **Daten kopieren** auf der Seite **Eine Datenquelle auswählen** im Abschnitt **Datenquellen** die Registerkarte **Generisches Protokoll** und dann **HTTP** aus.
 
@@ -49,7 +49,8 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Verbindung**: Neue Verbindung erstellen
     - **Name der Verbindung**: *Angeben eines eindeutigen Namens*
-    - **Authentifizierungsart**: Basic (*Benutzername und Kennwort leer lassen*)
+    - **Datengateway**: (keine)
+    - **Authentifizierungsart**: Anonym
 5. Wählen Sie **Weiter** aus. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
     - **Relative URL**: *Nicht ausfüllen*
     - **Anforderungsmethode**: GET
@@ -64,7 +65,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **Erste Zeile ist Überschrift**: Ausgewählt
     - **Komprimierungstyp**: Keiner
 7. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
-8. Wählen Sie auf der Seite **Datenziel auswählen** Ihr vorhandenes Lakehouse aus. Wählen Sie **Weiter**aus.
+8. Wählen Sie auf der Seite **Mit Datenziel verbinden** Ihr vorhandenes Lakehouse aus. Wählen Sie **Weiter**aus.
 9. Legen Sie die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
     - **Stammordner**: Files
     - **Ordnerpfadname**: new_data
@@ -148,8 +149,7 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
     - **Allgemein:**
         - **Name**: Alte Dateien löschen
     - **Quelle**
-        - **Datenspeichertyp**: Arbeitsbereich
-        - **Arbeitsbereich-Datenspeicher**: *Ihr Lakehouse*
+        - **Verbindung**: *Ihr Lakehouse*
         - **Dateipfadtyp**: Platzhalterdateipfad
         - **Ordnerpfad**: Files/**new_data**
         - **Platzhalterdateiname**: *.csv        
@@ -181,6 +181,8 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
 
     ![Screenshot: Eine Pipeline mit einer Dataflowaktivität](./Images/pipeline-run.png)
 
+> Hinweis: Falls Sie die Fehlermeldung *Spark SQL-Abfragen sind nur im Kontext eines Lakehouses möglich erhalten. Bitte fügen Sie ein Lakehouse an, um fortzufahren*: Öffnen Sie Ihr Notebook, wählen Sie das Lakehouse aus, das Sie im linken Bereich erstellt haben, wählen Sie **Alle Lakehouses entfernen** aus, und fügen Sie es dann erneut hinzu. Kehren Sie zum Pipeline-Designer zurück, und wählen Sie **&#9655; Ausführen**.
+
 8. Wählen Sie in der Hubmenüleiste am linken Rand des Portals Ihr Lakehouse aus.
 9. Erweitern Sie dann im **Explorer** die Option **Tabellen**, und wählen Sie die Tabelle **new_sales** aus, um eine Vorschau der darin enthaltenen Daten anzuzeigen. Diese Tabelle wurde vom Notebook erstellt, als dieses von der Pipeline ausgeführt wurde.
 
@@ -194,4 +196,4 @@ Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, 
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
 2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Andere** die Option **Diesen Arbeitsbereich entfernen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
