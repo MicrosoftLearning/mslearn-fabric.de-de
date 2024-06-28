@@ -167,7 +167,7 @@ Um das Modell zu verwenden, benötigen Sie ein Dataset mit Patientendaten, für 
 
    # Save the data in a delta table
    table_name = "diabetes_test"
-   df.write.format("delta").mode("overwrite").save(f"Tables/{table_name}")
+   df.write.format("delta").mode("overwrite").saveAsTable(table_name)
    print(f"Spark dataframe saved to delta table: {table_name}")
     ```
 
@@ -196,7 +196,7 @@ Nun können Sie das zuvor trainierte Modell verwenden, um Vorhersagen über den 
    df_test = model.transform(df)
 
    # Save the results (the original features PLUS the prediction)
-   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").save(f"Tables/{table_name}")
+   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").saveAsTable(table_name)
     ```
 
 1. Wenn der Code abgeschlossen ist, wählen Sie **...** neben der Tabelle **diabetes_test** im Bereich **Lakehouse-Explorer** aus und dann **Aktualisieren**. Das Feld **Vorhersagen** wurde hinzugefügt.
