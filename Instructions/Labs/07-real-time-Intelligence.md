@@ -34,11 +34,16 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, die Datendatei her
 
 Die Kusto-Abfragesprache (Kusto Query Language, KQL) wird verwendet, um statische oder Streamingdaten in einer Tabelle abzufragen, die in einer KQL-Datenbank definiert ist. Zur Analyse der Vertriebsdaten müssen Sie eine Tabelle in einer KQL-Datenbank erstellen und die Daten aus der Datei erfassen.
 
-1. Wählen Sie wie hier gezeigt im **Microsoft Fabric**-Portal **Real-Time Intelligence** aus:
+1. Wechseln Sie unten links im Portal zur Benutzeroberfläche Echtzeitintelligenz.
 
-    ![Screenshot der ausgewählten Fabric Experience-Startseite mit ausgewählter Real-Time Intelligence](./Images/fabric-experience-home.png)
+    ![Screenshot: Menü zum Wechseln der Benutzeroberfläche.](./Images/fabric-real-time.png)
 
-2. Wählen Sie auf der Seite **Start** für die **Real-Time Intelligence** die Option **KQL-Datenbank** aus und erstellen Sie eine neue Datenbank mit einem Namen Ihrer Wahl.
+2. Erstellen Sie auf der Startseite der Echtzeitintelligenz ein neues **Eventhouse** mit einem Namen Ihrer Wahl.
+
+   ![Screenshot des RTI-Editors mit hervorgehobener Option „Eventhouse“.](./Images/create-kql-db.png)
+
+   Das Eventhouse wird verwendet, um Ihre Datenbanken in Projekten zu gruppieren und zu verwalten. Eine leere KQL-Datenbank wird automatisch mit dem Namen des Eventhouses erstellt.
+   
 3. Wenn die neue Datenbank erstellt wurde, wählen Sie die Option zum Abrufen von Daten aus der **lokalen Datei** aus. Verwenden Sie dann den Assistenten, um die Daten in eine neue Tabelle zu importieren, indem Sie die folgenden Optionen auswählen:
     - **Ziel**:
         - **Datenbank**: *Die von Ihnen erstellte Datenbank ist bereits ausgewählt.*
