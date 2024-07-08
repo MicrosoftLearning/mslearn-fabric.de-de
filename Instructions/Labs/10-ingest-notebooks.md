@@ -143,42 +143,6 @@ Wahrscheinlich ist Ihre Aufgabe zur Datenerfassung nicht mit dem Laden einer Dat
 
 Sie haben nun erfolgreich eine Verbindung mit externen Daten hergestellt, sie in eine Parquet-Datei geschrieben und die Daten in einen DataFrame geladen, transformiert und in eine Deltatabelle geladen.
 
-## Optimieren von Schreibvorgängen in Deltatabellen
-
-Wahrscheinlich verwenden Sie in Ihrer Organisation Big Data und haben sich deshalb für Fabric-Notebooks zur Datenerfassung entschieden. Daher werden wir uns nun auch genauer ansehen, wie Sie das Erfassen und Lesen Ihrer Daten optimieren können. Zunächst wiederholen wir die Schritte zum Transformieren und Schreiben in eine Deltatabelle einschließlich Schreiboptimierungen.
-
-1. Erstellen Sie eine neue Codezelle, und fügen Sie den folgenden Code ein:
-
-    ```python
-    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
- 
-    # Read the parquet data from the specified path
-    raw_df = spark.read.parquet(output_parquet_path)    
-
-    # Add dataload_datetime column with current timestamp
-    opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
-    
-    # Filter columns to exclude any NULL values in storeAndFwdFlag
-    opt_df = opt_df.filter(opt_df["storeAndFwdFlag"].isNotNull())
-    
-    # Enable V-Order
-    spark.conf.set("spark.sql.parquet.vorder.enabled", "true")
-    
-    # Enable automatic Delta optimized write
-    spark.conf.set("spark.microsoft.delta.optimizeWrite.enabled", "true")
-    
-    # Load the filtered data into a Delta table
-    table_name = "yellow_taxi_opt"  # New table name
-    opt_df.write.format("delta").mode("append").saveAsTable(table_name)
-    
-    # Display results
-    display(opt_df.limit(1))
-    ```
-
-1. Vergewissern Sie sich, dass Sie dieselben Ergebnisse wie vor dem Optimierungscode haben.
-
-Notieren Sie sich nun die Laufzeiten für beide Codeblöcke. Ihre Zeiten werden davon abweichen, aber Sie können mit dem optimierten Code eine deutliche Leistungssteigerung feststellen.
-
 ## Analysieren von Daten in Deltatabellen mit SQL-Abfragen
 
 In diesem Lab steht die Datenerfassung im Mittelpunkt, wobei der Prozess zum *Extrahieren, Transformieren und Laden* erläutert wird. Es ist jedoch auch sinnvoll, die Daten in einer Vorschau anzuzeigen.
@@ -223,7 +187,7 @@ In diesem Lab steht die Datenerfassung im Mittelpunkt, wobei der Prozess zum *Ex
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie Notebooks mit PySpark in Fabric verwendet, um Daten zu laden und in Parquet zu speichern. Anschließend haben Sie die Parquet-Datei verwendet, um die Daten weiter zu transformieren, und Delta-Tabellenschreibvorgänge optimiert. Schließlich haben Sie SQL verwendet, um die Delta-Tabellen abzufragen.
+In dieser Übung haben Sie Notebooks mit PySpark in Fabric verwendet, um Daten zu laden und in Parquet zu speichern. Anschließend haben Sie diese Parquet-Datei verwendet, um die Daten weiter zu transformieren. Schließlich haben Sie SQL verwendet, um die Delta-Tabellen abzufragen.
 
 Wenn Sie die Untersuchung abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
