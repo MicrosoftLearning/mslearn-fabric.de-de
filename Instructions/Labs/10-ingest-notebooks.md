@@ -123,7 +123,7 @@ Wahrscheinlich ist Ihre Aufgabe zur Datenerfassung nicht mit dem Laden einer Dat
     filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
     
     # Load the filtered data into a Delta table
-    table_name = "yellow_taxi"  # Replace with your desired table name
+    table_name = "yellow_taxi"
     filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
     
     # Display results
@@ -164,26 +164,11 @@ In diesem Lab steht die Datenerfassung im Mittelpunkt, wobei der Prozess zum *Ex
     display(table_df.limit(10))
     ```
 
-1. Erstellen Sie eine weitere Codezelle, und fügen Sie auch diesen Code ein:
+1. Wählen Sie neben der Codezelle **&#9655; Zelle ausführen** aus.
 
-    ```python
-    # Load table into df
-    delta_table_name = "yellow_taxi_opt"
-    opttable_df = spark.read.format("delta").table(delta_table_name)
-    
-    # Create temp SQL table
-    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
-    
-    # SQL Query to confirm
-    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
-    
-    # Display results
-    display(opttable_df.limit(10))
-    ```
+     Viele Datenanalysten und -analystinnen sind mit der SQL-Syntax vertraut. Spark SQL ist eine SQL-Sprach-API in Spark, die Sie verwenden können, um SQL-Anweisungen auszuführen oder sogar um Daten in relationalen Tabellen zu speichern.
 
-1. Wählen Sie nun den Pfeil &#9660; neben der Schaltfläche **Zelle ausführen** für die erste dieser beiden Abfragen aus, und wählen Sie in der Dropdownliste **Diese und folgende Zellen ausführen** aus.
-
-    Dadurch werden die letzten beiden Codezellen ausgeführt. Beachten Sie den Unterschied bei der Ausführungszeit zwischen der Abfrage der Tabelle mit nicht optimierten Daten und einer Tabelle mit optimierten Daten.
+   Der soeben ausgeführte Code erstellt eine relationale *Ansicht* der Daten in einem DataFrame und verwendet dann die Bibliothek **spark.sql**, um Spark SQL-Syntax in Ihren Python-Code einzubetten, die Ansicht abzufragen und die Ergebnisse als Datenframe zurückzugeben.
 
 ## Bereinigen von Ressourcen
 
