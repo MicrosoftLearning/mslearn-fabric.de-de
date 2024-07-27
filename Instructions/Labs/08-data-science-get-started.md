@@ -105,7 +105,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
 
 Nachdem Sie die Daten erfasst und untersucht haben, können Sie sie transformieren. Sie können entweder Code in einem Notebook ausführen oder den Data Wrangler verwenden, um Code für Sie zu generieren.
 
-1. Die Daten werden als Spark-Dataframe geladen. Zum Starten des Data Wrangler müssen Sie die Daten in einen Pandas-Dataframe konvertieren. Führen Sie den folgenden Code in Ihrem Notebook aus:
+1. Die Daten werden als Spark-Dataframe geladen. Zwar akzeptiert der Daten-Wrangler Spark- oder Pandas-Datenframes, er ist jedoch derzeit für die Arbeit mit Pandas optimiert. Daher konvertieren Sie die Daten in einen Pandas-Datenframe. Führen Sie den folgenden Code in Ihrem Notebook aus:
 
     ```python
    df = df.toPandas()
