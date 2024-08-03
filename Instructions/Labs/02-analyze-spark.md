@@ -218,7 +218,7 @@ Das Dataframeobjekt enthält eine Vielzahl von Funktionen, mit denen Sie die dar
     ```Python
    from pyspark.sql.functions import *
 
-   yearlySales = df.select(year(col("OrderDate")).alias("Year")).groupBy("Year").count().orderBy("Year")
+   yearlySales = df.select(year("OrderDate").alias("Year")).groupBy("Year").count().orderBy("Year")
    display(yearlySales)
     ```
 
