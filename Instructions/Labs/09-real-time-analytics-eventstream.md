@@ -53,8 +53,7 @@ In diesem Tutorial lernen Sie Folgendes:
 1. Sie können die Datenbank benennen und eine **Neue Datenbank (Standard)** auswählen oder eine **Neue Verknüpfungsdatenbank (Follower)** erstellen.
 1. Klicken Sie auf **Erstellen**.
 
-     >[!Note]
-     > Mit der Funktion „Follower-Datenbank“ können Sie eine Datenbank, die sich in einem anderen Cluster befindet, an Ihren Azure Data Explorer-Cluster anfügen. Die Follower-Datenbank wird im schreibgeschützten Modus angefügt, sodass Sie die Daten anzeigen und Abfragen für die Daten ausführen können, die in der Leader-Datenbank erfasst wurden. Die Follower-Datenbank synchronisiert Änderungen in den Leader-Datenbanken. Aufgrund der Synchronisierung gibt es bei der Datenverfügbarkeit eine Zeitverzögerung von einigen Sekunden bis zu einigen Minuten. Die Länge der Zeitverzögerung hängt von der Gesamtgröße der Metadaten in der Leader-Datenbank ab. Die Leader- und Follower-Datenbanken verwenden dasselbe Speicherkonto zum Abrufen der Daten. Der Speicher befindet sich im Besitz der Leader-Datenbank. Die Follower-Datenbank zeigt die Daten an, ohne sie erfassen zu müssen. Da die angefügte Datenbank eine schreibgeschützte Datenbank ist, können die Daten, Tabellen und Richtlinien in der Datenbank nicht geändert werden, mit Ausnahme der Cacherichtlinie, Prinzipale und Berechtigungen.
+     >**Hinweis:** Mit der Funktion „Follower-Datenbank“ können Sie eine Datenbank, die sich in einem anderen Cluster befindet, an Ihren Azure Data Explorer-Cluster anfügen. Die Follower-Datenbank wird im schreibgeschützten Modus angefügt, sodass Sie die Daten anzeigen und Abfragen für die Daten ausführen können, die in der Leader-Datenbank erfasst wurden. Die Follower-Datenbank synchronisiert Änderungen in den Leader-Datenbanken. Aufgrund der Synchronisierung gibt es bei der Datenverfügbarkeit eine Zeitverzögerung von einigen Sekunden bis zu einigen Minuten. Die Länge der Zeitverzögerung hängt von der Gesamtgröße der Metadaten in der Leader-Datenbank ab. Die Leader- und Follower-Datenbanken verwenden dasselbe Speicherkonto zum Abrufen der Daten. Der Speicher befindet sich im Besitz der Leader-Datenbank. Die Follower-Datenbank zeigt die Daten an, ohne sie erfassen zu müssen. Da die angefügte Datenbank eine schreibgeschützte Datenbank ist, können die Daten, Tabellen und Richtlinien in der Datenbank nicht geändert werden, mit Ausnahme der Cacherichtlinie, Prinzipale und Berechtigungen.
 
    ![Abbildung der Auswahl der kqldatabase](./Images/create-kql-database-eventhouse.png)
 
@@ -75,17 +74,15 @@ In diesem Tutorial lernen Sie Folgendes:
 ## Erstellen eines Eventstreams
 
 1. Wählen Sie in der Menüleiste **Real-Time Intelligence** aus (das Symbol ähnelt dem ![Logo von Real-Time Intelligence](./Images/rta_logo.png)).
-2. Wählen Sie unter **Neu** die Option **Eventstream (Vorschau)** aus.
+2. Wählen Sie unter **Neu** die Option **EventStream**.
 
    ![Abbildung der Auswahl des Eventstreams](./Images/select-eventstream.png)
 
-3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem Ereignisstream einen Namen, den Sie sich gut merken können (z. B. **MyStockES**), und wählen Sie die Schaltfläche **Erstellen** aus.
+3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem EventStream einen Namen, den Sie sich merken können, z. B. **MyStockES**, wählen Sie die Option **Erweiterte Funktionen (Vorschau)** und wählen Sie die Schaltfläche **Erstellen**.
 
    ![Abbildung des Namens des Eventstreams](./Images/name-eventstream.png)
 
-4. **Benennen** Sie den **neuen Eventstream**, wählen Sie die Option **Erweiterte Funktionen (Vorschau)** aus, und klicken Sie auf **Erstellen**.
-
-     >[Hinweis:] Die Erstellung Ihres neuen Eventstreams im Arbeitsbereich wird in Kürze abgeschlossen. Nach der Einrichtung werden Sie automatisch zum primären Editor weitergeleitet und können dort mit der Integration von Quellen in Ihren Eventstream beginnen.
+     >**Note:**  Die Erstellung Ihres neuen Eventstreams im Arbeitsbereich wird in Kürze abgeschlossen. Nach der Einrichtung werden Sie automatisch zum primären Editor weitergeleitet und können dort mit der Integration von Quellen in Ihren Eventstream beginnen.
 
 ## Einrichten einer Eventstreamquelle
 
@@ -93,18 +90,16 @@ In diesem Tutorial lernen Sie Folgendes:
 
     [ ![Bild der Verwendung von Beispieldaten](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
 
-2.  Geben Sie Ihrer Quelle unter **Quelle hinzufügen** einen Namen, und wählen Sie „Bicycles (Reflex compatible)“ aus.
-1.  Wählen Sie die Schaltfläche **Hinzufügen** aus.
+2.  Geben Sie im Fenster **Quelle hinzufügen** Ihrer Quelle einen Namen und wählen Sie **Fahrräder (reflexkompatibel)**.
+3.  Wählen Sie die Schaltfläche **Hinzufügen** aus.
 
     ![Auswählen und Benennen des Beispieldaten-Eventstreams](./Images/eventstream-sample-data.png)
 
-1. Nachdem Sie auf **Hinzufügen** geklickt haben, wird Ihr Stream zugeordnet, und Sie werden automatisch zur **Eventstream-Canvas** weitergeleitet.
+4. Nachdem Sie auf **Hinzufügen** geklickt haben, wird Ihr Stream zugeordnet, und Sie werden automatisch zur **Eventstream-Canvas** weitergeleitet.
 
    [ ![Überprüfen der Eventstream-Canvas](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
-
-3. Geben Sie wie in der folgenden Tabelle gezeigt die Werte für Ihre Beispieldaten ein, und wählen Sie dann **Hinzufügen** aus.
  
- > [HINWEIS:] Nachdem Sie die Beispieldatenquelle erstellt haben, wird sie ihrem Eventstream im Bearbeitungsmodus hinzugefügt. Wählen Sie zum Implementieren dieser neu hinzugefügten Beispieldaten **Veröffentlichen** aus.
+ > **Note:** Nachdem Sie die Beispieldatenquelle erstellt haben, wird sie ihrem Eventstream auf dem Canvas im Bearbeitungsmodus hinzugefügt. Wählen Sie zum Implementieren dieser neu hinzugefügten Beispieldaten **Veröffentlichen** aus.
 
 ## Hinzufügen von Transformationsereignissen oder einer Zielaktivität
 
@@ -121,7 +116,6 @@ In diesem Tutorial lernen Sie Folgendes:
         - ***Direkte Erfassung:*** Daten werden direkt in einer KQL-Tabelle ohne Transformation erfasst.
         - ***Ereignisverarbeitung vor der Erfassung:*** Transformieren Sie die Daten mit dem Ereignisprozessor, bevor Sie sie an eine KQL-Tabelle senden.      
         
-        > [!WARNING]
         > **Warnung:** Sie können den Erfassungsmodus **NICHT** bearbeiten, nachdem dem Eventstream das KQL-Datenbankziel hinzugefügt wurde.     
 
    - **Name des Ziels**: Geben Sie einen Namen für das Eventstream-Ziel ein, z. B. „kql-dest“.
@@ -138,25 +132,32 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie in der **Eventstream**-Canvas **Ereignisse transformieren** aus.
 
+    ![Hinzufügen von „Gruppieren nach“ zum Transformationsereignis.](./Images/eventstream-add-aggregates.png)
+
     A. Klicken Sie auf **Gruppieren nach**.
 
     B. Klicken Sie auf **Bearbeiten**, das vom ***Bleistiftsymbol*** dargestellt wird.
 
-    C. Füllen Sie die Eigenschaften im Einstellungsabschnitt **Gruppieren nach** aus.
+    C. Nachdem Sie das Transformationsereignis **Gruppieren nach** erstellt haben, müssen Sie es vom **Eventstream** mit **Gruppieren nach** verbinden. Sie erreichen dies ohne Code, indem Sie rechts im **Eventstream** auf den Punkt klicken und ihn zu dem Punkt links im neuen Feld **Gruppieren nach** ziehen. 
 
-    [ ![Hinzufügen von „Gruppieren nach“ zum Transformationsereignis](./Images/eventstream-add-aggregates.png) ](./Images/eventstream-add-aggregates-large.png)
+    ![Verknüpfung zwischen dem Eventstream und „Gruppieren nach“.](./Images/group-by-drag-connectors.png)    
 
-2. Nachdem Sie das Transformationsereignis **Gruppieren nach** erstellt haben, müssen Sie es vom **Eventstream** mit **Gruppieren nach** verbinden. Sie erreichen dies ohne Code, indem Sie rechts im **Eventstream** auf den Punkt klicken und ihn zu dem Punkt links im neuen Feld **Gruppieren nach** ziehen.
+2. Füllen Sie die Eigenschaften im Einstellungsabschnitt **Gruppieren nach** aus:
+    - **Vorgangsname:** Geben Sie einen Namen für dieses Transformationsereignis ein.
+    - **Aggregationstyp:** Sum
+    - **Feld:** No_Bikes
+    - **Name:** SUM_No_Bikes
+    - **Aggregation gruppieren nach**: Straße
+      
+3. Klicken Sie auf **Hinzufügen** und dann auf **Speichern**.
 
-   [ ![Verknüpfung zwischen dem Eventstream und „Gruppieren nach“](./Images/group-by-drag-connectors.png) ](./Images/group-by-drag-connectors-large.png)
-
-3. Auf die gleiche Weise können Sie mit dem Mauszeiger auf den Pfeil zwischen dem **Eventstream** und ***kql_dest*** zeigen und auf das ***Mülleimersymbol*** klicken.
+4. Auf die gleiche Weise können Sie mit dem Mauszeiger auf den Pfeil zwischen dem **Eventstream** und ***kql_dest*** zeigen und auf das ***Papierkorbsymbol** klicken. Sie können dann das Ereignis **Gruppieren nach** mit **kql-dest** verbinden.
 
    [ ![Entfernen einer Verknüpfung zwischen zwei Ereignissen](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
 
-    > [HINWEIS:] Wenn Sie Connectors hinzufügen oder entfernen, müssen Sie die Zielobjekte erneut konfigurieren.
+    > **Note:**  [HINWEIS:] Wenn Sie Connectors hinzufügen oder entfernen, müssen Sie die Zielobjekte erneut konfigurieren.
 
-
+5. Wählen Sie den Bleistift unter **kql-dest** aus und erstellen Sie eine neue Zieltabelle mit dem Namen **Bike_sum**, die die Ausgabe des Ereignisses **Gruppieren nach** erhalten soll.
 
 ## KQL-Abfragen
 
@@ -166,7 +167,7 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte
 
 1. Navigieren Sie zu Ihrer neu erstellten und aktualisierten KQL-Datenbank:
 
-    A.  Wählen Sie **kql_dest** aus. 
+    A.  Auswählen von **kql-dest** 
 
     B. Klicken Sie auf den Link **Element öffnen** in der Zeile **Verwandtes Element**.
 
@@ -176,11 +177,11 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte
 
    [ ![Entfernen einer Verknüpfung zwischen zwei Ereignissen](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
 
-3. Die Beispielabfrage wird im Bereich **Untersuchen Ihrer Daten** geöffnet, wobei der Tabellenkontext bereits aufgefüllt ist. Diese erste Abfrage verwendet den take-Operator, um eine Beispielanzahl von Datensätzen zurückzugeben. Zudem ist sie nützlich, um einen ersten Überblick über die Datenstruktur und mögliche Werte zu erhalten. Die automatisch aufgefüllten Beispielabfragen werden automatisch ausgeführt. Sie können die Abfrageergebnisse im Ergebnisbereich anzeigen.
+3. Die Beispielabfrage wird im Bereich **Untersuchen Ihrer Daten** geöffnet, wobei der Tabellenkontext bereits aufgefüllt ist. Diese erste Abfrage verwendet den `take`-Operator, um eine Beispielanzahl von Datensätzen zurückzugeben. Zudem ist sie nützlich, um einen ersten Überblick über die Datenstruktur und mögliche Werte zu erhalten. Die automatisch aufgefüllten Beispielabfragen werden automatisch ausgeführt. Sie können die Abfrageergebnisse im Ergebnisbereich anzeigen.
 
    ![Abbildung der KQL-Abfrageergebnisse](./Images/kql-query-results.png)
 
-4. Kehren Sie zur Datenstruktur zurück, um die nächste Abfrage auszuwählen, die mithilfe des Zusammenfassungsoperators die Anzahl der Datensätze zählt, die in 15 Minutenintervallen erfasst wurden.
+4. Kehren Sie zur Datenstruktur zurück, um die nächste Abfrage **Aufnahme pro Stunde zusammenfassen** auszuwählen, die den Operator `summarize` verwendet, um die Anzahl der in einem bestimmten Intervall aufgenommenen Datensätze zu zählen.
 
    ![Abbildung der KQL-Abfrageergebnisse](./Images/kql-query-results-15min-intervals.png)
 
