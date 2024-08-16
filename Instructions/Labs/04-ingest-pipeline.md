@@ -40,12 +40,13 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivität **Daten kopieren** in einer Pipeline, um die Daten aus einer Quelle zu extrahieren und in eine Datei im Lakehouse zu kopieren.
 
 1. Wählen Sie auf der Seite **Home** für Ihr Lakehouse **Daten abrufen** aus und wählen Sie dann **Neue Datenpipeline** aus und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
-2. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren** aus.
-3. Wählen Sie im Assistenten **Daten kopieren** auf der Seite **Eine Datenquelle auswählen** im Abschnitt **Datenquellen** die Registerkarte **Generisches Protokoll** und dann **HTTP** aus.
+2. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren > Kopier-Assistenten verwenden** aus.
+3. Geben Sie im Assistenten **Daten kopieren** auf der Seite **Datenquelle auswählen** in die Suchleiste „HTTP“ ein und wählen Sie dann **HTTP** im Abschnitt **Neue Quellen** aus.
+
 
     ![Screenshot: Die Seite „Datenquelle auswählen“](./Images/choose-data-source.png)
 
-4. Wählen Sie **Weiter** und dann **Neue Verbindung erstellen** aus, und geben Sie die folgenden Einstellungen für die Verbindung mit Ihrer Datenquelle ein:
+4. Geben Sie im Bereich **Mit Datenquelle verbinden** die folgenden Einstellungen für die Verbindung mit Ihrer Datenquelle ein:
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Verbindung**: Neue Verbindung erstellen
     - **Name der Verbindung**: *Angeben eines eindeutigen Namens*
@@ -65,7 +66,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **Erste Zeile ist Überschrift**: Ausgewählt
     - **Komprimierungstyp**: Keiner
 7. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
-8. Wählen Sie auf der Seite **Mit Datenziel verbinden** Ihr vorhandenes Lakehouse aus. Wählen Sie **Weiter**aus.
+8. Wählen Sie auf der Seite **Datenziel auswählen** erst **OneLake-Datenhub** und dann Ihr vorhandenes Lakehouse aus.
 9. Legen Sie die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
     - **Stammordner**: Files
     - **Ordnerpfadname**: new_data

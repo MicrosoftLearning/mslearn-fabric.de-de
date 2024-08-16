@@ -44,7 +44,7 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) wird verwendet, um statisch
 
    Das Eventhouse wird verwendet, um Ihre Datenbanken in Projekten zu gruppieren und zu verwalten. Eine leere KQL-Datenbank wird automatisch mit dem Namen des Eventhouses erstellt.
    
-3. Wenn die neue Datenbank erstellt wurde, wählen Sie die Option zum Abrufen von Daten aus der **lokalen Datei** aus. Verwenden Sie dann den Assistenten, um die Daten in eine neue Tabelle zu importieren, indem Sie die folgenden Optionen auswählen:
+3. Wenn die neue Datenbank erstellt wurde, wählen Sie sie aus der Liste links unter KQL-Datenbanken aus. Wählen Sie dann die Option aus, um Daten aus der **lokalen Datei** abzurufen. Verwenden Sie den Assistenten, um die Daten in eine neue Tabelle zu importieren, indem Sie die folgenden Optionen auswählen:
     - **Ziel**:
         - **Datenbank**: *Die von Ihnen erstellte Datenbank ist bereits ausgewählt.*
         - **Table:** *Erstellen Sie eine neue Tabelle mit dem Namen* **sales**, indem Sie auf das +-Zeichen links neben ***Neue Tabelle*** klicken.
@@ -59,7 +59,7 @@ Die Kusto-Abfragesprache (Kusto Query Language, KQL) wird verwendet, um statisch
 
         ![Schritt 3 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-3.png?raw=true)
 
-        - Auf diesem Bildschirm sehen Sie, dass sich die Spaltenüberschriften in der ersten Zeile befinden. Obwohl das System sie erkannt hat, müssen wir den Schieberegler über diesen Zeilen **Erste Zeile ist Spaltenüberschrift** verschieben, um keine Fehler zu erhalten.
+        - Auf diesem Bildschirm sehen Sie, dass sich die Spaltenüberschriften in der ersten Zeile befinden. Obwohl das System sie erkannt hat, müssen wir den Schieberegler über diesen Zeilen **Erste Zeile ist Spaltenüberschrift** verschieben, damit keine Fehler auftreten.
         
         ![Schritt 4 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-4.png?raw=true)
 
