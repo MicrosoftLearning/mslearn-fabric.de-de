@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -125,7 +125,7 @@ Die meisten Abfragen in einem relationalen Data Warehouse umfassen das Aggregier
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Beachten Sie, dass Sie mit den Attributen in der Zeitdimension die Measures in der Faktentabelle auf mehreren Hierarchieebenen – in diesem Fall Jahr und Monat – aggregieren können. Dies ist ein gängiges Muster in Data Warehouses.
+    Beachten Sie, dass Sie mit den Attributen in der Datumsdimension die Kennzahlen in der Faktentabelle auf mehreren hierarchischen Ebenen aggregieren können – in diesem Fall Jahr und Monat. Dies ist ein gängiges Muster in Data Warehouses.
 
 2. Ändern Sie die Abfrage wie folgt, um der Aggregation eine zweite Dimension hinzuzufügen.
 
@@ -217,7 +217,7 @@ Sie können die Daten ganz einfach in einer einzelnen Abfrage oder in Ihrem Data
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Jetzt können Sie einen Bericht erstellen und dieses Dataset für andere Personen verfügbar machen. Wählen Sie im Startmenü die Option **Neuer Bericht** aus. Dadurch wird ein neues Fenster geöffnet, in dem Sie einen Power BI-Bericht erstellen können.
+1. Jetzt können Sie einen Bericht erstellen und dieses Dataset für andere Personen verfügbar machen. Wählen Sie im Berichtsmenü die Option **Neuer Bericht** aus. Dadurch wird ein neues Fenster geöffnet, in dem Sie einen Power BI-Bericht erstellen können.
 
 1. Erweitern Sie **FactSalesOrder** im Bereich **Daten**. Beachten Sie, dass die Spalten, die Sie ausgeblendet haben, nicht mehr sichtbar sind. 
 
