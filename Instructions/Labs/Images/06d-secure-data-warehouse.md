@@ -91,7 +91,7 @@ Dynamische Datenmaskierungsregeln werden auf einzelne Spalten auf Tabellenebene 
     GO
     ```
 
-    Die Daten werden unmaskiert zurückgegeben, da dem Testbenutzerkonto die `UNMASK`-Berechtigung erteilt wurde.
+    Die Daten werden unmaskiert zurückgegeben, da dem Testbenutzer die `UNMASK`-Berechtigung erteilt wurde.
 
 ## Anwenden von Sicherheitsmaßnahmen auf Zeilenebene
 

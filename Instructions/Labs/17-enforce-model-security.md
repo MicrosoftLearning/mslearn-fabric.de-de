@@ -4,7 +4,7 @@ lab:
   module: Design and build tabular models
 ---
 
-# Erzwingen von Modellsicherheit
+# Erzwingen der Sicherheit des Semantikmodells
 
 In dieser Übung aktualisieren Sie ein vorab entwickeltes Datenmodell, um Sicherheit zu erzwingen. Insbesondere sollen Vertriebsmitarbeitende des Unternehmens Adventure Works nur Verkaufsdaten anzeigen können, die mit der ihnen zugewiesenen Vertriebsregion zusammenhängen.
 

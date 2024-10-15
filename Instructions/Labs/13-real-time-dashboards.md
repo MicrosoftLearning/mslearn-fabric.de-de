@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Echtzeit-Dashboards in Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: Erste Schritte mit Echtzeit-Dashboards in Microsoft Fabric
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Erste Schritte mit Real-Time-Dashboards in Microsoft Fabric
@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **25** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite.](https://app.fabric.microsoft.com) **Real-Time Intelligence** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*). Sie können auch einen vorhandenen Arbeitsbereich verwenden, um ein Echtzeitdashboard zu erstellen.
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.

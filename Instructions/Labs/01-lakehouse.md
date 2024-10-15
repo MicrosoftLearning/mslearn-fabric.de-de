@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Erstellen eines Lakehouse
+# Erstellen eines Microsoft Fabric-Lakehouse
 
 Umfangreiche Datenanalyselösungen wurden traditionell um ein *Data Warehouse* herum erstellt, in dem Daten in relationalen Tabellen gespeichert und mithilfe von SQL abgefragt werden. Das Wachstum im Bereich von „Big Data“ (zeichnet sich durch hohe *Volumes*, *Vielfalt* und *Geschwindigkeit* neuer Datenressourcen aus) zusammen mit der Verfügbarkeit von kosteneffizienten Speicherlösungen und in der Cloud skalierbaren verteilten Computetechnologien hat zu einem alternativen Ansatz zur analytischen Datenspeicherung geführt: *Data Lakes*. In einem Data Lake werden Daten als Dateien gespeichert, ohne ein festes Schema für die Speicherung vorzuschreiben. Data Engineers und Data Analysts versuchen zunehmend, von den besten Features beider Ansätze zu profitieren, indem sie sie in einem *Data Lakehouse* kombinieren. In diesem werden Daten in Dateien in einem Data Lake gespeichert, und ein relationales Schema wird als Metadatenebene auf sie angewendet, damit sie mit herkömmlicher SQL-Semantik abgefragt werden können.
 
@@ -18,7 +18,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com) unter `https://app.fabric.microsoft.com` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -139,9 +139,9 @@ Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Se
 
     > **Hinweis 1**: In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
     
-    > **Hinweis 2**: Die Ansichten `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` und `exec_requests_history` sind Teil des `queryinsights` Schemas, das automatisch von Fabric erstellt wird. Es ist ein Feature, das eine ganzheitliche Ansicht der historischen Abfrageaktivität auf dem SQL-Analyseendpunkt bietet. Da dieses Feature außerhalb des Umfangs dieser Übung liegt, sollten diese Ansichten vorerst ignoriert werden.
+    > **Hinweis 2**: Die Ansichten **frequently_run_queries**, **long_running_queries**, **exec_s exec_sessions_history** und **exec_requests_history** sind Teil des **queryinsights**-Schemas, das automatisch von Fabric erstellt wird. Es ist ein Feature, das eine ganzheitliche Ansicht der historischen Abfrageaktivität auf dem SQL-Analyseendpunkt bietet. Da dieses Feature außerhalb des Umfangs dieser Übung liegt, sollten diese Ansichten vorerst ignoriert werden.
 
-2. Klicken Sie auf dem Menüband auf die Registerkarte **Berichterstellung**, und wählen Sie dann **Neuer Bericht** aus. Eine neue Browserregisterkarte wird geöffnet, in der Sie Ihren Bericht entwerfen können.
+2. Klicken Sie auf dem Menüband auf die Registerkarte **Berichterstellung**, und wählen Sie dann **Neuer Bericht** aus. Ihre aktuelle Seite ändert sich in eine Berichts-Designeransicht.
 
     ![Screenshot: Berichts-Designer](./Images/report-designer.png)
 
@@ -157,8 +157,8 @@ Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Se
 
     ![Screenshot: Bericht mit einem gruppierten Balkendiagramm](./Images/clustered-bar-chart.png)
 
-5. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als **Item Sales Report** in dem Arbeitsbereich, den Sie zuvor erstellt haben.
-6. Schließen Sie die Browserregisterkarte mit dem Bericht, um zum SQL-Endpunkt für Ihr Lakehouse zurückzukehren. Wählen Sie dann links auf der Hubmenüleiste Ihren Arbeitsbereich aus, um zu überprüfen, ob er die folgenden Elemente enthält:
+5. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als `Item Sales Report` in dem zuvor erstellten Arbeitsbereich.
+6. Wählen Sie nun in der Menüleiste links Ihren Arbeitsbereich aus, um zu überprüfen, ob er die folgenden Elemente enthält:
     - Ihr Lakehouse
     - SQL-Analyseendpunkt für Ihr Lakehouse.
     - Standardmäßiges Semantikmodell für die Tabellen in Ihrem Lakehouse.
