@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Abfragen von Daten aus einer KQL-Datenbank
+  title: Erste Schritte beim Abfragen einer Kusto-Datenbank in Microsoft Fabric
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 
@@ -20,7 +20,7 @@ Sie werden ungefähr **25** Minuten für dieses Lab benötigen.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der Startseite [Microsoft Fabric](https://app.fabric.microsoft.com) **Real-Time Intelligence** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.

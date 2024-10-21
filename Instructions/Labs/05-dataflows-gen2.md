@@ -4,7 +4,7 @@ lab:
   module: Ingest Data with Dataflows Gen2 in Microsoft Fabric
 ---
 
-# Erstellen eines Dataflows (Gen2) in Microsoft Fabric
+# Erstellen und Verwenden eines Dataflows (Gen2) in Microsoft Fabric
 
 In Microsoft Fabric stellen Dataflows (Gen2) eine Verbindung mit verschiedenen Datenquellen her und führen Transformationen in Power Query Online durch. Diese können dann in Datenpipelines zum Erfassen von Daten in einem Lakehouse- oder einem anderen Analysespeicher, oder zum Definieren eins Datasets für einen Power BI-Bericht verwendet werden.
 
@@ -16,7 +16,7 @@ Dieses Lab wurde entwickelt, um die verschiedenen Elemente von Dataflows (Gen2) 
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com) die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -82,7 +82,7 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
    ![Datenzielkonfigurationsseite](./Images/data-destination-target.png)
 
-4. Wählen Sie auf der Seite **Zieleinstellungen wählen**die Option **Anfügen** aus und dann **Einstellungen speichern**.
+4. Klicken Sie auf **Weiter** und deaktivieren Sie auf der Seite **Zieleinstellungen wählen** die Option **Automatische Einstellungen verwenden**, wählen Sie **Anhängen** und dann **Einstellungen speichern**.
     > **Hinweis:** Sie sollten den *Power Query-Editor* zum Aktualisieren von Datentypen verwenden. Sie können dies aber auch auf dieser Seite tun, wenn Sie möchten.
 
     ![Seite „Datenzieleinstellungen“](./Images/destination-settings.png)
@@ -92,8 +92,6 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
    ![Abfrage mit einem Lakehouseziel](./Images/lakehouse-destination.png)
 
 6. Wählen Sie **Veröffentlichen** aus, um den Bericht zu veröffentlichen. Warten Sie dann, bis der **Dataflow 1**-Dataflow in Ihrem Arbeitsbereich erstellt wird.
-
-7. Nach der Veröffentlichung können Sie die Auslassungspunkte **(…)** neben dem Dataflow in Ihrem Arbeitsbereich auswählen, dann **Eigenschaften** auswählen und Ihren Dataflow umbenennen.
 
 ## Hinzufügen eines Dataflows zu einer Pipeline
 
@@ -123,7 +121,7 @@ Sie können einen Dataflow als Aktivität in eine Pipeline einschließen. Pipeli
 
    ![Eine Tabelle, die von einem Dataflow geladen wurde](./Images/loaded-table.png)
 
-> **Tipp**: Verwenden Sie den Power BI Desktop *Dataflows-Connector*, um eine direkte Verbindung mit den Datentransformationen herzustellen, die mit Ihrem Dataflow durchgeführt wurden.
+> **Tipp**: In Power BI Desktop können Sie mithilfe des Connectors *Power BI-Dataflows (Legacy)* eine direkte Verbindung zu den Datentransformationen herstellen, die mit Ihrem Dataflow durchgeführt wurden.
 >
 > Mit diesem Desktop können Sie auch zusätzliche Transformationen vornehmen, ein neues Dataset veröffentlichen und spezialisierte Datasets an das Zielpublikum verteilen.
 >

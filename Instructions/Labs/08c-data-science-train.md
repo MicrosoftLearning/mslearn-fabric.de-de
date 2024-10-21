@@ -18,7 +18,7 @@ Dieses Lab dauert ungefähr **25** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com` zur Willkommensseite von Microsoft Fabric, und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Willkommensseite von Fabric die Option **Synapse Data Science** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
