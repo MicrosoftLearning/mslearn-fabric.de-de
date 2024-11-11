@@ -50,7 +50,7 @@ Fabric bietet mehrere Möglichkeiten zum Laden von Daten in das Lakehouse, einsc
    > **Hinweis:** Um die Datei herunterzuladen, öffnen Sie eine neue Registerkarte im Browser, und fügen Sie die URL ein. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle auf der Seite mit den Daten, und wählen Sie **Speichern als** aus, um die Seite als CSV-Datei zu speichern.
 
 2. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Lakehouse-Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Unterordner namens **data**.
-3. Wählen Sie im Menü **...** für den neuen Ordner **data** die Option **Hochladen** und **Datei hochladen** aus, und laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) hoch.
+3. Wählen Sie im Menü **...** für den neuen Ordner **data** die Option **Hochladen** und **Datei hochladen** aus und laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) hoch.
 4. Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **Files/data** aus, und vergewissern Sie sich, dass die Datei **sales.csv** wie im folgenden Beispiel hochgeladen wurde:
 
     ![Screenshot: Hochgeladene Datei „sales.csv“ in einem Lakehouse](./Images/uploaded-sales-file.png)
