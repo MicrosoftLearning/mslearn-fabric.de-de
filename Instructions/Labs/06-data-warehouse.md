@@ -125,7 +125,7 @@ Die meisten Abfragen in einem relationalen Data Warehouse umfassen das Aggregier
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Beachten Sie, dass Sie mit den Attributen in der Datumsdimension die Kennzahlen in der Faktentabelle auf mehreren hierarchischen Ebenen aggregieren können – in diesem Fall Jahr und Monat. Dies ist ein gängiges Muster in Data Warehouses.
+    Beachten Sie, dass Sie mit den Attributen in der Zeitdimension die Measures in der Faktentabelle auf mehreren Hierarchieebenen – in diesem Fall Jahr und Monat – aggregieren können. Dies ist ein gängiges Muster in Data Warehouses.
 
 2. Ändern Sie die Abfrage wie folgt, um der Aggregation eine zweite Dimension hinzuzufügen.
 
@@ -217,7 +217,7 @@ Sie können die Daten ganz einfach in einer einzelnen Abfrage oder in Ihrem Data
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Jetzt können Sie einen Bericht erstellen und dieses Dataset für andere Personen verfügbar machen. Wählen Sie im Berichtsmenü die Option **Neuer Bericht** aus. Dadurch wird ein neues Fenster geöffnet, in dem Sie einen Power BI-Bericht erstellen können.
+1. Jetzt können Sie einen Bericht erstellen und dieses Dataset für andere Personen verfügbar machen. Wählen Sie im Startmenü die Option **Neuer Bericht** aus. Dadurch wird ein neues Fenster geöffnet, in dem Sie einen Power BI-Bericht erstellen können.
 
 1. Erweitern Sie **FactSalesOrder** im Bereich **Daten**. Beachten Sie, dass die Spalten, die Sie ausgeblendet haben, nicht mehr sichtbar sind. 
 
