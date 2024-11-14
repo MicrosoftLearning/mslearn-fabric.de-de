@@ -8,8 +8,6 @@ lab:
 
 Microsoft Fabric verfügt über ein mehrschichtiges Sicherheitsmodell zur Verwaltung des Datenzugriffs. Die Sicherheit kann für einen gesamten Arbeitsbereich, für einzelne Elemente oder über granulare Berechtigungen in jedem Fabric-Modul festgelegt werden. In dieser Übung sichern Sie Daten mithilfe von Arbeitsbereichen, Elementzugriffssteuerungen und OneLake-Datenzugriffsrollen.
 
-> **Hinweis**: Um die Übungen in diesem Lab durchzuführen, benötigen Sie zwei Benutzende: Einem Benutzenden sollte die Rolle „Arbeitsbereichsadministrator“ zugewiesen werden, dem anderen werden im Verlauf dieses Labs Berechtigungen zugewiesen. Informationen zum Zuweisen von Rollen zu Arbeitsbereichen finden Sie unter [ Gewähren des Zugriffs auf Ihren Arbeitsbereich ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
-
 Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
 ## Erstellen eines Arbeitsbereichs
