@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Erstellen eines Microsoft Fabric-Lakehouse
+# Erstellen eines Lakehouse
 
 Umfangreiche Datenanalyselösungen wurden traditionell um ein *Data Warehouse* herum erstellt, in dem Daten in relationalen Tabellen gespeichert und mithilfe von SQL abgefragt werden. Das Wachstum im Bereich von „Big Data“ (zeichnet sich durch hohe *Volumes*, *Vielfalt* und *Geschwindigkeit* neuer Datenressourcen aus) zusammen mit der Verfügbarkeit von kosteneffizienten Speicherlösungen und in der Cloud skalierbaren verteilten Computetechnologien hat zu einem alternativen Ansatz zur analytischen Datenspeicherung geführt: *Data Lakes*. In einem Data Lake werden Daten als Dateien gespeichert, ohne ein festes Schema für die Speicherung vorzuschreiben. Data Engineers und Data Analysts versuchen zunehmend, von den besten Features beider Ansätze zu profitieren, indem sie sie in einem *Data Lakehouse* kombinieren. In diesem werden Daten in Dateien in einem Data Lake gespeichert, und ein relationales Schema wird als Metadatenebene auf sie angewendet, damit sie mit herkömmlicher SQL-Semantik abgefragt werden können.
 
@@ -50,7 +50,7 @@ Fabric bietet mehrere Möglichkeiten zum Laden von Daten in das Lakehouse, einsc
    > **Hinweis:** Um die Datei herunterzuladen, öffnen Sie eine neue Registerkarte im Browser, und fügen Sie die URL ein. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle auf der Seite mit den Daten, und wählen Sie **Speichern als** aus, um die Seite als CSV-Datei zu speichern.
 
 2. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Lakehouse-Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Unterordner namens **data**.
-3. Wählen Sie im Menü **...** für den neuen Ordner **data** die Option **Hochladen** und **Datei hochladen** aus, und laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) hoch.
+3. Wählen Sie im Menü **...** für den neuen Ordner **data** die Option **Hochladen** und **Datei hochladen** aus und laden Sie dann die Datei **sales.csv** von Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) hoch.
 4. Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **Files/data** aus, und vergewissern Sie sich, dass die Datei **sales.csv** wie im folgenden Beispiel hochgeladen wurde:
 
     ![Screenshot: Hochgeladene Datei „sales.csv“ in einem Lakehouse](./Images/uploaded-sales-file.png)
