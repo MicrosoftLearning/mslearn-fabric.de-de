@@ -16,7 +16,7 @@ Diese Übung dauert ca. **45** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Melden Sie sich auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) bei `https://app.fabric.microsoft.com/home?experience=fabric` an und wählen Sie die Option **Power BI** aus.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -33,7 +33,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für die Daten zu erstellen, die analysiert werden sollen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** namens **Sales**.
+1. Erstellen Sie im soeben erstellten Arbeitsbereich ein neues **Lakehouse** mit dem Namen **Sales**, indem Sie auf die Schaltfläche **New item** klicken.
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
@@ -206,15 +206,15 @@ Sie verfügen nun über Daten in Ihrer Silber-Deltatabelle, die für die weitere
 
 ## Untersuchen von Daten in der Silberebene mithilfe des SQL-Endpunkts
 
-Nachdem die Silberebene nun Daten enthält, können Sie den SQL-Endpunkt verwenden, um sie zu untersuchen und einige grundlegende Analysen auszuführen. Dies ist eine gute Option für Sie, wenn Sie mit SQL vertraut sind und eine einfache Untersuchung Ihrer Daten durchführen möchten. In dieser Übung verwenden wir die SQL-Endpunktansicht in Fabric. Beachten Sie jedoch, dass Sie auch andere Tools wie SQL Server Management Studio (SSMS) und Azure Data Explorer verwenden können.
+Nachdem die Silberebene nun Daten enthält, können Sie den SQL-Endpunkt verwenden, um sie zu untersuchen und einige grundlegende Analysen auszuführen. Dies ist eine gute Option für Sie, wenn Sie mit SQL vertraut sind und eine grundlegende Untersuchung Ihrer Daten durchführen möchten. In dieser Übung verwenden wir die SQL-Endpunktansicht in Fabric. Beachten Sie jedoch, dass Sie auch andere Tools wie SQL Server Management Studio (SSMS) und Azure Data Explorer verwenden können.
 
-1. Navigieren Sie zurück zu Ihrem Arbeitsbereich. Dort sind jetzt einige Ressourcen aufgelistet. Wählen Sie **SQL-Endpunkt aus**, um Ihr Lakehouse in der SQL-Endpunktansicht zu öffnen.
+1. Navigieren Sie zurück zu Ihrem Arbeitsbereich. Dort sind jetzt einige Ressourcen aufgelistet. Wählen Sie **Sales SQL analytics endpoint** aus, um Ihr Lakehouse in der SQL-Endpunktansicht zu öffnen.
 
     ![Screenshot des SQL-Endpunkts in einem Lakehouse.](./Images/sql-endpoint-item.png)
 
 2. Wählen Sie im Menüband **Neue SQL-Abfrage** aus, wodurch ein SQL-Abfrage-Editor geöffnet wird. Sie können Ihre Abfrage mit dem Menüelement **...** neben dem vorhandenen Abfragenamen im Lakehouse-Explorer-Bereich umbenennen.
 
-   Wir führen zwei SQL-Abfragen aus, um die Daten zu analysieren.
+   Als Nächstes führen Sie zwei SQL-Abfragen aus, um die Daten zu untersuchen.
 
 3. Fügen Sie die folgende Abfrage in den Abfrage-Editor ein, und wählen Sie **Ausführen** aus:
 
@@ -230,7 +230,7 @@ Nachdem die Silberebene nun Daten enthält, können Sie den SQL-Endpunkt verwend
 
     ![Screenshot der Ergebnisse einer SQL-Abfrage in einem Lakehouse.](./Images/total-sales-sql.png)
 
-4. Nun sehen wir uns an, welche Kunden am meisten (in Bezug auf die Menge) kaufen. Fügen Sie die folgende Abfrage in den Abfrage-Editor ein, und wählen Sie **Ausführen** aus:
+4. Nun sehen wir uns an, welche Kundschaft am meisten (in Bezug auf die Menge) kauft. Fügen Sie die folgende Abfrage in den Abfrage-Editor ein, und wählen Sie **Ausführen** aus:
 
     ```sql
     SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
@@ -249,11 +249,11 @@ Sie haben erfolgreich Daten aus Ihrer Bronzeschicht übernommen, sie transformie
 
 Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können, aber für die Zwecke dieser Übung verwenden Sie separate Notebooks, um den Prozess der Transformation von Daten von Bronze in Silber und dann von Silber in Gold zu veranschaulichen. Dies kann beim Debuggen, bei der Problembehandlung und beim Wiederverwenden hilfreich sein.
 
-1. Kehren Sie zur **Datentechnik**-Startseite zurück, und erstellen Sie ein neues Notebook namens **Transformieren von Daten für Gold**.
+1. Kehren Sie zur Startseite des Arbeitsbereichs zurück, und erstellen Sie ein neues Notebook mit dem Titel **Transform data for Gold**.
 
-2. Fügen Sie im Lakehouse-Explorer-Bereich Ihr Lakehouse **Vertrieb** hinzu, indem Sie **Hinzufügen** und dann das zuvor erstellte **Vertrieb**-Lakehouse auswählen. Die **sales_silver**-Tabelle sollte im Abschnitt **Tabellen** des Explorer-Bereichs angezeigt werden.
+2. Fügen Sie im Lakehouse-Explorer-Bereich Ihr Lakehouse **Vertrieb** hinzu, indem Sie **Hinzufügen** und dann das zuvor erstellte **Vertrieb**-Lakehouse auswählen. Wählen Sie im Fenster **Add Lakehouse** die Option **Existing Lakehouse without Schema** aus. Die **sales_silver**-Tabelle sollte im Abschnitt **Tabellen** des Explorer-Bereichs angezeigt werden.
 
-3. Entfernen Sie im vorhandenen Codeblock den Textbaustein, und **fügen Sie den folgenden Code hinzu**, um Daten in Ihr DataFrame zu laden und mit dem Erstellen Ihres Sternschemas zu beginnen. Führen Sie es dann aus:
+3. Entfernen Sie im vorhandenen Codeblock den Textbaustein und **fügen Sie den folgenden Code hinzu**, um Daten in Ihr DataFrame zu laden und mit dem Erstellen Ihres Sternschemas zu beginnen. Führen Sie es dann aus:
 
    ```python
     # Load data to the dataframe as a starting point to create the gold layer
@@ -326,13 +326,13 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
           "Month": "updates.Month",
           "Year": "updates.Year",
           "mmmyyyy": "updates.mmmyyyy",
-          "yyyymm": "yyyymm"
+          "yyyymm": "updates.yyyymm"
         }
       ) \
       .execute()
     ```
 
-    Herzlichen Glückwunsch! Ihre Datumsdimension ist nun eingerichtet. Jetzt erstellen Sie Ihre Kundendimension.
+    Die Datumsdimension ist jetzt eingerichtet. Jetzt erstellen Sie Ihre Kundendimension.
 7. Um die Kundendimensionstabelle zu erstellen, **fügen Sie einen neuen Codeblock hinzu**, fügen Sie den folgenden Code ein und führen Sie ihn aus:
 
     ```python
