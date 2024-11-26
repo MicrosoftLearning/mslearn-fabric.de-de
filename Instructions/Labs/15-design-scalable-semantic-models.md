@@ -30,7 +30,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 In dieser Aufgabe werden Sie eine vorentwickelte Power BI Desktop-Lösung öffnen, um das Datenmodell kennenzulernen. Anschließend erkunden Sie das Verhalten aktiver Modellbeziehungen.
 
-1. Auf dem Power BI Desktop wechseln Sie zur Ansicht **Modell**.
+1. Auf dem Power BI Desktop links wechseln Sie zur Ansicht **Modell**.
 
     ![](Images/design-scalable-semantic-models-image1.png)
 
