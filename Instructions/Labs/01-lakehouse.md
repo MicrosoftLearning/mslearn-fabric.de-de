@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Erstellen eines Lakehouse
+# Erstellen eines Microsoft Fabric-Lakehouse
 
 Umfangreiche Datenanalyselösungen wurden traditionell um ein *Data Warehouse* herum erstellt, in dem Daten in relationalen Tabellen gespeichert und mithilfe von SQL abgefragt werden. Das Wachstum im Bereich von „Big Data“ (zeichnet sich durch hohe *Volumes*, *Vielfalt* und *Geschwindigkeit* neuer Datenressourcen aus) zusammen mit der Verfügbarkeit von kosteneffizienten Speicherlösungen und in der Cloud skalierbaren verteilten Computetechnologien hat zu einem alternativen Ansatz zur analytischen Datenspeicherung geführt: *Data Lakes*. In einem Data Lake werden Daten als Dateien gespeichert, ohne ein festes Schema für die Speicherung vorzuschreiben. Data Engineers und Data Analysts versuchen zunehmend, von den besten Features beider Ansätze zu profitieren, indem sie sie in einem *Data Lakehouse* kombinieren. In diesem werden Daten in Dateien in einem Data Lake gespeichert, und ein relationales Schema wird als Metadatenebene auf sie angewendet, damit sie mit herkömmlicher SQL-Semantik abgefragt werden können.
 

@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Abfragen von Daten aus einer KQL-Datenbank
+  title: Erste Schritte beim Abfragen einer Kusto-Datenbank in Microsoft Fabric
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 
