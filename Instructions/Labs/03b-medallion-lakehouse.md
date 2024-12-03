@@ -21,8 +21,6 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-   ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace-medallion.png)
-
 5. Navigieren Sie zu den Arbeitsbereichseinstellungen, und aktivieren Sie die Previewfunktion **Datenmodellbearbeitung**. Damit können Sie mithilfe eines semantischen Modells von Power BI Beziehungen zwischen Tabellen in Ihrem Lakehouse erstellen.
 
     ![Screenshot der Seite mit den Arbeitsbereichseinstellungen in Fabric](./Images/workspace-settings.png)
@@ -153,8 +151,6 @@ Nachdem Sie nun einige Daten in der Bronzeschicht Ihres Lakehouses haben, könne
 10. Führen Sie die Zelle aus, um den Code mithilfe der Schaltfläche ****&#9655;** (*Zelle ausführen*) auszuführen.
 
 11. Wählen Sie im Bereich „Tabellen“ des Lakehouse-Explorers die Option **...** aus, und wählen Sie **Aktualisieren** aus. Die neue **sales_silver**-Tabelle sollte jetzt aufgeführt sein. Das **&#9650;** (Dreieckssymbol) gibt an, dass es sich um eine Deltatabelle handelt.
-
-    ![Screenshot der Tabelle „sales_silver“ in einem Lakehouse.](./Images/sales-silver-table.png)
 
     > **Hinweis**: Wenn die neue Tabelle nicht angezeigt wird, warten Sie einige Sekunden, und wählen Sie dann erneut **Aktualisieren** aus, oder aktualisieren Sie die gesamte Browserregisterkarte.
 
