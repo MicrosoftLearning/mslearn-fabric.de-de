@@ -18,7 +18,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,7 +29,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für Ihre Datendateien zu erstellen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues Lakehouse erstellt:
 
@@ -69,7 +69,7 @@ In vielen Szenarios können die Daten, mit denen Sie in Ihrem Lakehouse arbeiten
 Die von Ihnen hochgeladenen Verkaufsdaten befinden sich in einer Datei, mit der Data Analysts und Data Engineers direkt mithilfe von Apache Spark-Code arbeiten können. In vielen Szenarios müssen Sie jedoch die Daten aus der Datei in eine Tabelle laden, damit Sie sie mithilfe von SQL abfragen können.
 
 1. Wählen Sie auf der **Startseite** den Ordner **Files/data** aus, damit Sie die darin enthaltene Datei **sales.csv** anzeigen können.
-2. Klicken Sie im Menü **...** für die Datei **sales.csv** auf **In Tabelle laden**.
+2. Wählen Sie im Menü **...** für die **sales.csv**-Datei **In Tabellen laden** > **Neue Tabelle** aus.
 3. Legen Sie im Dialogfeld **In Tabelle laden** den Tabellennamen auf **sales** fest, und bestätigen Sie den Ladevorgang. Warten Sie dann, bis die Tabelle erstellt und geladen wurde.
 
     > **Tipp:** Wenn die Tabelle **sales** nicht automatisch angezeigt wird, klicken Sie im Menü **...** für den Ordner **Tables** auf **Aktualisieren**.
@@ -108,7 +108,7 @@ Wenn Sie ein Lakehouse erstellen und darin Tabellen definieren, wird automatisch
 
 Während viele Datenexpert*innen mit SQL vertraut sind, können Data Analysts mit Power BI-Erfahrung ihre Power Query-Kenntnisse anwenden, um visuelle Abfragen zu erstellen.
 
-1. Wählen Sie auf der Symbolleiste **Neue visuelle Abfrage** aus.
+1. Erweitern Sie in der Symbolleiste die Option **Neue SQL-Abfrage**, und wählen Sie **Neue visuelle Abfrage** aus.
 2. Ziehen Sie die Tabelle **sales** in den Editor-Bereich für neue visuelle Abfragen, der wie im Folgenden gezeigt geöffnet wird, um eine Power Query-Abfrage zu erstellen: 
 
     ![Screenshot: Visuelle Abfrage](./Images/visual-query.png)
@@ -133,9 +133,9 @@ Während viele Datenexpert*innen mit SQL vertraut sind, können Data Analysts mi
 Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Semantikmodell für die Berichterstellung mit Power BI hinzugefügt.
 
 
-1. Wählen Sie unten auf der Seite „SQL-Endpunkt“ die Registerkarte **Modell** aus. Das Datenmodellschema für das semantische Modell wird angezeigt.
+1. Wählen Sie in der Symbolleiste **Modelllayouts** aus. Das Datenmodellschema für das semantische Modell wird angezeigt.
 
-    ![Screenshot 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
+    ![Screenshot von Modelllayouts](./Images/lakehouse-model-layouts.png)
 
     > **Hinweis 1**: In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
     
@@ -171,5 +171,5 @@ In dieser Übung haben Sie ein Lakehouse erstellt und Daten in das Lakehouse imp
 Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+2. Wählen Sie in der Symbolleiste **Arbeitsbereichseinstellungen** aus.
 3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.

@@ -6,368 +6,322 @@ lab:
 
 # Verwenden von Deltatabellen in Apache Spark
 
-Die Tabellen in einem Microsoft Fabric Lakehouse basieren auf dem Open-Source-Format Delta Lake. Delta Lake bietet Support für relationale Semantik sowohl für Batch- als auch für Streaming-Daten. In dieser Übung werden Sie Deltatabellen erstellen und die Daten mithilfe von SQL-Abfragen untersuchen.
+Die Tabellen in einem Microsoft Fabric-Lakehouse basieren auf dem Open-Source-Format von *Delta Lake* für Spark. Delta Lake bietet Unterstützung für relationale Semantik für Batch- und Streamingdatenvorgänge und ermöglicht die Erstellung einer Lakehouse-Architektur, in der Apache Spark zum Verarbeiten und Abfragen von Daten in Tabellen verwendet werden kann, die auf zugrunde liegenden Dateien in einem Data Lake basieren.
 
-Diese Übung dauert ca. **45** Minuten.
+Diese Übung dauert ca. **40** Minuten.
 
-> [!NOTE]
-> Sie benötigen eine [Microsoft Fabric](/fabric/get-started/fabric-trial) Testversion, um diese Übung durchzuführen.
+> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie zunächst einen Arbeitsbereich mit  *Fabric* aktiviert.
+Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der Microsoft Fabric-Homepage unter https://app.fabric.microsoft.com die Erfahrung **Synapse-Datentechnik** aus.
-1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** (🗇).
-1. Erstellen Sie einen **neuen Arbeitsbereich** mit einem Namen Ihrer Wahl und wählen Sie einen Lizenzierungsmodus, der Fabric-Kapazität beinhaltet (Trial, Premium oder Fabric).
-1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
+3. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+4. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
-    ![Anzeigebild eines leeren Fabric-Arbeitsbereichs.](Images/workspace-empty.jpg)
+    ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
 ## Erstellen eines Lakehouse und Hochladen von Daten
 
-Jetzt, wo Sie einen Arbeitsbereich haben, ist es an der Zeit, ein Lakehouse zu erstellen und einige Daten hochzuladen.
+Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse für die Daten zu erstellen, die analysiert werden sollen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl. 
-1. Es gibt verschiedene Möglichkeiten, Daten zu erfassen. In dieser Übung laden Sie jedoch eine Textdatei auf Ihren lokalen Computer (oder ggf. auf die Lab-VM) herunter und laden sie dann auf Ihr Lakehouse hoch. Laden Sie die [Datendatei](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) von https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv herunter und speichern Sie sie als *Produkte.csv*.
-1.  Kehren Sie zu der Registerkarte des Webbrowsers zurück, die Ihr Lakehouse enthält, und wählen Sie im Explorer-Bereich neben dem Ordner **Dateien** das Menü mit den drei Punkten (...) aus. Menü.  Erstellen Sie einen **neuen Unterordner** namens *Produkte*.
-1.  Geben Sie Feld Menü für den Produktordner, **laden Sie die *products.csv* Datei von Ihrem lokalen Computer (oder lab VM, falls zutreffend) hoch**.
-1.  Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **Produkte** aus, um zu überprüfen, ob die Datei hochgeladen wurde, wie hier gezeigt:
+1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
-    ![Anzeigebild von products.csv, das auf das Lakehouse hochgeladen wurde.](Images/upload-products.jpg)
-  
+    Nach etwa einer Minute ist ein neues leeres Lakehouse fertig. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie einfach eine Textdatei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
+
+1. Laden Sie die [Datendatei](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) für diese Übung von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter und speichern Sie diese als **products.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
+
+1. Kehren Sie zur Webbrowser-Registerkarte mit Ihrem Lakehouse zurück, und wählen Sie im Menü **...** für den Ordner **Files** im Bereich **Explorer** die Option **Neuer Unterordner** aus, und erstellen Sie einen Ordner namens **products**.
+
+1. Wählen Sie im Menü **...** für den Ordner **products** die Optionen **Hochladen** und **Dateien hochladen** aus. Laden Sie dann die Datei **products.csv** von Ihrem lokalen Computer (oder ggf. einer Lab-VM) in das Lakehouse hoch.
+1. Nachdem die Datei hochgeladen wurde, wählen Sie den Ordner **products**, und vergewissern Sie sich, dass die Datei **products.csv** hochgeladen wurde, wie hier gezeigt:
+
+    ![Screenshot der hochgeladenen products.csv-Datei in einem Lakehouse](./Images/products-file.png)
+
 ## Untersuchen von Daten in einem Dataframe
 
-1.  Erstellen Sie ein **neues Notebook**. Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen Zelle geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die Code oder Markdown (formatierten Text) enthalten können.
-2.  Markieren Sie die erste Zelle (die momentan eine Codezelle ist), und verwenden Sie dann in der oberen rechten Symbolleiste die Schaltfläche **M↓**, um sie in eine Abschriftenzelle umzuwandeln. Der in der Zelle enthaltene Text wird dann als formatierter Text angezeigt. Verwenden Sie Markdownzellen, um erläuternde Informationen zu Ihrem Code bereitzustellen.
-3.  Verwenden Sie die Schaltfläche 🖉 (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu schalten, und ändern Sie dann das Markdown wie folgt:
+1. Wählen Sie beim Anzeigen des Inhalts des Ordners **products** in Ihrem Data Lake auf der Seite **Home** im Menü **Notebook öffnen** die Option **Neues Notebook** aus.
 
-    ```markdown
-    # Delta Lake tables 
-    Use this notebook to explore Delta Lake functionality 
-    ```
+    Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen *Zelle* geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die *Code* oder *Markdown* (formatierten Text) enthalten können.
 
-4. Klicken Sie außerhalb der Zelle auf eine beliebige Stelle im Notebook, um die Bearbeitung zu beenden und die gerenderte Markdownzelle anzuzeigen.
-5. Fügen Sie eine neue Codezelle hinzu, und fügen Sie den folgenden Code ein, um die Produktdaten mit Hilfe eines definierten Schemas in einen DataFrame zu lesen:
+2. Wählen Sie die vorhandene Zelle im Notizbuch aus, die einfachen Code enthält, und verwenden Sie dann das Symbol **&#128465;** (*Löschen*) oben rechts, um sie zu entfernen. Sie benötigen diesen Code nicht.
+3. Erweitern Sie **Lakehouses** im **Explorer**-Bereich, erweitern Sie die Liste **Dateien** für Ihr Lakehouse und wählen Sie dann den Ordner **Produkte** aus, um einen neuen Bereich mit der Datei **products.csv** anzuzeigen, die Sie zuvor hochgeladen haben:
+
+    ![Screenshot des Notebooks mit dem Bereich „Dateien“](./Images/notebook-products.png)
+
+4. Wählen Sie im Menü **...** für **products.csv** die Option **Daten laden** > **Spark** aus. Dem Notebook sollte eine neue Codezelle mit folgendem Code hinzugefügt werden:
 
     ```python
-    from pyspark.sql.types import StructType, IntegerType, StringType, DoubleType
-
-    # define the schema
-    schema = StructType() \
-    .add("ProductID", IntegerType(), True) \
-    .add("ProductName", StringType(), True) \
-    .add("Category", StringType(), True) \
-    .add("ListPrice", DoubleType(), True)
-
-    df = spark.read.format("csv").option("header","true").schema(schema).load("Files/products/products.csv")
-    # df now is a Spark DataFrame containing CSV data from "Files/products/products.csv".
-    display(df)
+   df = spark.read.format("csv").option("header","true").load("Files/products/products.csv")
+   # df now is a Spark DataFrame containing CSV data from "Files/products/products.csv".
+   display(df)
     ```
 
-> [!TIP]
-> Blenden Sie die Explorer-Fenster aus oder ein, indem Sie das Chevron-Symbol « verwenden. So können Sie sich entweder auf das Notebook oder auf Ihre Dateien konzentrieren.
+    > **Tipp**: Sie können den Bereich mit den Dateien auf der linken Seite ausblenden, indem Sie das **<<** -Symbol verwenden. Dies hilft Ihnen, sich auf das Notebook zu konzentrieren.
 
-7. Benutzen Sie die Schaltfläche **Zelle ausführen** (▷) auf der linken Seite der Zelle, um sie zu starten.
+5. Verwenden Sie die Schaltfläche **&#9655;** (*Zelle ausführen*) links neben der Zelle, um diese auszuführen.
 
-> [!NOTE]
-> Da dies das erste Mal ist, dass Sie den Code in diesem Notebook ausführen, muss eine Spark-Sitzung gestartet werden. Dadurch kann der Abschluss der ersten Ausführung etwa eine Minute dauern. Nachfolgende Ausführungen erfolgen schneller.
+    > **Hinweis:** Da Sie zum ersten Mal Spark-Code in diesem Notebook ausführen, muss eine Spark-Sitzung gestartet werden. Dadurch kann der Abschluss der ersten Ausführung etwa eine Minute dauern. Nachfolgende Ausführungen erfolgen schneller.
 
-8. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
+6. Wenn der Zellenbefehl abgeschlossen ist, überprüfen Sie die Ausgabe unterhalb der Zelle, die wie folgt aussehen sollte:
 
-    ![Anzeigebild der Daten aus products.csv.](Images/products-schema.jpg)
- 
+    | Index | ProductID | ProductName | Kategorie | ListPrice |
+    | -- | -- | -- | -- | -- |
+    | 1 | 771 | Mountain-100 Silver, 38 | Mountainbikes | 3399.9900 |
+    | 2 | 772 | Mountain-100 Silver, 42 | Mountainbikes | 3399.9900 |
+    | 3 | 773 | Mountain-100 Silver, 44 | Mountainbikes | 3399.9900 |
+    | ... | ... | ... | ... | ... |
+
 ## Erstellen von Deltatabellen
 
-Sie können den DataFrame als Delta-Tabelle speichern, indem Sie die Methode *saveAsTable* verwenden. Delta Lake unterstützt die Erstellung von verwalteten und externen Tabellen.
+Sie können einen Dataframe als Deltatabelle speichern, indem Sie die `saveAsTable`-Methode verwenden. Delta Lake unterstützt die Erstellung von *verwalteten* und *externen* Tabellen.
 
-   * **Verwaltete** Delta-Tabellen profitieren von einer höheren Leistung, da Fabric sowohl die Schema-Metadaten als auch die Datendateien verwaltet.
-   * **Externe** Tabellen ermöglichen es Ihnen, Daten extern zu speichern, wobei die Metadaten von Fabric verwaltet werden.
+### Erstellen einer *verwalteten* Tabelle
 
-### Erstellen einer verwalteten Tabelle
+*Verwaltete* Tabellen sind Tabellen, für die sowohl die Schemametadaten als auch die Datendateien von Fabric verwaltet werden. Die Datendateien für die Tabelle werden im Ordner **Tabellen** erstellt.
 
-Die Datendateien werden im Ordner **Tabellen** erstellt.
+1. Verwenden Sie unter den Ergebnissen, die von der ersten Codezelle zurückgegeben werden, das Symbol **+ Code**, um eine neue Codezelle hinzuzufügen, falls noch keine vorhanden ist.
 
-1. Verwenden Sie unter den Ergebnissen der ersten Codezelle das Symbol „+ Code“, um eine neue Codezelle hinzuzufügen.
+    > **Tipp**: Um das Symbol **+ Code** anzuzeigen, zeigen Sie mit dem Mauszeiger direkt links unter die Ausgabe der aktuellen Zelle. Alternativ können Sie auf der Menüleiste auf der Registerkarte **Bearbeiten** die Option **+ Codezelle hinzufügen** auswählen.
 
-> [!TIP]
-> Um das Symbol für „+ Code“ zu sehen, bewegen Sie die Maus direkt unter und links neben die Ausgabe der aktuellen Zelle. Alternativ dazu können Sie in der Menüleiste auf der Registerkarte „Bearbeiten“ **+ Codezelle hinzufügen** auswählen.
-
-2. Um eine verwaltete Deltatabelle zu erstellen, fügen Sie eine neue Zelle hinzu, geben den folgenden Code ein und führen die Zelle dann aus:
+2. Geben Sie den folgenden Code in die neue Zelle ein und führen Sie ihn aus:
 
     ```python
-    df.write.format("delta").saveAsTable("managed_products")
+   df.write.format("delta").saveAsTable("managed_products")
     ```
 
-3.  **Aktualisieren** Sie im Explorer von Lakehouse den Ordner „Tabellen“ und erweitern Sie den Tabellen-Knoten, um zu überprüfen, ob die Tabelle **managed_products** erstellt wurde.
+3. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und überprüfen Sie, ob die **managed_products**-Tabelle erstellt wurde.
 
->[!NOTE]
-> Das Dreieckssymbol neben dem Dateinamen gibt eine Deltatabelle an.
+### Erstellen einer *externen* Tabelle
 
-Die Dateien für verwaltete Tabellen werden im Ordner **Tabellen** im Lakehouse gespeichert. Es wurde ein Ordner mit dem Namen *managed_products* erstellt, in dem die Parquet-Dateien und der Ordner „delta_log“ für die Tabelle gespeichert werden.
+Sie können auch *externe* Tabellen erstellen, für die die Schemametadaten im Metastore für das Lakehouse definiert sind, die Datendateien jedoch an einem externen Speicherort gespeichert werden.
 
-### Erstellen einer externen Tabelle
-
-Sie können auch externe Tabellen erstellen, die an einem anderen Ort als dem Lakehouse gespeichert sein können, wobei die Schemametadaten im Lakehouse gespeichert werden.
-
-1.  Im Explorer-Fenster von Lakehouse, im Bereich ... Menü für den Ordner **Dateien**, wählen Sie **ABFS-Pfad kopieren**. Der ABFS-Pfad ist der vollständig qualifizierte Pfad zum Ordner mit den Lakehouse-Dateien.
-
-2.  Fügen Sie den ABFS-Pfad in eine neue Codezelle ein. Fügen Sie den folgenden Code hinzu und verwenden Sie Ausschneiden und Einfügen, um den abfs_path an der richtigen Stelle im Code einzufügen:
+1. Fügen Sie eine weitere neue Codezelle hinzu, und fügen Sie ihr den folgenden Code hinzu:
 
     ```python
-    df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
+   df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
     ```
 
-3. Der vollständige Pfad sollte etwa wie folgt aussehen:
+2. Wählen Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Files** die Option **ABFS-Pfad kopieren** aus.
 
-    ```python
-    abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files/external_products
-    ```
+    Der ABFS-Pfad ist der vollqualifizierte Pfad zum Ordner **Files** im OneLake-Speicher für Ihr Lakehouse – ähnlich wie hier:
 
-4. **Führen Sie** die Zelle aus, um den DataFrame als externe Tabelle im Ordner „Files/external_products“ zu speichern.
+    *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files*
 
-5.  **Aktualisieren** Sie im Lakehouse-Explorerfenster den Tabellenordner und erweitern Sie den Tabellenknoten. Überprüfen Sie, ob die Tabelle „external_products“ mit den Schemametadaten erstellt wurde.
+3. Ersetzen Sie in dem Code, den Sie in die Codezelle eingegeben haben, **<abfs_path>** durch den Pfad, den Sie in die Zwischenablage kopiert haben, damit der Code den Dataframe als externe Tabelle mit Datendateien in einem Ordner namens **external_products** in Ihrem Ordner **Files** speichert. Der vollständige Pfad sollte etwa wie folgt aussehen:
 
-6.  Im Explorer-Fenster von Lakehouse, im Bereich ... Menü für den Ordner „Dateien“, wählen Sie **Aktualisieren**. Erweitern Sie dann den Knoten „Dateien“ und überprüfen Sie, ob der Ordner „external_products“ für die Datendateien der Tabelle erstellt wurde.
+    *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files/external_products*
 
-### Vergleichen verwalteter und externer Tabellen
+4. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und überprüfen Sie, ob die **external_products**-Tabelle erstellt wurde.
 
-Lassen Sie uns die Unterschiede zwischen verwalteten und externen Tabellen mithilfe des Magic-Befehls „%%sql“ erkunden.
+5. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Files** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Dateien**, und überprüfen Sie, ob der Ordner **external_products** für die Datendateien der Tabelle erstellt wurde.
 
-1. Geben Sie in eine neue Codezelle den folgenden Code ein:
+### Vergleichen *verwalteter* und *externer* Tabellen
 
-    ```python
-    %%sql
-    DESCRIBE FORMATTED managed_products;
-    ```
-
-2. In den Ergebnissen können Sie die Tabelle nach der Speicherorteigenschaft anzeigen. Klicken Sie auf den Speicherortwert in der Spalte „Datentyp“, um den vollständigen Pfad anzuzeigen. Beachten Sie, dass der OneLake-Speicherort mit /Tables/managed_products endet.
-
-3. Ändern Sie den DESCRIBE-Befehl, um die Details der external_products-Tabelle wie hier dargestellt anzuzeigen:
-
-    ```python
-    %%sql
-    DESCRIBE FORMATTED external_products;
-    ```
-
-4. Führen Sie die Zelle aus und sehen Sie sich in den Ergebnissen die Eigenschaft „Speicherort“ für die Tabelle an. Erweitern Sie die Spalte „Datentyp“, um den vollständigen Pfad anzuzeigen, und beachten Sie, dass die OneLake-Speicherorte mit /Files/external_products enden.
-
-5. Geben Sie in eine neue Codezelle den folgenden Code ein:
-
-    ```python
-    %%sql
-    DROP TABLE managed_products;
-    DROP TABLE external_products;
-    ```
-
-6. **Aktualisieren** Sie im Lakehouse-Explorerfenster den Tabellenordner, um zu überprüfen, dass im Tabellenknoten keine Tabellen aufgeführt sind.
-7.  **Aktualisieren** Sie im Lakehouse- Explorerfenster den Ordner „Dateien“ und stellen Sie sicher, dass die Datei „external_products“ *nicht* gelöscht wurde. Wählen Sie diesen Ordner, um die Parquet-Datendateien und den Ordner „_delta_log“ anzuzeigen. 
-
-Die Metadaten für die externe Tabelle wurden gelöscht, aber nicht die Datendatei.
-
-## Verwenden Sie SQL, um eine Deltatabelle zu erstellen
-
-Sie erstellen nun eine Deltatabelle mit dem Magic-Befehl „%%sql“. 
+Lassen Sie uns die Unterschiede zwischen verwalteten und externen Tabellen untersuchen.
 
 1. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
 
-    ```python
-    %%sql
-    CREATE TABLE products
-    USING DELTA
-    LOCATION 'Files/external_products';
+    ```sql
+   %%sql
+
+   DESCRIBE FORMATTED managed_products;
     ```
 
-2. Im Explorer-Fenster von Lakehouse, im Bereich ... Menü für den Ordner **Tabellen**, wählen Sie **Aktualisieren**. Erweitern Sie dann den Tabellenknoten und überprüfen Sie, ob eine neue Tabelle mit dem Namen *Produkte* aufgeführt ist. Erweitern Sie dann die Tabelle, um das Schema anzuzeigen.
+    Zeigen Sie in den Ergebnissen die **Location**-Eigenschaft für die Tabelle an, die ein Pfad zum OneLake-Speicher für das Lakehouse sein sollte, der auf **/Tables/managed_products** endet (Möglicherweise müssen Sie die Spalte **Datentyp** erweitern, um den vollständigen Pfad anzuzeigen).
+
+2. Ändern Sie den `DESCRIBE`-Befehl, um die Details der Tabelle **external_products** anzuzeigen, wie hier gezeigt:
+
+    ```sql
+   %%sql
+
+   DESCRIBE FORMATTED external_products;
+    ```
+
+    Zeigen Sie in den Ergebnissen die **Location**-Eigenschaft für die Tabelle an, die ein Pfad zum OneLake-Speicher für das Lakehouse sein sollte, der auf **/Files/external_products** endet (Möglicherweise müssen Sie die Spalte **Datentyp** erweitern, um den vollständigen Pfad anzuzeigen).
+
+    Die Dateien für die verwaltete Tabelle werden im Ordner **Tabellen** im OneLake-Speicher für das Lakehouse gespeichert. In diesem Fall wurde ein Ordner mit dem Namen **managed_products** erstellt, um die Parquet-Dateien und den Ordner **delta_log** für die von Ihnen erstellte Tabelle zu speichern.
+
+3. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
+
+    ```sql
+   %%sql
+
+   DROP TABLE managed_products;
+   DROP TABLE external_products;
+    ```
+
+4. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und vergewissern Sie sich, dass keine Tabellen aufgeführt sind.
+
+5. Erweitern Sie im Bereich **Lakehouse-Explorer** den Ordner **Dateien**, und überprüfen Sie, ob **external_products** nicht gelöscht wurde. Wählen Sie diesen Ordner aus, um die Parquet-Datendateien und den Ordner **_delta_log** für die Daten anzuzeigen, die sich zuvor in der Tabelle **external_products** befanden. Die Tabellenmetadaten für die externe Tabelle wurden gelöscht, aber die Dateien waren davon nicht betroffen.
+
+### Verwenden von SQL zum Erstellen einer Tabelle
+
+1. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
+
+    ```sql
+   %%sql
+
+   CREATE TABLE products
+   USING DELTA
+   LOCATION 'Files/external_products';
+    ```
+
+2. Klicken Sie im Bereich **Lakehouse-Explorer** im Menü **...** für den Ordner **Tables** auf die Option **Aktualisieren**. Erweitern Sie dann den Knoten **Tabellen**, und überprüfen Sie, ob eine neue Tabelle mit dem Namen **products** aufgeführt ist. Erweitern Sie dann die Tabelle, um zu überprüfen, ob das Schema dem ursprünglichen Datenrahmen entspricht, der im Ordner **external_products** gespeichert wurde.
+
+3. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
+
+    ```sql
+   %%sql
+
+   SELECT * FROM products;
+   ```
+
+## Erkunden der Tabellenversionsverwaltung
+
+Der Transaktionsverlauf für Deltatabellen wird in JSON-Dateien im Ordner **delta_log** gespeichert. Sie können dieses Transaktionsprotokoll verwenden, um die Datenversionsverwaltung zu verwalten.
+
+1. Fügen Sie dem Notebook eine neue Codezelle hinzu, und führen Sie den folgenden Code aus:
+
+    ```sql
+   %%sql
+
+   UPDATE products
+   SET ListPrice = ListPrice * 0.9
+   WHERE Category = 'Mountain Bikes';
+    ```
+
+    Dieser Code implementiert eine Preissenkung von 10 % für Mountainbikes.
+
+2. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
+
+    ```sql
+   %%sql
+
+   DESCRIBE HISTORY products;
+    ```
+
+    Die Ergebnisse zeigen den Verlauf der Transaktionen, die für die Tabelle aufgezeichnet wurden.
 
 3. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
 
     ```python
-    %%sql
-    SELECT * FROM products;
+   delta_table_path = 'Files/external_products'
+
+   # Get the current data
+   current_data = spark.read.format("delta").load(delta_table_path)
+   display(current_data)
+
+   # Get the version 0 data
+   original_data = spark.read.format("delta").option("versionAsOf", 0).load(delta_table_path)
+   display(original_data)
     ```
 
-## Erkunden der Tabellenversionsverwaltung
+    Die Ergebnisse zeigen zwei Dataframes an: einer mit den Daten nach der Preissenkung und der andere mit der ursprünglichen Version der Daten.
 
-Der Transaktionsverlauf für Deltatabellen wird in JSON-Dateien im Ordner „delta_log“ gespeichert. Sie können dieses Transaktionsprotokoll verwenden, um die Datenversionsverwaltung zu verwalten.
+## Verwenden von Deltatabellen zum Streamen von Daten
 
-1.  Fügen Sie dem Notebook eine neue Codezelle hinzu, und führen Sie den folgenden Code aus, der eine Reduzierung des Preises von 10 % für Mountainbikes implementiert:
+Delta Lake unterstützt das Streamen von Daten. Deltatabellen können eine *Senke* oder *Quelle* für Datenströme sein, die mit der Spark Structured Streaming-API erstellt wurden. In diesem Beispiel verwenden Sie eine Deltatabelle als Senke für einige Streamingdaten in einem simulierten IoT-Szenario (Internet der Dinge).
+
+1. Fügen Sie dem Notebook eine neue Codezelle hinzu. Fügen Sie dann in der neuen Zelle den folgenden Code hinzu, und führen Sie ihn aus:
 
     ```python
-    %%sql
-    UPDATE products
-    SET ListPrice = ListPrice * 0.9
-    WHERE Category = 'Mountain Bikes';
+   from notebookutils import mssparkutils
+   from pyspark.sql.types import *
+   from pyspark.sql.functions import *
+
+   # Create a folder
+   inputPath = 'Files/data/'
+   mssparkutils.fs.mkdirs(inputPath)
+
+   # Create a stream that reads data from the folder, using a JSON schema
+   jsonSchema = StructType([
+   StructField("device", StringType(), False),
+   StructField("status", StringType(), False)
+   ])
+   iotstream = spark.readStream.schema(jsonSchema).option("maxFilesPerTrigger", 1).json(inputPath)
+
+   # Write some event data to the folder
+   device_data = '''{"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev2","status":"error"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"error"}
+   {"device":"Dev2","status":"ok"}
+   {"device":"Dev2","status":"error"}
+   {"device":"Dev1","status":"ok"}'''
+   mssparkutils.fs.put(inputPath + "data.txt", device_data, True)
+   print("Source stream created...")
     ```
 
-2. Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
-
-    ```python
-    %%sql
-    DESCRIBE HISTORY products;
-    ```
-
-Die Ergebnisse zeigen den Verlauf der Transaktionen, die für die Tabelle aufgezeichnet wurden.
-
-3.  Fügen Sie eine weitere Codezelle hinzu, und führen Sie den Code aus:
-
-    ```python
-    delta_table_path = 'Files/external_products'
-    # Get the current data
-    current_data = spark.read.format("delta").load(delta_table_path)
-    display(current_data)
-
-    # Get the version 0 data
-    original_data = spark.read.format("delta").option("versionAsOf", 0).load(delta_table_path)
-    display(original_data)
-    ```
-
-Es werden zwei Ergebnissätze zurückgegeben - einer mit den Daten nach der Preissenkung, der andere mit der ursprünglichen Version der Daten.
-
-## Analysieren von Daten in Deltatabellen mit SQL-Abfragen
-
-Mit dem SQL Magic-Befehl können Sie die SQL-Syntax anstelle von Pyspark verwenden. Hier erstellen Sie eine temporäre Ansicht aus der Produkttabelle mit einer `SELECT`-Anweisung.
-
-1. Fügen Sie eine neue Codezelle hinzu, und führen Sie den folgenden Code aus, um die temporäre Ansicht zu erstellen und anzuzeigen:
-
-    ```python
-    %%sql
-    -- Create a temporary view
-    CREATE OR REPLACE TEMPORARY VIEW products_view
-    AS
-        SELECT Category, COUNT(*) AS NumProducts, MIN(ListPrice) AS MinPrice, MAX(ListPrice) AS MaxPrice, AVG(ListPrice) AS AvgPrice
-        FROM products
-        GROUP BY Category;
-
-    SELECT *
-    FROM products_view
-    ORDER BY Category;    
-    ```
-
-2. Fügen Sie eine neue Codezelle hinzu, und führen Sie den folgenden Code aus, um die 10 wichtigsten Kategorien nach Anzahl der Produkte zu ermitteln:
-
-    ```python
-    %%sql
-    SELECT Category, NumProducts
-    FROM products_view
-    ORDER BY NumProducts DESC
-    LIMIT 10;
-    ```
-
-3. Wenn die Daten zurückgegeben werden, wählen Sie die Ansicht **Diagramm**, um ein Balkendiagramm anzuzeigen.
-
-    ![Anzeigebild der SQL-Anweisung Auswählen und der Ergebnisse.](Images/sql-select.jpg)
-
-Alternativ können Sie eine SQL-Abfrage mit PySpark ausführen.
-
-4. Fügen Sie den folgenden Code in einer neuen Codezelle hinzu und führen Sie ihn aus:
-
-    ```python
-    from pyspark.sql.functions import col, desc
-
-    df_products = spark.sql("SELECT Category, MinPrice, MaxPrice, AvgPrice FROM products_view").orderBy(col("AvgPrice").desc())
-    display(df_products.limit(6))
-    ```
-
-## Verwenden von Delta-Tabellen für Streaming-Daten
-
-Delta Lake unterstützt Streaming-Daten. Deltatabellen können eine Senke oder Quelle für Datenströme sein, die mit der Spark Structured Streaming-API erstellt wurden. In diesem Beispiel verwenden Sie eine Deltatabelle als Senke für einige Streamingdaten in einem simulierten IoT-Szenario (Internet der Dinge).
-
-1.  Fügen Sie eine neue Codezelle hinzu, fügen Sie den folgenden Code ein und führen Sie ihn aus:
-
-    ```python
-    from notebookutils import mssparkutils
-    from pyspark.sql.types import *
-    from pyspark.sql.functions import *
-
-    # Create a folder
-    inputPath = 'Files/data/'
-    mssparkutils.fs.mkdirs(inputPath)
-
-    # Create a stream that reads data from the folder, using a JSON schema
-    jsonSchema = StructType([
-    StructField("device", StringType(), False),
-    StructField("status", StringType(), False)
-    ])
-    iotstream = spark.readStream.schema(jsonSchema).option("maxFilesPerTrigger", 1).json(inputPath)
-
-    # Write some event data to the folder
-    device_data = '''{"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev2","status":"error"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"error"}
-    {"device":"Dev2","status":"ok"}
-    {"device":"Dev2","status":"error"}
-    {"device":"Dev1","status":"ok"}'''
-
-    mssparkutils.fs.put(inputPath + "data.txt", device_data, True)
-
-    print("Source stream created...")
-    ```
-
-Sicherstellen, dass die Meldung *Quell-Stream erstellt...* angezeigt. Der Code, den Sie gerade ausgeführt haben, hat eine Streamingdatenquelle basierend auf einem Ordner erstellt, in dem einige Daten gespeichert wurden, die Messwerte von hypothetischen IoT-Geräten darstellen.
+    Stellen Sie sicher, dass die Meldung *Quelldatenstrom erstellt...* ausgegeben wird. Der Code, den Sie gerade ausgeführt haben, hat eine Streamingdatenquelle basierend auf einem Ordner erstellt, in dem einige Daten gespeichert wurden, die Messwerte von hypothetischen IoT-Geräten darstellen.
 
 2. Fügen Sie den folgenden Code in einer neuen Codezelle hinzu, und führen Sie ihn aus:
 
     ```python
-    # Write the stream to a delta table
-    delta_stream_table_path = 'Tables/iotdevicedata'
-    checkpointpath = 'Files/delta/checkpoint'
-    deltastream = iotstream.writeStream.format("delta").option("checkpointLocation", checkpointpath).start(delta_stream_table_path)
-    print("Streaming to delta sink...")
+   # Write the stream to a delta table
+   delta_stream_table_path = 'Tables/iotdevicedata'
+   checkpointpath = 'Files/delta/checkpoint'
+   deltastream = iotstream.writeStream.format("delta").option("checkpointLocation", checkpointpath).start(delta_stream_table_path)
+   print("Streaming to delta sink...")
     ```
 
-Dieser Code schreibt die Streaminggerätedaten im Deltaformat in einen Ordner mit dem Namen iotdevicedata. Da der Pfad für den Ordnerspeicherort im Ordner Tabellen angegeben ist, wird automatisch eine Tabelle für ihn erstellt.
+    Dieser Code schreibt die Streaminggerätedaten im Deltaformat in einen Ordner mit dem Namen **iotdevicedata**. Da der Pfad für den Ordnerspeicherort im Ordner **Tabellen** angegeben ist, wird automatisch eine Tabelle für ihn erstellt.
 
 3. Fügen Sie den folgenden Code in einer neuen Codezelle hinzu, und führen Sie ihn aus:
 
-    ```python
-    %%sql
-    SELECT * FROM IotDeviceData;
+    ```sql
+   %%sql
+
+   SELECT * FROM IotDeviceData;
     ```
 
-Dieser Code fragt die Tabelle IotDeviceData ab, die die Gerätedaten aus der Streamingquelle enthält.
+    Dieser Code fragt die Tabelle **IotDeviceData** ab, die die Gerätedaten aus der Streamingquelle enthält.
 
 4. Fügen Sie den folgenden Code in einer neuen Codezelle hinzu, und führen Sie ihn aus:
 
     ```python
-    # Add more data to the source stream
-    more_data = '''{"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"ok"}
-    {"device":"Dev1","status":"error"}
-    {"device":"Dev2","status":"error"}
-    {"device":"Dev1","status":"ok"}'''
+   # Add more data to the source stream
+   more_data = '''{"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"error"}
+   {"device":"Dev2","status":"error"}
+   {"device":"Dev1","status":"ok"}'''
 
-    mssparkutils.fs.put(inputPath + "more-data.txt", more_data, True)
+   mssparkutils.fs.put(inputPath + "more-data.txt", more_data, True)
     ```
 
-Dieser Code schreibt weitere hypothetische Gerätedaten in die Streamingquelle.
+    Dieser Code schreibt weitere hypothetische Gerätedaten in die Streamingquelle.
 
 5. Führen Sie die Zelle mit dem folgenden Code erneut aus:
 
-    ```python
-    %%sql
-    SELECT * FROM IotDeviceData;
+    ```sql
+   %%sql
+
+   SELECT * FROM IotDeviceData;
     ```
 
-Dieser Code fragt die IotDeviceData-Tabelle erneut ab, die nun die zusätzlichen Daten enthalten sollte, die der Streamingquelle hinzugefügt wurden.
+    Dieser Code fragt die **IotDeviceData**-Tabelle erneut ab, die nun die zusätzlichen Daten enthalten sollte, die der Streamingquelle hinzugefügt wurden.
 
-6. Fügen Sie in einer neuen Codezelle Code hinzu, um den Datenstrom zu beenden und die Zelle auszuführen:
+6. Fügen Sie den folgenden Code in einer neuen Codezelle hinzu, und führen Sie ihn aus:
 
     ```python
-    deltastream.stop()
+   deltastream.stop()
     ```
+
+    Dieser Code beendet den Stream.
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie gelernt, wie man mit Deltatabellen in Microsoft Fabric arbeitet.
+In dieser Übung haben Sie gelernt, wie Sie mit Deltatabellen in Microsoft Fabric arbeiten.
 
-Wenn Sie mit der Erkundung Ihres Lakehouses fertig sind, können Sie den für diese Übung erstellten Arbeitsbereich löschen.
+Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Geben Sie Feld Menü auf der Symbolleiste, wählen Sie **Arbeitsbereichseinstellungen**.
-3. Wählen Sie im Abschnitt Allgemein die Option **Diesen Arbeitsbereich entfernen**.
+2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.

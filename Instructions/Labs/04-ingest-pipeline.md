@@ -18,7 +18,7 @@ Dieses Lab dauert ungefähr **60** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,11 +29,11 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse zu erstellen, in dem Daten erfasst werden sollen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues Lakehouse ohne **Tabellen** oder **Dateien** erstellt.
 
-1. Wählen Sie auf der Registerkarte **Lake-Ansicht** im Bereich auf der linken Seite im Menü **...** für den Knoten **Dateien** die Option **Neuer Unterordner** aus, und erstellen Sie einen Unterordner mit dem Namen **new_data**.
+1. Wählen Sie im Bereich **Explorer** auf der linken Seite im Menü **...** für den Knoten **Dateien** die Option **Neuer Unterordner** aus, und erstellen Sie einen Unterordner mit dem Namen **new_data**.
 
 ## Erstellen einer Pipeline
 
@@ -66,8 +66,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
     - **Erste Zeile ist Überschrift**: Ausgewählt
     - **Komprimierungstyp**: Keiner
 7. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
-8. Wählen Sie auf der Seite **Datenziel auswählen** erst **OneLake-Datenhub** und dann Ihr vorhandenes Lakehouse aus.
-9. Legen Sie die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
+8. Legen Sie auf der Seite **Mit Datenziel verbinden** die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
     - **Stammordner**: Files
     - **Ordnerpfadname**: new_data
     - **Dateiname**: sales.csv
@@ -142,7 +141,7 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
 Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen implementiert haben, können Sie nun das Notebook in eine Pipeline integrieren, um einen wiederverwendbaren ETL-Prozess zu erstellen.
 
 1. Wählen Sie in der Hubmenüleiste auf der linken Seite die Pipeline **Ingest Sales Data** aus, die Sie zuvor erstellt haben.
-2. Wählen Sie auf der Registerkarte **Aktivitäten** in der Liste **Weitere Aktivitäten** die Option **Daten löschen** aus. Positionieren Sie wie hier gezeigt dann die neue Aktivität **Daten löschen** links neben der Aktivität **Daten kopieren**, und verbinden Sie die Ausgabe **Nach Abschluss** mit der Aktivität **Daten kopieren**:
+2. Wählen Sie auf der Registerkarte **Aktivitäten** in der Liste **Alle Aktivitäten** die Option **Daten löschen** aus. Positionieren Sie wie hier gezeigt dann die neue Aktivität **Daten löschen** links neben der Aktivität **Daten kopieren**, und verbinden Sie die Ausgabe **Nach Abschluss** mit der Aktivität **Daten kopieren**:
 
     ![Screenshot: Eine Pipeline mit den Aktivitäten „Daten löschen“ und „Daten kopieren“](./Images/delete-data-activity.png)
 
@@ -196,5 +195,5 @@ In dieser Übung haben Sie gelernt, wie Sie eine Pipeline in Microsoft Fabric im
 Wenn Sie Ihr Lakehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie **Arbeitsbereichseinstellungen** und scrollen Sie im Abschnitt **Allgemein** nach unten und wählen Sie **Diesen Arbeitsbereich entfernen**.
+1. Wählen Sie **Löschen**, um den Arbeitsbereich zu löschen.

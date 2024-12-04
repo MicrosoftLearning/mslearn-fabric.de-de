@@ -23,26 +23,26 @@ Bevor Sie mit Daten in Fabric arbeiten können, müssen Sie einen Arbeitsbereich
 1. Geben Sie dem neuen Arbeitsbereich einen Namen und wählen Sie im Abschnitt **Erweitert** den entsprechenden Lizenzierungsmodus. Wenn Sie eine Testversion von Microsoft Fabric gestartet haben, wählen Sie Testversion.
 1. Wählen Sie **Anwenden**, um einen leeren Arbeitsbereich zu erstellen.
  
-    ![Bildschirmfoto von CSV-Dateien, die in einen neuen Fabric-Arbeitsbereich hochgeladen wurden.](Images/uploaded-files.jpg)
+    ![Bildschirmbild eines neuen Arbeitsbereichs von Fabric.](Images/new-workspace.jpg)
 
 ## Erstellen eines Lakehouse und Hochladen von Dateien
 
-Jetzt, da Sie einen Arbeitsbereich haben, können Sie ein Lakehouse erstellen, um Ihre Datendateien zu speichern. Wählen Sie in Ihrem neuen Arbeitsbereich **Neu** und **Lakehouse**. Geben Sie dem Lakehouse einen Namen, und wählen Sie **Erstellen** aus. Nach einer kurzen Verzögerung wird ein neues Lakehouse erstellt.
+Jetzt, da Sie einen Arbeitsbereich haben, können Sie ein Lakehouse erstellen, um Ihre Datendateien zu speichern. Wählen Sie in Ihrem neuen Arbeitsbereich **+ Neues Element** und **Lakehouse** aus. Geben Sie dem Lakehouse einen Namen, und wählen Sie **Erstellen** aus. Nach einer kurzen Verzögerung wird ein neues Lakehouse erstellt.
 
 Sie können nun Daten in das Lakehouse aufnehmen. Es gibt mehrere Möglichkeiten, dies zu tun, aber zunächst laden Sie einen Ordner mit Textdateien auf Ihren lokalen Computer (oder ggf. auf Ihre Lab-VM) herunter und dann auf Ihr Lakehouse hoch.
 
-1. Laden Sie alle Dateien von https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip herunter.
+1. Laden Sie alle Dateien von `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip` herunter.
 1. Entpacken Sie das gezippte Archiv und überprüfen Sie, ob Sie einen Ordner mit dem Namen *orders* haben, der drei CSV-Dateien enthält: 2019.csv, 2020.csv und 2021.csv.
 1. Kehren Sie zu Ihrem neuen Lakehouse zurück. Wählen Sie im Bereich **Explorer** neben dem Ordner **Files** das Feld **...** Menü und wählen Sie **Hochladen** und **Ordner hochladen**. Navigieren Sie zum Ordner „Bestellungen“ auf Ihrem lokalen Computer (oder ggf. Ihrer Lab-VM) und wählen Sie **Hochladen** aus.
 1. Nachdem die Dateien hochgeladen wurden, erweitern Sie **Dateien** und wählen Sie den Ordner **Bestellungen**. Überprüfen Sie, ob die CSV-Dateien hochgeladen wurden, wie hier gezeigt:
 
-    ![Bildschirmbild eines neuen Arbeitsbereichs von Fabric.](Images/new-workspace.jpg)
+    ![Bildschirmfoto von CSV-Dateien, die in einen neuen Fabric-Arbeitsbereich hochgeladen wurden.](Images/uploaded-files.jpg)
 
 ## Erstellen eines Notebooks
 
 Sie können nun ein Fabric-Notizbuch erstellen, um mit Ihren Daten zu arbeiten. Notebooks stellen eine interaktive Umgebung bereit, in der Sie Code schreiben und ausführen können.
 
-1. Wählen Sie Ihren Arbeitsbereich aus und wählen Sie dann **Neu** und **Notizbuch**. Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen Zelle geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die Code oder Markdown (formatierten Text) enthalten können.
+1. Wählen Sie Ihren Arbeitsbereich und dann **+ Neues Element** und **Notebook** aus. Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen Zelle geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die Code oder Markdown (formatierten Text) enthalten können.
 1. Fabric weist jedem Notizbuch, das Sie erstellen, einen Namen zu, z. B. Notizbuch 1, Notizbuch 2 usw. Klicken Sie auf das Bedienfeld oberhalb der Registerkarte **Home** im Menü, um den Namen in einen aussagekräftigeren Namen zu ändern.
 1. Markieren Sie die erste Zelle (die momentan eine Codezelle ist), und verwenden Sie dann in der oberen rechten Symbolleiste die Schaltfläche **M↓**, um sie in eine Abschriftenzelle umzuwandeln. Der in der Zelle enthaltene Text wird dann als formatierter Text angezeigt.
 1. Verwenden Sie die Taste 🖉 (Bearbeiten), um die Zelle in den Bearbeitungsmodus zu schalten, und ändern Sie dann den Markdown wie unten gezeigt.
@@ -65,7 +65,7 @@ Nachdem Sie nun einen Arbeitsbereich, ein Lakehouse und ein Notebook erstellt ha
 
 1. Wählen Sie Ihren neuen Arbeitsbereich in der linken Leiste aus. Sie sehen eine Liste der Elemente, die im Arbeitsbereich enthalten sind, einschließlich Ihres Lakehouses und Ihres Notebooks.
 2. Wählen Sie das Lakehouse aus, um den Bereich des Explorers anzuzeigen, einschließlich des Ordners **Bestellungen**.
-3. Wählen Sie im oberen Menü **Notizbuch öffnen**, **Vorhandenes Notebook** und dann Öffnen Sie das Notebook, das Sie zuvor erstellt haben. Das Notebook sollte nun neben dem Explorer-Bereich geöffnet sein. Erweitern Sie Lakehouses, erweitern Sie die Liste „Dateien“, und wählen Sie den Ordner „Bestellungen“ aus. Die CSV-Dateien, die Sie hochgeladen haben, werden wie folgt neben dem Notebook-Editor aufgeführt:
+3. Wählen Sie im oberen Menü **Notebook öffnen** und **Vorhandenes Notebook** aus, und öffnen Sie dann das Notebook, das Sie zuvor erstellt haben. Das Notebook sollte nun neben dem Explorer-Bereich geöffnet sein. Erweitern Sie Lakehouses, erweitern Sie die Liste „Dateien“, und wählen Sie den Ordner „Bestellungen“ aus. Die CSV-Dateien, die Sie hochgeladen haben, werden wie folgt neben dem Notebook-Editor aufgeführt:
 
     ![Screenshot von CSV-Dateien in der Explorer-Ansicht.](Images/explorer-notebook-view.jpg)
 
@@ -156,7 +156,7 @@ Das DataFrame-Objekt stellt zusätzliche Funktionalitäten bereit, z. B. die Mö
 
 ### Filtern eines Dataframes
 
-1. Fügen Sie eine Codezelle hinzu, indem Sie **+ Code** wählen, das erscheint, wenn Sie den Mauszeiger über oder unter die aktuelle Zelle oder deren Ausgabe bewegen. Alternativ dazu können Sie im Menüband-Menü **Bearbeiten** und **+ Hinzufügen** für die Codezelle auswählen.
+1. Fügen Sie eine Codezelle hinzu, indem Sie **+ Code** wählen, das erscheint, wenn Sie den Mauszeiger über oder unter die aktuelle Zelle oder deren Ausgabe bewegen. Alternativ dazu können Sie im Menüband-Menü **Bearbeiten** und **+ Codezelle unten hinzufügen** auswählen.
 
 2.  Der folgende Code filtert die Daten so, dass nur zwei Spalten zurückgegeben werden. Außerdem werden *count* und *distinct* verwendet, um die Anzahl der Datensätze zusammenzufassen:
 
@@ -300,7 +300,7 @@ Bei großen Datenmengen kann die Partitionierung die Leistung erheblich verbesse
     print ("Transformed data saved!")
     ```
 
-2.  Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Wählen Sie dann im Bereich Lakehouses auf der linken Seite im ... Menü für den Knoten „Dateien“ die Option **Aktualisieren** aus und erweitern Sie den Ordner „partitioned_orders“, um zu überprüfen, ob er eine Hierarchie von Ordnern mit dem Namen *Year=xxxx* enthält, die jeweils Ordner mit dem Namen *Month=xxxx* enthalten. Jeder Monatsordner enthält eine Parquet-Datei mit den Bestellungen für den jeweiligen Monat.
+2.  Führen Sie die Zelle aus, und warten Sie auf die Meldung, dass die Daten gespeichert wurden. Wählen Sie dann im Bereich Lakehouses auf der linken Seite im ... Menü für den Knoten „Dateien“ die Option **Aktualisieren** aus und erweitern Sie den Ordner „partitioned_data“, um zu überprüfen, ob er eine Hierarchie von Ordnern mit dem Namen *Year=xxxx* enthält, die jeweils Ordner mit dem Namen *Month=xxxx* enthalten. Jeder Monatsordner enthält eine Parquet-Datei mit den Bestellungen für den jeweiligen Monat.
 
     ![Anzeigebild mit Daten, die nach Jahr und Monat aufgeteilt sind.](Images/partitioned-data.jpg)
 

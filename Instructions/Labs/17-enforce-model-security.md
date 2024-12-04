@@ -4,14 +4,14 @@ lab:
   module: Design and build tabular models
 ---
 
-# Erzwingen der Sicherheit des Semantikmodells
+# Erzwingen von Modellsicherheit
 
 In dieser Übung aktualisieren Sie ein vorab entwickeltes Datenmodell, um Sicherheit zu erzwingen. Insbesondere sollen Vertriebsmitarbeitende des Unternehmens Adventure Works nur Verkaufsdaten anzeigen können, die mit der ihnen zugewiesenen Vertriebsregion zusammenhängen.
 
 In dieser Übung lernen Sie Folgendes:
 
 - Erstellen statischer Rollen
-- Erstellen von dynamische Rollen.
+- Erstellen dynamischer Rollen
 - Überprüfen der Rollen
 - Zuordnen von Sicherheitsprinzipalen zu Rollen des Semantikmodells
 
@@ -61,7 +61,7 @@ In dieser Aufgabe erstellen Sie einen Arbeitsbereich.
 
 In dieser Aufgabe überprüfen Sie das Datenmodell.
 
-1. Auf dem Power BI Desktop links wechseln Sie zur Ansicht **Modell**.
+1. Auf dem Power BI Desktop wechseln Sie zur Ansicht **Modell**.
 
     ![](Images/enforce-model-security-image8.png)
 
@@ -69,15 +69,15 @@ In dieser Aufgabe überprüfen Sie das Datenmodell.
 
     ![](Images/enforce-model-security-image9.png)
 
-    *Das Modell besteht aus sechs Dimensionstabellen und einer Faktentabelle. Die Faktentabelle **Umsatz** speichert Details zu Kundenaufträgen. Es handelt sich um ein klassisches Sternschema*.
+    *Das Modell umfasst sechs Dimensionstabellen und eine Faktentabelle. Die Faktentabelle **Sales** enthält Informationen zu Verkaufsaufträgen. Es handelt sich hierbei um einen klassischen Sternschemaentwurf.*
 
-3. Erweitern Sie die Tabelle **Vertriebsgebiet**.
+3. Erweitern bzw. öffnen Sie die Tabelle **Sales Territory**.
 
     ![](Images/enforce-model-security-image10.png)
 
 4. Beachten Sie, dass die Tabelle eine Spalte **Region** enthält.
 
-    *Die Spalte **Region** speichert die Verkaufsregionen von Adventure Works. In dieser Organisation dürfen Vertriebsmitarbeiter nur Daten sehen, die sich auf ihr zugewiesenes Vertriebsgebiet beziehen. In dieser Übung werden Sie zwei verschiedene Sicherheitstechniken auf Zeilenebene implementieren, um Datenberechtigungen zu erzwingen.*
+    *In der Spalte **Region** werden die Vertriebsregionen von Adventure Works gespeichert. In dieser Organisation können Vertriebsmitarbeitende nur Daten im Zusammenhang mit der Vertriebsregion anzeigen, die ihnen zugewiesen ist. In diesem Lab implementieren Sie zwei verschiedene Techniken für die Sicherheit auf Zeilenebene, um Datenberechtigungen zu erzwingen.*
 
 ## Erstellen statischer Rollen
 
@@ -85,19 +85,19 @@ In dieser Übung erstellen und überprüfen Sie statische Rollen, und anschließ
 
 ### Erstellen statischer Rollen
 
-In dieser Aufgabe werden Sie zwei statische Rollen erstellen.
+In dieser Aufgabe erstellen Sie zwei statische Rollen.
 
 1. Wechseln Sie zur **Berichtansicht**.
 
     ![](Images/enforce-model-security-image11.png)
 
-2. Beachten Sie in der Legende im visuellen Diagramm mit gestapelten Säulen (vorerst), dass es möglich ist, viele Bereiche anzuzeigen.
+2. In der Legende des visuellen Elements „Gestapeltes Säulendiagramm“ sehen Sie, dass (im Moment) viele Regionen angezeigt werden können.
 
     ![](Images/enforce-model-security-image12.png)
 
-    *Im Moment sieht das Diagramm noch sehr unübersichtlich aus. Das liegt daran, dass alle Regionen sichtbar sind. Wenn die Lösung die Sicherheit auf Zeilenebene erzwingt, sieht der Berichtsbenutzer*innen nur eine Region.*
+    *Derzeit sieht das Diagramm überfüllt und unübersichtlich aus. Dies liegt daran, dass alle Regionen sichtbar sind. Wenn die Lösung Sicherheit auf Zeilenebene erzwingt, sehen Berichtsbenutzer*innen nur eine Region.*
 
-3. Um eine Sicherheitsrolle hinzuzufügen, wählen Sie auf der Registerkarte des Menübands **Modellierung** in der Gruppe **Sicherheit** die Option **Rollen verwalten**.
+3. Wählen Sie zum Hinzufügen einer Sicherheitsrolle auf der Registerkarte **Modellierung** des Menübands in der Gruppe **Sicherheit** die Option **Rollen verwalten** aus.
 
     ![](Images/enforce-model-security-image13.png)
 
@@ -105,43 +105,43 @@ In dieser Aufgabe werden Sie zwei statische Rollen erstellen.
 
     ![](Images/enforce-model-security-image14.png)
 
-5. Um die Rolle zu benennen, ersetzen Sie den markierten Text durch **Australien** und drücken dann die **Eingabetaste**.
+5. Geben Sie den Namen der Rolle an, indem Sie den markierten Text durch **Australia** ersetzen und dann die **EINGABETASTE** drücken.
 
     ![](Images/enforce-model-security-image15.png)
 
-6. Wählen Sie in der Liste **Tabellen** für die Tabelle **Vertriebsgebiet** die Auslassungspunkte aus und wählen Sie dann **Filter hinzufügen** > **[Region]**.
+6. Wählen Sie in der Liste **Tabellen** die Auslassungspunkte (...) für die Tabelle **Sales Territory** und dann **Filter hinzufügen** > **[Region]** aus.
 
     ![](Images/enforce-model-security-image16.png)
 
-7. Ersetzen Sie im Feld **Tabellenfilter DAX-Ausdruck** **Wert** durch **Australien**.
+7. Ersetzen Sie im Feld **Tabellenfilter-DAX-Ausdruck** den **Wert** durch **Australia**.
 
     ![](Images/enforce-model-security-image17.png)
 
-    *Dieser Ausdruck filtert die Spalte **Region** nach dem Wert **Australien**.*
+    *Dieser Ausdruck filtert die Spalte **Region** nach dem Wert **Australia**.*
 
-8. Um eine andere Rolle zu erstellen, drücken Sie **Erstellen**.
+8. Wählen Sie zum Erstellen einer weiteren Rolle die Option **Erstellen** aus.
 
     ![](Images/enforce-model-security-image18.png)
 
-9. Wiederholen Sie die Schritte in dieser Aufgabe, um eine Rolle namens **Kanada** zu erstellen, die die Spalte **Region** nach **Kanada** filtert.
+9. Wiederholen Sie die Schritte in dieser Aufgabe, um eine Rolle namens **Canada** zu erstellen, die die Spalte **Region** nach dem Wert **Canada** filtert.
 
     ![](Images/enforce-model-security-image19.png)
 
-    *In diesem Lab erstellen Sie nur die beiden Rollen. Berücksichtigen Sie jedoch, dass in einer realen Lösung eine Rolle für jede der 11 Adventure Works-Regionen erstellt werden muss.*
+    *In diesem Lab erstellen Sie nur diese beiden Rollen. Bedenken Sie jedoch, dass in einer realen Lösung eine Rolle für jede der elf Adventure Works-Regionen erstellt werden muss.*
 
 10. Wählen Sie **Speichern**.
 
     ![](Images/enforce-model-security-image20.png)
 
-### Überprüfen von statischen Rollen
+### Überprüfen der statischen Rollen
 
 In dieser Aufgabe überprüfen Sie eine der statischen Rollen.
 
-1. Wählen Sie auf der Registerkarte des Menübands **Modellierung** in der Gruppe **Sicherheit** die Option **Anzeigen als**.
+1. Wählen Sie auf der Registerkarte **Modellierung** des Menübands in der Gruppe **Sicherheit** die Option **Anzeigen als** aus.
 
     ![](Images/enforce-model-security-image21.png)
 
-2. Wählen Sie im Fenster **Als Rollen anzeigen** die Rolle **Australien**.
+2. Wählen Sie im Fenster **Als Rollen anzeigen** die Rolle **Australia** aus.
 
     ![](Images/enforce-model-security-image22.png)
 
@@ -149,15 +149,15 @@ In dieser Aufgabe überprüfen Sie eine der statischen Rollen.
 
     ![](Images/enforce-model-security-image23.png)
 
-4. Auf der Berichtsseite sehen Sie, dass das gestapelte Säulendiagramm nur Daten für Australien anzeigt.
+4. Beachten Sie, dass das gestapelte Säulendiagramm auf der Berichtsseite nur Daten für „Australia“ zeigt.
 
     ![](Images/enforce-model-security-image24.png)
 
-5. Am oberen Rand des Berichts finden Sie ein gelbes Banner, das die erzwungene Rolle bestätigt.
+5. Das gelbe Banner am oberen Rand des Berichts bestätigt die erzwungene Rolle.
 
     ![](Images/enforce-model-security-image25.png)
 
-6. Um die Anzeige mit Hilfe der Rolle zu beenden, wählen Sie rechts neben dem gelben Banner **Anzeige beenden**.
+6. Wählen Sie zum Beenden der Anzeige anhand der Rolle die Schaltfläche **Anzeige beenden** auf der rechten Seite des gelben Banners aus.
 
     ![](Images/enforce-model-security-image26.png)
 
@@ -173,19 +173,19 @@ In dieser Aufgabe wird der Bericht veröffentlicht.
 
     ![](Images/enforce-model-security-image28.png)
 
-3. Wählen Sie im Fenster **In Power BI veröffentlichen** Ihren Arbeitsbereich und wählen Sie dann **Auswählen**.
+3. Wählen Sie im Fenster **In Power BI veröffentlichen** Ihren Arbeitsbereich und dann **Auswählen** aus.
 
     ![](Images/enforce-model-security-image29.png)
 
-4. Wenn die Veröffentlichung erfolgreich war, klicken Sie auf **OK**.
+4. Warten Sie, bis die Veröffentlichung erfolgreich abgeschlossen wurde, und wählen Sie dann **Alles klar** aus.
 
     ![](Images/enforce-model-security-image30.png)
 
 ### Konfigurieren der Sicherheit auf Zeilenebene (*optional*)
 
-In dieser Aufgabe erfahren Sie, wie Sie die Sicherheit auf Zeilenebene im Power BI-Dienst konfigurieren.
+In dieser Aufgabe erfahren Sie, wie Sie Sicherheit auf Zeilenebene im Power BI-Dienst konfigurieren.
 
-Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Australia** in dem Mandanten voraus, in dem Sie arbeiten. Diese Sicherheitsgruppe ist nicht automatisch im Mandanten vorhanden. Wenn Sie über Berechtigungen für Ihren Mandanten verfügen, können Sie die folgenden Schritte ausführen. Wenn Sie einen Mandanten verwenden, der Ihnen in der Schulung zur Verfügung gestellt wird, verfügen Sie nicht über die entsprechenden Berechtigungen zum Erstellen von Sicherheitsgruppen. Bitte lesen Sie die Aufgaben durch, beachten Sie jedoch, dass Sie diese nicht abschließen können, wenn die Sicherheitsgruppe nicht vorhanden ist. **Nach dem Durchlesen fahren Sie mit der Aufgabe "Bereinigung" fort.**
+Diese Aufgabe setzt voraus, dass in dem von Ihnen verwendeten Mandanten eine Sicherheitsgruppe **Salespeople_Australia** vorhanden ist. Diese Sicherheitsgruppe ist NICHT automatisch im Mandanten vorhanden. Wenn Sie über Berechtigungen für Ihren Mandanten verfügen, können Sie die folgenden Schritte ausführen. Falls Sie einen Mandanten verwenden, der Ihnen im Rahmen des Trainings zur Verfügung gestellt wird, besitzen Sie nicht die entsprechenden Berechtigungen zum Erstellen von Sicherheitsgruppen. Lesen Sie in diesem Fall die Aufgaben durch, beachten Sie jedoch, dass Sie die Aufgabenschritte ohne die Sicherheitsgruppe nicht durchführen können. **Fahren Sie mit der Aufgabe „Bereinigen der Lösung“ fort, nachdem Sie die Aufgaben durchgelesen haben.**
 
 1. Wechseln Sie zum Power BI-Dienst (Webbrowser).
 
@@ -199,13 +199,13 @@ Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Aust
 
     *Die Option **Sicherheit** unterstützt die Zuordnung von Microsoft Azure Active Directory (Azure AD)-Sicherheitsprinzipalen, zu denen Sicherheitsgruppen und -benutzer*innen zählen.*
 
-4. Beachten Sie links die Liste der Rollen, und dass **Australien** ausgewählt ist.
+4. Auf der linken Seite wird die Liste der Rollen angezeigt, und **Australia** ist ausgewählt.
 
     ![](Images/enforce-model-security-image33.png)
 
-5. Beginnen Sie im Feld **Mitglieder*innen** mit der Eingabe von **Salespeople_Australia**.
+5. Beginnen Sie im Feld **Mitglieder** mit der Eingabe von **Salespeople_Australia**.
 
-    *Die Schritte 5 bis 8 dienen nur zu Demonstrationszwecken, da sie sich auf die Erstellung oder Existenz einer Salespeople_Australia Sicherheitsgruppe verlassen. Wenn Sie über Berechtigungen und das Wissen zum Erstellen von Sicherheitsgruppen verfügen, können Sie fortfahren. Fahren Sie andernfalls mit der Bereinigungsaufgabe fort.*
+    *Die Schritte 5 bis 8 dienen nur zur Veranschaulichung, da sie die Erstellung oder das Vorhandensein einer Sicherheitsgruppe „Salespeople_Australia“ voraussetzen. Wenn Sie über die notwendigen Berechtigungen verfügen und mit dem Erstellen von Sicherheitsgruppen vertraut sind, können Sie fortfahren. Fahren Sie andernfalls mit der Aufgabe „Bereinigen der Lösung“ fort.*
 
     ![](Images/enforce-model-security-image34.png)
 
@@ -213,11 +213,11 @@ Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Aust
 
     ![](Images/enforce-model-security-image35.png)
 
-7. Um die Rollenzuordnung abzuschließen, wählen Sie **Speichern**.
+7. Wählen Sie **Speichern** aus, um die Rollenzuordnung abzuschließen.
 
     ![](Images/enforce-model-security-image36.png)
 
-    *Jetzt werden alle Mitglieder der **Salespeople_Australia** Sicherheitsgruppe der Rolle **Australien** zugeordnet, wodurch der Datenzugriff auf die Anzeige nur australischer Verkäufe beschränkt wird.*
+    *Jetzt sind alle Mitglieder der Sicherheitsgruppe **Salespeople_Australia** der Rolle **Australia** zugeordnet, wodurch der Datenzugriff auf die Anzeige von Verkäufen in der Region „Australia“ beschränkt wird.*
 
     *In einer realen Lösung muss jede Rolle einer Sicherheitsgruppe zugeordnet werden.*
 
@@ -225,7 +225,7 @@ Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Aust
 
     *In der nächsten Übung erstellen Sie eine dynamische Rolle, die datengesteuert ist. Dieser Entwurfsansatz kann dabei helfen, den obigen Nachteilen entgegenzuwirken.*
 
-8. Um zur Landing Page des Arbeitsbereichs zurückzukehren, wählen Sie im Bereich **Navigation** den Arbeitsbereich aus.
+8. Wählen Sie im Bereich **Navigation** den Arbeitsbereich aus, um zur Landing Page des Arbeitsbereichs zurückzukehren.
 
 ### Bereinigen der Lösung
 
@@ -241,21 +241,21 @@ In dieser Aufgabe bereinigen Sie die Lösung, indem Sie das Semantikmodell und d
 
     ![](Images/enforce-model-security-image38.png)
 
-3. Wechseln Sie zurück zu Power BI Desktop.
+3. Wechseln Sie zu Power BI Desktop.
 
-4. Um die Sicherheitsrollen zu entfernen, wählen Sie auf der Registerkarte des Menübands **Modellierung** in der Gruppe **Sicherheit** die Option **Rollen verwalten**.
+4. Wählen Sie zum Entfernen der Sicherheitsrollen auf der Registerkarte **Modellierung** des Menübands in der Gruppe **Sicherheit** die Option **Rollen verwalten** aus.
 
     ![](Images/enforce-model-security-image39.png)
 
-5. Im Fenster **Rollen verwalten** wählen Sie **Löschen**, um die erste Rolle zu entfernen.
+5. Wählen Sie im Fenster **Rollen verwalten** die Option **Löschen** aus, um die erste Rolle zu entfernen.
 
     ![](Images/enforce-model-security-image40.png)
 
-6. Wenn Sie aufgefordert werden, den Löschvorgang zu bestätigen, drücken Sie **Ja, löschen**.
+6. Wenn Sie aufgefordert werden, den Löschvorgang zu bestätigen, wählen Sie **Ja, löschen** aus.
 
     ![](Images/enforce-model-security-image41.png)
 
-7. Entfernen Sie auch die zweite Rolle.
+7. Entfernen Sie auch die sekundäre Rolle.
 
 8. Wählen Sie **Speichern**.
 
@@ -267,7 +267,7 @@ In dieser Übung fügen Sie dem Modell eine Tabelle hinzu, erstellen und überpr
 
 ### Hinzufügen der Tabelle „Salesperson“
 
-In dieser Aufgabe fügen Sie dem Modell die Tabelle **Vertriebsmitarbeiter** hinzu.
+In dieser Aufgabe fügen Sie dem Modell die Tabelle **Salesperson** hinzu.
 
 1. Wechseln Sie zur Ansicht**Modell**.
 
@@ -291,25 +291,25 @@ In dieser Aufgabe fügen Sie dem Modell die Tabelle **Vertriebsmitarbeiter** hin
 
     ![](Images/enforce-model-security-image45.png)
 
-    *Da die **Kundenabfrage** bereits Schritte zum Verbinden des Data Warehouse enthält, ist die Duplizierung eine effiziente Möglichkeit, die Entwicklung einer neuen Abfrage zu beginnen.*
+    *Da die Abfrage **Customer** bereits Schritte zum Verbinden des Data Warehouse enthält, ist die Duplizierung eine effiziente Möglichkeit, um mit der Entwicklung einer neuen Abfrage zu beginnen.*
 
-4. Ersetzen Sie im Bereich **Abfrageeinstellungen** (auf der rechten Seite) im Feld **Name** den Text durch **Vertriebsmitarbeiter**.
+4. Ersetzen Sie im Bereich **Abfrageeinstellungen** (auf der rechten Seite) den Text im Feld **Name** durch **Salesperson**.
 
     ![](Images/enforce-model-security-image46.png)
 
-5. Klicken Sie in der Liste **Angewandte Schritte** mit der rechten Maustaste auf den Schritt **Entfernte andere Spalten** (dritter Schritt), und wählen Sie dann **Löschen bis Ende**.
+5. Klicken Sie in der Liste **Angewendete Schritte** mit der rechten Maustaste auf den Schritt **Andere entfernte Spalten** (dritter Schritt), und wählen Sie dann **Bis zum Ende löschen** aus.
 
     ![](Images/enforce-model-security-image47.png)
 
-6. Wenn Sie aufgefordert werden, das Löschen des Schritts zu bestätigen, wählen Sie **Löschen**.
+6. Wählen Sie **Löschen** aus, wenn Sie aufgefordert werden, den Löschvorgang zu bestätigen.
 
     ![](Images/enforce-model-security-image48.png)
 
-7. Um Daten aus einer anderen Data-Warehouse-Tabelle zu beziehen, wählen Sie in der Liste **Angewandte Schritte** im Schritt **Navigation** (zweiter Schritt) das Zahnradsymbol (rechts).
+7. Um Daten aus einer anderen Data Warehouse-Tabelle abzurufen, wählen Sie im Schritt **Navigation** (zweiter Schritt) in der Liste **Angewendete Schritte** das Zahnradsymbol (auf der rechten Seite) aus.
 
     ![](Images/enforce-model-security-image49.png)
 
-8. Wählen Sie im Fenster **Navigation** die Tabelle **DimEmployee**.
+8. Wählen Sie im Fenster **Navigation** die Tabelle **DimEmployee** aus.
 
     ![](Images/enforce-model-security-image50.png)
 
@@ -317,15 +317,15 @@ In dieser Aufgabe fügen Sie dem Modell die Tabelle **Vertriebsmitarbeiter** hin
 
     ![](Images/enforce-model-security-image51.png)
 
-10. Klicken Sie auf der Registerkarte **Start** des Menübands in der Gruppe **Spalten verwalten** auf das Symbol **Spalten auswählen**, um unnötige Spalten zu entfernen.
+10. Wählen Sie zum Entfernen nicht benötigter Spalten auf der Registerkarte **Start** des Menübands in der Gruppe **Spalten verwalten** das Symbol **Spalten auswählen** aus.
 
     ![](Images/enforce-model-security-image52.png)
 
-11. Deaktivieren Sie im Fenster **Spalten auswählen** das Element **(Alle Spalten auswählen)**, um alle Spalten zu deaktivieren.
+11. Deaktivieren Sie im Fenster **Spalten auswählen** das Kontrollkästchen **(Alle Spalten auswählen)**.
 
     ![](Images/enforce-model-security-image53.png)
 
-12. Benennen Sie die folgenden drei Spalten um:
+12. Aktivieren Sie die Kontrollkästchen für die folgenden drei Spalten:
 
     - EmployeeKey
 
@@ -337,25 +337,25 @@ In dieser Aufgabe fügen Sie dem Modell die Tabelle **Vertriebsmitarbeiter** hin
 
     ![](Images/enforce-model-security-image54.png)
 
-14. Um die Spalte **EmailAdresse** umzubenennen, doppelklicken Sie auf die Spaltenüberschrift **EmailAdresse**.
+14. Doppelklicken Sie auf die Spaltenüberschrift **EmailAddress**, um die Spalte **EmailAddress** umzubenennen.
 
-15. Ersetzen Sie den Text durch **UPN**, und drücken Sie dann die **Eingabetaste**.
+15. Ersetzen Sie den Text durch **UPN**, und drücken Sie dann die **EINGABETASTE**.
 
-    *UPN ist ein Akronym für User Principal Name. Die Werte in dieser Spalte entsprechen den Azure AD-Kontonamen.*
+    *Das Akronym „UPN“ steht für „User Principal Name“, zu Deutsch: „Benutzerprinzipalname“. Die Werte in dieser Spalte entsprechen den Azure AD-Kontonamen.*
 
     ![](Images/enforce-model-security-image55.png)
 
-16. Um die Tabelle in das Modell zu laden, wählen Sie auf der Registerkarte des Menübands **Start **das Symbol** &amp;Anwenden** aus.
+16. Um die Tabelle in das Modell zu laden, wählen Sie auf der Registerkarte **Start **das Symbol** &amp;Anwenden** aus.
 
     ![](Images/enforce-model-security-image56.png)
 
-17. Nach dem Hinzufügen der Tabelle zum Modell ist zu beachten, dass automatisch eine Beziehung zur Tabelle **Vertriebsgebiet** erstellt wurde.
+17. Beachten Sie, dass beim Hinzufügen der Tabelle zum Modell automatisch eine Beziehung zur Tabelle **Sales Territory** erstellt wurde.
 
-### Konfigurieren von Beziehungen
+### Konfigurieren der Beziehung
 
-In dieser Aufgabe konfigurieren Sie die Eigenschaften der neuen Beziehung.
+In dieser Aufgabe konfigurieren Sie Eigenschaften der neuen Beziehung.
 
-1. Klicken Sie mit der rechten Maustaste auf die Beziehung zwischen den Tabellen **Verkäufer** und **Verkaufsgebiet**, und wählen Sie dann **Eigenschaften**.
+1. Klicken Sie mit der rechten Maustaste auf die Beziehung zwischen den Tabellen **Salesperson** und **Sales Territory**, und wählen Sie **Eigenschaften** aus.
 
     ![](Images/enforce-model-security-image57.png)
 
@@ -365,17 +365,17 @@ In dieser Aufgabe konfigurieren Sie die Eigenschaften der neuen Beziehung.
 
     ![](Images/enforce-model-security-image58.png)
 
-     *Da es eine eins-zu-viele-Beziehung zwischen der Tabelle **Vertriebsgebiet** und der Tabelle **Vertriebsmitarbeiter*innen** gibt, werden Filter nur von der Tabelle **Vertriebsgebiet** zur Tabelle **Vertriebsmitarbeiter*inn** übertragen. Um die Weitergabe in die andere Richtung zu erzwingen, muss die Crossfilter-Richtung auf "beide" gesetzt werden.*
+    *Da eine 1:n-Beziehung zwischen der Tabelle **Sales Territory** und der Tabelle **Salesperson** besteht, werden Filter nur von der Tabelle **Sales Territory** an die Tabelle **Salesperson** weitergegeben. Um die Weitergabe in der anderen Richtung zu erzwingen, muss die Kreuzfilterrichtung auf „Beide“ festgelegt werden.*
 
 4. Klickan Sie auf **OK**.
 
     ![](Images/enforce-model-security-image59.png)
 
-5. Um die Tabelle auszublenden, wählen Sie oben rechts in der Tabelle **Vertriebsmitarbeiter*innen** das Augensymbol.
+5. Wählen Sie zum Ausblenden der Tabelle oben rechts in der Tabelle **Salesperson** das Augensymbol aus.
 
     ![](Images/enforce-model-security-image60.png)
 
-    *Der Zweck der Tabelle **Vertriebsmitarbeiter*innen** ist es, Datenberechtigungen zu erzwingen. Wenn sie ausgeblendet ist, sehen die Berichtsautoren und die Q&A-Erfahrung die Tabelle oder ihre Felder nicht.*
+    *Die Tabelle **Salesperson** dient dazu, Datenberechtigungen zu erzwingen. Wenn sie ausgeblendet ist, sind die Tabelle und die zugehörigen Felder weder für Berichtsautor*innen noch in der Q&A-Oberfläche sichtbar.*
 
 ### Erstellen einer dynamischen Rolle
 
@@ -385,7 +385,7 @@ In dieser Aufgabe erstellen Sie eine dynamische Rolle, die Berechtigungen basier
 
     ![](Images/enforce-model-security-image61.png)
 
-2. Um eine Sicherheitsrolle hinzuzufügen, wählen Sie auf der Registerkarte des Menübands **Modellierung** in der Gruppe **Sicherheit** die Option **Rollen verwalten**.
+2. Wählen Sie zum Hinzufügen einer Sicherheitsrolle auf der Registerkarte **Modellierung** des Menübands in der Gruppe **Sicherheit** die Option **Rollen verwalten** aus.
 
     ![](Images/enforce-model-security-image62.png)
 
@@ -393,11 +393,11 @@ In dieser Aufgabe erstellen Sie eine dynamische Rolle, die Berechtigungen basier
 
     ![](Images/enforce-model-security-image63.png)
 
-4. Ersetzen Sie den markierten Text durch **Vertriebsmitarbeiter**, um die Rolle zu benennen.
+4. Geben Sie den Namen der Rolle an, indem Sie den markierten Text durch **Salespeople** ersetzen.
 
     ![](Images/enforce-model-security-image64.png)
 
-    *Diesmal muss nur eine Rolle erstellt werden.*
+    *In diesem Fall muss nur eine Rolle erstellt werden.*
 
 5. Fügen Sie der Spalte **UPN** der Tabelle **Salesperson** einen Filter hinzu.
 
@@ -409,7 +409,7 @@ In dieser Aufgabe erstellen Sie eine dynamische Rolle, die Berechtigungen basier
 
     *Dieser Ausdruck filtert die Spalte **UPN** mit der USERPRINCIPALNAME-Funktion, die den Benutzerprinzipalnamen (UPN) der authentifizierten Benutzer*innen zurückgibt.*
 
-    *Wenn die UPN die Tabelle **Vertriebsmitarbeiter*innen** filtert, filtert sie die Tabelle **Vertriebsgebiet**, die wiederum die Tabelle **Umsatz** filtert. Auf diese Weise sieht der authentifizierte Benutzende nur die Umsatzdaten für das ihm zugewiesene Gebiet.*
+    *Wenn die Tabelle **Salesperson** nach dem UPN gefiltert wird, wird die Tabelle **Sales Territory** gefiltert, wodurch wiederum die Tabelle **Sales** gefiltert wird. Auf diese Weise sehen die authentifizierten Benutzer*innen nur Verkaufsdaten für die Region, die ihnen zugewiesen ist.*
 
 7. Wählen Sie **Speichern**.
 
@@ -437,27 +437,27 @@ In dieser Aufgabe überprüfen Sie die dynamische Rolle.
 
     ![](Images/enforce-model-security-image71.png)
 
-5. Beachten Sie auf der Berichtsseite, dass das Diagramm mit gestapelten Säulen nur Daten für Nordosten anzeigt.
+5. Wie Sie sehen, zeigt das gestapelte Säulendiagramm auf der Berichtsseite nur Daten für „Northeast“.
 
     ![](Images/enforce-model-security-image72.png)
 
-6. Am oberen Rand des Berichts finden Sie ein gelbes Banner, das die erzwungene Rolle bestätigt.
+6. Beachten Sie, dass die erzwungene Rolle im gelben Banner am oberen Rand des Berichts bestätigt wird.
 
     ![](Images/enforce-model-security-image73.png)
 
-7. Um die Anzeige mit Hilfe der Rolle zu beenden, wählen Sie rechts neben dem gelben Banner **Anzeige beenden**.
+7. Wählen Sie zum Beenden der Anzeige anhand der Rolle die Schaltfläche **Anzeige beenden** auf der rechten Seite des gelben Banners aus.
 
     ![](Images/enforce-model-security-image74.png)
 
 ### Fertigstellen des Entwurfs
 
-In dieser Aufgabe schließen Sie den Entwurf ab, indem Sie den Bericht veröffentlichen und eine Sicherheitsgruppe der Rolle zuordnen.
+In dieser Aufgabe stellen Sie den Entwurf fertig, indem Sie den Bericht veröffentlichen und der Rolle eine Sicherheitsgruppe zuordnen.
 
-*Die Schritte in dieser Aufgabe sind bewusst kurz. Ausführliche Informationen finden Sie in den Aufgabenschritten der vorherigen Übung.*
+*Die Schritte in dieser Aufgabe wurden bewusst kurz gehalten. Ausführliche Informationen finden Sie in den Aufgabenschritten der vorherigen Übung.*
 
 1. Speichern Sie die Power BI Desktop-Datei.
 
-2. Veröffentlichen Sie den Bericht im Arbeitsbereich, den Sie am Anfang des Labs erstellt haben.
+2. Veröffentlichen Sie den Bericht in dem Arbeitsbereich, den Sie am Anfang des Labs erstellt haben.
 
 3. Schließen Sie Power BI Desktop.
 
@@ -469,6 +469,6 @@ In dieser Aufgabe schließen Sie den Entwurf ab, indem Sie den Bericht veröffen
 
     ![](Images/enforce-model-security-image76.png)
 
-    *Nun werden alle Mitglieder der Sicherheitsgruppe **Vertreibsmitarbeiter*in** der Rolle **Vertriebsmitarbeiter*in** zugeordnet. Sofern der authentifizierte Benutzer durch eine Zeile in der Tabelle **Verkäufer** repräsentiert wird, wird das zugewiesene Vertriebsgebiet zum Filtern der Umsatztabelle verwendet.*
+    *Jetzt sind alle Mitglieder der Sicherheitsgruppe **Salespeople** der Rolle **Salespeople** zugeordnet. Die Angabe der authentifizierten Benutzer*innen wird durch eine Zeile in der Tabelle **Salesperson** dargestellt, und die Tabelle „Sales“ wird nach dem zugewiesenen Vertriebsgebiet gefiltert.*
 
-    *Dieser Entwurfsansatz ist einfach und effektiv, wenn das Datenmodell die Werte für den Benutzerprinzipalnamen speichert. Wenn Vertriebsmitarbeiter hinzugefügt oder entfernt oder verschiedenen Vertriebsgebieten zugewiesen werden, funktioniert dieser Entwurfsansatz einfach.*
+    *Dieser Entwurfsansatz ist einfach und effektiv, wenn das Datenmodell die Werte für Benutzerprinzipalnamen speichert. Dieser Entwurfsansatz funktioniert, wenn Vertriebsmitarbeitende hinzugefügt oder entfernt oder anderen Vertriebsgebieten zugewiesen werden.*
