@@ -115,14 +115,13 @@ Da Sie über eine Tabelle mit Daten in Ihrer Datenbank verfügen, können Sie nu
     ```
 
 8. Führen Sie die Abfrage aus, und überprüfen Sie die Ergebnisse, die den Gesamtnettoumsatz für jedes Produkt zwischen dem 1. Januar und dem 31. Dezember 2020 in aufsteigender Reihenfolge des Produktnamens enthalten sollten.
-9. Wählen Sie **Als KQL-Abfragesatz speichern** aus, und speichern Sie die Abfrage als **Revenue by Product**.
 
 ## Erstellen eines Power BI-Berichts aus einem KQL-Abfrageset
 
 Sie können Ihr KQL-Abfrageset als Grundlage für einen Power BI-Bericht verwenden.
 
 1. Führen Sie im Abfrageworkbench-Editor für Ihren Abfragesatz die Abfrage aus, und warten Sie auf die Ergebnisse.
-2. Wählen Sie **Power BI-Bericht erstellen** aus, und warten Sie, bis der Berichts-Editor geöffnet wird.
+2. Wählen Sie **Power BI** aus und warten Sie, bis der Berichts-Editor geöffnet wird.
 3. Erweitern Sie im Berichts-Editor im Bereich **Daten** die Option **Kusto-Abfrageergebnis**, und wählen Sie die Felder **Item** und **TotalRevenue** aus.
 4. Wählen Sie in der Canvas für den Berichtsentwurf die hinzugefügte Tabellenvisualisierung aus, und wählen Sie dann im Bereich **Visualisierungen** die Option **Gruppiertes Balkendiagramm** aus.
 

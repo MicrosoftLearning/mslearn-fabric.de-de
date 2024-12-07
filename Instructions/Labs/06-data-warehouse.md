@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Warehouse zu erstellen. Die Startseite von „Data Warehouse mit Synapse“ enthält eine Verknüpfung zum Erstellen eines neuen Warehouse:
 
-1. Erstellen Sie auf der Startseite von **Data Warehouse mit Synapse** ein neues **Warehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der **Data Warehouse**-Startseite ein neues **Warehouse** mit einem Namen Ihrer Wahl.
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
@@ -37,7 +37,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Warehouse
 
 Ein Warehouse ist eine relationale Datenbank, in der Sie Tabellen und andere Objekte definieren können.
 
-1. Wählen Sie in Ihrem neuen Warehouse die Kachel **Tabellen mit T-SQL erstellen** aus, und ersetzen Sie den SQL-Standardcode durch die folgende CREATE TABLE-Anweisung:
+1. Wählen Sie in Ihrem neuen Warehouse die Kachel **T-SQL** aus und verwenden Sie die folgende CREATE TABLE-Anweisung:
 
     ```sql
    CREATE TABLE dbo.DimProduct
@@ -65,9 +65,8 @@ Ein Warehouse ist eine relationale Datenbank, in der Sie Tabellen und andere Obj
     ```
 
 5. Führen Sie die neue Abfrage aus, um drei Zeilen in die **DimProduct-Tabelle** einzufügen.
-6. Wenn die Abfrage abgeschlossen ist, wählen Sie unten auf der Seite im Data Warehouse die Registerkarte **Daten** aus. Wählen Sie im Bereich **Explorer** die Tabelle **DimProduct** aus, und vergewissern Sie sich, dass die drei Zeilen der Tabelle hinzugefügt wurden.
+6. Wenn die Abfrage beendet ist, wählen Sie im Bereich **Explorer** die Tabelle **DimProduct** aus, und vergewissern Sie sich, dass die drei Zeilen der Tabelle hinzugefügt wurden.
 7. Verwenden Sie auf der Registerkarte **Start** die Schaltfläche **Neue SQL-Abfrage**, um eine neue Abfrage zu erstellen. Kopieren Sie dann den Transact-SQL-Code aus `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt`, und fügen Sie ihn in den neuen Abfragebereich ein.
-<!-- I had to remove the GO command in this query as well -->
 8. Führen Sie die Abfrage aus, die ein einfaches Data Warehouse-Schema erstellt und einige Daten lädt. Die Ausführung des Skripts sollte etwa 30 Sekunden dauern.
 9. Verwenden Sie die Schaltfläche **Aktualisieren** auf der Symbolleiste, um Metriken zu aktualisieren. Überprüfen Sie dann im Bereich **Explorer**, ob das **dbo**-Schema im Data Warehouse jetzt die folgenden vier Tabellen enthält:
     - **DimCustomer**
@@ -81,15 +80,17 @@ Ein Warehouse ist eine relationale Datenbank, in der Sie Tabellen und andere Obj
 
 Ein relationales Data Warehouse besteht in der Regel aus *Fakt-* und *Dimensionstabellen*. Die Faktentabellen enthalten numerische Measures, die Sie aggregieren können, um die Geschäftsleistung zu analysieren (z. B. Umsatz), und die Dimensionstabellen enthalten Attribute der Entitäten, mit denen Sie die Daten aggregieren können (z. B. Produkt, Kunde oder Zeit). In einem Microsoft Fabric-Data Warehouse können Sie diese Schlüssel verwenden, um ein Datenmodell zu definieren, das die Beziehungen zwischen den Tabellen kapselt.
 
-1. Wählen Sie unten auf der Seite im Data Warehouse die Registerkarte **Modell** aus.
+1. Wählen Sie auf der Symbolleiste die Schaltfläche **Modelllayouts** aus.
 2. Ordnen Sie im Modellbereich die Tabellen in Ihrem Data Warehouse neu an, sodass sich die Tabelle **FactSalesOrder** wie im Folgenden in der Mitte befindet:
 
     ![Screenshot der Seite „Data Warehouse-Modell“](./Images/model-dw.png)
 
+> **Hinweis**: Die Ansichten **frequently_run_queries**, **long_running_queries**, **exec exec_sessions_history** und **exec_requests_history** sind Teil des **queryinsights**-Schemas, das automatisch von Fabric erstellt wird. Es ist ein Feature, das eine ganzheitliche Ansicht der historischen Abfrageaktivität auf dem SQL-Analyseendpunkt bietet. Da dieses Feature außerhalb des Umfangs dieser Übung liegt, sollten diese Ansichten vorerst ignoriert werden.
+
 3. Ziehen Sie das Feld **ProductKey** aus der **Tabelle FactSalesOrder**, und legen Sie es im Feld **ProductKey** in der Tabelle **DimProduct** ab. Bestätigen Sie dann die folgenden Beziehungsdetails:
-    - **Tabelle 1**: FactSalesOrder
+    - **Aus Tabelle**: FactSalesOrder
     - **Spalte**: ProductKey
-    - **Tabelle 2**: DimProduct
+    - **In Tabelle**: DimProduct
     - **Spalte**: ProductKey
     - **Kardinalität**: Viele-zu-eins (*:1)
     - **Kreuzfilterrichtung**: Einzeln
@@ -177,7 +178,7 @@ Ein Data Warehouse in Microsoft Fabric verfügt über viele der Funktionen, die 
 
 Anstatt SQL-Code zu schreiben, können Sie den grafischen Abfrage-Designer verwenden, um die Tabellen in Ihrem Data Warehouse abzufragen. Diese Benutzeroberfläche ähnelt der von Power Query Online, bei der Sie Datentransformationsschritte ohne Code erstellen können. Für komplexere Aufgaben können Sie die Sprache M (Mashup) von Power Query verwenden.
 
-1. Wählen Sie auf der Registerkarte **Start** die Option **Neue visuelle Abfrage** aus.
+1. Erweitern Sie im Menü **Start** die Optionen unter **Neue SQL-Abfrage**, und wählen Sie **Neue visuelle Abfrage** aus.
 
 1. Ziehen Sie **FactSalesOrder** auf den **Canvas**. Im Bereich **Vorschau** unten wird eine Vorschau der Tabelle angezeigt.
 
@@ -200,7 +201,7 @@ Anstatt SQL-Code zu schreiben, können Sie den grafischen Abfrage-Designer verwe
 
 Sie können die Daten ganz einfach in einer einzelnen Abfrage oder in Ihrem Data Warehouse visualisieren. Blenden Sie vor dem Visualisieren Spalten und bzw. oder Tabellen aus, die für Berichts-Designer nicht geeignet sind.
 
-1. Wählen Sie im Bereich **Explorer** die Ansicht **Modell** aus. 
+1. Wählen Sie die Schaltfläche **Modelllayouts** aus. 
 
 1. Blenden Sie die folgenden Spalten in den Fakten- und Dimensionstabellen aus, die zum Erstellen eines Berichts nicht erforderlich sind. Beachten Sie, dass dadurch die Spalten nicht aus dem Modell entfernt werden, sondern sie einfach aus der Ansicht im Berichtscanvas ausgeblendet werden.
    1. FactSalesOrder

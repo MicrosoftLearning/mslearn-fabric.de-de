@@ -20,7 +20,7 @@ Da Sie außerdem mit einem Beispieldataset arbeiten, entspricht die Optimierung 
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -31,7 +31,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Erstellen Sie zunächst ein neues Lakehouse und dann einen Zielordner im Lakehouse.
 
-1. Wählen Sie in Ihrem Arbeitsbereich **+ Neu > Lakehouse** aus, geben Sie einen Namen an, und wählen Sie **Erstellen** aus.
+1. Wählen Sie in Ihrem Arbeitsbereich **+ Neues Element > Lakehouse** aus, geben Sie einen Namen an und wählen Sie **Erstellen** aus.
 
     > **Hinweis:** Es kann einige Minuten dauern, bis ein neues Lakehouse ohne **Tabellen** oder **Dateien** erstellt wird.
 
@@ -85,15 +85,15 @@ Erstellen Sie ein neues Fabric-Notebook, und stellen Sie mit PySpark eine Verbin
 1. Fügen Sie den folgenden Code in eine **neue Codezelle** ein:
 
     ```python
-        # Declare file name    
-        file_name = "yellow_taxi"
+    # Declare file name    
+    file_name = "yellow_taxi"
     
-        # Construct destination path
-        output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
-        print(output_parquet_path)
+    # Construct destination path
+    output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
+    print(output_parquet_path)
         
-        # Load the first 1000 rows as a Parquet file
-        blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
+    # Load the first 1000 rows as a Parquet file
+    blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
 1. Fügen Sie Ihren **RawData**-ABFS-Pfad hinzu, und wählen Sie **&#9655; Zelle ausführen** aus, um 1000 Zeilen in eine yellow_taxi.parquet-Datei zu schreiben.
@@ -120,7 +120,7 @@ Wahrscheinlich ist Ihre Aufgabe zur Datenerfassung nicht mit dem Laden einer Dat
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
     # Filter columns to exclude any NULL values in storeAndFwdFlag
-    filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
+    filtered_df = filtered_df.filter(col("storeAndFwdFlag").isNotNull())
     
     # Load the filtered data into a Delta table
     table_name = "yellow_taxi"
@@ -177,5 +177,5 @@ In dieser Übung haben Sie Notebooks mit PySpark in Fabric verwendet, um Daten z
 Wenn Sie die Untersuchung abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie **Arbeitsbereichseinstellungen** und scrollen Sie im Abschnitt **Allgemein** nach unten und wählen Sie **Diesen Arbeitsbereich entfernen**.
+1. Wählen Sie **Löschen**, um den Arbeitsbereich zu löschen.

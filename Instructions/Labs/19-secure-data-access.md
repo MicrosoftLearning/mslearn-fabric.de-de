@@ -14,7 +14,7 @@ Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Erstellen Sie als Nächstes ein Data Warehouse im von Ihnen erstellten Arbeitsbereich:
 
-1. Wählen Sie auf der Startseite des Synapse Data Warehouse die Verknüpfung **Beispiel-Warehous** aus, um ein neues Warehouse mit einem Namen Ihrer Wahl zu erstellen.  
+1. Klicken Sie auf der Data Warehouse-Startseite auf die Verknüpfung **Beispiel-Warehouse**, um ein neues Warehouse mit einem Namen Ihrer Wahl zu erstellen.  
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
@@ -38,7 +38,7 @@ Als Nächstes erstellen Sie ein Lakehouse in dem Arbeitsbereich, den Sie erstell
 
 1. Wählen Sie in der Menüleiste links **Arbeitsbereiche** aus (das Symbol sieht ähnlich aus wie 🗇).
 2. Wählen Sie den von Ihnen erstellten Arbeitsbereich aus.
-3. Wählen Sie im Arbeitsbereich die Schaltfläche **+ Neu** und dann **Lakehouse** aus. Erstellen Sie ein neues Lakehouse mit einem Namen Ihrer Wahl.
+3. Wählen Sie im Arbeitsbereich die Schaltfläche **+ Neues Element** und dann **Lakehouse** aus. Erstellen Sie ein neues Lakehouse mit einem Namen Ihrer Wahl.
 
    Nach etwa einer Minute wird ein neues Lakehouse erstellt:
 
@@ -102,7 +102,7 @@ Elementberechtigungen steuern den Zugriff auf einzelne Fabric-Elemente in einem 
 
 10. Kehren Sie zum Browserfenster zurück, in dem Sie als zweites Benutzerkonto angemeldet sind. Aktualisieren Sie die Browseransicht.  
 
-11. Das zweite Benutzerkonto hat keinen Zugriff mehr auf den Arbeitsbereich und hat stattdessen nur Zugriff auf das Warehouse. Sie können Arbeitsbereiche im linken Navigationsbereich nicht mehr durchsuchen, um das Warehouse zu finden. Wählen Sie **OneLake-Datenhub** im linken Navigationsmenü, um das Warehouse zu finden. 
+11. Das zweite Benutzerkonto hat keinen Zugriff mehr auf den Arbeitsbereich und hat stattdessen nur Zugriff auf das Warehouse. Sie können Arbeitsbereiche im linken Navigationsbereich nicht mehr durchsuchen, um das Warehouse zu finden. Wählen Sie **OneLake** im linken Navigationsmenü, um das Warehouse zu finden. 
 
 12. Wählen Sie das Warehouse aus. Wählen Sie auf dem angezeigten Bildschirm die Option **Öffnen** in der oberen Menüleiste aus.
 
@@ -115,7 +115,7 @@ Mit OneLake-Datenzugriffsrollen können Sie benutzerdefinierte Rollen in einem L
 In dieser Übung werden Sie eine Elementberechtigung zuweisen und eine OneLake-Datenzugriffsrolle erstellen und damit experimentieren, wie diese zusammenarbeiten, um den Zugriff auf Daten in einem Lakehouse einzuschränken.  
 
 1. Bleiben Sie im Browser, in dem Sie als zweites Benutzerkonto angemeldet sind.  
-2. Wählen Sie in der linken Navigationsleiste **OneLake-Datenhub** aus. Das Lakehouse wird dem zweiten Benutzerkonto nicht angezeigt.  
+2. Wählen Sie in der linken Navigationsleiste **OneLake** aus. Das Lakehouse wird dem zweiten Benutzerkonto nicht angezeigt.  
 3. Kehren Sie zum Browser zurück, in dem Sie als Arbeitsbereichsadministrator angemeldet sind.
 4. Wählen Sie im linken Menü **Arbeitsbereiche** und dann Ihren Arbeitsbereich aus. Bewegen Sie den Mauszeiger über den Namen des Lakehouses.  
 5. Wählen Sie rechts neben der Ellipse (**...**) **Berechtigungen verwalten** aus.
@@ -129,7 +129,7 @@ In dieser Übung werden Sie eine Elementberechtigung zuweisen und eine OneLake-D
 
 8. Klicken Sie auf **Gewähren**. Das zweite Benutzerkonto verfügt jetzt über Leseberechtigungen für das Lakehouse. Die Leseberechtigung erlaubt es den Benutzenden nur, die Metadaten für das Lakehouse zu sehen, nicht aber die zugrunde liegenden Daten. Als Nächstes überprüfen wir dies.
 9. Kehren Sie zum Browser zurück, in dem Sie als zweites Benutzerkonto angemeldet sind. Aktualisieren Sie den Browser.
-10. Wählen Sie im linken Navigationsbereich **OneLake-Datenhub** aus.  
+10. Wählen Sie im linken Navigationsbereich **OneLake** aus.  
 11. Wählen Sie das Lakehouse aus und öffnen Sie es. 
 12. Wählen Sie in der oberen Menüleiste **Öffnen** aus. Sie können die Tabellen oder Dateien nicht erweitern, obwohl Leseberechtigungen erteilt wurden. Als Nächstes gewähren Sie dem zweiten Benutzerkonto Zugriff auf einen bestimmten Ordner mithilfe von OneLake-Datenzugriffsberechtigungen.
 13. Kehren Sie zum Browser zurück, in dem Sie als Arbeitsbereichsadministrator angemeldet sind.
@@ -140,7 +140,7 @@ In dieser Übung werden Sie eine Elementberechtigung zuweisen und eine OneLake-D
 
       ![Screenshot der Funktion zur Verwaltung des Datenzugriffs auf OneLake (Vorschau) in der Menüleiste in Fabric.](./Images/manage-onelake-roles.png)
 
-14. Wählen Sie auf dem angezeigten Bildschirm **Verwalteter OneLake-Datenzugriff (Vorschau)** eine neue Rolle aus.
+14. Wählen Sie auf dem angezeigten Bildschirm **OneLake-Datenzugriff verwalten (Vorschau)** eine neue Rolle aus.
   
       ![Screenshot der neuen Rollenfunktionalität in der Funktion „OneLake-Datenzugriff verwalten“.](./Images/create-onelake-role.png)
 

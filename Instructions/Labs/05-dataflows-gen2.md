@@ -16,7 +16,7 @@ Dieses Lab wurde entwickelt, um die verschiedenen Elemente von Dataflows (Gen2) 
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse zu erstellen, in dem Daten erfasst werden sollen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt.
 
@@ -37,7 +37,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin erfassen. Eine Möglichkeit dazu ist das Definieren eines Dataflows, der einen Prozess zum *Extrahieren, Transformieren und Laden* (ETL) kapselt.
 
-1. Wählen Sie auf der Startseite für Ihren Arbeitsbereich die Option **Neuer Dataflow Gen2** aus. Nach einigen Sekunden wird wie nachfolgend dargestellt der Power Query-Editor für Ihren neuen Dataflow geöffnet:
+1. Wählen Sie auf der Startseite für Ihren Arbeitsbereich **Daten abrufen** > **Neuer Dataflow Gen2** aus. Nach einigen Sekunden wird wie nachfolgend dargestellt der Power Query-Editor für Ihren neuen Dataflow geöffnet:
 
  ![Neuer Dataflow](./Images/new-dataflow.png)
 
@@ -97,7 +97,7 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
 Sie können einen Dataflow als Aktivität in eine Pipeline einschließen. Pipelines werden zum Orchestrieren von Datenerfassungs- und Verarbeitungsaktivitäten verwendet. Dadurch können Sie Dataflows mit anderen Arten von Vorgängen in einem einzelnen geplanten Prozess kombinieren. Pipelines können in verschiedenen Umgebungen erstellt werden, z. B. in Data Factory.
 
-1. Stellen Sie in Ihrem Fabric-fähigen Arbeitsbereich sicher, dass Sie sich weiterhin in **Datentechnik** befinden. Wählen Sie **Neu** und **Datenpipeline** aus, und erstellen Sie dann eine neue Pipeline mit dem Namen **Daten laden**, wenn Sie dazu aufgefordert werden.
+1. Stellen Sie in Ihrem Fabric-fähigen Arbeitsbereich sicher, dass Sie sich weiterhin in **Datentechnik** befinden. Wählen Sie **+ Neues Element** > **Datenpipeline** aus, und erstellen Sie dann eine neue Pipeline mit dem Namen **Daten laden**, wenn Sie dazu aufgefordert werden.
 
    Der Pipeline-Editor wird geöffnet.
 
@@ -133,5 +133,5 @@ Wenn Sie die Untersuchung von Dataflows in Microsoft Fabric abgeschlossen haben,
 
 1. Navigieren Sie in Ihrem Browser zu Microsoft Fabric.
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-1. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-1. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie **Arbeitsbereichseinstellungen** und scrollen Sie im Abschnitt **Allgemein** nach unten und wählen Sie **Diesen Arbeitsbereich entfernen**.
+1. Wählen Sie **Löschen**, um den Arbeitsbereich zu löschen.

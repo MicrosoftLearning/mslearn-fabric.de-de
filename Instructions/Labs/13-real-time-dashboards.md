@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Erste Schritte mit Echtzeit-Dashboards in Microsoft Fabric
-  module: Get started with Real-Time Dashboards in Microsoft Fabric
+  title: Echtzeit-Dashboards in Microsoft Fabric
+  module: Get Started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Erste Schritte mit Real-Time-Dashboards in Microsoft Fabric

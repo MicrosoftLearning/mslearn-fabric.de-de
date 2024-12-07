@@ -23,11 +23,11 @@ Für dieses Lab installieren und verwenden Sie Tabular Editor und DAX Studio, um
 
 ## Verwenden des Best Practice Analyzer
 
-In dieser Übung installieren Sie den Tabular Editor 2 und laden Best Practice Analyzer (BPA)-Regeln. Sie werden die BPA-Regeln überprüfen und dann bestimmte Probleme im Datenmodell beheben.
+In dieser Übung installieren Sie Tabular Editor 2 und laden die Best Practice Analyzer (BPA)-Regeln. Sie überprüfen die BPA-Regeln und beheben dann bestimmte Probleme, die im Datenmodell festgestellt wurden.
 
-*BPA ist ein kostenloses Tool eines Drittanbieters, das Sie auf mögliche Fehler bei der Modellierung oder auf Änderungen hinweist, die Sie vornehmen können, um Ihr Modelldesign und die Leistung zu verbessern. Es enthält Empfehlungen für die Benennung, die Benutzerfreundlichkeit und allgemeine Optimierungen, die Sie zur Verbesserung der Leistung anwenden können. Weitere Informationen finden Sie unter [Best-Practices-Regeln, um die Leistung Ihres Modells zu verbessern](https://powerbi.microsoft.com/blog/best-practice-rules-to-improve-your-models-performance/).*
+*Der BPA ist ein kostenloses Drittanbietertool, das Sie über potenzielle Fehler bei der Modellierung oder Änderungen benachrichtigt, die Sie vornehmen können, um Ihren Modellentwurf und die Leistung zu verbessern. Dazu sind Empfehlungen für die Benennung, die Benutzeroberfläche sowie gängige Optimierungen enthalten, die Sie zur Verbesserung der Leistung anwenden können. Weitere Informationen finden Sie unter [Best Practice-Regeln zur Verbesserung der Leistung Ihres Modells](https://powerbi.microsoft.com/blog/best-practice-rules-to-improve-your-models-performance/).*
 
-### Herunterladen und Installieren des Tabular Editor 2
+### Herunterladen und Installieren von Tabular Editor 2
 
 Laden Sie das Tool Tabular Editor 2 herunter, und installieren Sie es, um die Erstellung von Berechnungsgruppen zu ermöglichen.
 
@@ -35,13 +35,13 @@ Laden Sie das Tool Tabular Editor 2 herunter, und installieren Sie es, um die E
 
 *Tabular Editor ist ein alternatives Tool zum Erstellen tabellarischer Modelle für Analysis Services und Power BI. Tabular Editor 2 ist ein Open-Source-Projekt, das eine BIM-Datei bearbeiten kann, ohne auf Daten im Modell zuzugreifen.*
 
-1. Stellen Sie sicher, dass Power BI Desktop geschlossen ist.
+1. Vergewissern Sie sich, dass Power BI Desktop geschlossen ist.
 
-1. Navigieren Sie in Microsoft Edge zur Seite "Tabular Editor Release".
+1. Navigieren Sie in Microsoft Edge zur Seite „Releases“ für Tabular Editor.
 
     ```https://github.com/TabularEditor/TabularEditor/releases```
 
-1. Scrollen Sie nach unten zum Abschnitt **Assets** und wählen Sie die Datei **TabularEditor.Installer.msi** aus. Damit wird die Installation der Datei initiiert.
+1. Scrollen Sie nach unten zum Abschnitt **Ressourcen**, und wählen Sie die Datei **TabularEditor.Installer.msi** aus. Dadurch wird die Installation der Datei initialisiert.
 
 1. Wählen Sie nach Abschluss des Vorgangs **Datei öffnen** aus, um das Installationsprogramm auszuführen.
 
@@ -49,19 +49,19 @@ Laden Sie das Tool Tabular Editor 2 herunter, und installieren Sie es, um die E
 
 1. Wenn Sie der Lizenzvereinbarung zustimmen, wählen Sie im Schritt **License Agreement** die Option **I agree** und dann **Next** aus.
 
-1. Wählen Sie im Schritt **Installationsordner auswählen** **Weiter**aus.
+1. Wählen Sie nach dem Schritt **Select Installation Folder** die Option **Next** aus.
 
-1. Wählen Sie im Schritt **Tatenkombinationen für die Anwendung****Weiter** aus.
+1. Wählen Sie im Schritt **Application Shortcuts** die Option **Next** aus.
 
-1. Wählen Sie im Schritt **Installation bestätigen** **Weiter** aus.
+1. Wählen Sie im Schritt **Confirm Installation** die Option **Next** aus.
 
-    *Wenn Sie dazu aufgefordert werden, wählen Sie **Ja** aus, damit die App Änderungen vornehmen kann.*
+    *Wenn Sie dazu aufgefordert werden, wählen Sie **Yes** aus, um zuzulassen, dass die App Änderungen vornimmt.*
 
 1. Klicken Sie nach Abschluss der Installation auf **Schließen**.
 
-    *Tabular Editor ist jetzt installiert und als externes Power BI-Desktoptool registriert.*
+    *Tabular Editor ist jetzt installiert und als externes Power BI Desktop-Tool registriert.*
 
-### Öffnen Sie den Power BI Desktop
+### Öffnen Sie Power BI Desktop.
 
 In dieser Aufgabe öffnen Sie eine vordefinierte Power BI Desktop-Lösung.
 
@@ -73,17 +73,17 @@ In dieser Aufgabe öffnen Sie eine vordefinierte Power BI Desktop-Lösung.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image8.png)
 
-1. Beachten Sie, dass Sie den Tabular Editor über diese Registerkarte des Menübands starten können.
+1. Über diese Registerkarte des Menübands können Sie Tabular Editor starten.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image9.png)
 
-    *Später in dieser Übung verwenden Sie den Tabular Editor, um mit BPA zu arbeiten.*
+    *Später in dieser Übung verwenden Sie Tabular Editor, um mit dem BPA zu arbeiten.*
 
 ### Überprüfen Sie das Datenmodell
 
 In dieser Aufgabe überprüfen Sie das Datenmodell.
 
-1. Auf dem Power BI Desktop links wechseln Sie zur Ansicht **Modell**.
+1. Auf dem Power BI Desktop wechseln Sie zur Ansicht **Modell**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image10.png)
 
@@ -91,25 +91,25 @@ In dieser Aufgabe überprüfen Sie das Datenmodell.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image11.png)
 
-    *Das Modell besteht aus acht Dimensionstabellen und einer Faktentabelle. In der Faktentabelle"**Umsatz** werden die Umsatzdetails gespeichert. Es ist ein klassisches Sternschemadesign, das Schneeflocken-Dimensionstabellen (**Kategorie** > **Unterkategorie** > **Produkt**) für die Produktdimension enthält.*
+    *Das Modell umfasst acht Dimensionstabellen und eine Faktentabelle. Die Faktentabelle **Sales** enthält Informationen zu Verkaufsaufträgen. Es ist ein klassischer Sternschemaentwurf, der Schneeflocken-Dimensionstabellen (**Kategorie** > **Unterkategorie** > **Produkt**) für die Dimension „Produkt“ enthält.*
 
-    *In dieser Übung verwenden Sie BPA, um Modellprobleme zu erkennen und zu beheben.*
+    *In dieser Übung verwenden Sie den BPA, um Modellprobleme zu erkennen und zu beheben.*
 
-### BPA-Regeln laden
+### Laden von BPA-Regeln
 
 In dieser Aufgabe laden Sie BPA-Regeln.
 
-*Die BPA-Regeln werden während der Installation des Tabular Editors nicht hinzugefügt. Sie müssen sie herunterladen und installieren.*
+*Die BPA-Regeln werden während der Installation von Tabular Editor nicht hinzugefügt. Sie müssen sie herunterladen und installieren.*
 
 1. Wählen Sie auf der Registerkarte **Externe Tools** im Menüband die Option **Tabular Editor** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image12.png)
 
-    *Der Tabular-Editor wird in einem neuen Fenster geöffnet und stellt eine Live-Verbindung zu dem in Power BI Desktop gehosteten Datenmodell her. Änderungen am Modell im Tabular-Editor werden erst dann in Power BI Desktop übernommen, wenn Sie sie speichern.*
+    *Tabular Editor wird in einem neuen Fenster geöffnet und stellt eine Liveverbindung mit dem in Power BI Desktop gehosteten Datenmodell her. Änderungen, die Sie in Tabular Editor am Modell vornehmen, werden erst an Power BI Desktop weitergegeben, wenn Sie sie speichern.*
 
-2. Um die BPA-Regeln zu laden, wählen Sie die Registerkarte **C#-Skript** aus.
+2. Wählen Sie zum Laden der BPA-Regeln die Registerkarte **C# Script** aus.
 
-    *Hinweis: In älteren Versionen des Tabular-Editors heißt diese Registerkarte möglicherweise "Erweiterte Skripterstellung".*
+    *Hinweis: In älteren Versionen von Tabular Editor wird diese Funktion möglicherweise als Registerkarte „Advanced Scripting“ bezeichnet.*
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
@@ -128,73 +128,73 @@ In dieser Aufgabe laden Sie BPA-Regeln.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image14.png)
 
-    *Um die BPA-Regeln zu verwenden, müssen Sie den Tabular Editor schließen und dann erneut öffnen.*
+    *Wenn Sie die BPA-Regeln verwenden möchten, müssen Sie Tabular Editor schließen und dann erneut öffnen.*
 
-5. Schließen Sie den Tabular Editor.
+5. Schließen Sie Tabular Editor.
 
-6. Um den Tabelleneditor erneut zu öffnen, wählen Sie in Power BI Desktop im Menüband  **Externe Tools** **Tabular Editor** aus.
+6. Wählen Sie in Power BI Desktop auf der Registerkarte **Externe Tools** des Menübands die Option **Tabular Editor** aus, um Tabular Editor erneut zu öffnen.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image15.png)
 
 ### Überprüfen der BPA-Regeln
 
-In dieser Aufgabe überprüfen Sie die BPA-Regeln, die Sie im vorherigen Vorgang geladen haben.
+In dieser Aufgabe überprüfen Sie die BPA-Regeln, die Sie in der vorherigen Aufgabe geladen haben.
 
-1. Wählen Sie im Tabular Editor im Menü **Tools** > **Verwalten von BPA-Regeln**aus.
+1. Wählen Sie in Tabular Editor im Menü **Tools** > **Manage BPA Rules** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image16.png)
 
-2. Wählen Sie im Fenster **Manage Best Practice Rules** in der Liste **Regelsammlungen** **Regeln für die lokalen Benutzer*innen** aus.
+2. Wählen Sie im Fenster **Manage Best Practice Rules** in der Liste **Rule collections** die Option **Rules for the local user** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image17.png)
 
-3. Scrollen Sie in der Liste **Regeln in Sammlung** nach unten in der Regelliste.
+3. Scrollen Sie in der Liste **Rules in collection** in den aufgelisteten Regeln nach unten.
 
-    *Tipp: Sie können die untere rechte Ecke ziehen, um das Fenster zu vergrößern.*
+    *Tipp: Ziehen Sie an der unteren rechten Ecke des Fensters, um es zu vergrößern.*
 
-    *Innerhalb von Sekunden kann der Tabular Editor das gesamte Modell anhand der einzelnen Regeln scannen und einen Bericht aller Modellobjekte erstellen, die die Bedingung in jeder Regel erfüllen.*
+    *Tabular Editor kann das gesamte Modell in Sekundenschnelle anhand sämtlicher Regeln überprüfen und stellt einen Bericht aller Modellobjekte bereit, die die Bedingungen der einzelnen Regeln erfüllen.*
 
-4. Beachten Sie, dass BPA die Regeln in Kategorien gruppiert.
+4. Beachten Sie, dass der BPA die Regeln in Kategorien gruppiert.
 
-    *Einige Regeln, z. B. DAX-Ausdrücke, konzentrieren sich auf die Leistungsoptimierung, während andere, wie die Formatierungsregeln, ästhetisch ausgerichtet sind.*
+    *Einige Regeln (z. B. DAX-Ausdrücke) dienen der Leistungsoptimierung, während andere ästhetische Aspekte betreffen (z. B. die Formatierungsregeln).*
 
-5. Beachten Sie die Spalte **Schweregrad**.
+5. Beachten Sie die Spalte **Severity**.
 
-    *Je höher der Wert, desto wichtiger die Regel.*
+    *Je höher der Wert ist, desto wichtiger ist die Regel.*
 
-6. Scrollen Sie zum Ende der Liste und deaktivieren Sie die Regel**Set IsAvailableInMdx to false on non-attribute columns**.
+6. Scrollen Sie zum Ende der Liste, und deaktivieren Sie die Regel **Set IsAvailableInMdx to false on non-attribute columns**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image18.png)
 
-    *Sie können einzelne Regeln oder ganze Regelkategorien deaktivieren. BPA überprüft keine deaktivierten Regeln für Ihr Modell. Das Entfernen dieser bestimmten Regel besteht darin, Ihnen zu zeigen, wie Sie eine Regel deaktivieren.*
+    *Sie können einzelne Regeln oder ganze Regelkategorien deaktivieren. Deaktivierte Regeln werden bei der Überprüfung Ihres Modells nicht vom BPA berücksichtigt. Das Entfernen dieser spezifischen Regel soll veranschaulichen, wie Sie eine Regel deaktivieren.*
 
 7. Klickan Sie auf **OK**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image19.png)
 
-### BPA-Probleme lösen
+### Beheben von BPA-Problemen
 
-In dieser Aufgabe öffnen Sie BPA und überprüfen die Ergebnisse der Prüfungen.
+In dieser Aufgabe öffnen Sie den BPA und überprüfen die Ergebnisse der Überprüfungen.
 
-1. Wähen Sie im Menü **Tools** > **Best Practice Analyzer** (oder drücken Sie **F10**).
+1. Wählen Sie im Menü **Tools** > **Best Practice Analyzer** aus (oder drücken Sie **F10**).
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image20.png)
 
-2. Maximieren Sie im Fenster **Practice Analyzer** bei Bedarf das Fenster.
+2. Maximieren Sie ggf. das Fenster **Best Practice Analyzer**.
 
-3. Beachten Sie die Liste der (möglichen) Probleme, gruppiert nach Kategorien.
+3. Sehen Sie sich die nach Kategorie gruppierte Liste der (möglichen) Probleme an.
 
-4. Klicken Sie in der ersten Kategorie mit der rechten Maustaste auf die Tabelle**Produkt** und wählen Sie **Element ignorieren** aus.
+4. Klicken Sie in der ersten Kategorie mit der rechten Maustaste auf die Tabelle **Product**, und wählen Sie dann **Ignore item** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image21.png)
 
-    *Wenn ein Problem nicht wirklich ein Problem ist, können Sie dieses Element ignorieren. Sie können ignorierte Elemente immer anzeigen, indem Sie den Befehl **Ignoriert anzeigen** auf der Symbolleiste verwenden.*
+    *Wenn ein Problem nicht wirklich ein Problem ist, können Sie das jeweilige Element ignorieren. Sie können ignorierte Elemente jederzeit anzeigen, indem Sie auf der Symbolleiste den Befehl **Show ignored** auswählen.*
 
-5. Weiter unten auf der Liste, in der Kategorie **Die DIVIDE-Funktion für Division verwenden**, klicken Se mit der rechten Maustaste **[Profit Margin]**, und wählen Sie **Wechseln Sie zu** aus.
+5. Klicken Sie weiter unten in der Liste in der Kategorie **Use the DIVIDE function for division** mit der rechten Maustaste auf **[Profit Margin]**, und wählen Sie dann **Go to object** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image22.png)
 
-    *Dieser Befehl wechselt zum Tabular Editor und konzentriert sich auf das Objekt. Es erleichtert das Anwenden einer Lösung auf das Problem.*
+    *Mit diesem Befehl wechseln Sie zu Tabular Editor, und das Objekt erhält den Fokus. Auf diese Weise können Sie mühelos eine Korrektur des Problems anwenden.*
 
 6. Ändern Sie die DAX-Formel im Ausdrucks-Editor wie folgt, um die effizientere (und sicherere) [DIVIDE](https://docs.microsoft.com/dax/divide-function-dax)-Funktion zu verwenden.
 
@@ -208,43 +208,43 @@ In dieser Aufgabe öffnen Sie BPA und überprüfen die Ergebnisse der Prüfungen
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image23.png)
 
-    *Durch das Speichern von Änderungen werden Änderungen an das Power BI Desktop-Datenmodell übertragen.*
+    *Durch das Speichern werden die Änderungen an das Power BI Desktop-Datenmodell gepusht.*
 
-8. Wechseln Sie zurück zum (nicht fokussierten) Fenster **Best Practice Analyzer**.
+8. Wechseln Sie zurück zum Fenster **Best Practice Analyzer** (das nicht mehr den Fokus hat).
 
-9. Beachten Sie, dass BPA das Problem nicht mehr auflistet.
+9. Beachten Sie, dass das Problem nicht mehr im BPA aufgelistet ist.
 
-10.  Scrollen Sie in der Liste der Probleme nach unten, um die Kategorie **Formatzeichenfolge für "Datumsspalten" bereitstellen** zu suchen.
+10. Scrollen Sie in der Liste der Probleme nach unten, um nach der Kategorie **Provide format string for "Date" columns** zu suchen.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image24.png)
 
-11. Klicken Sie mit der rechten Maustaste auf das Problem **"Datum"[Date]** , und wählen Sie dann **Problembehebungs-Skript** aus.
+11. Klicken Sie mit der rechten Maustaste auf das Problem **'Date'[Date]**, und wählen Sie dann **Generate fix script** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image25.png)
 
-    *Dieser Befehl generiert ein C#-Skript und kopiert es in die Zwischenablage. Sie können auch den Befehl **Problembehebung anwenden** verwenden, um das Skript zu generieren und auszuführen. Möglicherweise ist es jedoch sicherer, das Skript vor der Ausführung zu überprüfen (und zu ändern).*
+    *Dieser Befehl generiert ein C#-Skript und kopiert es in die Zwischenablage. Sie können auch den Befehl **Apply Fix** verwenden, um das Skript zu generieren und auszuführen. Es kann jedoch sicherer sein, das Skript vor der Ausführung zu überprüfen (und zu ändern).*
 
-12. Wenn Sie benachrichtigt werden, dass BPA das Problembehebungs-Skript in die Zwischenablage kopiert hat, wählen Sie **OK** aus.
+12. Wenn Sie benachrichtigt werden, dass der BPA das Korrekturskript in die Zwischenablage kopiert hat, wählen Sie **OK** aus.
 
-13. Wechseln Sie zum Tabular Editor, und wählen Sie die Registerkarte **C#-Skript**  aus.
+13. Wechseln Sie zu Tabular Editor, und wählen Sie die Registerkarte **C# Script** aus.
 
-    *Hinweis: Dies kann in älteren Versionen des Tabular Editors die Registerkarte "Erweiterte Skripterstellung" genannt werden.*
+    *Hinweis: In älteren Versionen von Tabular Editor wird diese Funktion möglicherweise als Registerkarte „Advanced Scripting“ bezeichnet.*
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
-14. Um das Problembehebungs-Skript einzufügen, klicken Sie mit der rechten Maustaste in den Bereich, und drücken Sie dann **STRG+V**.
+14. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste in den Bereich, und drücken Sie dann **STRG+V**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image27.png)
 
     *Sie können eine Änderung an der Formatzeichenfolge vornehmen.*
 
-15. Um das Skript auszuführen, wählen Sie auf der Symbolleiste den Befehlt **Skript ausführen** aus.
+15. Um das Skript auszuführen, wählen Sie auf der Symbolleiste den Befehl **Run script** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image14.png)
 
-16. Speichern Sie die Änderungen.
+16. Speichern Sie die Modelländerungen.
 
-17. Um den Tabular Editor zu schließen, wählen Sie im Menü **Datei** > **Beenden** aus.
+17. Wählen Sie im Menü **Tools** > **Exit** aus, um Tabular Editor zu schließen.
 
 18. Speichern Sie die Power BI Desktop-Datei.
 
@@ -260,7 +260,7 @@ In dieser Übung verwenden Sie DAX Studio, um DAX-Abfragen in der Power BI-Beri
 
 *Laut der DAX Studio-Website ist DAX Studio das ultimative Tool zum Ausführen und Analysieren von DAX-Abfragen für tabellarische Microsoft-Modelle. Es ist ein mit zahlreichen Features ausgestattetes Tool für die Erstellung, Diagnose, Leistungsoptimierung und Analyse von DAX-Abfragen. Zu den Features zählen die Objektsuche, eine integrierte Ablaufverfolgung, Aufschlüsselungen der Abfrageausführung mit detaillierten Statistiken sowie die DAX-Syntaxhervorhebung und -formatierung.*
 
-### DAX Studio herunterladen
+### Herunterladen von DAX Studio
 
 In dieser Aufgabe laden Sie DAX Studio herunter.
 
@@ -271,29 +271,29 @@ In dieser Aufgabe laden Sie DAX Studio herunter.
 1. Wählen Sie **DaxStudio_3_X_XX_setup.exe (Installationsprogramm)** aus. Dadurch wird die Dateiinstallation initiiert.
     *Hinweis: Im Laufe der Zeit werden geringfügige Änderungen der DAX Studio-Version vorgenommen. Laden Sie das aktuelle Release herunter.*
 
-1. Wählen Sie nach Abschluss **Datei öffnen** aus, um das Installationsprogramm auszuführen.
+1. Wählen Sie nach Abschluss des Vorgangs **Datei öffnen** aus, um das Installationsprogramm auszuführen.
 
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31b.png)
 
-1. Wählen Sie im Fenster DAX Studio-Installer **Installieren für alle Benutzer (empfohlen)** aus.
+1. Wählen Sie im Fenster des DAX Studio-Installationsprogramms **Install for all users (recommended)** aus.
 
-1. Wählen Sie im Fenster Benutzerkontensteuerung die Option Ja, damit die App Änderungen am Gerät vornehmen kann.
+1. Wählen Sie im Fenster „Benutzerkontensteuerung“ die Option „Ja“ aus, um zuzulassen, dass die App Änderungen am Gerät vornimmt.
 
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31c.png)
 
-1. Wählen Sie im Schritt **Lizenzvertrag**, wenn Sie den Lizenzbedingungen zustimmen, **Ich stimme dem Vertrag zu**und wählen dann**Weiter**aus.
+1. Wenn Sie der Lizenzvereinbarung zustimmen, wählen Sie auf der Seite **License Agreement** die Option **I accept the terms in the License Agreement** und dann **Next** aus.
 
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31d.png)
 
-1. Wählen Sie **Weiter** aus, um den Standardzielspeicherort zu verwenden.
-1. Klicken Sie auf **Weiter** , um die zu installierenden Standardkomponenten auszuwählen.
-1. Wählen Sie **Weiter** aus, um den Shortcut im Standardstartmenüordner zu platzieren.
-1. Wählen Sie **Einen Desktop Shortcut erstellen** aus und wählen "Weiter" aus.
+1. Wählen Sie **Next** aus, um den standardmäßigen Zielspeicherort zu verwenden.
+1. Wählen Sie **Next** aus, um die Standardkomponenten zur Installation auszuwählen.
+1. Wählen Sie **Next** aus, um die Verknüpfung im standardmäßigen Startmenüordner zu platzieren.
+1. Wählen Sie **Create a desktop shortcut** aus.
 
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31e.png)
 1. Wählen Sie **Installieren** aus.
 
-1. Wenn Sie fertig sind und **Dax Studio starten** ausgewählt haben, wählen Sie **Beenden** aus. Dadurch wird DAX Studio geöffnet.
+1. Aktivieren Sie nach Abschluss der Installation **Launch DAX Studio**, und wählen Sie **Finish** aus. Dadurch wird DAX Studio geöffnet.
     ![Grafische Benutzeroberfläche, Anwendung, automatisch erstellte Beschreibung](Images/use-tools-to-optimize-power-bi-performance-image31f.png)
 
 1. Wählen Sie im Fenster **Connect** die Option **Power BI-/SSDT-Modell** aus.
@@ -302,13 +302,13 @@ In dieser Aufgabe laden Sie DAX Studio herunter.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image30.png)
 
-    *Wenn Sie die Startdatei **Vertrieb Analyse - Nutzung der Werkzeuge zur Optimierung der Power BI Leistung** nicht geöffnet haben, können Sie keine Verbindung herstellen. Stellen Sie sicher, dass die Datei geöffnet ist.*
+    *Wenn die Starterdatei **Sales Analysis - Use tools to optimize Power BI performance** nicht geöffnet ist, können Sie keine Verbindung herstellen. Stellen Sie sicher, dass die Datei geöffnet ist.*
 
 1. Wählen Sie **Verbinden** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image31.png)
 
-1. Maximieren Sie bei Bedarf das DAX Studio-Fenster.
+1. Maximieren Sie ggf. das DAX Studio-Fenster.
 
 ### Verwenden von DAX Studio zum Optimieren einer Abfrage
 
@@ -326,53 +326,53 @@ In dieser Aufgabe optimieren Sie eine Abfrage mithilfe einer verbesserten Measur
 
 6. Lesen Sie die Kommentare am Anfang der Datei, und überprüfen Sie dann die folgende Abfrage.
 
-    *Es ist nicht wichtig, die Abfrage vollständig zu verstehen.*
+    *Es ist nicht wichtig, dass Sie die Abfrage vollständig verstehen.*
 
-    *Die Abfrage definiert zwei Measures, die das monatliche Gewinnwachstum bestimmen. Derzeit verwendet die Abfrage nur das erste Measure (in Zeile 72). Wenn ein Measure nicht verwendet wird, wirkt es sich nicht auf die Abfrageausführung aus.*
+    *Die Abfrage definiert zwei Measures, die das monatliche Gewinnwachstum ermitteln. Derzeit verwendet die Abfrage nur das erste Measure (in Zeile 72). Wenn ein Measure nicht verwendet wird, hat es keinen Einfluss auf die Abfrageausführung.*
 
-7. Um eine Serverablaufverfolgung auszuführen, um detaillierte Anzeigedauerinformationen für die Leistungsprofilerstellung aufzuzeichnen, wählen Sie auf der Registerkarte des Menübands **Start** in der Gruppe **Ablaufverfolgungen**die Option **Serverzeiten** aus.
+7. Um eine Serverablaufverfolgung zum Aufzeichnen detaillierter Zeitinformationen für die Leistungsprofilerstellung auszuführen, wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Traces** die Option **Server Timings** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image34.png)
 
-8. Um das Skript auszuführen, wählen Sie auf der Registerkarte des Menübands**Start** in der Gruppe **Abfrage** das Symbol **Ausführen**aus.
+8. Wählen Sie auf der Registerkarte **Home** des Menübands in der Gruppe **Query** das Symbol **Run** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image35.png)
 
 9. Überprüfen Sie im unteren Bereich das Abfrageergebnis.
 
-    *In der letzten Spalte werden die Meaurer-Ergebnisse angezeigt.*
+    *Die letzte Spalte zeigt die Measureergebnisse.*
 
-10. Wählen Sie im unteren Bereich die Registerkarte **Serverzeit** aus.
+10. Wählen Sie im unteren Bereich die Registerkarte **Server Timings** aus.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image36.png)
 
-11. Überprüfen Sie die auf der linken Seite verfügbaren Statistiken.
+11. Überprüfen Sie die Statistiken, die auf der linken Seite angezeigt werden.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image37.png)
 
-    *Von oben links nach unten rechts geben die Statistiken an, wie viele Millisekunden zum Ausführen der Abfrage benötigt wurden, und die Dauer der CPU des Speichermoduls (SE). In diesem Fall (Ihre Ergebnisse unterscheiden sich), dauerte die Formel-Engine (FE) 73,5 % der Zeit, während die SE die die verbleibenden 26,5 % der Zeit in Anspruch nahm. Es gab 34 einzelne SE-Abfragen und 21 Cachetreffer.*
+    *Die Statistiken (von oben links nach unten rechts) geben die Ausführungsdauer der Abfrage in Millisekunden und die CPU-Dauer der Speicher-Engine (SE) an. In diesem Fall (Ihre Ergebnisse werden anders aussehen) wurden 73,5 % der Zeit von der Formel-Engine (FE) beansprucht und die restlichen 26,5 % von der SE. Es gab 34 SE-Einzelabfragen und 21 Cachetreffer.*
 
-12. Führen Sie die Abfrage erneut aus, und beachten Sie, dass alle SE-Abfragen aus dem SE-Cache stammen.
+12. Führen Sie die Abfrage erneut aus. Sie werden feststellen, dass alle SE-Abfragen aus dem SE-Cache stammen.
 
-    *Das liegt daran, dass die Ergebnisse zur Wiederverwendung zwischengespeichert wurden. Manchmal möchten Sie in Ihren Tests den Cache löschen. Wählen Sie in diesem Fall auf der Registerkarte des Menübands **Start** durch Auswahl des Abwärtspfeils den Befehl **Ausführen**.*
+    *Das liegt daran, dass die Ergebnisse zur Wiederverwendung zwischengespeichert wurden. Mitunter möchten Sie bei Ihren Tests den Cache löschen. Wählen Sie in diesem Fall auf der Registerkarte **Home** des Menübands den Abwärtspfeil für den Befehl **Run** aus.*
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image38.png)
 
-    *Die zweite Measuredefinition bietet ein effizienteres Ergebnis. Sie aktualisieren nun die Abfrage, um das zweite Measure zu verwenden.*
+    *Die zweite Measuredefinition bietet ein effizienteres Ergebnis. Jetzt aktualisieren Sie die Abfrage, um das zweite Measure zu verwenden.*
 
-13. Ersetzen Sie in Zeile 72 das Wort **Schlecht** durch **Besser**.
+13. Ersetzen Sie in Zeile 72 das Wort **Bad** durch **Better**.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image39.png)
 
-14. Führen Sie die Abfrage aus, und überprüfen Sie dann die Serverzeitstatistik.
+14. Führen Sie die Abfrage aus, und überprüfen Sie die Statistiken zu den Serverzeiten.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image40.png)
 
-15. Führen Sie sie ein zweites Mal aus, um vollständige Cachetreffer zu erzielen.
+15. Führen Sie die Abfrage ein zweites Mal aus, um vollständige Cachetreffer zu erzielen.
 
     ![](Images/use-tools-to-optimize-power-bi-performance-image41.png)
 
-    *In diesem Fall können Sie feststellen, dass die "bessere" Abfrage, die Variablen und eine Zeitintelligenzfunktion verwendet, eine bessere Leistung von fast 50 % bei der Abfrageausführungszeit erzielt.*
+    *In diesem Fall können Sie feststellen, dass die Abfrage mit „better“, die Variablen und eine Zeitintelligenzfunktion verwendet, eine bessere Leistung mit einer um fast 50 % geringeren Abfrageausführungszeit erzielt.*
 
 ### Abschluss
 

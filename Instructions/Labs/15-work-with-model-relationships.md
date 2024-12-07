@@ -11,7 +11,7 @@ In dieser Übung arbeiten Sie mit Modellbeziehungen, um die Anforderungen für D
 In dieser Übung lernen Sie Folgendes:
 
 - Interpretieren von Beziehungseigenschaften im Modelldiagramm.
-- Beziehungseigenschaften festlegen.
+- Festlegen der Beziehungseigenschaften.
 - Verwenden von DAX-Funktionen, die das Beziehungsverhalten ändern.
 
 Dieses Lab dauert ungefähr **45** Minuten.
@@ -88,7 +88,7 @@ In dieser Aufgabe visualisieren Sie Verkaufsdaten nach Datum und wechseln den ak
 
     *Um zu verdeutlichen, welches Geschäftsjahr es ist, ist es ratsam, das visuelle Feld umzubenennen (oder einen Titel zum visuellen Element hinzuzufügen).*
 
-7. Wählen Sie im Bereich **Visualisierungen** für das Tabellenvisual den Abwärtspfeil im Well **Spalten** aus und wählen Sie **Umbenennen für dieses Visual** aus.
+7. Wählen Sie im Bereich **Visualisierungen"** für die visuelle Tabelle den Abwärtspfeil aus den**Werten**aus, und wählen Sie **Umbenennen für dieses Diagramm** aus.
 
     ![](Images/work-with-model-relationships-image11.png)
 
@@ -190,7 +190,7 @@ In dieser Aufgabe verwenden Sie die Funktion USERELATIONSHIP, um eine inaktive B
 
     *Ein weiterer Ansatz besteht darin, eine andere Modelltabelle für jede Rollenspieldimension zu erstellen. Sie werden dies in der nächsten Übung tun.*
 
-6. Um das Measure aus dem Tabellen-Visual zu entfernen, drücken Sie im Bereich **Visualisierungen** im Well **Spalten** für das Feld **Versandte Waren** auf **X**.
+6. Um das Measure aus dem Tabellenvisual zu entfernen, drücken Sie im Bereich **Visualisierungen** im Well **Werte**, für das Feld **Waren versendet** auf **X**.
 
     ![](Images/work-with-model-relationships-image25.png)
 
@@ -304,13 +304,13 @@ In dieser Aufgabe visualisieren Sie die Versanddatumsdaten in einer neuen Tabell
 
 5. Verschieben Sie das visuelle Element der neuen Tabelle rechts neben der vorhandenen Tabellenanzeige.
 
-6. Wählen Sie das neue Tabellenvisual aus und entfernen Sie dann im Bereich **Visualisierungen** im Well **Spalten** das Feld **Bestelljahr**.
+6. Wählen Sie das neue Tabellen Visual aus und entfernen dann im Bereich**Visualisierungen** in dem Well **Werte** das Feld **Bestelljahr**.
 
     ![](Images/work-with-model-relationships-image42.png)
 
 7. Erweitern Sie im Bereich **Daten** die Tabelle **Versanddatum**.
 
-8. Wenn Sie dem Tabellen-Visual ein neues Feld aus der Tabelle **Versanddatum** hinzufügen wollen, ziehen Sie das Feld **Versandjahr** in das Well **Spalten** über dem Feld **Umsatzbetrag**.
+8. Wenn Sie dem Tabellen-Visual ein neues Feld aus der Tabelle **Versanddatum** hinzufügen wollen, ziehen Sie das Feld **Versandjahr** in das Well **Werte** über dem Feld **Umsatzbetrag**.
 
     ![](Images/work-with-model-relationships-image43.png)
 
