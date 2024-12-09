@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -86,7 +86,7 @@ Data Warehouses in Microsoft Fabric umfassen dynamische Verwaltungssichten (DMVs
 
 1. Lassen Sie die Abfrage laufen und kehren Sie zur Registerkarte zurück, die den Code enthält, um die DMVs abzufragen und erneut auszuführen. Dieses Mal sollten die Ergebnisse die zweite Abfrage enthalten, die in der anderen Registerkarte ausgeführt wird. Beachten Sie die verstrichene Zeit für diese Abfrage.
 1. Warten Sie einige Sekunden und führen Sie den Code erneut aus, um die DMVs erneut abzufragen. Die verstrichene Zeit für die Abfrage in der anderen Registerkarte sollte gestiegen sein.
-1. Kehren Sie zur zweiten Registerkarte der Abfrage zurück, auf der die Abfrage noch ausgeführt wird, und wählen Sie **X Abbrechen** aus, um sie abzubrechen.
+1. Kehren Sie zur zweiten Abfrageregisterkarte zurück, auf der die Abfrage noch läuft, und wählen Sie **Abbrechen** aus, um sie abzubrechen.
 1. Führen Sie die Abfrage erneut in der Registerkarte mit dem Code zum Abfragen der DMVs aus, um zu bestätigen, dass die zweite Abfrage nicht mehr ausgeführt wird.
 1. Schließen Sie alle Registerkarten der Abfrage.
 
@@ -129,5 +129,5 @@ In dieser Übung haben Sie dynamische Verwaltungssichten und Abfrageerkenntnisse
 Wenn Sie Ihr Data Warehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie **Arbeitsbereichseinstellungen** und scrollen Sie im Abschnitt **Allgemein** nach unten und wählen Sie **Diesen Arbeitsbereich entfernen**.
+1. Wählen Sie **Löschen**, um den Arbeitsbereich zu löschen.

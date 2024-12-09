@@ -3,7 +3,7 @@ lab:
   title: Erste Schritte mit Eventstream in Microsoft Fabric
   module: Get started with Eventstream in Microsoft Fabric
 ---
-# Erste Schritte mit Eventstreams in Real-Time Intelligence
+# Erste Schritte mit Eventstream in Microsoft Fabric
 
 Eventstream ist ein No-Code-Feature in Microsoft Fabric, das Echtzeitereignisse erfasst, transformiert und an verschiedene Ziele sendet. Sie können dem Eventstream Ereignisdatenquellen, Routingziele und den Ereignisprozessor hinzufügen, wenn die Transformation erforderlich ist. EventStore von Microsoft Fabric ist eine Überwachungsoption, die Ereignisse aus dem Cluster verwaltet und eine Möglichkeit bietet, den Status Ihres Clusters oder Ihrer Workload zu einem bestimmten Zeitpunkt nachzuvollziehen. Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Cluster für jede Entität und jeden Entitätstyp verfügbar sind. Dies bedeutet, dass Sie Ereignisse auf verschiedenen Ebenen abfragen können (z. B. Cluster, Knoten, Anwendungen, Dienste, Partitionen und Partitionsreplikate). Der EventStore-Dienst hat auch die Möglichkeit, Ereignisse in Ihrem Cluster zu korrelieren. Durch den Blick auf Ereignisse, die gleichzeitig von unterschiedlichen Entitäten geschrieben wurden und sich möglicherweise gegenseitig beeinträchtigt haben, kann der EventStore-Dienst diese Ereignisse verknüpfen und beim Identifizieren von Ursachen für Aktivitäten in Ihrem Cluster helfen. Eine weitere Option zur Überwachung und Diagnose von Microsoft Fabric-Clustern ist das Aggregieren und Sammeln von Ereignissen mithilfe von EventFlow.
 
@@ -23,220 +23,142 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
    ![Screenshot eines leeren Arbeitsbereichs in Power BI](./Images/new-workspace.png)
 5. Wählen Sie unten links im Power BI-Portal das **Power BI**-Symbol aus, und wechseln Sie zur Benutzeroberfläche von **Real-Time Intelligence**.
 
-## Szenario
-
-Mit Fabric-Ereignisstreams können Sie Ihre Ereignisdaten ganz einfach an einem Ort verwalten. Sie können Echtzeitereignisdaten in dem gewünschten Format sammeln, transformieren und an verschiedene Ziele senden. Sie können Ihre Ereignisstreams auch problemlos mit Azure Event Hubs, der KQL-Datenbank und einem Lakehouse verbinden.
-
-Dieses Lab basiert auf Beispielstreamingdaten, die als Stock Market-Daten bezeichnet werden. Die Stock Market-Beispieldaten sind ein Dataset einer Börse mit einer voreingestellten Schemaspalte (z. B. Uhrzeit, Symbol, Preis und Volumen). Sie verwenden diese Beispieldaten, um Echtzeitereignisse von Aktienkursen zu simulieren und sie mit verschiedenen Zielen wie der KQL-Datenbank zu analysieren.
-
-Verwenden Sie die Streaming- und Abfragefunktionen von Real-Time Intelligence, um wichtige Fragen zur Aktienstatistik zu beantworten. In diesem Szenario nutzen Sie den Assistenten in vollem Umfang, anstatt einige Komponenten unabhängig voneinander zu erstellen (z. B. die KQL-Datenbank).
-
-In diesem Tutorial lernen Sie Folgendes:
-
-- Ein Eventhouse erstellen
-- Erstellen einer KQL-Datenbank
-- Aktivieren des Kopierens von Daten in OneLake
-- Erstellen eines Ereignisstreams
-- Das Streamen von Daten aus einem Ereignisstream in Ihre KQL-Datenbank
-- Untersuchen von Daten mit KQL und SQL
-
 ## Vorbereiten einer Real-Time Intelligence-Eventhouse
 
-1. Wählen Sie die Option „Real-Time Intelligence“ in Microsoft Fabric aus.
-1. Wählen Sie „Eventhouse“ in der Menüleiste aus, und geben Sie Ihrem Eventhouse einen Namen.
-    
-    ![Abbildung der Erstellung eines Eventhouse](./Images/create-eventhouse.png)
+1. Erstellen Sie auf der Startseite von Real-Time Intelligence in Microsoft Fabric ein neues **Eventhouse** und geben Sie ihm einen eindeutigen Namen Ihrer Wahl.
+1. Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
+
+    ![Screenshot eines neuen Eventhouse](./Images/create-eventhouse.png)
 
 ## Erstellen einer KQL-Datenbank
 
 1. Wählen Sie innerhalb des **Real-Time Intelligence-Eventhouse** das Feld **KQL-Datenbank +** aus.
-1. Sie können die Datenbank benennen und eine **Neue Datenbank (Standard)** auswählen oder eine **Neue Verknüpfungsdatenbank (Follower)** erstellen.
-1. Klicken Sie auf **Erstellen**.
+1. Sie haben die Möglichkeit, eine **Neue Datenbank (Standard)** zu erstellen oder eine **Neue Verknüpfungsdatenbank (Nachfolger)** zu erstellen.
 
-     >**Hinweis:** Mit der Funktion „Follower-Datenbank“ können Sie eine Datenbank, die sich in einem anderen Cluster befindet, an Ihren Azure Data Explorer-Cluster anfügen. Die Follower-Datenbank wird im schreibgeschützten Modus angefügt, sodass Sie die Daten anzeigen und Abfragen für die Daten ausführen können, die in der Leader-Datenbank erfasst wurden. Die Follower-Datenbank synchronisiert Änderungen in den Leader-Datenbanken. Aufgrund der Synchronisierung gibt es bei der Datenverfügbarkeit eine Zeitverzögerung von einigen Sekunden bis zu einigen Minuten. Die Länge der Zeitverzögerung hängt von der Gesamtgröße der Metadaten in der Leader-Datenbank ab. Die Leader- und Follower-Datenbanken verwenden dasselbe Speicherkonto zum Abrufen der Daten. Der Speicher befindet sich im Besitz der Leader-Datenbank. Die Follower-Datenbank zeigt die Daten an, ohne sie erfassen zu müssen. Da die angefügte Datenbank eine schreibgeschützte Datenbank ist, können die Daten, Tabellen und Richtlinien in der Datenbank nicht geändert werden, mit Ausnahme der Cacherichtlinie, Prinzipale und Berechtigungen.
+    >**Hinweis:** Mit der Funktion „Follower-Datenbank“ können Sie eine Datenbank, die sich in einem anderen Cluster befindet, an Ihren Azure Data Explorer-Cluster anfügen. Die Follower-Datenbank wird im schreibgeschützten Modus angefügt, sodass Sie die Daten anzeigen und Abfragen für die Daten ausführen können, die in der Leader-Datenbank erfasst wurden. Die Follower-Datenbank synchronisiert Änderungen in den Leader-Datenbanken. Aufgrund der Synchronisierung gibt es bei der Datenverfügbarkeit eine Zeitverzögerung von einigen Sekunden bis zu einigen Minuten. Die Länge der Zeitverzögerung hängt von der Gesamtgröße der Metadaten in der Leader-Datenbank ab. Die Leader- und Follower-Datenbanken verwenden dasselbe Speicherkonto zum Abrufen der Daten. Der Speicher befindet sich im Besitz der Leader-Datenbank. Die Follower-Datenbank zeigt die Daten an, ohne sie erfassen zu müssen. Da die angefügte Datenbank eine schreibgeschützte Datenbank ist, können die Daten, Tabellen und Richtlinien in der Datenbank nicht geändert werden, mit Ausnahme der Cacherichtlinie, Prinzipale und Berechtigungen.
 
-   ![Abbildung der Auswahl der kqldatabase](./Images/create-kql-database-eventhouse.png)
-
-4. Sie werden aufgefordert, einen **Namen** für die KQL-Datenbank festzulegen.
-
-   ![Abbildung des Namens der kqldatabase](./Images/name-kqldatabase.png)
-
-5. Geben Sie der KQL-Datenbank einen Namen, den Sie sich gut merken können (z. B. **Eventhouse-HR**), und klicken Sie auf **Erstellen**.
-
-6. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
-
-   [ ![Abbildung der Aktivierung von OneLake](./Images/enable-onelake-availability.png) ](./Images/enable-onelake-availability-large.png)
-
-7. Stellen Sie sicher, dass Sie die Schaltfläche auf **Aktiv** umgeschaltet haben, und klicken Sie dann auf **Fertig**.
-
-   ![Abbildung der Umschaltfläche zur Aktivierung von OneLake](./Images/enable-onelake-toggle.png)
+1. Erstellen Sie eine neue Datenbank und nennen Sie sie `Eventhouse-DB`.
 
 ## Erstellen eines Eventstreams
 
-1. Wählen Sie in der Menüleiste **Real-Time Intelligence** aus (das Symbol ähnelt dem ![Logo von Real-Time Intelligence](./Images/rta_logo.png)).
-2. Wählen Sie unter **Neu** die Option **EventStream**.
+1. Wählen Sie auf der Hauptseite Ihrer KQL-Datenbank **Daten abrufen**.
+2. Wählen Sie für die Datenquelle **Eventstream** > **Neuer Eventstream**. Benennen Sie den Eventstream `bicycle-data`.
 
-   ![Abbildung der Auswahl des Eventstreams](./Images/select-eventstream.png)
+    Die Erstellung Ihres neuen Eventstreams im Arbeitsbereich wird in wenigen Augenblicken abgeschlossen sein. Nach der Einrichtung werden Sie automatisch zum primären Editor weitergeleitet und können dort mit der Integration von Quellen in Ihren Eventstream beginnen.
 
-3. Sie werden aufgefordert, Ihren Ereignisstream zu **benennen**. Geben Sie dem EventStream einen Namen, den Sie sich merken können, z. B. **MyStockES**, wählen Sie die Option **Erweiterte Funktionen (Vorschau)** und wählen Sie die Schaltfläche **Erstellen**.
-
-   ![Abbildung des Namens des Eventstreams](./Images/name-eventstream.png)
-
-     >**Note:**  Die Erstellung Ihres neuen Eventstreams im Arbeitsbereich wird in Kürze abgeschlossen. Nach der Einrichtung werden Sie automatisch zum primären Editor weitergeleitet und können dort mit der Integration von Quellen in Ihren Eventstream beginnen.
+    ![Screenshot eines neuen Eventstreams.](./Images//name-eventstream.png)
 
 ## Einrichten einer Eventstreamquelle
 
-1. Klicken Sie im Eventstream-Canvas in der Dropdownliste auf **Neue Quelle**, und wählen Sie dann **Beispieldaten** aus.
+1. Wählen Sie im Eventstream-Canvas **Beispieldaten verwenden** aus.
+2. Nennen Sie die Quelle `Bicycles` und wählen Sie die Beispieldaten **Fahrräder**.
 
-    [ ![Bild der Verwendung von Beispieldaten](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
+    Ihr Stream wird gemappt und Sie werden automatisch auf dem **Eventstream-Canvas** angezeigt.
 
-2.  Geben Sie im Fenster **Quelle hinzufügen** Ihrer Quelle einen Namen und wählen Sie **Fahrräder (reflexkompatibel)**.
-3.  Wählen Sie die Schaltfläche **Hinzufügen** aus.
+   ![Überprüfen Sie den Eventstream-Canvas](./Images/real-time-intelligence-eventstream-sourced.png)
 
-    ![Auswählen und Benennen des Beispieldaten-Eventstreams](./Images/eventstream-sample-data.png)
+## Ziel hinzufügen
 
-4. Nachdem Sie auf **Hinzufügen** geklickt haben, wird Ihr Stream zugeordnet, und Sie werden automatisch zur **Eventstream-Canvas** weitergeleitet.
+1. In der Dropdown-Liste **Ereignisse umwandeln oder Ziel hinzufügen** wählen Sie **Eventhouse**.
+1. Im Bereich **Eventhouse** konfigurieren Sie die folgenden Einrichtungsoptionen.
+   - **Datenerfassungsmodus:**: Ereignisverarbeitung vor der Erfassung
+   - **Zielname:**`Bicycle-database`
+   - **Arbeitsbereich:***Wählen Sie den Arbeitsbereich, den Sie zu Beginn dieser Übung erstellt haben*
+   - **Eventhouse**: *Wählen Sie Ihr Eventhouse*
+   - **KQL-Datenbank:** Eventhouse-DB
+   - **Zieltabelle:** Erstellen Sie eine neue Tabelle namens `bike-count`
+   - **Eingabe-Datenformat:** JSON
 
-   [ ![Überprüfen der Eventstream-Canvas](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
- 
- > **Note:** Nachdem Sie die Beispieldatenquelle erstellt haben, wird sie ihrem Eventstream auf dem Canvas im Bearbeitungsmodus hinzugefügt. Wählen Sie zum Implementieren dieser neu hinzugefügten Beispieldaten **Veröffentlichen** aus.
+   ![KQL Datenbank Eventstream mit Erfassungsmodi](./Images/kql-database-event-processing-before-ingestion.png)
 
-## Hinzufügen von Transformationsereignissen oder einer Zielaktivität
+1. Wählen Sie im Bereich **Eventhouse** die Option **Speichern**. 
+1. Wählen Sie auf der Symbolleiste **Veröffentlichen** aus.
+1. Warten Sie etwa eine Minute, bis das Datenziel aktiv wird.
 
-1. Nach der Veröffentlichung können Sie **Ereignisse transformieren oder Ziel hinzufügen** auswählen und dann **KQL-Datenbank** als Option auswählen.
+## Erfasste Daten anzeigen
 
-   [ ![KQL-Datenbank als Eventstream-Ziel festlegen](./Images/select-kql-destination.png) ](./Images/select-kql-destination-large.png)
+Der von Ihnen erstellte Eventstream übernimmt Daten aus der Beispielquelle für Fahrraddaten und lädt sie in die Datenbank in Ihrem Eventhouse. Sie können die erfassten Daten einsehen, indem Sie die Tabelle in der Datenbank abfragen.
 
+1. Wählen Sie in der Menüleiste auf der linken Seite Ihre **Eventhouse-DB** Datenbank.
+1. Wählen Sie im Menü ** …** für die KQL-Datenbank **Eventhouse-DB** die Option **Daten abfragen**.
+1. Ändern Sie im Abfragebereich die erste Beispielabfrage wie hier gezeigt:
 
-2. Es wird ein neues Seitenpanel geöffnet, das Ihnen viele Optionen bietet. Geben Sie die erforderlichen Details Ihrer KQL-Datenbank ein.
+    ```kql
+    ['bike-count']
+    | take 100
+    ```
 
-   [ ![KQL-Datenbank-Eventstreams mit Erfassungsmodi](./Images/kql-database-event-processing-before-ingestion.png) ](./Images/kql-database-event-processing-before-ingestion.png)
+1. Wählen Sie den Abfragecode aus und führen Sie ihn aus, um 100 Datenzeilen aus der Tabelle anzuzeigen.
 
-    - **Datenerfassungsmodus:** Es gibt zwei Möglichkeiten, Daten in der KQL-Datenbank zu erfassen:
-        - ***Direkte Erfassung:*** Daten werden direkt in einer KQL-Tabelle ohne Transformation erfasst.
-        - ***Ereignisverarbeitung vor der Erfassung:*** Transformieren Sie die Daten mit dem Ereignisprozessor, bevor Sie sie an eine KQL-Tabelle senden.      
-        
-        > **Warnung:** Sie können den Erfassungsmodus **NICHT** bearbeiten, nachdem dem Eventstream das KQL-Datenbankziel hinzugefügt wurde.     
+    ![Screenshot einer KQL-Abfrage.](./Images/kql-query.png)
 
-   - **Name des Ziels**: Geben Sie einen Namen für das Eventstream-Ziel ein, z. B. „kql-dest“.
-   - **Arbeitsbereich**: Dies ist der Arbeitsbereich, in dem sich Ihre KQL-Datenbank befindet.
-   - **KQL-Datenbank**: Name Ihrer KQL-Datenbank
-   - **Zieltabelle**: Name Ihrer KQL-Tabelle. Sie können auch einen Namen eingeben, um eine neue Tabelle zu erstellen, z. B. „bike-count“.
-   - **Dateneingabeformat:** Wählen Sie JSON als Datenformat für Ihre KQL-Tabelle aus.
+## Ereignisdaten umwandeln
 
+Die Daten, die Sie erfasst haben, sind von der Quelle her unverfälscht. In vielen Szenarien möchten Sie vielleicht die Daten im Eventstream umwandeln, bevor Sie sie in ein Ziel laden.
 
-3. Wählen Sie **Speichern**. 
-4. Wählen Sie **Veröffentlichen** aus.
+1. Wählen Sie in der Menüleiste auf der linken Seite den Eventstream **Fahrraddaten**.
+1. Wählen Sie in der Symbolleiste **Bearbeiten**, um den Eventstream zu bearbeiten.
 
-## Transformieren der Ereignisse
+1. Wählen Sie im Menü **Ereignisse umwandeln** die Option **Gruppieren nach**, um dem Eventstream einen neuen Knoten **Gruppieren nach** hinzuzufügen.
+1. Ziehen Sie eine Verbindung vom Ausgang des Knotens **Fahrraddaten** zum Eingang des neuen Knotens **Gruppieren nach**. Verwenden Sie dann das Symbol *Bleistift* im Knoten **Gruppieren nach**, um sie zu bearbeiten.
 
-1. Wählen Sie in der **Eventstream**-Canvas **Ereignisse transformieren** aus.
+   ![Hinzufügen von „Gruppieren nach“ zum Transformationsereignis.](./Images/eventstream-add-aggregates.png)
 
-    ![Hinzufügen von „Gruppieren nach“ zum Transformationsereignis.](./Images/eventstream-add-aggregates.png)
+1. Konfigurieren Sie die Eigenschaften des Einstellungsbereichs **Gruppieren nach**:
+    - **Vorgangsname:** GroupByStreet
+    - **Aggregat-Typ:***Wählen Sie* Summe
+    - **Feld:***Wählen Sie* No_Bikes. *Wählen Sie dann **Hinzufügen**, um die Funktion zu erstellen* SUM_No_Bikes
+    - **Gruppierung der Aggregationen nach (optional):** Straße
+    - **Zeitfenster**: Rollierend
+    - **Dauer**: 5 Sekunden
+    - **Offset**: 0 Sekunden
 
-    A. Klicken Sie auf **Gruppieren nach**.
-
-    B. Klicken Sie auf **Bearbeiten**, das vom ***Bleistiftsymbol*** dargestellt wird.
-
-    C. Nachdem Sie das Transformationsereignis **Gruppieren nach** erstellt haben, müssen Sie es vom **Eventstream** mit **Gruppieren nach** verbinden. Sie erreichen dies ohne Code, indem Sie rechts im **Eventstream** auf den Punkt klicken und ihn zu dem Punkt links im neuen Feld **Gruppieren nach** ziehen. 
-
-    ![Verknüpfung zwischen dem Eventstream und „Gruppieren nach“.](./Images/group-by-drag-connectors.png)    
-
-2. Füllen Sie die Eigenschaften im Einstellungsabschnitt **Gruppieren nach** aus:
-    - **Vorgangsname:** Geben Sie einen Namen für dieses Transformationsereignis ein.
-    - **Aggregationstyp:** Sum
-    - **Feld:** No_Bikes
-    - **Name:** SUM_No_Bikes
-    - **Aggregation gruppieren nach**: Straße
+    > **Hinweis**: Diese Konfiguration veranlasst den Eventstream, alle 5 Sekunden die Gesamtzahl der Fahrräder in jeder Straße zu berechnen.
       
-3. Klicken Sie auf **Hinzufügen** und dann auf **Speichern**.
+1. Speichern Sie die Konfiguration und kehren Sie zum Eventstream-Canvas zurück, wo ein Fehler angezeigt wird (denn Sie müssen die Ausgabe der Gruppe nach Transformation irgendwo speichern!)
 
-4. Auf die gleiche Weise können Sie mit dem Mauszeiger auf den Pfeil zwischen dem **Eventstream** und ***kql_dest*** zeigen und auf das ***Papierkorbsymbol** klicken. Sie können dann das Ereignis **Gruppieren nach** mit **kql-dest** verbinden.
+1. Verwenden Sie das Symbol **+** rechts neben dem Knoten **GroupByStreet**, um einen neuen Knoten **Eventhouse** hinzuzufügen.
+1. Konfigurieren Sie den neuen Eventhouse-Knoten mit den folgenden Optionen:
+   - **Datenerfassungsmodus:**: Ereignisverarbeitung vor der Erfassung
+   - **Zielname:**`Bicycle-database`
+   - **Arbeitsbereich:***Wählen Sie den Arbeitsbereich, den Sie zu Beginn dieser Übung erstellt haben*
+   - **Eventhouse**: *Wählen Sie Ihr Eventhouse*
+   - **KQL-Datenbank:** Eventhouse-DB
+   - **Zieltabelle:** Erstellen Sie eine neue Tabelle namens `bikes-by-street`
+   - **Eingabe-Datenformat:** JSON
 
-   [ ![Entfernen einer Verknüpfung zwischen zwei Ereignissen](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
+   ![Screenshot einer Tabelle für gruppierte Daten.](./Images/group-by-table.png)
 
-    > **Note:**  [HINWEIS:] Wenn Sie Connectors hinzufügen oder entfernen, müssen Sie die Zielobjekte erneut konfigurieren.
+1. Wählen Sie im Bereich **Eventhouse** die Option **Speichern**. 
+1. Wählen Sie auf der Symbolleiste **Veröffentlichen** aus.
+1. Warten Sie etwa eine Minute, bis die Änderungen aktiv werden.
 
-5. Wählen Sie den Bleistift unter **kql-dest** aus und erstellen Sie eine neue Zieltabelle mit dem Namen **Bike_sum**, die die Ausgabe des Ereignisses **Gruppieren nach** erhalten soll.
+## Anzeigen der transformierten Daten
 
-## KQL-Abfragen
+Jetzt können Sie die Fahrraddaten einsehen, die von Ihrem Eventstream umgewandelt und in eine Tabelle geladen wurden
 
-Die Kusto-Abfragesprache (Kusto Query Language, KQL) ist eine schreibgeschützte Anforderung zur Verarbeitung von Daten und zur Rückgabe der Ergebnisse. Die Anforderung wird in Klartext mit einem Datenflussmodell formuliert, das leicht zu lesen, zu erstellen und zu automatisieren ist. Abfragen werden immer im Kontext einer bestimmten Tabelle oder Datenbank ausgeführt. Eine Abfrage besteht mindestens aus einem Quelldatenverweis und einem oder mehreren Abfrageoperatoren, die nacheinander angewendet werden. Dies wird visuell durch die Verwendung eines senkrechten Strichs (|) zum Trennen von Operatoren angegeben. Weitere Informationen zur Kusto-Abfragesprache finden Sie unter [Übersicht über die Kusto-Abfragesprache (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+1. Wählen Sie in der Menüleiste auf der linken Seite Ihre **Eventhouse-DB** Datenbank.
+1. Wählen Sie im Menü ** …** für die KQL-Datenbank **Eventhouse-DB** die Option **Daten abfragen**.
+1. Ändern Sie im Abfragebereich eine Beispielabfrage wie hier gezeigt:
 
-> **Hinweis**: Der KQL-Editor enthält sowohl Syntax- als auch IntelliSense-Hervorhebungen, mit denen Sie sich schnell Kenntnisse im Zusammenhang mit der Kusto-Abfragesprache (KQL) aneignen können.
+    ```kql
+    ['bikes-by-street']
+    | take 100
+    ```
 
-1. Navigieren Sie zu Ihrer neu erstellten und aktualisierten KQL-Datenbank:
+1. Wählen Sie den Abfragecode aus und führen Sie ihn aus, um die ersten 100 Zeilen in der Tabelle zu sehen.
 
-    A.  Auswählen von **kql-dest** 
+    ![Screenshot einer KQL-Abfrage.](./Images/kql-group-query.png)
 
-    B. Klicken Sie auf den Link **Element öffnen** in der Zeile **Verwandtes Element**.
-
-   [ ![Entfernen einer Verknüpfung zwischen zwei Ereignissen](./Images/navigate-to-data.png) ](./Images/navigate-to-data-large.png)
-
-1. Wählen Sie in der Datenstruktur das Menü „Mehr“ (...) für die Tabelle ***Bike_sum*** aus. Gehen Sie dann wie folgt vor: „Tabelle abfragen > Alle 100 Datensätze anzeigen“.
-
-   [ ![Entfernen einer Verknüpfung zwischen zwei Ereignissen](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
-
-3. Die Beispielabfrage wird im Bereich **Untersuchen Ihrer Daten** geöffnet, wobei der Tabellenkontext bereits aufgefüllt ist. Diese erste Abfrage verwendet den `take`-Operator, um eine Beispielanzahl von Datensätzen zurückzugeben. Zudem ist sie nützlich, um einen ersten Überblick über die Datenstruktur und mögliche Werte zu erhalten. Die automatisch aufgefüllten Beispielabfragen werden automatisch ausgeführt. Sie können die Abfrageergebnisse im Ergebnisbereich anzeigen.
-
-   ![Abbildung der KQL-Abfrageergebnisse](./Images/kql-query-results.png)
-
-4. Kehren Sie zur Datenstruktur zurück, um die nächste Abfrage **Aufnahme pro Stunde zusammenfassen** auszuwählen, die den Operator `summarize` verwendet, um die Anzahl der in einem bestimmten Intervall aufgenommenen Datensätze zu zählen.
-
-   ![Abbildung der KQL-Abfrageergebnisse](./Images/kql-query-results-15min-intervals.png)
-
-> **Hinweis:** Möglicherweise wird eine Warnung angezeigt, dass Sie die Abfragegrenzwerte überschritten haben. Dieses Verhalten variiert abhängig von der Datenmenge, die in Ihre Datenbank gestreamt wird.
-
-Sie können weiterhin mit den integrierten Abfragefunktionen navigieren, um sich mit Ihren Daten vertraut zu machen.
-
-## Abfragen mit Copilot
-
-Der Abfrage-Editor unterstützt die Verwendung von T-SQL zusätzlich zur Kusto-Abfragesprache (KQL) als primäre Abfragesprache. T-SQL kann für Tools nützlich sein, die KQL nicht verwenden können. Weitere Informationen finden Sie unter [Abfragen von Daten mithilfe von T-SQL](https://learn.microsoft.com/en-us/azure/data-explorer/t-sql).
-
-1. Wählen Sie in der Datenstruktur das Menü **Mehr** (...) für die Tabelle „MyStockData“ aus. Gehen Sie dann wie folgt vor: **Tabelle abfragen > SQL > Alle 100 Datensätze anzeigen**.
-
-   [ ![Abbildung des SQL-Abfragebeispiels](./Images/sql-query-sample.png) ](./Images/sql-query-sample-large.png)
-
-2. Platzieren Sie den Cursor an einer beliebigen Stelle in der Abfrage, und wählen Sie **Ausführen** aus, oder drücken Sie **UMSCHALT+EINGABETASTE**.
-
-   ![Abbildung der SQL-Abfrageergebnisse](./Images/sql-query-results.png)
-
-Sie können weiterhin mit den integrierten Funktionen navigieren und sich mit den Daten mithilfe von SQL oder KQL vertraut machen. 
-
-## Features mit Abfrageset
-
-Abfragesets in KQL-Datenbanken (Kusto Query Language) werden für verschiedene Zwecken verwendet, hauptsächlich zum Ausführen von Abfragen sowie zum Anzeigen und Anpassen von Abfrageergebnissen zu Daten aus einer KQL-Datenbank. Sie sind eine Schlüsselkomponente in den Datenabfragefunktionen von Microsoft Fabric zum:
-
- - **Ausführen von Abfragen:** Führen Sie KQL-Abfragen aus, um Daten aus einer KQL-Datenbank abzurufen.
- - **Anpassen von Ergebnissen:** Zeigen Sie die Abfrageergebnisse an, und ändern Sie diese, sodass die Daten einfacher analysiert und interpretiert werden können.
- - **Exportieren und Freigeben von Abfragen:** Erstellen Sie mehrere Registerkarten innerhalb eines Abfragesets, um Abfragen für später zu speichern oder für anderen freizugeben, um Daten gemeinsam zu untersuchen.
- - **Unterstützen von SQL-Funktionen:** Die Abfragesets in KQL unterstützen auch viele SQL-Funktionen und bieten so Flexibilität bei der Datenabfrage.
- - **Verwenden von Copilot:** Nachdem Sie Abfragen als KQL-Abfrageset gespeichert haben, können Sie sie anzeigen.
-
-Das Speichern eines Abfragesets ist einfach und kann auf mehrere Arten erfolgen. 
-
-1. Sie können in Ihrer **KQL-Datenbank** bei Verwendung des Tools **Erkunden Sie Ihre Daten** einfach auf **Als KQL-Abfrageset speichern** klicken.
-
-   ![KQL-Abfrageset aus „Erkunden Sie Ihre Daten“ speichern](./Images/save-as-queryset.png)
-
-2. Alternativ können Sie auf der Landing Page von Real-Time Intelligence auf **KQL-Abfrageset** klicken und Ihr **Abfrageset** dann benennen.
-
-   ![Erstellen eines neuen KQL-Abfragesets auf der Landing Page von Real-Time Intelligence](./Images/select-create-new-queryset.png)
-
-3. Sobald Sie sich auf der **Landing Page des Abfragesets** befinden, wird in der Symbolleiste eine Schaltfläche für **Copilot** angezeigt. Wählen Sie sie aus, um den **Copilot-Bereich** zu öffnen und Fragen zu den Daten zu stellen.
-
-    [ ![Öffnen von Copilot über die Menüleiste](./Images/open-copilot-in-queryset.png) ](./Images/open-copilot-in-queryset-large.png)
-
-4. Im **Copilot-Bereich** geben Sie einfach Ihre Frage ein, und **Copilot** generiert die KQL-Abfrage, die Sie dann ***kopieren*** oder in das Fenster mit Ihrem Abfrageset **einfügen** können. 
-
-    [ ![Schreiben einer Copilot-Abfrage durch Stellen einer Frage](./Images/copilot-queryset-results.png) ](./Images/copilot-queryset-results-large.png)
-
-5. Ab diesem Punkt können Sie einzelne Abfragen erstellen und diese mithilfe der Schaltfläche **An das Dashboard anheften** oder **Power BI-Bericht erstellen** in Dashboards oder Power BI-Berichten verwenden.
+    > **Tipp**: Sie können die Tabelle auch mit der SQL-Syntax abfragen. Versuchen Sie zum Beispiel die Abfrage `SELECT TOP 100 * FROM bikes-by-street`.
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie eine KQL-Datenbank erstellt und das kontinuierliche Streaming mit einem Ereignisstream eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
+In dieser Übung haben Sie ein Eventhouse erstellt und mithilfe eines Eventstreams Tabellen in dessen Datenbank pipettiert.
+
+Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
+
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+2. Wählen Sie in der Symbolleiste **Arbeitsbereichseinstellungen** aus.
 3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
 .

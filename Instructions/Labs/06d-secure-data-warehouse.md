@@ -4,7 +4,7 @@ lab:
   module: Secure a Microsoft Fabric data warehouse
 ---
 
-# Sichern von Daten in einem Data Warehouse
+# Sichern eines Microsoft Fabric-Data Warehouse
 
 Gemeinsam steuern Microsoft Fabric-Berechtigungen und granulare SQL-Berechtigungen den Warehouse-Zugriff und Benutzerberechtigungen. In dieser Übung sichern Sie Daten mithilfe präziser Berechtigungen, Sicherheit auf Spaltenebene, Sicherheit auf Zeilenebene und dynamischer Datenmaske.
 
@@ -16,7 +16,7 @@ Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,7 +29,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Erstellen Sie als Nächstes ein Data Warehouse im von Ihnen erstellten Arbeitsbereich. Die Startseite von „Data Warehouse mit Synapse“ enthält eine Verknüpfung zum Erstellen eines neuen Warehouse:
 
-1. Erstellen Sie auf der Startseite **Synapse Data Warehouse** ein neues **Warehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der **Data Warehouse**-Startseite ein neues **Warehouse** mit einem Namen Ihrer Wahl.
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
@@ -39,7 +39,7 @@ Erstellen Sie als Nächstes ein Data Warehouse im von Ihnen erstellten Arbeitsbe
 
 Dynamische Datenformatierungsregeln werden auf einzelne Spalten auf Tabellenebene angewendet, sodass alle Abfragen von der Maskierung betroffen sind. Benutzer, die keine explizite Berechtigung zum Anzeigen vertraulicher Daten haben, sehen maskierte Werte in den Abfrageergebnissen, während Benutzer mit einer expliziten Berechtigung zum Anzeigen der Daten diese ungeschwärzt sehen. Es gibt vier Arten von Masken: Standard, E-Mail, Zufalls und benutzerdefinierte Zeichenfolge. In dieser Übung wenden Sie eine Standardmaske, eine E-Mail-Maske und eine Maske für benutzerdefinierte Zeichenfolge an.
 
-1. Wählen Sie in Ihrem neuen Warehouse die Kachel **T-SQL** aus, und ersetzen Sie den SQL-Standardcode durch die folgende T-SQL-Anweisung, um eine Tabelle zu erstellen und Daten einzufügen und anzuzeigen.  
+1. Wählen Sie in Ihrem neuen Warehouse die Kachel **T-SQL** aus und benutzen Sie die folgende T-SQL-Anweisung, um eine Tabelle zu erstellen und Daten einzufügen und anzuzeigen.  
 
     ```T-SQL
    CREATE TABLE dbo.Customers
@@ -91,7 +91,7 @@ Dynamische Datenformatierungsregeln werden auf einzelne Spalten auf Tabelleneben
 
 Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, um den Zugriff auf Zeilen basierend auf der Identität oder Rolle des Benutzers zu beschränken, der eine Abfrage ausführt. In dieser Übung beschränken Sie den Zugriff auf Zeilen, indem Sie eine Sicherheitsrichtlinie und ein sicherheitsrelevantes Prädikat erstellen, das als Inlinetabellenwertfunktion definiert ist.
 
-1. Wählen Sie im Warehouse, das Sie in der letzten Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus.  Wählen Sie unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.
+1. Wählen Sie im Warehouse, das Sie in der letzten Übung erstellt haben, das Dropdownmenü **Neue SQL-Abfrage** und wählen Sie **Neue SQL-Abfrage** aus.
 
 2. Erstellen Sie eine Tabelle, und fügen Sie Daten ein. Damit Sie die Sicherheit auf Zeilenebene in einem späteren Schritt testen können, ersetzen Sie `username1@your_domain.com` durch einen Benutzernamen aus Ihrer Umgebung, und ersetzen Sie `username2@your_domain.com` durch Ihren Benutzernamen.
 
@@ -166,7 +166,7 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
 
 Mithilfe der Sicherheit auf Spaltenebene können Sie festlegen, welche Benutzer auf bestimmte Spalten in einer Tabelle zugreifen können. Sie wird implementiert, indem eine `GRANT`- oder `DENY`-Anweisung für eine Tabelle ausgegeben wird, die eine Liste von Spalten und den Benutzer oder die Rolle angibt, der bzw. die sie lesen kann oder nicht. Um die Zugriffsverwaltung zu optimieren, weisen Sie Rollen anstelle einzelner Benutzer zu. In dieser Übung erstellen Sie eine Tabelle, gewähren Zugriff auf eine Teilmenge von Spalten in der Tabelle und testen, dass eingeschränkte Spalten von einem anderen Benutzer als Ihnen selbst nicht angezeigt werden können.
 
-1. Wählen Sie im Warehouse, das Sie in der vorherigen Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus. Wählen Sie unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.  
+1. Wählen Sie im Warehouse, das Sie in der vorherigen Übung erstellt haben, das Dropdownmenü **Neue SQL-Abfrage** und dann **Neue SQL-Abfrage** aus.  
 
 2. Erstellen Sie eine Tabelle, und fügen Sie Daten in die Tabelle ein.
 
