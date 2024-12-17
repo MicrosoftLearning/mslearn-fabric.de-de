@@ -6,7 +6,7 @@ lab:
 
 # Erste Schritte mit Real-Time Intelligence in Microsoft Fabric
 
-Microsoft Fabric bietet einen Echtzeit-Hub, in dem Sie analytische Lösungen für Echtzeit-Datenströme erstellen können. In dieser Übung lernen Sie einige der wichtigsten Funktionen der Real-Time Intelligence-Funktionen in Microsoft Fabric kennen, um sich mit ihnen vertraut zu machen.
+Microsoft Fabric bietet Echtzeitintelligenz. Sie können damit analytische Lösungen für Echtzeit-Datenströme erstellen. In dieser Übung verwenden Sie die Echtzeitintelligenzfunktionen in Microsoft Fabric, um einen Echtzeitdatenstrom von Börsendaten zu erfassen, zu analysieren und zu visualisieren.
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
@@ -23,51 +23,65 @@ Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit akt
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
+## Erstellen eines Eventstreams
+
+Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. Sie beginnen im Fabric Echtzeit-Hub.
+
+> **Tipp**: Wenn Sie den Echtzeit-Hub zum ersten Mal verwenden, werden möglicherweise einige *Tipps für die ersten Schritte* angezeigt. Sie können dies schließen.
+
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit-Hub** aus.
+
+    Der Echtzeit-Hub bietet eine einfache Möglichkeit, Quellen von Streaming-Daten zu finden und zu verwalten.
+
+    ![Screenshot des Echtzeit-Hubs in Fabric.](./Images/real-time-hub.png)
+
+1. Wählen Sie im Echtzeit-Hub im Abschnitt **Verbinden mit** die Option **Datenquellen** aus.
+1. Suchen Sie die Beispiel-Datenquelle **Börsenmarkt**, und wählen Sie **Verbinden** aus. Benennen Sie dann im **Verbindungs**-Assistenten die Quelle als `stock`, und bearbeiten Sie den Standard-Eventstreamnamen, um ihn in `stock-data` zu ändern. Der diesen Daten zugeordnete Standarddatenstrom wird automatisch *stock-data-stream* genannt:
+
+    ![Screenshot eines neuen Eventstreams.](./Images/name-eventstream.png)
+
+1. Wählen Sie **Weiter** aus; warten Sie, bis der Quell- und Eventstream erstellt wurde, und wählen Sie dann **Eventstream öffnen** aus. Der Eventstream zeigt die **Aktien**-Quelle und **stock-data-stream** im Entwurfsbereich an:
+
+   ![Screenshot des Eventstream-Canvas.](./Images/new-stock-stream.png)
+
 ## Erstellen eines Eventhouses
 
-Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Stoffobjekte beginnen, die Sie für Ihre Real-Time Intelligence-Lösung benötigen. beginnen wir mit der Erstellung eines Eventhouse, das eine KQL-Datenbank für Ihre Echtzeitdaten enthält.
+Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts damit. Erstellen wir ein Eventhouse, in dem die erfassten Daten in einer Tabelle gespeichert werden können.
 
 1. Wählen Sie in der Menüleiste auf der linken Seite **Startseite** aus und erstellen Sie dann auf der Startseite von Real-Time Intelligence ein neues **Eventhouse**, dem Sie einen eindeutigen Namen Ihrer Wahl geben.
-1. Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
+
+    Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
 
     ![Screenshot eines neuen Eventhouse](./Images/create-eventhouse.png)
 
 1. Beachten Sie im linken Bereich, dass Ihr Eventhouse eine KQL-Datenbank mit demselben Namen wie das Eventhouse enthält. Sie können in dieser Datenbank Tabellen für Ihre Echtzeitdaten anlegen oder bei Bedarf weitere Datenbanken erstellen.
 1. Wählen Sie die Datenbank aus und beachten Sie, dass es ein zugehöriges *Queryset* gibt. Diese Datei enthält einige KQL-Beispielabfragen, die Sie verwenden können, um mit der Abfrage der Tabellen in Ihrer Datenbank zu beginnen.
 
-    Allerdings gibt es derzeit keine Tabellen zum Abfragen. Lassen Sie uns dieses Problem lösen, indem wir einen Eventstream verwenden, um einige Daten in der Datenbank zu erfassen.
-
-## Erstellen eines Eventstreams
+    Allerdings gibt es derzeit keine Tabellen zum Abfragen. Dieses Problem lässt sich beheben, indem Daten aus dem Eventstream in einer neuen Tabelle gespeichert werden.
 
 1. Wählen Sie auf der Hauptseite Ihrer KQL-Datenbank **Daten abrufen**.
-2. Wählen Sie für die Datenquelle **Eventstream** > **Neuer Eventstream**. Benennen Sie den Eventstream `stock-stream`.
+1. Wählen Sie als Datenquelle **Eventstream** > **Vorhandener Eventstream**.
+1. Erstellen Sie im Bereich **Zieltabelle auswählen oder erstellen** eine neue Tabelle mit dem Namen `stock`. Wählen Sie dann im Bereich **Datenquelle konfigurieren** Ihren Arbeitsbereich und den **stock-data**-Eventstream aus, und nennen Sie die Verbindung `stock-data`.
 
-    Die Erstellung Ihres neuen Eventstreams wird in wenigen Augenblicken abgeschlossen sein. Nach der Einrichtung werden Sie automatisch zum primären Editor weitergeleitet und können dort mit der Integration von Quellen in Ihren Eventstream beginnen.
+   ![Screenshot der Konfiguration zum Laden einer Tabelle aus einem Eventstream.](./Images/configure-destination.png)
 
-    ![Screenshot eines neuen Eventstreams.](./Images//name-eventstream.png)
+1. Verwenden Sie die Schaltfläche **Weiter**, um die Schritte zum Überprüfen der Daten auszuführen und die Konfiguration dann abzuschließen. Schließen Sie dann das Konfigurationsfenster, um Ihr Eventhouse mit der Bestandstabelle anzuzeigen.
 
-1. Wählen Sie im Eventstream-Canvas **Beispieldaten verwenden** aus.
-1. Nennen Sie die Quelle `Stock` und wählen Sie die Beispieldaten **Börsenmarkt**.
+   ![Screenshot von und Eventhouse mit einer Tabelle.](./Images/eventhouse-with-table.png)
 
-    Ihr Stream wird gemappt und Sie werden automatisch auf dem **Eventstream-Canvas** angezeigt.
+    Die Verbindung zwischen dem Datenstrom und der Tabelle wurde erstellt. Überprüfen wir dies im Eventstream.
 
-   ![Screenshot des Eventstream-Canvas.](./Images/new-stock-stream.png)
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit**-Hub aus und zeigen Sie dann die Seite **Meine Datenströme** an. Es sollten die **Bestands**-Tabelle und der **stock-data-stream**-Datenstrom aufgelistet werden.
 
-1. Wählen Sie in der Dropdown-Liste **Ereignisse umwandeln oder Ziel hinzufügen** im Abschnitt **Ziele** die Option **Eventhouse**.
-1. Im Bereich **Eventhouse** konfigurieren Sie die folgenden Einrichtungsoptionen.
-   - **Datenerfassungsmodus:**: Ereignisverarbeitung vor der Erfassung
-   - **Zielname:**`stock-table`
-   - **Arbeitsbereich:***Wählen Sie den Arbeitsbereich, den Sie zu Beginn dieser Übung erstellt haben*
-   - **Eventhouse**: *Wählen Sie Ihr Eventhouse*
-   - **KQL Datenbank:***Wählen Sie Ihre Eventhouse KQL Datenbank*
-   - **Zieltabelle:** Erstellen Sie eine neue Tabelle namens `stock`
-   - **Eingabe-Datenformat:** JSON
+   ![Screenshot der Seite „Meine Datenströme“ im Echtzeit-Hub.](./Images/my-data-streams.png)
 
-   ![KQL Datenbank Eventstream mit Erfassungsmodi](./Images/configure-destination.png)
+1. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
 
-1. Wählen Sie im Bereich **Eventhouse** die Option **Speichern**.
-1. Wählen Sie auf der Symbolleiste **Veröffentlichen** aus.
-1. Warten Sie etwa eine Minute, bis das Datenziel aktiv wird.
+    Der Eventstream zeigt nun ein Ziel für den Datenstrom an:
+
+   ![Screenshot eines Eventstreams mit einem Ziel.](./Images/eventstream-destination.png)
+
+    > **Tipp**: Wählen Sie das Ziel im Entwurfsbereich aus, und wenn darunter keine Datenvorschau angezeigt wird, wählen Sie **Aktualisieren** aus.
 
     In dieser Übung haben Sie einen sehr einfachen Eventstream erstellt, der Echtzeitdaten erfasst und diese in eine Tabelle lädt. In einer echten Lösung würden Sie in der Regel Transformationen hinzufügen, um die Daten über Zeitfenster zu aggregieren (z. B. um den Durchschnittspreis jeder Aktie über Fünf-Minuten-Zeiträume zu erfassen).
 

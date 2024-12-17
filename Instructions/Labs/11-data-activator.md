@@ -1,10 +1,6 @@
----
-lab:
-  title: Verwenden vom Data Activator in Fabric
-  module: Get started with Data Activator in Microsoft Fabric
----
-
 # Verwenden vom Data Activator in Fabric
+
+> **WICHTIG**: Diese Übung ist veraltet und wird bald entfernt oder aktualisiert. Die Anweisungen sind nicht mehr korrekt, und die Übung wird nicht unterstützt.
 
 Data Activator in Microsoft Fabric ergreift Maßnahmen auf der Grundlage dessen, was in Ihren Daten geschieht. Mit Data Activator können Sie Ihre Daten überwachen und Trigger erstellen, um auf Ihre Datenänderungen zu reagieren.
 

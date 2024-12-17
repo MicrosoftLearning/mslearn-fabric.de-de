@@ -1,18 +1,18 @@
 ---
 lab:
-  title: Erste Schritte beim Abfragen einer KQL-Datenbank in Microsoft Fabric
-  module: Query data from a KQL database in Microsoft Fabric
+  title: Arbeiten mit Echtzeitdaten in einem Microsoft Fabric Eventhouse
+  module: Work with data in a Microsoft Fabric eventhouse
 ---
 
-# Erste Schritte beim Abfragen einer KQL-Datenbank in Microsoft Fabric
+# Arbeiten mit Echtzeitdaten in einem Microsoft Fabric Eventhouse
 
-Ein KQL-Abfrageset ist ein Tool, mit dem Sie Abfragen ausführen, ändern und Abfrageergebnisse aus einer KQL-Datenbank anzeigen können. Sie können jede Registerkarte im KQL-Abfrageset mit einer anderen KQL-Datenbank verknüpfen und Ihre Abfragen für die zukünftige Verwendung speichern oder für die Datenanalyse freigeben. Sie können die KQL-Datenbank auch für eine beliebige Registerkarte wechseln, sodass Sie die Abfrageergebnisse aus verschiedenen Datenquellen vergleichen können.
+In Microsoft Fabric wird ein *Eventhouse* verwendet, um Echtzeitdaten im Zusammenhang mit Ereignissen zu speichern. Dies wird häufig von einer Streamingdatenquelle durch einen *Eventstream* erfasst.
 
-In dieser Übung schlüpfen Sie in die Rolle eines Analysten bzw. einer Analystin, der/die mit der Abfrage eines Datensatzes von Taxifahrtdaten aus New York City beauftragt ist. Sie verwenden KQL zum Abfragen dieser Daten und Sammeln von Informationen, um Erkenntnisse zu den Daten zu gewinnen.
+Innerhalb eines Eventhouses werden die Daten in einer oder mehreren KQL-Datenbanken gespeichert, die jeweils Tabellen und andere Objekte enthalten, die Sie mithilfe von KQL (Kusto-Abfragesprache) oder einer Teilmenge von SQL (Structured Query Language) abfragen können.
 
-> **Tipp**: Das KQL-Abfrageset verwendet die Kusto-Abfragesprache, die mit vielen SQL-Funktionen kompatibel ist, um Abfragen zu erstellen. Weitere Informationen zu KQL finden Sie unter [Kusto-Abfragesprache (KQL) – Übersicht](https://learn.microsoft.com/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+In dieser Übung erstellen und füllen Sie ein Eventhouse mit einigen Beispieldaten im Zusammenhang mit Taxifahrten und fragen dann die Daten mithilfe von KQL und SQL ab.
 
-Dieses Lab dauert ungefähr **25** Minuten.
+Diese Übung dauert ca. **25** Minuten.
 
 ## Erstellen eines Arbeitsbereichs
 
@@ -27,13 +27,20 @@ Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich mit a
 
 ## Ein Eventhouse erstellen
 
+Nachdem Sie nun über einen Arbeitsbereich mit Unterstützung für eine Fabric-Kapazität verfügen, können Sie ein Eventhouse darin erstellen.
+
 1. Erstellen Sie auf der Startseite von **Real-Time Intelligence** ein neues **Eventhouse** mit einem Namen Ihrer Wahl. Wenn das Eventhouse erstellt wurde, schließen Sie alle Eingabeaufforderungen oder Tipps, die angezeigt werden, bis die Eventhouse-Seite angezeigt wird:
 
    ![Screenshot eines neuen Eventhouse.](./Images/create-eventhouse.png)
-   
-1. Wählen Sie im Menü **...** der KQL-Datenbank, die im Eventhouse erstellt wurde, Folgendes aus: **Daten abrufen** > **Beispiel**. Wählen Sie dann die **Automotive Operations Analytics**-Beispieldaten aus.
 
-1. Überprüfen Sie nach Abschluss des Ladens der Daten, ob eine **Automotive**-Tabelle erstellt wurde.
+1. Beachten Sie im linken Bereich, dass Ihr Eventhouse eine KQL-Datenbank mit demselben Namen wie das Eventhouse enthält.
+1. Wählen Sie die KQL-Datenbank aus, um sie anzuzeigen.
+
+    Derzeit enthält die Datenbank keine Tabellen. In der Übung verwenden Sie dann noch einen Ereignisstream, um Daten aus einer Echtzeitquelle in eine Tabelle zu laden.
+   
+1. Wählen Sie auf der Seite der KQL-Datenbank **Get data** > **Sample**. Wählen Sie dann die **Automotive Operations Analytics**-Beispieldaten aus.
+
+1. Stellen Sie nach Abschluss des Ladens der Daten (nimmt evtl. einige Zeit in Anspruch) sicher, dass eine **Automotive**-Tabelle erstellt wurde.
 
    ![Screenshot der Automotive-Tabelle in einer Eventhouse-Datenbank.](./Images/choose-automotive-operations-analytics.png)
 
@@ -156,7 +163,7 @@ KQL Database unterstützt Transact-SQL nicht von Haus aus, aber es bietet einen 
 
 1. Fügen Sie in Ihrem Abfrageset die folgende Transact-SQL-Abfrage hinzu, und führen Sie sie aus: 
 
-    ```sql  
+    ```sql
     SELECT TOP 100 * from Automotive
     ```
 
