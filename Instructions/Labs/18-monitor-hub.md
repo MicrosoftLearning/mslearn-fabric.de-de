@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich in einem Mandanten mit aktivierter Fabric-Kapazität.
 
-1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Homepage](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Datentechnik** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,7 @@ Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich in ei
 
 Jetzt, da Sie einen Arbeitsbereich haben, ist es an der Zeit, ein Data Lakehouse für Ihre Daten zu erstellen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues Lakehouse erstellt:
 
@@ -72,7 +72,7 @@ In Microsoft Fabric können Sie Notebooks verwenden, um Spark-Code auszuführen.
 
     ![Screenshot eines neuen Notebooks](./Images/new-notebook.png)
 
-1. Wählen Sie oben links im Notebook **Notebook 1**, um seine Details anzuzeigen, und ändern Sie seinen Namen in **Abfrage PProdukte**.
+1. Wählen Sie oben links im Notebook **Notebook 1**, um seine Details anzuzeigen, und ändern Sie seinen Namen in **Abfrage Produkte**.
 1. Wählen Sie im Notebook-Editor im Bereich **Explorer** die Option **Seehäuser** und fügen Sie das zuvor erstellte Lakehouse hinzu.
 1. Wählen Sie im Menü **...** für die Tabelle **Produkte** die Option **Daten laden** > **Spark**. Dadurch wird dem Notebook eine neue Codezelle hinzugefügt, wie hier gezeigt:
 
@@ -113,7 +113,7 @@ In dieser Übung haben Sie nur einige wenige Aktivitäten ausgeführt, so dass e
     ![Screenshot des Überwachungshubs mit angewendetem Filter.](./Images/monitor-filter.png)
 
 1. Verwenden Sie die Schaltfläche **Spaltenoptionen**, um die folgenden Spalten in die Ansicht aufzunehmen (verwenden Sie die Schaltfläche **Anwenden**, um die Änderungen zu übernehmen):
-    - Aktivitätszeit
+    - Name der Aktivität
     - Status
     - Elementtyp
     - Startzeit

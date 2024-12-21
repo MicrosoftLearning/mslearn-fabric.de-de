@@ -4,7 +4,7 @@ lab:
   module: Load data into a warehouse in Microsoft Fabric
 ---
 
-# Laden von Daten in ein Data Warehouse
+# Laden von Daten in ein Data Warehouse mit T-SQL
 
 In Microsoft Fabric stellt ein Data Warehouse eine relationale Datenbank für umfangreiche Analysen bereit. Im Gegensatz zum standardmäßigen schreibgeschützten SQL-Endpunkt für Tabellen, die in einem Lakehouse definiert sind, bietet ein Data Warehouse vollständige SQL-Semantik, einschließlich der Möglichkeit zum Einfügen, Aktualisieren und Löschen von Daten in den Tabellen.
 
@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse mit Synapse** aus.
+1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,7 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da wir in unserem Szenario keine verfügbaren Daten haben, müssen wir Daten erfassen, die zum Laden des Warehouse verwendet werden. Sie erstellen ein Data Lakehouse für die Datendateien, die Sie zum Laden des Warehouse verwenden möchten.
 
-1. Erstellen Sie auf der Startseite **Datentechnik mit Synapse** ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
+1. Wählen Sie **+ Neues Objekt** und erstellen Sie ein neues **Lakehouse** mit einem Namen Ihrer Wahl.
 
     Nach etwa einer Minute wird ein neues leeres Lakehouse erstellt. Sie müssen einige Daten für die Analyse in das Data Lakehouse einfügen. Es gibt mehrere Möglichkeiten, dies zu tun, aber in dieser Übung laden Sie eine CSV-Datei auf Ihrem lokalen Computer (oder ggf. einer Lab-VM) herunter, extrahieren sie und laden sie dann in Ihr Lakehouse hoch.
 
@@ -54,7 +54,7 @@ Da wir in unserem Szenario keine verfügbaren Daten haben, müssen wir Daten erf
 
 Nachdem Sie nun über einen Arbeitsbereich, ein Lakehouse und die Sales-Tabelle mit den benötigten Daten verfügen, können Sie ein Data Warehouse erstellen. Die Startseite von „Data Warehouse mit Synapse“ enthält eine Verknüpfung zum Erstellen eines neuen Warehouse:
 
-1. Erstellen Sie auf der Startseite von **Data Warehouse mit Synapse** ein neues **Warehouse** mit einem Namen Ihrer Wahl.
+1. Erstellen Sie auf der **Data Warehouse**-Startseite ein neues **Warehouse** mit einem Namen Ihrer Wahl.
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
@@ -66,7 +66,7 @@ Erstellen wir nun die Faktentabellen und Dimensionen für die Sales-Daten. Auße
 
 1. Wählen Sie in Ihrem Arbeitsbereich das von Ihnen erstellte Warehouse aus.
 
-1. Wählen Sie im Warehouse **Explorer** **Neue SQL-Abfrage** aus. Kopieren Sie dann die folgende Abfrage und führen Sie sie aus.
+1. Wählen Sie in der Warehouse-Symbolleiste **Neue SQL-Abfrage** aus, kopieren Sie dann die folgende Abfrage und führen Sie sie aus.
 
     ```sql
     CREATE SCHEMA [Sales]
@@ -248,5 +248,5 @@ In dieser Übung haben Sie ein Lakehouse und ein Data Warehouse mit mehreren Tab
 Wenn Sie Ihr Data Warehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 
 1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus, um alle darin enthaltenen Elemente anzuzeigen.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+1. Wählen Sie **Arbeitsbereichseinstellungen** und scrollen Sie im Abschnitt **Allgemein** nach unten und wählen Sie **Diesen Arbeitsbereich entfernen**.
+1. Wählen Sie **Löschen**, um den Arbeitsbereich zu löschen.

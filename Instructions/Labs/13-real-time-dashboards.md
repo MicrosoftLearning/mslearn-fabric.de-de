@@ -1,180 +1,285 @@
 ---
 lab:
-  title: Echtzeit-Dashboards in Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: Erste Schritte mit Echtzeit-Dashboards in Microsoft Fabric
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Erste Schritte mit Real-Time-Dashboards in Microsoft Fabric
 
-Echtzeitdashboards ermöglichen es Ihnen, Einblicke aus Microsoft Fabric mithilfe der Kusto-Abfragesprache (KQL) zu gewinnen, um sowohl strukturierte als auch unstrukturierte Daten abzurufen und in Diagrammen, Scatterplots, Tabellen usw. in Panels zu rendern, die eine Verknüpfung ähnlich wie Slicer in Power BI ermöglichen. 
+Mithilfe von Echtzeit-Dashboards in Microsoft Fabric können Sie Streamingdaten mithilfe des Kusto-Abfragesprache (KQL) visualisieren und untersuchen.  In dieser Übung erfahren Sie, wie Sie ein Echtzeit-Dashboard auf der Grundlage einer Echtzeit-Datenquelle erstellen und verwenden.
 
 Dieses Lab dauert ungefähr **25** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion.](https://learn.microsoft.com/fabric/get-started/fabric-trial) um diese Übung abzuschließen.
+> **Hinweis**: Sie benötigen einen [Microsoft Fabric-Tenant](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchzuführen.
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
+Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität erstellen.
 
 1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*). Sie können auch einen vorhandenen Arbeitsbereich verwenden, um ein Echtzeitdashboard zu erstellen.
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-In dieser Übung verwenden Sie die Real-Time Intelligence in Fabric, um ein Real-Time-Dashboard zu erstellen. Real-Time Intelligence bietet bequem ein Beispiel-Dataset, mit dem Sie die Funktionen von Real-Time Intelligence erkunden können. Sie verwenden diese Beispieldaten, um die KGL-/SQL-Abfragen und -Abfragesets zu erstellen, die Echtzeitdaten analysieren und eine zusätzliche Verwendung in nachgelagerten Prozessen ermöglichen.
+## Erstellen eines Eventhouses
+
+Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Stoffobjekte beginnen, die Sie für Ihre Real-Time Intelligence-Lösung benötigen. wir beginnen mit der Erstellung eines Eventhouses.
+
+1. Wählen Sie in der Menüleiste auf der linken Seite **Startseite** aus und erstellen Sie dann auf der Startseite von Real-Time Intelligence ein neues **Eventhouse**, dem Sie einen eindeutigen Namen Ihrer Wahl geben.
+1. Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
+
+    ![Screenshot eines neuen Eventhouse](./Images/create-eventhouse.png)
+
+1. Beachten Sie im linken Bereich, dass Ihr Eventhouse eine KQL-Datenbank mit demselben Namen wie das Eventhouse enthält.
+1. Wählen Sie die KQL-Datenbank aus, um sie anzuzeigen.
+
+## Erstellen eines Eventstreams
+
+Derzeit enthält die Datenbank keine Tabellen. Wir verwenden einen Eventstream, um Daten aus einer Echtzeitquelle in eine Tabelle zu laden.
+
+1. Wählen Sie auf der Hauptseite Ihrer KQL-Datenbank **Daten abrufen**.
+2. Wählen Sie für die Datenquelle **Eventstream** > **Neuer Eventstream**. Benennen Sie den Eventstream `Bicycle-data`.
+
+    ![Screenshot eines neuen Eventstreams.](./Images/empty-eventstream.png)
+
+    Die Erstellung Ihres neuen Eventstreams im Arbeitsbereich wird in wenigen Augenblicken abgeschlossen sein. Sobald Sie sich angemeldet haben, werden Sie automatisch weitergeleitet, um eine Datenquelle für Ihren Eventstream auszuwählen.
+
+1. Wählen Sie **Beispieldaten verwenden** aus.
+1. Geben Sie den Quellnamen `Bicycles` ein und wählen Sie die Beispieldaten **Fahrräder** aus.
+
+    Ihr Stream wird gemappt und Sie werden automatisch auf dem **Eventstream-Canvas** angezeigt.
+
+   ![Überprüfen Sie den Eventstream-Canvas](./Images/real-time-intelligence-eventstream-sourced.png)
+
+1. Wählen Sie in der Dropdown-Liste **Ziel hinzufügen** die Option **Eventhouse** aus.
+1. Im Bereich **Eventhouse** konfigurieren Sie die folgenden Einrichtungsoptionen.
+   - **Datenerfassungsmodus:**: Ereignisverarbeitung vor der Erfassung
+   - **Zielname:**`bikes-table`
+   - **Arbeitsbereich:***Wählen Sie den Arbeitsbereich, den Sie zu Beginn dieser Übung erstellt haben*
+   - **Eventhouse**: *Wählen Sie Ihr Eventhouse*
+   - **KQL-Datenbank:***Wählen Sie Ihre KQL-Datenbank*
+   - **Zieltabelle:** Erstellen Sie eine neue Tabelle namens `bikes`
+   - **Eingabe-Datenformat:** JSON
+
+   ![Einstellungen für Eventstream-Ziel.](./Images/kql-database-event-processing-before-ingestion.png)
+
+1. Wählen Sie im Bereich **Eventhouse** die Option **Speichern**. 
+1. Verbinden Sie die Ausgabe des Knotens ** Fahrräder-Daten** mit dem Knoten ** Fahrräder-Tabelle** und wählen Sie dann **Veröffentlichen**.
+1. Warten Sie etwa eine Minute, bis das Datenziel aktiv wird. Wählen Sie dann den Knoten **bikes-table** im Entwurfscanvas aus und sehen Sie sich den Bereich **Datenvorschau** darunter an, um die neuesten erfassten Daten zu sehen:
+
+   ![Ein Screenshot einer Zieltabelle in einem Eventstream.](./Images/stream-data-preview.png)
+
+1. Warten Sie ein paar Minuten und verwenden Sie dann die Schaltfläche **Aktualisieren**, um den Bereich **Datenvorschau** zu aktualisieren. Der Stream läuft ununterbrochen, sodass der Tabelle möglicherweise neue Daten hinzugefügt wurden.
 
 ## Erstellen von Echtzeitdashboards
 
-1. Wählen Sie innerhalb der **Real-Time Intelligence** das Feld **Real-Time-Dashboard** aus.
+Jetzt, wo Sie einen Stream von Echtzeitdaten haben, der in eine Tabelle im Eventhouse geladen wird, können Sie ihn mit einem Echtzeit-Dashboard visualisieren.
 
-   ![Abbildung der Auswahl des Real-Time-Dashboards](./Images/create-real-time-dashboard.png)
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Startseite**-Hub aus. Erstellen Sie dann auf der Startseite ein neues **Echtzeit-Dashboard** mit dem Namen `bikes-dashboard`.
 
-2. Sie werden aufgefordert, das Real-Time-Dashboard zu **benennen**.
+    Es wird ein neues leeres Dashboard erstellt.
 
-   ![Abbildung der Benennung des Real-Time-Dashboards.](./Images/new-real-time-dashboard.png)
 
-3. Weisen Sie dem Real-Time-Dashboard einen Namen zu, den Sie sich merken, z. B. etwas, das auf Ihrer primären Quelle basiert, und drücken Sie **Erstellen**.
+    ![Screenshot eines neuen Dashboards.](./Images/new-dashboard.png)
 
-4. Wählen Sie im Bereich **Datenbankdetails** das Bleistiftsymbol aus, um die Verfügbarkeit in OneLake zu aktivieren.
+1. Wählen Sie in der Symbolleiste **Neue Datenquelle** und fügen Sie eine neue **One Lake Data Hub** Datenquelle hinzu. Wählen Sie dann Ihr Eventhouse und erstellen Sie eine neue Datenquelle mit den folgenden Einstellungen:
+    - **Anzeigename**: `Bike Rental Data`
+    - **Datenbank**: *Die Standard-Datenbank in Ihrem Eventhouse*.
+    - **Durchgangsidentität**: *Ausgewählt*
 
-   [ ![Bild vom Aktivieren von Onelake.](./Images/real-time-dashboard-details.png)](./Images/real-time-dashboard-details-large.png#lightbox)
+1. Schließen Sie den Bereich **Datenquellen** und wählen Sie dann im Dashboard Design Canvas **Kachel hinzufügen**.
+1. Stellen Sie im Abfrage-Editor sicher, dass die Quelle **Fahrradverleihdaten** ausgewählt ist und geben Sie den folgenden KQL-Code ein:
 
-## Hinzufügen einer Datenquelle
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+        | project Neighbourhood, latest_observation, No_Bikes, No_Empty_Docks
+        | order by Neighbourhood asc
+    ```
 
-Datenquellen dienen als wiederverwendbare Verweise auf bestimmte Datenbanken oder Abfragen innerhalb desselben Arbeitsbereichs wie das Real-Time-Dashboard, sodass verschiedene Kacheln unterschiedliche Datenquellen für ihre Datenanforderungen nutzen können.
+1. Führen Sie die Abfrage aus, die die Anzahl der Fahrräder und leeren Fahrradstellplätze anzeigt, die in den letzten 30 Minuten in den einzelnen Stadtteilen beobachtet wurden.
+1. Übernehmen Sie die Änderungen, um die Daten in einer Tabelle in der Kachel auf dem Dashboard anzuzeigen.
 
-1. Wählen Sie die Registerkarte **Verwalten** und dann **Neue Datenquelle** auf der ***Menüleiste*** aus.
-1. Wählen Sie im Bereich **Datenquellen** die Schaltfläche **+ Hinzufügen** aus.
+   ![Ein Screenshot eines Dashboards mit einer Kachel, die eine Tabelle enthält.](./Images/tile-table.png)
 
-    [ ![Neue Datenquelle zum Real-Time-Dashboard hinzufügen.](./Images/add-data-source-to-real-time-dashboard-large.png) ](./Images/add-data-source-to-real-time-dashboard-large.png#lightbox)
+1. Wählen Sie auf der Kachel das Symbol **Bearbeiten** aus (das wie ein Bleistift aussieht). Legen Sie dann im Bereich **Visuelle Formatierung** die folgenden Eigenschaften fest:
+    - **Kachelname**: Fahrräder und Docks
+    - **Visueller Typ**: Balkendiagramm
+    - **Visuelles Format**: Gestapeltes Balkendiagramm
+    - **Y-Spalten**: No_Bikes, No-Empty_Docks
+    - **X-Spalte**: Nachbarschaft
+    - **Serienspalten**: ableiten
+    - **Legende Standort**: Unten
 
-1. wählen Sie aus einer der beiden Hauptoptionen, nämlich **OneLake-Datenhubs** oder **Azure Data Explorer** aus.
+    Ihre bearbeitete Zeit sollte wie folgt aussehen:
 
-    ![wählen Sie eine Datenquelle für das Real-Time-Dashboard aus.](./Images/data-source-options-real-time-dashboards.png)
+   ![Ein Screenshot einer Kachel, die so bearbeitet wurde, dass sie ein Balkendiagramm enthält.](./Images/tile-bar-chart.png)
 
-1. Wählen Sie die **Datenquelle** aus, die Ihren Anforderungen entspricht, und wählen Sie dann die Schaltfläche **Verbinden** aus.
+1. Übernehmen Sie die Änderungen und ändern Sie dann die Größe der Kachel so, dass sie die gesamte Höhe der linken Seite des Dashboards einnimmt.
 
-    [![Wählen Sie die entsprechende Datenquelle aus.](./Images/select-onelake-data-hub.png)](./Images/select-onelake-data-hub-large.png#lightbox)
+1. Wählen Sie in der Symbolleiste **Neue Kachel**.
+1. Stellen Sie im Abfrage-Editor sicher, dass die Quelle **Fahrradverleihdaten** ausgewählt ist und geben Sie den folgenden KQL-Code ein:
 
-    > **Hinweis** Nachdem Sie eine Verbindung mit einer Datenquelle hergestellt haben, können Sie weitere Datenquellen innerhalb des ausgewählten Speicherorts bestätigen und erstellen.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+        | project Neighbourhood, latest_observation, Latitude, Longitude, No_Bikes
+        | order by Neighbourhood asc
+    ```
 
-1. Bestätigen Sie ihre **Datenquellen**-Verbindung im Bereich **Neue Datenquelle** erstellen, und wählen Sie **Erstellen** aus.
+1. Führen Sie die Abfrage aus, die den Standort und die Anzahl der Fahrräder anzeigt, die in den letzten 30 Minuten in den einzelnen Nachbarschaften beobachtet wurden.
+1. Übernehmen Sie die Änderungen, um die Daten in einer Tabelle in der Kachel auf dem Dashboard anzuzeigen.
+1. Wählen Sie auf der Kachel das Symbol **Bearbeiten** aus (das wie ein Bleistift aussieht). Legen Sie dann im Bereich **Visuelle Formatierung** die folgenden Eigenschaften fest:
+    - **Kachelname**: Bike Locations
+    - **Visueller Typ**: Karte
+    - **Bestimmen Sie den Standort durch**: Breitengrad und Längengrad
+    - **Breitengradspalte**: Breitengrad
+    - **Längengradspalte**: Längengrad
+    - **Bezeichnungsspalte**: Nachbarschaft
+    - **Größe**: Anzeigen
+    - **Spaltengröße**: No_Bikes
 
-    [ ![Datenbank unter „Neue Datenquelle erstellen“ bestätigen.](./Images/conected-now-create-datasource.png) ](./Images/conected-now-create-datasource-large.png#lightbox)
+1. Übernehmen Sie die Änderungen und passen Sie dann die Größe der Kartenkachel so an, dass sie die rechte Seite des verfügbaren Platzes auf dem Dashboard ausfüllt:
 
-1. An diesem Punkt sollten Sie die Auslassungszeichen **...** rechts neben **Seite n** auswählen und die **Seite umbenennen** mit einen Namen, der für die Verwendung der Kachel geeignet ist.
-1. Wählen Sie **+ Kachel hinzufügen** aus
+   ![Screenshot eines Dashboards mit einem Diagramm und einer Karte.](./Images/dashboard-chart-map.png)
 
-    [![Benennen Sie die Seite um und fügen Sie Kacheln hinzu.](./Images/rename-page-add-tile.png)](./Images/rename-page-add-tile-large.png#lightbox)
+## Erstellen einer Basisabfrage
 
-1. Sie werden an den **Kachelabfragebereich** weitergeleitet, in dem Sie Parameter hinzufügen und Basisabfragen abrufen können, um Ihre Kachel zu unterstützen. 
+Ihr Dashboard enthält zwei visuelle Darstellungen, die auf ähnlichen Abfragen beruhen. Um Doppelarbeit zu vermeiden und Ihr Dashboard pflegeleichter zu machen, können Sie die gemeinsamen Daten in einer einzigen *Basisabfrage* zusammenfassen.
 
-    [ ![Abfragen des Fensters und Hinzufügen eines neuen Datenquellenbereichs.](./Images/write-query-for-tile.png) ](./Images/write-query-for-tile-large.png#lightbox)
+1. Wählen Sie in der Symbolleiste des Dashboards **Basisabfragen**. Wählen Sie dann **+Hinzufügen** aus.
+1. Setzen Sie im Editor der Basisabfrage den **Variablennamen** auf `base_bike_data` und stellen Sie sicher, dass die Quelle **Fahrradverleihdaten** ausgewählt ist. Geben Sie dann die folgende Abfrage ein:
 
-    > **Hinweis**: Sie haben die Möglichkeit, im Dropdownfenster im selben Fenster eine neue Datenquelle hinzuzufügen. Diese Quelle kann sich innerhalb Ihres persönlichen Arbeitsbereichs oder eines beliebigen Arbeitsbereichs befinden, auf dem Sie möglicherweise eine andere KQL-Datenbank in einem Evenhouse gespeichert haben, auf den Sie Zugriff haben.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
 
-## Schreiben von Abfragen
+1. Run the query and verify that it returns all of the columns needed for both visuals in the dashboard (and some others).
 
-Da Kacheln im Real-Time-Dashboard dir Kusto Query Language Codeausschnitte verwenden, um Daten abzurufen und visuelle Elemente zu rendern. Jede Kachel/Abfrage kann ein einzelnes visuelles Element unterstützen.
+   ![A screenshot of a base query.](./Images/dashboard-base-query.png)
 
-1. Innerhalb jeder Kachel können Sie aus **Copilot** schreiben oder einfügen, wenn Sie sie an eine neue oder vorhandene Kachel anheften und dann entsprechend Ihren Anforderungen ändern. Aus einer einfachen Abfrage können wir eine Karten-Visualisierung erstellen, die Größen auf der Karte basierend auf der Anzahl der Fahrräder verwendet.
+1. Select **Done** and then close the **Base queries** pane.
+1. Edit the **Bikes and Docks** bar chart visual, and change the query to the following code:
 
-```kusto
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation, No_Bikes, No_Empty_Docks
+    | order by Neighbourhood asc
+    ```
 
-['Bike-count']
-BikepointID, Latitude, Longitude, No_Bikes
+1. Wenden Sie die Änderungen an und überprüfen Sie, ob das Balkendiagramm noch Daten für alle Nachbarschaften anzeigt.
 
-```
+1. Bearbeiten Sie die Karte **Fahrradstandorte**, und ändern Sie die Abfrage in den folgenden Code:
 
-## Erstellen von Visualisierungen
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation, No_Bikes, Latitude, Longitude
+    | order by Neighbourhood asc
+    ```
 
-Sobald Sie mit der Visualisierung zufrieden sind, wählen Sie einfach **Änderungen übernehmen** aus und fügen Sie dann entweder zusätzliche Visualisierungen hinzu, um Ihr Real-Time-Dashboard zu unterstützen, oder führen Sie zusätzliche Schritte wie **Parameter** oder **Zeitpläne aus**.
+1. Wenden Sie die Änderungen an und überprüfen Sie, ob die Karte noch Daten für alle Stadtteile anzeigt.
 
-   [![Erstellen Sie eine Visualisierung aus einer KQL-Abfrage.](./Images/create-visual-in-tiles.png)](./Images/create-visual-in-tiles-large.png#lightbox)
+## Hinzufügen eines Parameters
 
-Sobald die Änderungen übernommen werden, sehen Sie die Daten und können dann Anpassungen für die Lesbarkeit und das Verständnis ihrer Benutzer vornehmen.
+Ihr Dashboard zeigt derzeit die neuesten Fahrrad-, Dock- und Standortdaten für alle Nachbarschaften an. Fügen Sie nun einen Parameter hinzu, damit Sie eine bestimmte Nachbarschaft auswählen können.
 
-   [![Übernommene Änderungen an der Fahrradvisualisierungskarte.](./Images/first-published-visual.png)](./Images/first-published-visual-large.png#lightbox)
+1. Wählen Sie in der Symbolleiste des Dashboards auf der Registerkarte **Verwalten** die Option **Parameter**.
+1. Beachten Sie alle vorhandenen Parameter, die automatisch erstellt wurden (zum Beispiel einen *Zeitbereich*-Parameter). Dann **Löschen** Sie sie.
+1. Wählen Sie **+ Hinzufügen**.
+1. Fügen Sie einen Parameter mit den folgenden Einstellungen hinzu:
+    - **Bezeichnung:** `Neighbourhood`
+    - **Parametertyp**: Mehrfachauswahl
+    - **Beschreibung:** `Choose neighbourhoods`
+    - **Variablenname**: `selected_neighbourhoods`
+    - **Datentyp**: Zeichenfolge
+    - **Auf Seiten anzeigen**: Alle auswählen
+    - **Quelle**: Abfrage
+    - **Datenquelle**: Fahrradverleih-Daten
+    - **Abfrage bearbeiten**
 
-Sie können weiterhin **neue Kacheln** erstellen, die Tabelleninformationen und Visualisierungsinformationen enthalten, um das Verständnis Ihrer Benutzercommunity zu erleichtern. Sie haben auch die Möglichkeit, wie weiter oben gezeigt, **Seite[n] hinzuzufügen**, **Neue Datenquelle[n]**. Als Nächstes konzentrieren wir uns auf das Hinzufügen eines Parameters zur Unterstützung beim Navigieren und Verringern der Menge an Informationen, die einem Benutzer angezeigt werden.
+        ```kql
+        bikes
+        | distinct Neighbourhood
+        | order by Neighbourhood asc
+        ```
 
-## Parameter hinzufügen
-Parameter verbessern die Effizienz des Dashboardrenderings und ermöglichen die Verwendung von Filterwerten in der frühesten Phase des Abfrageprozesses. Die Einbeziehung von Parametern in die Abfrage, die mit Ihren Kacheln verknüpft ist, aktiviert Filterfunktionen. Ein Parameter kann über ein Dashboard hinweg verwendet werden, und mehrere Parameter können die in den zugrunde liegenden Visualisierungen dargestellten Daten filtern, einschließlich Tabellen.
+    - **Wertspalte**: Nachbarschaft
+    - **Beschriftungsspalte**: Übereinstimmung der Wertauswahl
+    - **Den Wert „Alles auswählen“ hinzufügen**: *Ausgewählt*
+    - **„Alles auswählen“ sendet leere Zeichenfolge**: *Ausgewählt*
+    - **Automatisches Zurücksetzen auf Standardwert**: Ausgewählt
+    - **Standardwert**: Alle auswählen
 
-Das Erstellen eines Parameters beginnt einfach folgendermaßen: 
+1. Wählen Sie **Fertig** aus, um den Parameter zu erstellen.
 
-1. Wählen Sie oben im Menü die Taste Neuer Parameter aus. Der Bereich Parameter wird geöffnet.
-1. Wählen Sie oben im rechten Bereich + Hinzufügen aus.
+    Jetzt, da Sie einen Parameter hinzugefügt haben, müssen Sie die Basisabfrage ändern, um die Daten nach den ausgewählten Stadtvierteln zu filtern.
 
-    [ ![Neuen Parameter hinzufügen.](./Images/add-new-parameter.png) ](./Images/add-new-parameter-large.png#lightbox)
+1. Wählen Sie in der Symbolleiste **Basisabfragen**. Wählen Sie dann die Abfrage **base_bike_data** aus und bearbeiten Sie sie, um der **where**-Klausel eine **and**-Bedingung hinzuzufügen, um auf der Grundlage der ausgewählten Parameterwerte zu filtern, wie im folgenden Code gezeigt:
 
-1. Füllen Sie die relevanten Eigenschaften für Ihren Parameter aus.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+          and (isempty(['selected_neighbourhoods']) or Neighbourhood  in (['selected_neighbourhoods']))
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+    ```
 
-    [ ![Konfigurieren der Parametereinstellungen.](./Images/configure-parameter.png) ](./Images/configure-parameter-large.png#lightbox)
+1. Wählen Sie **Fertig**, um die Basisabfrage zu speichern.
 
-1. Eines der wichtigsten Features eines Parameters ist die Möglichkeit, **eine Abfrage hinzuzufügen**, um dem Benutzer nur Optionen zu geben, die für die zugrunde liegenden Informationen relevant sind.
+1. Verwenden Sie im Dashboard den Parameter **Nachbarschaft**, um die Daten auf der Grundlage der von Ihnen ausgewählten Nachbarschaften zu filtern.
 
-    ![Fügen Sie der Parameterauswahl eine Abfrage hinzu.](./Images/add-lookup-query.png)
+   ![Ein Bildschirmfoto eines Dashboards mit ausgewählten Parametern.](./Images/dashboard-parameters.png)
 
-1. Wählen Sie Fertig aus, um den Parameter zu erstellen.
+1. Wählen Sie **Zurücksetzen**, um die ausgewählten Parameterfilter zu entfernen.
 
-    [ ![Schließen Sie die Konfiguration ab und wählen Sie die Option in den Parametereinstellungen aus.](./Images/complete-parameter-settings.png) ](./Images/complete-parameter-settings-large.png#lightbox)
+## Seite hinzufügen
 
-### Parametereigenschaften
+Ihr Dashboard besteht derzeit aus einer einzigen Seite. Sie können weitere Seiten hinzufügen, um mehr Daten bereitzustellen.
 
-| Feld            | Beschreibung |
-|------------------|-------------|
-| **Bezeichnung**        | Der Name des Parameters, der auf dem Dashboard oder auf der Bearbeitungskarte angezeigt wird. |
-| **Parametertyp** | Eine der folgenden Typen auswählen: <ul><li>Single selection (Einfachauswahl): Im Filter kann als Eingabe für den Parameter nur ein Wert ausgewählt werden.</li><li>Mehrfachauswahl: Im Filter können als Eingaben für den Parameter mehrere Werte ausgewählt werden.</li><li>Zeitbereich: Ermöglicht die Erstellung zusätzlicher Parameter zum Filtern von Abfragen und Dashboards basierend auf der Zeit. Jedes Dashboard verfügt standardmäßig über eine standardmäßige Zeitbereichsauswahl.</li><li>Freitext: Ermöglicht Benutzern das Eingeben oder Einfügen eines Werts in das Filterfeld ohne vorgefüllte Werte, wobei zuletzt verwendete Werte beibehalten werden.</li></ul> |
-| **Beschreibung**  | Eine optionale Beschreibung des Parameters. |
-| **Variablenname** | Der Name, der für den Parameter innerhalb der Abfrage verwendet wird. |
-| **Datentyp**    | Der Typ der Daten, den die Parameterwerte darstellen. |
-| **Auf Seiten anzeigen** | Seiten, auf denen der Parameter angezeigt wird, mit einer Option zum Auswählen aller Seiten. |
-| **Quelle**       | Der Ursprung der Parameterwerte, der folgender sein kann: <ul><li>Feste Werte: Statische Filterwerte, die manuell eingegeben wurden.</li><li>Abfrage: Dynamische Werte, die mit einer KQL-Abfrage eingeführt wurden.</li></ul> |
-| **Wert „Alle auswählen“ hinzufügen** | Gilt für einzelne und mehrere Auswahlparametertypen - diese Option ruft Daten für alle Parameterwerte ab und muss in die Abfrage für die Funktionalität integriert werden. |
-| **Standardwert** | Der Standardwert des Filters, der beim anfänglichen Rendern des Dashboards festgelegt wird. |
+1. Erweitern Sie auf der linken Seite des Dashboards den Bereich **Seiten**, und wählen Sie **+ Seite hinzufügen**.
+1. Nennen Sie die neue Seite **Seite 2**. Wählen Sie sie dann aus.
+1. Wählen Sie auf der neuen Seite **+ Kachel hinzufügen**
+1. Geben Sie im Abfrage-Editor für die neue Kachel die folgende Abfrage ein:
 
-6. Vergewissern Sie sich, dass Sie den Parameter zu jeder der Abfragen innerhalb der Kacheln hinzufügen und wählen Sie dann **Änderungen übernehmen**.
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation
+    | order by latest_observation desc
+    ```
 
-**Vor der KQL-Abfrage**
-```kusto
-//Add the street parameter to each tile's query
-['bike-count']
-| where No_Bikes > 0
-| project BikepointID, Latitude, Longitude, No_Bikes
+1. Übernehmen Sie die Änderungen. Ändern Sie dann die Größe der Kachel so, dass sie die Höhe des Dashboards ausfüllt.
 
-```
+   ![Screenshot eines Dashboards mit zwei Seiten](./Images/dashboard-page-2.png)
 
-**Nach der KQL-Abfrage**
-```kusto
-//Add the street parameter to each tile's query
-['bike-count']
-| where No_Bikes > 0 and Street == street
-| project BikepointID, Latitude, Longitude, No_Bikes
+## Automatische Aktualisierung konfigurieren
 
-```
-   [ ![aktualisieren Sie jede Abfrage in den Kacheln, um die Parameter einzuschließen.](./Images/update-each-query.png) ](./Images/update-each-query-large.png#lightbox)
+Sie können das Dashboard manuell aktualisieren, aber es kann sinnvoll sein, die Daten in einem bestimmten Intervall automatisch zu aktualisieren.
 
-## Aktivieren der automatischen Aktualisierung
+1. Wählen Sie in der Symbolleiste des Dashboards auf der Registerkarte **Verwalten** die Option **Automatische Aktualisierung**.
+1. Konfigurieren Sie im Bereich **Automatische Aktualisierung** die folgenden Einstellungen:
+    - **Aktiviert**: *Ausgewählt*
+    - **Minimalzeitintervall**: Alle Aktualisierungsintervalle zulassen
+    - **Standard-Aktualisierungsrate**: 30 Minuten
+1. Übernehmen Sie die Einstellungen für die automatische Aktualisierung.
 
-Die automatische Aktualisierung ist eine Funktion, welche die automatische Aktualisierung von Dashboarddaten ermöglicht, ohne dass eine manuelle Seite neu geladen oder eine Aktualisierungsschaltfläche gedrückt wird. Die anfängliche Häufigkeit der automatischen Aktualisierung kann von einem Datenbank-Editor konfiguriert werden. Sowohl Editoren als auch Viewer haben die Möglichkeit, die tatsächliche automatische Aktualisierungsrate während der Dashboardanzeige zu ändern. Datenbank-Editoren verfügen über die Berechtigung, eine minimale Aktualisierungsrate einzurichten, um übermäßige Belastung für das Cluster zu verringern. Sobald diese Mindestrate festgelegt ist, können Datenbankbenutzer keine Aktualisierungsrate unter dem angegebenen Minimum mehr auswählen. Dadurch wird sichergestellt, dass die Leistung des Systems beibehalten wird, ohne die Ressourcen zu überlasten.
+## Speichern und teilen des Dashboards
 
-1. Wählen Sie die Registerkarte „Verwalten“ > „Automatische Aktualisierung“ aus.
+Jetzt haben Sie ein nützliches Dashboard, das Sie speichern und mit anderen Benutzern teilen können.
 
-    [ ![aktivieren Sie das Feature für die automatische Aktualisierung.](./Images/enable-auto-refresh.png) ](./Images/enable-auto-refresh-large.png#lightbox)
-
-1. Schalten Sie die Option um, sodass die automatische Aktualisierung aktiviert ist.
-1. Wählen Sie Werte für Minimum time interval (Minimales Zeitintervall) und Default refresh rate (Standardaktualisierungsrate) aus.
-1. Wählen Sie Anwenden aus, und speichern sie dann das Dashboard.
-
-    [ ![Aktivieren Sie die automatische Aktualisierung und legen Sie Intervalle fest.](./Images/enable-and-configure-refresh-rate.png) ](./Images/enable-and-configure-refresh-rate-large.png#lightbox)
+1. Wählen Sie in der Symbolleiste des Dashboards **Speichern**.
+1. Wenn das Dashboard gespeichert ist, wählen Sie **Freigeben**.
+1. Wählen Sie im Dialogfeld **Freigeben** die Option **Link kopieren** aus und kopieren Sie den Link zum Dashboard in die Zwischenablage.
+1. Öffnen Sie eine neue Browser-Registerkarte und fügen Sie den kopierten Link ein, um zum gemeinsamen Dashboard zu navigieren. Melden Sie sich erneut mit Ihren Fabric-Anmeldedaten an, wenn Sie dazu aufgefordert werden.
+1. Erkunden Sie das Dashboard und sehen Sie sich die neuesten Informationen über Fahrräder und leere Fahrradstellplätze in der Stadt an.
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie eine KQL-Datenbank erstellt und ein Beispieldataset für Abfragen eingerichtet. Danach haben Sie die Daten mit KQL und SQL abgefragt. Wenn Sie die Untersuchung Ihrer KQL-Datenbank abgeschlossen haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
-1. Wählen Sie auf der Leiste auf der linken Seite das **Symbol** für Ihren Arbeitsbereich aus.
-2. Wählen Sie auf der Symbolleiste im Menü „...“ die Option **Arbeitsbereichseinstellungen** aus.
-3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
+Wenn Sie Ihr Dashboard fertig erforscht haben, können Sie den Arbeitsbereich, den Sie für diese Übung erstellt haben, löschen.
 
+1. Wählen Sie auf der Leiste auf der linken Seite das **Symbol** für Ihren Arbeitsbereich aus.
+2. Wählen Sie in der Symbolleiste **Arbeitsbereichseinstellungen**.
+3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.

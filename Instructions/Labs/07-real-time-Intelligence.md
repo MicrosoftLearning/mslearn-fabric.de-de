@@ -6,15 +6,15 @@ lab:
 
 # Erste Schritte mit Real-Time Intelligence in Microsoft Fabric
 
-Microsoft Fabric stellt eine Runtime bereit, mit der Sie Daten mithilfe von Kusto-Abfragesprache (Kusto Query Language, KQL) speichern und abfragen können. Kusto ist für Daten optimiert, die eine Zeitreihenkomponente enthalten, z. B. Echtzeitdaten aus Protokolldateien oder von IoT-Geräten.
+Microsoft Fabric bietet Echtzeitintelligenz. Sie können damit analytische Lösungen für Echtzeit-Datenströme erstellen. In dieser Übung verwenden Sie die Echtzeitintelligenzfunktionen in Microsoft Fabric, um einen Echtzeitdatenstrom von Börsendaten zu erfassen, zu analysieren und zu visualisieren.
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchführen zu können.
+> **Hinweis**: Sie benötigen einen [Microsoft Fabric-Tenant](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung durchzuführen.
 
 ## Erstellen eines Arbeitsbereichs
 
-Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
+Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität erstellen.
 
 1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
@@ -23,123 +23,156 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-## Herunterladen der Datei für die KQL-Datenbank
+## Erstellen eines Eventstreams
 
-Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, die Datendatei herunterzuladen, die analysiert werden soll.
+Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. Sie beginnen im Fabric Echtzeit-Hub.
 
-1. Laden Sie die Datendatei für diese Übung von [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) herunter, und speichern Sie diese als **sales.csv** auf Ihrem lokalen Computer (oder ggf. auf Ihrer Lab-VM).
-1. Kehren Sie zum Browserfenster mit **Microsoft Fabric** zurück.
+> **Tipp**: Wenn Sie den Echtzeit-Hub zum ersten Mal verwenden, werden möglicherweise einige *Tipps für die ersten Schritte* angezeigt. Sie können dies schließen.
 
-## Erstellen einer KQL-Datenbank
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit-Hub** aus.
 
-Die Kusto-Abfragesprache (Kusto Query Language, KQL) wird verwendet, um statische oder Streamingdaten in einer Tabelle abzufragen, die in einer KQL-Datenbank definiert ist. Zur Analyse der Vertriebsdaten müssen Sie eine Tabelle in einer KQL-Datenbank erstellen und die Daten aus der Datei erfassen.
+    Der Echtzeit-Hub bietet eine einfache Möglichkeit, Quellen von Streaming-Daten zu finden und zu verwalten.
 
-1. Wechseln Sie unten links im Portal zur Benutzeroberfläche Echtzeitintelligenz.
+    ![Screenshot des Echtzeit-Hubs in Fabric.](./Images/real-time-hub.png)
 
-    ![Screenshot: Menü zum Wechseln der Benutzeroberfläche.](./Images/fabric-real-time.png)
+1. Wählen Sie im Echtzeit-Hub im Abschnitt **Verbinden mit** die Option **Datenquellen** aus.
+1. Suchen Sie die Beispiel-Datenquelle **Börsenmarkt**, und wählen Sie **Verbinden** aus. Benennen Sie dann im **Verbindungs**-Assistenten die Quelle als `stock`, und bearbeiten Sie den Standard-Eventstreamnamen, um ihn in `stock-data` zu ändern. Der diesen Daten zugeordnete Standarddatenstrom wird automatisch *stock-data-stream* genannt:
 
-2. Erstellen Sie auf der Startseite der Echtzeitintelligenz ein neues **Eventhouse** mit einem Namen Ihrer Wahl.
+    ![Screenshot eines neuen Eventstreams.](./Images/name-eventstream.png)
 
-   ![Screenshot des RTI-Editors mit hervorgehobener Option „Eventhouse“.](./Images/create-kql-db.png)
+1. Wählen Sie **Weiter** aus; warten Sie, bis der Quell- und Eventstream erstellt wurde, und wählen Sie dann **Eventstream öffnen** aus. Der Eventstream zeigt die **Aktien**-Quelle und **stock-data-stream** im Entwurfsbereich an:
 
-   Das Eventhouse wird verwendet, um Ihre Datenbanken in Projekten zu gruppieren und zu verwalten. Eine leere KQL-Datenbank wird automatisch mit dem Namen des Eventhouses erstellt.
-   
-3. Wenn die neue Datenbank erstellt wurde, wählen Sie sie aus der Liste links unter KQL-Datenbanken aus. Wählen Sie dann die Option aus, um Daten aus der **lokalen Datei** abzurufen. Verwenden Sie den Assistenten, um die Daten in eine neue Tabelle zu importieren, indem Sie die folgenden Optionen auswählen:
-    - **Ziel**:
-        - **Datenbank**: *Die von Ihnen erstellte Datenbank ist bereits ausgewählt.*
-        - **Table:** *Erstellen Sie eine neue Tabelle mit dem Namen* **sales**, indem Sie auf das +-Zeichen links neben ***Neue Tabelle*** klicken.
+   ![Screenshot des Eventstream-Canvas.](./Images/new-stock-stream.png)
 
-        ![Schritt 1 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-1.png?raw=true)
+## Erstellen eines Eventhouses
 
-        - Sie sehen nun den Hyperlink **Dateien hier her ziehen oder nach Dateien suchen** im selben Fenster.
+Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts damit. Erstellen wir ein Eventhouse, in dem die erfassten Daten in einer Tabelle gespeichert werden können.
 
-        ![Schritt 2 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-2.png?raw=true)
+1. Wählen Sie in der Menüleiste auf der linken Seite **Startseite** aus und erstellen Sie dann auf der Startseite von Real-Time Intelligence ein neues **Eventhouse**, dem Sie einen eindeutigen Namen Ihrer Wahl geben.
 
-        - Suchen oder ziehen Sie ihre **sales.csv** auf den Bildschirm, und warten Sie, bis das Feld "Status" auf ein grünes Kontrollkästchen geändert wird. Wählen Sie dann **Weiter** aus.
+    Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
 
-        ![Schritt 3 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-3.png?raw=true)
+    ![Screenshot eines neuen Eventhouse](./Images/create-eventhouse.png)
 
-        - Auf diesem Bildschirm sehen Sie, dass sich die Spaltenüberschriften in der ersten Zeile befinden. Obwohl das System sie erkannt hat, müssen wir den Schieberegler über diesen Zeilen **Erste Zeile ist Spaltenüberschrift** verschieben, damit keine Fehler auftreten.
-        
-        ![Schritt 4 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-4.png?raw=true)
+1. Beachten Sie im linken Bereich, dass Ihr Eventhouse eine KQL-Datenbank mit demselben Namen wie das Eventhouse enthält. Sie können in dieser Datenbank Tabellen für Ihre Echtzeitdaten anlegen oder bei Bedarf weitere Datenbanken erstellen.
+1. Wählen Sie die Datenbank aus und beachten Sie, dass es ein zugehöriges *Queryset* gibt. Diese Datei enthält einige KQL-Beispielabfragen, die Sie verwenden können, um mit der Abfrage der Tabellen in Ihrer Datenbank zu beginnen.
 
-        - Sobald Sie diesen Schieberegler ausgewählt haben, sehen Sie, dass alles gut aussieht. Wählen Sie unten rechts im Bereich die Schaltfläche **Fertig stellen** aus.
+    Allerdings gibt es derzeit keine Tabellen zum Abfragen. Dieses Problem lässt sich beheben, indem Daten aus dem Eventstream in einer neuen Tabelle gespeichert werden.
 
-        ![Schritt 5 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-5.png?raw=true)
+1. Wählen Sie auf der Hauptseite Ihrer KQL-Datenbank **Daten abrufen**.
+1. Wählen Sie als Datenquelle **Eventstream** > **Vorhandener Eventstream**.
+1. Erstellen Sie im Bereich **Zieltabelle auswählen oder erstellen** eine neue Tabelle mit dem Namen `stock`. Wählen Sie dann im Bereich **Datenquelle konfigurieren** Ihren Arbeitsbereich und den **stock-data**-Eventstream aus, und nennen Sie die Verbindung `stock-data`.
 
-        - Warten Sie, bis die Schritte im Zusammenfassungsbildschirm abgeschlossen sind, die Folgendes umfassen:
-            - Tabelle erstellen (sales)
-            - Zuordnung erstellen (sales_mapping)
-            - Daten-Queuing
-            - Datenerfassung
-        - Klicken Sie auf die Schaltfläche **Schließen**.
+   ![Screenshot der Konfiguration zum Laden einer Tabelle aus einem Eventstream.](./Images/configure-destination.png)
 
-        ![Schritt 6 des Assistenten für neue Tabellen](./Images/import-wizard-local-file-6.png?raw=true)
+1. Verwenden Sie die Schaltfläche **Weiter**, um die Schritte zum Überprüfen der Daten auszuführen und die Konfiguration dann abzuschließen. Schließen Sie dann das Konfigurationsfenster, um Ihr Eventhouse mit der Bestandstabelle anzuzeigen.
 
-> **Hinweis**: In diesem Beispiel haben Sie eine sehr kleine Menge statischer Daten aus einer Datei importiert, was für diese Übung ausreicht. Tatsächlich können Sie Kusto zur Analyse viel größerer Datenmengen verwenden, unter anderem für Echtzeitdaten aus einer Streamingquelle wie Azure Event Hubs.
+   ![Screenshot von und Eventhouse mit einer Tabelle.](./Images/eventhouse-with-table.png)
 
-## Verwenden von KQL zum Abfragen der Sales-Tabelle
+    Die Verbindung zwischen dem Datenstrom und der Tabelle wurde erstellt. Überprüfen wir dies im Eventstream.
 
-Da Sie über eine Tabelle mit Daten in Ihrer Datenbank verfügen, können Sie nun KQL-Code zur Abfrage dieser Daten verwenden.
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit**-Hub aus und zeigen Sie dann die Seite **Meine Datenströme** an. Es sollten die **Bestands**-Tabelle und der **stock-data-stream**-Datenstrom aufgelistet werden.
 
-1. Stellen Sie sicher, dass die **Sales**-Tabelle hervorgehoben ist. Wählen Sie auf der Menüleiste die Dropdownliste **Abfragetabelle** und dann **Alle 100 Datensätze anzeigen** aus.
+   ![Screenshot der Seite „Meine Datenströme“ im Echtzeit-Hub.](./Images/my-data-streams.png)
 
-2. Ein neuer Bereich mit der Abfrage und dem zugehörigen Ergebnis wird geöffnet. 
+1. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
 
-3. Ändern Sie die Abfrage wie folgt:
+    Der Eventstream zeigt nun ein Ziel für den Datenstrom an:
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
+   ![Screenshot eines Eventstreams mit einem Ziel.](./Images/eventstream-destination.png)
+
+    > **Tipp**: Wählen Sie das Ziel im Entwurfsbereich aus, und wenn darunter keine Datenvorschau angezeigt wird, wählen Sie **Aktualisieren** aus.
+
+    In dieser Übung haben Sie einen sehr einfachen Eventstream erstellt, der Echtzeitdaten erfasst und diese in eine Tabelle lädt. In einer echten Lösung würden Sie in der Regel Transformationen hinzufügen, um die Daten über Zeitfenster zu aggregieren (z. B. um den Durchschnittspreis jeder Aktie über Fünf-Minuten-Zeiträume zu erfassen).
+
+    Lassen Sie uns nun untersuchen, wie Sie die erfassten Daten abfragen und analysieren können.
+
+## Abfragen der erfassten Daten
+
+Der Eventstream erfasst Echtzeit-Börsendaten und lädt sie in eine Tabelle in Ihrer KQL-Datenbank. Sie können diese Tabelle abfragen, um die erfassten Daten zu sehen.
+
+1. Wählen Sie in der Menüleiste auf der linken Seite Ihre Eventhouse-Datenbank aus.
+1. Wählen Sie das *Queryset* für Ihre Datenbank.
+1. Ändern Sie im Abfragebereich die erste Beispielabfrage wie hier gezeigt:
+
+    ```kql
+    stock
+    | take 100
     ```
 
-4. Führen Sie die Abfrage aus. Überprüfen Sie dann die Ergebnisse, die nur die Zeilen für Verkaufsaufträge für das Produkt *Road-250 Black, 48* enthalten sollten.
+1. Wählen Sie den Abfragecode aus und führen Sie ihn aus, um 100 Datenzeilen aus der Tabelle anzuzeigen.
 
-5. Ändern Sie die Abfrage wie folgt:
+    ![Screenshot einer KQL-Abfrage.](./Images/kql-stock-query.png)
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
-   | where datetime_part('year', OrderDate) > 2020
+1. Prüfen Sie die Ergebnisse und ändern Sie dann die Abfrage, um den Durchschnittspreis für jedes Aktiensymbol in den letzten 5 Minuten abzurufen:
+
+    ```kql
+    stock
+    | where ["time"] > ago(5m)
+    | summarize avgPrice = avg(todecimal(bidPrice)) by symbol
+    | project symbol, avgPrice
     ```
 
-6. Führen Sie die Abfrage aus, und überprüfen Sie die Ergebnisse, die nur Verkaufsaufträge für *Road-250 Black, 48* nach 2020 enthalten sollten.
+1. Markieren Sie die geänderte Abfrage und führen Sie sie aus, um die Ergebnisse zu sehen.
+1. Warten Sie ein paar Sekunden und führen Sie es erneut aus. Beachten Sie dabei, dass sich die Durchschnittspreise ändern, wenn neue Daten aus dem Echtzeit-Stream zur Tabelle hinzugefügt werden.
 
-7. Ändern Sie die Abfrage wie folgt:
+## Erstellen von Echtzeitdashboards
 
-    ```kusto
-   sales
-   | where OrderDate between (datetime(2020-01-01 00:00:00) .. datetime(2020-12-31 23:59:59))
-   | summarize TotalNetRevenue = sum(UnitPrice) by Item
-   | sort by Item asc
-    ```
+Nun, da Sie eine Tabelle haben, die mit Datenströmen gefüllt wird, können Sie ein Echtzeit-Dashboard verwenden, um die Daten zu visualisieren.
 
-8. Führen Sie die Abfrage aus, und überprüfen Sie die Ergebnisse, die den Gesamtnettoumsatz für jedes Produkt zwischen dem 1. Januar und dem 31. Dezember 2020 in aufsteigender Reihenfolge des Produktnamens enthalten sollten.
+1. Wählen Sie im Abfrage-Editor die KQL-Abfrage, die Sie zum Abrufen der durchschnittlichen Aktienkurse der letzten 5 Minuten verwendet haben.
+1. Wählen Sie in der Symbolleiste **An Dashboard anheften**. Dann heften Sie die Abfrage **in ein neues Dashboard** mit den folgenden Einstellungen:
+    - **Dashboard-Name**: `Stock Dashboard`
+    - **Kachelname**: `Average Prices`
+1. Erstellen Sie das Dashboard und öffnen Sie es. Diese sollte wie folgt aussehen:
 
-## Erstellen eines Power BI-Berichts aus einem KQL-Abfrageset
+    ![Screenshot eines neuen Dashboards.](./Images/stock-dashboard-table.png)
 
-Sie können Ihr KQL-Abfrageset als Grundlage für einen Power BI-Bericht verwenden.
+1. Wechseln Sie am oberen Rand des Dashboards vom Modus **Betrachten** in den Modus **Bearbeiten**.
+1. Wählen Sie das Symbol **Bearbeiten** (*Bleistift*) für die Kachel **Durchschnittspreise**.
+1. Ändern Sie im Bereich **Visuelle Formatierung** das **Visuelle** von *Tabelle* in *Säulendiagramm*:
 
-1. Führen Sie im Abfrageworkbench-Editor für Ihren Abfragesatz die Abfrage aus, und warten Sie auf die Ergebnisse.
-2. Wählen Sie **Power BI** aus und warten Sie, bis der Berichts-Editor geöffnet wird.
-3. Erweitern Sie im Berichts-Editor im Bereich **Daten** die Option **Kusto-Abfrageergebnis**, und wählen Sie die Felder **Item** und **TotalRevenue** aus.
-4. Wählen Sie in der Canvas für den Berichtsentwurf die hinzugefügte Tabellenvisualisierung aus, und wählen Sie dann im Bereich **Visualisierungen** die Option **Gruppiertes Balkendiagramm** aus.
+    ![Screenshot einer Dashboardkachel, die bearbeitet wird.](./Images/edit-dashboard-tile.png)
 
-    ![Screenshot: Ein Bericht aus einer KQL-Abfrage](./Images/kql-report.png)
+1. Wählen Sie oben auf dem Dashboard **Änderungen übernehmen** und sehen Sie sich Ihr modifiziertes Dashboard an:
 
-5. Wählen Sie im **Power BI**-Fenster im Menü **Datei** die Option **Speichern** aus. Speichern Sie dann den Bericht als **Revenue by Item.pbix** in dem Arbeitsbereich, in dem Ihre Lakehouse- und KQL-Datenbank mithilfe der Vertraulichkeitsbezeichnung **Nicht geschäftlich** definiert sind.
-6. Schließen Sie das **Power BI**-Fenster, und wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
+    ![Screenshot eines Dashboards mit einer Diagrammkachel.](./Images/stock-dashboard-chart.png)
 
-    Aktualisieren Sie bei Bedarf die Seite „Arbeitsbereich“, um alle darin enthaltenen Elemente anzuzeigen.
+    Jetzt haben Sie eine Live-Visualisierung Ihrer Echtzeit-Aktiendaten.
 
-7. Beachten Sie in der Liste der Elemente in Ihrem Arbeitsbereich, dass der Bericht **Revenue by Item** aufgeführt ist.
+## Erstellen einer Warnung
+
+Real-Time Intelligence in Microsoft Fabric umfasst eine Technologie namens *Activator*, die auf der Grundlage von Echtzeitereignissen Aktionen auslösen kann. Lassen Sie sich benachrichtigen, wenn der durchschnittliche Aktienkurs um einen bestimmten Betrag steigt.
+
+1. Wählen Sie im Dashboard, das Ihre Aktienkursvisualisierung enthält, in der Symbolleiste die Option **Benachrichtigung einrichten** aus.
+1. Erstellen Sie im Bereich **Alarm einrichten** einen Alarm mit den folgenden Einstellungen:
+    - **Abfrage ausführen alle**: 5 Minuten
+    - **Überprüfen**: Bei jeder Veranstaltung gruppiert nach
+    - **Gruppierungsfeld**: Symbol
+    - **Wann**: avgPrice
+    - **Bedingung**: Erhöht um
+    - **Wert:** 100
+    - **Aktion**: Senden Sie mir eine E-Mail
+    - **Speicherort**:
+        - **Arbeitsbereich**: *Ihr Arbeitsbereich*
+        - **Artikel**: Neuen Artikel erstellen
+        - **Neuer Artikelname**: *Ein eindeutiger Name Ihrer Wahl*
+
+    ![Screenshot der Warnungseinstellungen.](./Images/configure-activator.png)
+
+1. Erstellen Sie die Warnmeldung und warten Sie, bis sie gespeichert wurde. Schließen Sie dann das Fenster und bestätigen Sie, dass es erstellt wurde.
+1. Wählen Sie in der Menüleiste links die Seite für Ihren Arbeitsbereich aus (und speichern Sie alle nicht gespeicherten Änderungen in Ihrem Dashboard, wenn Sie dazu aufgefordert werden).
+1. Sehen Sie sich auf der Seite „Arbeitsbereich“ die Elemente an, die Sie in dieser Übung erstellt haben, einschließlich des Aktivators für Ihre Warnmeldung.
+1. Öffnen Sie den Aktivator und wählen Sie auf der Seite unter dem Knoten **avgPrice** die eindeutige Kennung für Ihre Warnmeldung aus. Dann sehen Sie sich die Registerkarte **Verlauf** an.
+
+    Möglicherweise wurde Ihre Warnung nicht ausgelöst. In diesem Fall enthält der Verlauf keine Daten. Sollte sich der durchschnittliche Aktienkurs jemals um mehr als 100 ändern, sendet Ihnen der Aktivator eine E-Mail und die Warnung wird in der Historie aufgezeichnet.
 
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie ein Lakehouse und eine KQL-Datenbank erstellt, die die in das Lakehouse hochgeladenen Daten analysiert. Sie haben KQL verwendet, um die Daten abzufragen und einen Abfragesatz zu erstellen, der dann zum Erstellen eines Power BI-Berichts verwendet wurde.
+In dieser Übung haben Sie ein Eventhouse erstellt, Echtzeitdaten mithilfe eines Eventstreams erfasst, die erfassten Daten in einer KQL-Datenbanktabelle abgefragt, ein Echtzeit-Dashboard zur Visualisierung der Echtzeitdaten erstellt und eine Warnung mithilfe von Activator konfiguriert.
 
-Wenn Sie Ihre KQL-Datenbank erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
+Wenn Sie die Erkundung von Real-Time Intelligence in Fabric abgeschlossen haben, können Sie den für diese Übung erstellten Arbeitsbereich löschen.
 
-1. Wählen Sie auf der linken Leiste das Symbol für Ihren Arbeitsbereich aus.
-2. Wählen Sie im Menü **...** auf der Symbolleiste die **Arbeitsbereichseinstellungen** aus.
+1. Wählen Sie auf der Leiste auf der linken Seite das Symbol für Ihren Arbeitsbereich aus.
+2. Wählen Sie in der Symbolleiste **Arbeitsbereichseinstellungen** aus.
 3. Wählen Sie im Abschnitt **Allgemein** die Option **Diesen Arbeitsbereich entfernen** aus.
