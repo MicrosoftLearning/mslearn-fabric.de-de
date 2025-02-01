@@ -16,7 +16,7 @@ Diese Übung dauert ca. **30** Minuten.
 
 Bevor Sie mit dieser Übung beginnen können, müssen Sie einen Webbrowser öffnen und die folgende URL eingeben, um den ZIP-Ordner herunterzuladen:
 
-`https://github.com/MicrosoftLearning/mslearn-fabric/raw/Main/Allfiles/Labs/16b/16-reusable-assets.zip`
+`https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrahieren Sie den Ordner in den Ordner **C:\Users\Student\Downloads\16-reusable-assets**.
 
@@ -240,6 +240,6 @@ In dieser Aufgabe veröffentlichen Sie Ihre Power BI Project-Datei und sehen sic
 
 > Wenn semantische Modelle mit anderen semantischen Modellen in Beziehung stehen, nennt man das Verkettung. In diesem Lab wird das semantische Einstiegsmodell mit dem neu erstellten semantischen Modell verknüpft, sodass es für einen speziellen Zweck wiederverwendet werden kann.
 
-## Bereinigung
+## Bereinigen
 
 Sie haben diese Übung erfolgreich abgeschlossen. Sie haben Power BI Projekt- und Vorlagendateien sowie spezielle semantische Modelle und Berichte erstellt. Sie können den Arbeitsbereich und alle lokalen Assets sicher löschen.
