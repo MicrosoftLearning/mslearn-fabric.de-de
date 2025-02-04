@@ -18,7 +18,6 @@ Diese Übung dauert ca. **25** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,20 +28,13 @@ Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich mit a
 
 Nachdem Sie nun über einen Arbeitsbereich mit Unterstützung für eine Fabric-Kapazität verfügen, können Sie ein Eventhouse darin erstellen.
 
-1. Erstellen Sie auf der Startseite von **Real-Time Intelligence** ein neues **Eventhouse** mit einem Namen Ihrer Wahl. Wenn das Eventhouse erstellt wurde, schließen Sie alle Eingabeaufforderungen oder Tipps, die angezeigt werden, bis die Eventhouse-Seite angezeigt wird:
+1. Wählen Sie in der Menüleiste auf der linken Seite **Workloads** aus. Wählen Sie dann die Kachel **Real-Time Intelligence** aus.
+1. Wählen Sie auf der Startseite **Real-Time Intelligence** in der Kachel *Real-Time Intelligence-Beispiel erkunden* die Option **Öffnen** aus. Es wird automatisch ein Eventhouse namens **RTISample** erstellt:
 
-   ![Screenshot eines neuen Eventhouse.](./Images/create-eventhouse.png)
+   ![Screenshot eines neuen Eventhouse mit Beispieldaten.](./Images/create-eventhouse-sample.png)
 
 1. Beachten Sie im linken Bereich, dass Ihr Eventhouse eine KQL-Datenbank mit demselben Namen wie das Eventhouse enthält.
-1. Wählen Sie die KQL-Datenbank aus, um sie anzuzeigen.
-
-    Derzeit enthält die Datenbank keine Tabellen. In der Übung verwenden Sie dann noch einen Ereignisstream, um Daten aus einer Echtzeitquelle in eine Tabelle zu laden.
-   
-1. Wählen Sie auf der Seite der KQL-Datenbank **Get data** > **Sample**. Wählen Sie dann die **Automotive Operations Analytics**-Beispieldaten aus.
-
-1. Stellen Sie nach Abschluss des Ladens der Daten (nimmt evtl. einige Zeit in Anspruch) sicher, dass eine **Automotive**-Tabelle erstellt wurde.
-
-   ![Screenshot der Automotive-Tabelle in einer Eventhouse-Datenbank.](./Images/choose-automotive-operations-analytics.png)
+1. Stellen Sie sicher, dass auch eine **Bikestream-Tabelle** erstellt wurde.
 
 ## Abfragen von Daten mithilfe von KQL
 
@@ -54,7 +46,7 @@ Kusto-Abfragesprache (KQL) ist eine intuitive, umfassende Sprache, mit der Sie e
 1. Ändern Sie die erste Beispielabfrage wie folgt.
 
     ```kql
-    Automotive
+    Bikestream
     | take 100
     ```
 
@@ -70,8 +62,8 @@ Kusto-Abfragesprache (KQL) ist eine intuitive, umfassende Sprache, mit der Sie e
 
     ```kql
     // Use 'project' and 'take' to view a sample number of records in the table and check the data.
-    Automotive 
-    | project vendor_id, trip_distance
+    Bikestream
+    | project Street, No_Bikes
     | take 10
     ```
 
@@ -82,8 +74,8 @@ Kusto-Abfragesprache (KQL) ist eine intuitive, umfassende Sprache, mit der Sie e
 1. Probieren Sie die folgende Abfrage aus:
 
     ```kql
-    Automotive 
-    | project vendor_id, ["Trip Distance"] = trip_distance
+    Bikestream 
+    | project Street, ["Number of Empty Docks"] = No_Empty_Docks
     | take 10
     ```
 
@@ -91,33 +83,35 @@ Kusto-Abfragesprache (KQL) ist eine intuitive, umfassende Sprache, mit der Sie e
 
 Sie können das Schlüsselwort *Zusammenfassen* mit einer Funktion zur Aggregation und anderweitigen Bearbeitung von Daten verwenden.
 
-1. Probieren Sie die folgende Abfrage aus, die die Funktion **sum** verwendet, um die Reisedaten zusammenzufassen und weitere Informationen zur insgesamt zurückgelegten Strecke zu erhalten:
+1. Versuchen Sie die folgende Abfrage, die die Funktion **sum** verwendet, um die Mietdaten zusammenzufassen und zu sehen, wie viele Fahrräder insgesamt verfügbar sind:
 
     ```kql
 
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance)
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes)
     ```
 
     Sie können die zusammengefassten Daten nach einer angegebenen Spalte oder einem angegebenen Ausdruck gruppieren.
 
-1. Führen Sie die folgende Abfrage aus, um die Fahrtstrecken nach Stadtbezirken innerhalb des NY-Taxisystems zu gruppieren und die Gesamtstrecke zu ermitteln, die von jedem Stadtbezirk aus zurückgelegt wurde.
+1. Führen Sie die folgende Abfrage aus, um die Anzahl der Fahrräder nach Nachbarschaft zu gruppieren, um die Menge der verfügbaren Fahrräder in den einzelnen Vierteln zu ermitteln:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = pickup_boroname, ["Total Trip Distance"]
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood, ["Total Number of Bikes"]
     ```
 
-    Die Ergebnisse enthalten einen Leerwert, der für die Analyse nie gut ist.
+    Wenn einer der Fahrradpunkte einen Null- oder Leereintrag für die Nachbarschaft hat, enthalten die Ergebnisse der Zusammenfassung einen leeren Wert, was für die Analyse nie gut ist.
 
-1. Ändern Sie die Abfrage wie hier gezeigt, um die Funktion *case* zusammen mit den Funktionen *isempty* und *isnull* zu verwenden, um alle Reisen, für die der Stadtbezirk unbekannt ist, für die Nachverfolgung in eine Kategorie ***Nicht identifiziert*** zu gruppieren.
+1. Ändern Sie die Abfrage wie hier gezeigt, um die Funktion *case* zusammen mit den Funktionen *isempty* und *isnull* zu verwenden, um alle Reisen, für die die Nachbarschaft unbekannt ist, zur Nachverfolgung in der Kategorie ***Nicht identifiziert*** zusammenzufassen.
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
     ```
+
+    >**Hinweis**: Da dieser Beispieldataset gut gepflegt ist, kann es sein, dass Sie das Feld „Nicht identifiziert“ im Abfrageergebnis nicht finden.
 
 ### Sortieren von Daten mithilfe von KQL
 
@@ -126,33 +120,33 @@ Um unsere Daten besser zu verstehen, ordnen wir sie normalerweise nach einer Spa
 1. Probieren Sie die folgende Abfrage aus:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | sort by Borough asc
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | sort by Neighbourhood asc
     ```
 
 1. Ändern Sie die Abfrage wie folgt und führen Sie sie erneut aus. Beachten Sie, dass der Operator *order by* genauso funktioniert wie *sort by*:
 
     ```kql
-    Automotive
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | order by Borough asc 
+    Bikestream
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | order by Neighbourhood asc
     ```
 
 ### Filtern von Daten mithilfe von KQL
 
 In KQL wird die Klausel *where* zum Filtern von Daten verwendet. Sie können Bedingungen in einer *where*-Klausel kombinieren, indem Sie die logischen Operatoren *and* und *or* verwenden.
 
-1. Führen Sie die folgende Abfrage aus, um die Reisedaten so zu filtern, dass nur Reisen enthalten sind, die aus Manhatten stammen:
+1. Führen Sie die folgende Abfrage aus, um die Fahrraddaten zu filtern, um nur Fahrradpunkte in das Chelsea-Viertel einzuschließen:
 
     ```kql
-    Automotive
-    | where pickup_boroname == "Manhattan"
-    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-    | sort by Borough asc
+    Bikestream
+    | where Neighbourhood == "Chelsea"
+    | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood
+    | project Neighbourhood = case(isempty(Neighbourhood) or isnull(Neighbourhood), "Unidentified", Neighbourhood), ["Total Number of Bikes"]
+    | sort by Neighbourhood asc
     ```
 
 ## Abfragen von Daten mithilfe von Transact-SQL
@@ -164,90 +158,90 @@ KQL Database unterstützt Transact-SQL nicht von Haus aus, aber es bietet einen 
 1. Fügen Sie in Ihrem Abfrageset die folgende Transact-SQL-Abfrage hinzu, und führen Sie sie aus: 
 
     ```sql
-    SELECT TOP 100 * from Automotive
+    SELECT TOP 100 * from Bikestream
     ```
 
 1. Ändern Sie die Abfrage wie folgt, um bestimmte Spalten abzurufen:
 
     ```sql
-    SELECT TOP 10 vendor_id, trip_distance
-    FROM Automotive
+    SELECT TOP 10 Street, No_Bikes
+    FROM Bikestream
     ```
 
-1. Ändern Sie die Abfrage, um einen Alias zuzuweisen, der **trip_distance** in einen benutzerfreundlicheren Namen umbenennt.
+1. Ändern Sie die Abfrage, um einen Alias zu vergeben, der **No_Empty_Docks** in einen benutzerfreundlicheren Namen umbenennt.
 
     ```sql
-    SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
-    from Automotive
+    SELECT TOP 10 Street, No_Empty_Docks as [Number of Empty Docks]
+    from Bikestream
     ```
 
 ### Zusammenfassen von Daten mithilfe von Transact-SQL
 
-1. Führen Sie die folgende Abfrage aus, um die gesamt zurückgelegte Entfernung zu ermitteln:
+1. Führen Sie die folgende Abfrage aus, um die Gesamtzahl der verfügbaren Fahrräder zu ermitteln:
 
     ```sql
-    SELECT sum(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+    SELECT sum(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     ```
 
-1. Ändern Sie die Abfrage so, dass die Gesamtdistanz nach Abholungsbezirk gruppiert wird:
+1. Ändern Sie die Abfrage so, dass die Gesamtzahl der Fahrräder nach Nachbarschaft gruppiert wird:
 
     ```sql
-    SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
-    GROUP BY pickup_boroname
+    SELECT Neighbourhood, Sum(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
+    GROUP BY Neighbourhood
     ```
 
-1. Passen Sie die Abfrage weiter an, um eine *CASE*-Anweisung zu verwenden, um Reisen mit unbekanntem Ursprung in eine ***Nicht identifiziert***-Kategorie für die Nachverfolgung zu gruppieren. 
+1. Ändern Sie die Abfrage weiter, um eine *CASE*-Anweisung zu verwenden, um Fahrradpunkte mit unbekanntem Ursprung in einer ***Nicht identifiziert***-Kategorie für die Nachverfolgung zusammenzufassen. 
 
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
-               ELSE pickup_boroname
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
              END;
     ```
 
 ### Sortieren von Daten mithilfe von Transact-SQL
 
-1. Führen Sie die folgende Abfrage aus, um die gruppierten Ergebnisse nach Bezirk zu sortieren:
+1. Führen Sie die folgende Abfrage aus, um die gruppierten Ergebnisse nach Nachbarschaften zu ordnen:
  
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-               ELSE pickup_boroname
-             END
-    ORDER BY Borough ASC;
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
+             END;
+    ORDER BY Neighbourhood ASC;
     ```
 
 ### Filtern von Daten mithilfe von Transact-SQL
     
-1. Führen Sie die folgende Abfrage aus, um die gruppierten Daten so zu filtern, dass nur Zeilen mit dem Bezirk „Manhattan“ in den Ergebnissen enthalten sind:
+1. Führen Sie die folgende Abfrage aus, um die gruppierten Daten so zu filtern, dass nur Zeilen mit dem Nachbarschaftsnamen „Chelsea“ in den Ergebnissen enthalten sind
 
     ```sql
     SELECT CASE
-             WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-             ELSE pickup_boroname
-           END AS Borough,
-           SUM(trip_distance) AS [Total Trip Distance]
-    FROM Automotive
+             WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+             ELSE Neighbourhood
+           END AS Neighbourhood,
+           SUM(No_Bikes) AS [Total Number of Bikes]
+    FROM Bikestream
     GROUP BY CASE
-               WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
-               ELSE pickup_boroname
-             END
-    HAVING Borough = 'Manhattan'
-    ORDER BY Borough ASC;
+               WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
+               ELSE Neighbourhood
+             END;
+    HAVING Neighbourhood = 'Chelsea'
+    ORDER BY Neibourhood ASC;
     ```
 
 ## Bereinigen von Ressourcen
