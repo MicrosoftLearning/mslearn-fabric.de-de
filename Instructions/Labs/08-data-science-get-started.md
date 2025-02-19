@@ -18,8 +18,7 @@ Dieses Lab dauert ungefähr **20** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric).
-1. Wählen Sie **Synapse Data Science** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -30,7 +29,9 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Zum Ausführen von Code können Sie ein *Notebook* erstellen. Notebooks sind eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) schreiben und ausführen können.
 
-1. Erstellen Sie auf der Startseite von **Data Science mit Synapse** ein neues **Notebook**.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Auf der Seite *Neu* wählen Sie unter dem Abschnitt *Data Science* die Option **Notizbuch** aus. Wählen Sie einen eindeutigen Namen Ihrer Wahl aus.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
 
     Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen *Zelle* geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die *Code* oder *Markdown* (formatierten Text) enthalten können.
 
@@ -89,17 +90,16 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
     |72|2|30.5|93.0|156|93.6|41.0|4,0|4.6728|85|141|
     |24|1|25.3|84.0|198|131.4|40.0|5.0|4.8903|89|206|
     |50|1|23.0|101.0|192|125,4|52.0|4,0|4.2905|80|135|
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | … | … | … | … | … | … | … | … | … | … | … |
 
     Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
 
-1. Im oberen Bereich der gerenderten Tabelle befinden sich zwei Registerkarten: **Tabelle** und **Diagramm**. Wählen Sie **Diagramm** aus.
-1. Wählen Sie rechts oben im Diagramm **Diagramm anpassen** aus, um die Visualisierung zu ändern.
-1. Ändern Sie die folgenden Einstellungen für das Diagramm:
+1. Oben in der gerenderten Tabelle gibt es zwei Registerkarten: **Tabelle** und **+ Neues Diagramm**. Wählen Sie **+ Neues Diagramm** aus.
+1. Wählen Sie die Option **Eigenes erstellen** auf der rechten Seite des Diagramms, um eine neue Visualisierung zu erstellen.
+1. Wählen Sie die folgenden Diagrammeinstellungen:
     * **Diagrammtyp**: `Box plot`
-    * **Schlüssel**: *leer lassen*
-    * **Werte**: `Y`
-1. Wählen Sie **Anwenden** aus, um die neue Visualisierung zu rendern und die Ausgabe zu untersuchen.
+    * **y-Achse**: `Y`
+1. Überprüfen Sie die Ausgabe, die die Verteilung der Beschriftungsspalte `Y` zeigt.
 
 ## Vorbereiten der Daten
 
@@ -121,8 +121,8 @@ Nachdem Sie die Daten erfasst und untersucht haben, können Sie sie transformier
 1. Erstellen Sie eine neue Spalte mit den folgenden Einstellungen:
     * **Spaltenname**: `Risk`
     * **Spaltenformel**: `(df['Y'] > 211.5).astype(int)`
-1. Überprüfen Sie die neue Spalte `Risk`, die der Vorschau hinzugefügt wird. Vergewissern Sie sich, dass die Anzahl der Zeilen mit dem Wert `1` ungefähr 25 % aller Zeilen beträgt (da es sich um das 75. Perzentil von `Y` handelt).
 1. Wählen Sie **Übernehmen**.
+1. Überprüfen Sie die neue Spalte `Risk`, die der Vorschau hinzugefügt wird. Vergewissern Sie sich, dass die Anzahl der Zeilen mit dem Wert `1` ungefähr 25 % aller Zeilen beträgt (da es sich um das 75. Perzentil von `Y` handelt).
 1. Wählen Sie **Code zu Notebook hinzufügen** aus.
 1. Führen Sie die Zelle mit dem Code aus, der vom Data Wrangler generiert wird.
 1. Führen Sie den folgenden Code in einer neuen Zelle aus, um zu überprüfen, ob die Spalte `Risk` wie erwartet aussieht:
@@ -215,7 +215,7 @@ Mit Microsoft Fabric können Sie alle Ihre Experimente nachverfolgen und visuell
 
     > **Tipp:** Wenn keine protokollierten Experimentausführungen angezeigt werden, aktualisieren Sie die Seite.
 
-1. Sehen Sie sich die **Ausführungsmetriken** an, um die Genauigkeit Ihres Regressionsmodells zu ermitteln.
+1. Überprüfen Sie die **Ausführungsmetriken**, um herauszufinden, wie genau Ihr Regressionsmodell ist.
 1. Navigieren Sie zurück zur Startseite, und wählen Sie das Experiment `diabetes-classification` aus, um es zu öffnen.
 1. Sehen Sie sich die **Ausführungsmetriken** an, um die Genauigkeit des Klassifizierungsmodells zu ermitteln. Es sind andere Metriken vorhanden, da Sie einen anderen Modelltyp trainiert haben.
 

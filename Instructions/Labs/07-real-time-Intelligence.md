@@ -16,13 +16,14 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität erstellen.
 
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-## Erstellen eines Eventstreams
+## Erstellen eines Ereignisstreams
 
 Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. Sie beginnen im Fabric Echtzeit-Hub.
 
@@ -47,7 +48,9 @@ Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. S
 
 Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts damit. Erstellen wir ein Eventhouse, in dem die erfassten Daten in einer Tabelle gespeichert werden können.
 
-1. Wählen Sie in der Menüleiste auf der linken Seite **Startseite** aus und erstellen Sie dann auf der Startseite von Real-Time Intelligence ein neues **Eventhouse**, dem Sie einen eindeutigen Namen Ihrer Wahl geben.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* unter dem Abschnitt *Real-Time-Inteligence* die Option **Eventhouse** aus. Wählen Sie einen eindeutigen Namen Ihrer Wahl aus.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
 
     Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
 
@@ -60,7 +63,7 @@ Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts da
 
 1. Wählen Sie auf der Hauptseite Ihrer KQL-Datenbank **Daten abrufen**.
 1. Wählen Sie als Datenquelle **Eventstream** > **Vorhandener Eventstream**.
-1. Erstellen Sie im Bereich **Zieltabelle auswählen oder erstellen** eine neue Tabelle mit dem Namen `stock`. Wählen Sie dann im Bereich **Datenquelle konfigurieren** Ihren Arbeitsbereich und den **stock-data**-Eventstream aus, und nennen Sie die Verbindung `stock-data`.
+1. Erstellen Sie im Bereich **Zieltabelle auswählen oder erstellen** eine neue Tabelle mit dem Namen `stock`. Wählen Sie dann im Bereich **Datenquelle konfigurieren** Ihren Arbeitsbereich und den **stock-data**-Eventstream aus, und nennen Sie die Verbindung `stock-table`.
 
    ![Screenshot der Konfiguration zum Laden einer Tabelle aus einem Eventstream.](./Images/configure-destination.png)
 
@@ -70,11 +73,7 @@ Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts da
 
     Die Verbindung zwischen dem Datenstrom und der Tabelle wurde erstellt. Überprüfen wir dies im Eventstream.
 
-1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit**-Hub aus und zeigen Sie dann die Seite **Meine Datenströme** an. Es sollten die **Bestands**-Tabelle und der **stock-data-stream**-Datenstrom aufgelistet werden.
-
-   ![Screenshot der Seite „Meine Datenströme“ im Echtzeit-Hub.](./Images/my-data-streams.png)
-
-1. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit**-Hub aus und zeigen Sie dann die Seite **Meine Datenströme** an. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
 
     Der Eventstream zeigt nun ein Ziel für den Datenstrom an:
 
