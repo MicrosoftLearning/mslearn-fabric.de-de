@@ -18,6 +18,7 @@ Diese Übung dauert ca. **25** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität.
 
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -29,7 +30,7 @@ Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich mit a
 Nachdem Sie nun über einen Arbeitsbereich mit Unterstützung für eine Fabric-Kapazität verfügen, können Sie ein Eventhouse darin erstellen.
 
 1. Wählen Sie in der Menüleiste auf der linken Seite **Workloads** aus. Wählen Sie dann die Kachel **Real-Time Intelligence** aus.
-1. Wählen Sie auf der Startseite **Real-Time Intelligence** in der Kachel *Real-Time Intelligence-Beispiel erkunden* die Option **Öffnen** aus. Es wird automatisch ein Eventhouse namens **RTISample** erstellt:
+1. Wählen Sie auf der Startseite von **Real-Time Intelligence** die Kachel **Real-Time Intelligence-Beispiel erkunden** aus. Es wird automatisch ein Eventhouse namens **RTISample** erstellt:
 
    ![Screenshot eines neuen Eventhouse mit Beispieldaten.](./Images/create-eventhouse-sample.png)
 
@@ -221,7 +222,7 @@ KQL Database unterstützt Transact-SQL nicht von Haus aus, aber es bietet einen 
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     ORDER BY Neighbourhood ASC;
     ```
 
@@ -239,7 +240,7 @@ KQL Database unterstützt Transact-SQL nicht von Haus aus, aber es bietet einen 
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     HAVING Neighbourhood = 'Chelsea'
     ORDER BY Neibourhood ASC;
     ```
