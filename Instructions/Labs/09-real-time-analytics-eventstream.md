@@ -17,7 +17,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit aktivierter Fabric-Kapazität erstellen.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Real-Time Intelligence** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -28,7 +28,7 @@ Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit akt
 
 Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Stoffobjekte beginnen, die Sie für Ihre Real-Time Intelligence-Lösung benötigen. wir beginnen mit der Erstellung eines Eventhouses.
 
-1. Wählen Sie in der Menüleiste auf der linken Seite **Startseite** aus und erstellen Sie dann auf der Startseite von Real-Time Intelligence ein neues **Eventhouse**, dem Sie einen eindeutigen Namen Ihrer Wahl geben.
+1. Wählen Sie im soeben erstellten Arbeitsbereich **+ Neues Element** aus. Im Bereich *Neues Element* wählen Sie **Eventhouse** aus und geben ihm einen eindeutigen Namen Ihrer Wahl.
 1. Schließen Sie alle Tipps oder Aufforderungen, die angezeigt werden, bis Sie Ihr neues leeres Eventhouse sehen.
 
     ![Screenshot eines neuen Eventhouse](./Images/create-eventhouse.png)
@@ -58,8 +58,7 @@ Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Sto
 
 ## Ziel hinzufügen
 
-1. Verwenden Sie das Symbol **+** rechts neben dem Knoten **Fahrraddaten**, um einen neuen Knoten **Eventhouse** hinzuzufügen.
-1. Verwenden Sie das Symbol *Bleistift* im neuen Eventhouse-Knoten, um ihn zu bearbeiten.
+1. Wählen Sie die Kachel **Ereignisse transformieren oder Ziel hinzufügen** und suchen Sie nach **Eventhouse**.
 1. Im Bereich **Eventhouse** konfigurieren Sie die folgenden Einrichtungsoptionen.
    - **Datenerfassungsmodus:**: Ereignisverarbeitung vor der Erfassung
    - **Zielname:**`bikes-table`
