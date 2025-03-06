@@ -190,7 +190,7 @@ Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Aust
 
     ![](Images/enforce-model-security-image32.png)
 
-    *Die Option **Sicherheit** unterstützt die Zuordnung von Microsoft Azure Active Directory (Azure AD)-Sicherheitsprinzipalen, zu denen Sicherheitsgruppen und -benutzer*innen zählen.*
+    *Die Option **Sicherheit** unterstützt die Zuordnung von Microsoft Entra-Sicherheitsprinzipalen, einschließlich Sicherheitsgruppen und Benutzende.*
 
 4. Beachten Sie links die Liste der Rollen, und dass **Australien** ausgewählt ist.
 

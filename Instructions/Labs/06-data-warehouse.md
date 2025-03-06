@@ -31,7 +31,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Warehouse
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
-    ![Screenshot eines neuen Warehouse](./Images/new-data-warehouse.png)
+    ![Screenshot eines neuen Warehouse](./Images/new-data-warehouse2.png)
 
 ## Erstellen von Tabellen und Einfügen von Daten
 
@@ -195,7 +195,7 @@ Anstatt SQL-Code zu schreiben, können Sie den grafischen Abfrage-Designer verwe
 
 1. Wenn Sie Daten für ein einzelnes Produkt anhand einer Manageranforderung untersuchen möchten, können Sie jetzt die Spalte **ProductName** verwenden, um die Daten in der Abfrage zu filtern. Filtern Sie die Spalte **ProductName**, um nur **Cable Lock**-Daten anzuzeigen.
 
-1. Hier können Sie die Ergebnisse dieser einzelnen Abfrage analysieren, indem Sie **Ergebnisse visualisieren** oder **In Excel öffnen** auswählen. Sie können nun genau sehen, was der Manager angefordert hat, sodass wir die Ergebnisse nicht weiter analysieren müssen.
+1. Hier können Sie die Ergebnisse dieser einzelnen Abfrage analysieren, indem Sie **Ergebnisse visualisieren** oder **Excel-Datei herunterladen** auswählen. Sie können nun genau sehen, was der Manager angefordert hat, sodass wir die Ergebnisse nicht weiter analysieren müssen.
 
 ### Visualisieren Ihrer Daten
 
@@ -232,7 +232,7 @@ Sie können die Daten ganz einfach in einer einzelnen Abfrage oder in Ihrem Data
 
 1. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als **Umsatzbericht** in dem Arbeitsbereich, den Sie zuvor erstellt haben.
 
-1. Navigieren Sie im Menühub auf der linken Seite zurück zum Arbeitsbereich. Beachten Sie, dass Sie jetzt drei Elemente in Ihrem Arbeitsbereich gespeichert haben: Ihr Data Warehouse, das Standarddataset und den Bericht, den Sie erstellt haben.
+1. Navigieren Sie im Menühub auf der linken Seite zurück zum Arbeitsbereich. Beachten Sie, dass Sie jetzt drei Elemente in Ihrem Arbeitsbereich gespeichert haben: Ihr Data Warehouse, das semantische Standardmodell und den Bericht, den Sie erstellt haben.
 
     ![Screenshot des Arbeitsbereichs mit den drei aufgeführten Elementen](./Images/workspace-items.png)
 
