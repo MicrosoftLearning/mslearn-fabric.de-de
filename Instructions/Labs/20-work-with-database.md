@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric`.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie in der Menüleiste auf der linken Seite **Neuer Arbeitsbereich** aus.
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,8 +27,10 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Da Sie nun über einen Arbeitsbereich verfügen, ist es an der Zeit, eine SQL-Datenbank zu erstellen.
 
-1. Wählen Sie im Fabric-Portal im linken Bedienfeld **+ Neues Element** aus.
-1. Navigieren Sie zum Abschnitt **Daten speichern** und wählen Sie die **SQL-Datenbank** aus.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* unter dem Abschnitt *Datenbanken* die Option **SQL-Datenbank**.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
+
 1. Geben Sie **AdventureWorksLT** als Datenbanknamen ein und wählen Sie **Erstellen**.
 1. Sobald Sie Ihre Datenbank erstellt haben, können Sie Beispieldaten von der Karte **Beispieldaten** in Ihre Datenbank laden.
 

@@ -18,7 +18,7 @@ Dieses Lab dauert ungefähr 45 Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten können, müssen Sie einen Arbeitsbereich erstellen.
 
-1. Wählen Sie auf der [Microsoft Fabric](https://app.fabric.microsoft.com)-Startseite https://app.fabric.microsoft.com die **Data Engineering**-Erfahrung aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie in der linken Menüleiste **Arbeitsbereiche** (🗇) und dann **Neuer Arbeitsbereich**.
 1. Geben Sie dem neuen Arbeitsbereich einen Namen und wählen Sie im Abschnitt **Erweitert** den entsprechenden Lizenzierungsmodus. Wenn Sie eine Testversion von Microsoft Fabric gestartet haben, wählen Sie Testversion.
 1. Wählen Sie **Anwenden**, um einen leeren Arbeitsbereich zu erstellen.

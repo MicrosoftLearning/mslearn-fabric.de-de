@@ -18,8 +18,7 @@ Dieses Lab dauert ungefähr **25** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
-1. Wählen Sie auf der Willkommensseite von Fabric die Option **Synapse Data Science** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -30,7 +29,9 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks sind eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) schreiben und ausführen können.
 
-1. Erstellen Sie auf der Startseite von **Data Science mit Synapse** ein neues **Notebook**.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Auf der Seite *Neu* wählen Sie unter dem Abschnitt *Data Science* die Option **Notizbuch** aus. Wählen Sie einen eindeutigen Namen Ihrer Wahl aus.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
 
     Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen *Zelle* geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die *Code* oder *Markdown* (formatierten Text) enthalten können.
 
@@ -89,7 +90,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen und ein Modell zu trainier
     |72|2|30.5|93.0|156|93.6|41.0|4,0|4.6728|85|141|
     |24|1|25.3|84.0|198|131.4|40.0|5.0|4.8903|89|206|
     |50|1|23.0|101.0|192|125,4|52.0|4,0|4.2905|80|135|
-    | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    | … | … | … | … | … | … | … | … | … | … | … |
 
     Die Ausgabe zeigt die Zeilen und Spalten des Diabetesdatasets.
 

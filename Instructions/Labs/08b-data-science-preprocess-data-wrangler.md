@@ -16,8 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich bei Bedarf mit Ihren Fabric-Anmeldeinformationen an.
-1. Wählen Sie auf der Willkommensseite von Fabric die Option **Synapse Data Science** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -28,7 +27,9 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Um ein Modell zu trainieren, können Sie ein *Notebook* erstellen. Notebooks bieten eine interaktive Umgebung, in der Sie Code (in mehreren Sprachen) als *Experimente* schreiben und ausführen können.
 
-1. Erstellen Sie auf der Startseite von **Data Science mit Synapse** ein neues **Notebook**.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Auf der Seite *Neu* wählen Sie unter dem Abschnitt *Data Science* die Option **Notizbuch** aus. Wählen Sie einen eindeutigen Namen Ihrer Wahl aus.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
 
     Nach einigen Sekunden wird ein neues Notebook mit einer einzelnen *Zelle* geöffnet. Notebooks bestehen aus einer oder mehreren Zellen, die *Code* oder *Markdown* (formatierten Text) enthalten können.
 
@@ -100,7 +101,7 @@ Jetzt können Sie Code ausführen, um Daten abzurufen. Sie arbeiten mit dem [**O
     |1|1992-03-26|1.293|dominicks|18596|1|1,94|36076.24|
     |2|1991-08-15|2278|dominicks|17457|1|2.14|37357.98|
     |3|1992-09-03|2175|tropicana|9652|1|2,07|19979.64|
-    |...|...|...|...|...|...|...|...|
+    |…|…|…|…|…|…|…|…|
 
     Die Ausgabe zeigt die ersten vier Zeilen des Datasets OJ Sales.
 

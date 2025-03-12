@@ -14,7 +14,7 @@ Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Data Warehouse**.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -27,7 +27,9 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
 Erstellen Sie als Nächstes ein Data Warehouse im von Ihnen erstellten Arbeitsbereich:
 
-1. Klicken Sie auf der Data Warehouse-Startseite auf die Verknüpfung **Beispiel-Warehouse**, um ein neues Warehouse mit einem Namen Ihrer Wahl zu erstellen.  
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* unter dem Abschnitt *Data Warehouse* die Option **Beispielwarehouse** und erstellen Sie ein neues Data Warehouse mit einem Namen Ihrer Wahl.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
@@ -67,7 +69,7 @@ In dieser Übung fügen Sie einen Benutzer bzw. eine Benutzerin zu einer Arbeits
 7. Als Nächstes weisen Sie dem zweiten Benutzerkonto die Rolle **Betrachter im Arbeitsbereich** zu und sehen, dass die Rolle Lesezugriff auf das Warehouse im Arbeitsbereich gewährt.  
 8. Kehren Sie zum Browserfenster zurück, in dem Sie als Arbeitsbereichsadministrator angemeldet sind. Stellen Sie sicher, dass Sie sich noch auf der Seite befinden, auf der der von Ihnen erstellte Arbeitsbereich angezeigt wird. Er sollte Ihre neuen Arbeitsbereichselemente und das Musterlager und das Lakehouse am unteren Rand der Seite aufgeführt haben.
 9. Wählen Sie **Zugriff verwalten** oben rechts auf dem Bildschirm.
-10. Wählen Sie **Personen oder Gruppen hinzufügen**. Geben Sie die E-Mail des zweiten Benutzerkontos ein, mit dem Sie testen. Wählen Sie **Hinzufügen**, um den Benutzerkonto die Rolle **Betrachter** des Arbeitsbereichs zuzuweisen. 
+10. Klicken Sie auf **Personen oder Gruppen hinzufügen**. Geben Sie die E-Mail des zweiten Benutzerkontos ein, mit dem Sie testen. Wählen Sie **Hinzufügen**, um den Benutzerkonto die Rolle **Betrachter** des Arbeitsbereichs zuzuweisen. 
 11. Kehren Sie zum InPrivate-Browserfenster zurück, in dem Sie als zweites Benutzerkonto angemeldet sind, und wählen Sie die Schaltfläche „Aktualisieren“ im Browser, um die dem zweiten Benutzerkonto zugewiesenen Sitzungsberechtigungen zu aktualisieren.
 12. Wählen Sie das Symbol **Arbeitsbereiche** in der linken Menüleiste (das Symbol sieht ähnlich aus wie &#128455;) und wählen Sie den Namen des Arbeitsbereichs aus, den Sie als Benutzerkonto mit Administratorrechten für den Arbeitsbereich erstellt haben. Das zweite Benutzerkonto kann nun alle Elemente im Arbeitsbereich sehen, da ihm die Rolle **Betrachter im Arbeitsbereich** zugewiesen wurde.
 
