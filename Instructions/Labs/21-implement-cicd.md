@@ -16,7 +16,7 @@ Dieses Lab dauert etwa **20** Minuten.
 
 Erstellen Sie drei Arbeitsbereiche, in denen die Fabric-Testversion aktiviert ist.
 
-1. Wählen Sie auf der [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) unter `https://app.fabric.microsoft.com/home?experience=fabric` die Option **Microsoft Fabric** und dann **Datentechnik** in der Menüleiste unten links aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 2. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 3. Erstellen Sie einen neuen Arbeitsbereich mit dem Namen Entwicklung und wählen Sie einen Lizenzierungsmodus, der Fabric-Kapazität beinhaltet (*Trial*, *Premium* oder *Fabric*).
 4. Wiederholen Sie die Schritte 1 und 2 und erstellen Sie zwei weitere Arbeitsbereiche mit den Namen Test und Produktion. Ihre Arbeitsbereiche sind: Entwicklung, Test und Produktion.
@@ -79,7 +79,7 @@ Stellen Sie das Lakehouse von der **Entwicklungsphase** in die **Testphase** und
 8. Wählen Sie den Arbeitsbereich **Test**. Das Lakehouse wurde dort kopiert.
 9. Öffnen Sie den Arbeitsbereich **Produktion** über das Symbol **Arbeitsbereiche** im linken Menü. Das Lakehouse wurde ebenfalls in den Arbeitsbereich Produktion kopiert.
 
-## Bereinigung
+## Bereinigen
 
 In dieser Übung haben Sie eine Bereitstellungspipeline erstellt und der Pipeline Phasen zugewiesen. Dann haben Sie Inhalte in einem Entwicklungsarbeitsbereich erstellt und mithilfe von Bereitstellungspipelines zwischen den Pipelinestufen bereitgestellt.
 
