@@ -17,7 +17,7 @@ Diese Übung dauert ca. **45** Minuten.
 
 Erstellen Sie zunächst einen Arbeitsbereich mit  *Fabric* aktiviert.
 
-1. Wählen Sie auf der Microsoft Fabric-Startseite unter `https://app.fabric.microsoft.com`, die Erfahrung **Data Engineering** aus.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** (🗇).
 1. Erstellen Sie einen **neuen Arbeitsbereich** mit einem Namen Ihrer Wahl und wählen Sie einen Lizenzierungsmodus, der Fabric-Kapazität beinhaltet (Trial, Premium oder Fabric).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -28,7 +28,10 @@ Erstellen Sie zunächst einen Arbeitsbereich mit  *Fabric* aktiviert.
 
 Jetzt, wo Sie einen Arbeitsbereich haben, ist es an der Zeit, ein Lakehouse zu erstellen und einige Daten hochzuladen.
 
-1. Erstellen Sie auf der Startseite **Datentechnik** ein neues **Lakehouse** mit einem Namen Ihrer Wahl. 
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* unter dem Abschnitt *Datentechnik* die Option **Lakehouse** aus. Wählen Sie einen eindeutigen Namen Ihrer Wahl aus.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
+
 1. Es gibt verschiedene Möglichkeiten, Daten zu erfassen. In dieser Übung laden Sie jedoch eine Textdatei auf Ihren lokalen Computer (oder ggf. auf die Lab-VM) herunter und laden sie dann auf Ihr Lakehouse hoch. Laden Sie die [Datendatei](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) von `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` herunter und speichern Sie sie als *Produkte.csv*.
 1.  Kehren Sie zu der Registerkarte des Webbrowsers zurück, die Ihr Lakehouse enthält, und wählen Sie im Explorer-Bereich neben dem Ordner **Dateien** das Menü mit den drei Punkten (...) aus. Menü.  Erstellen Sie einen **neuen Unterordner** namens *Produkte*.
 1.  Geben Sie Feld Menü für den Produktordner, **laden Sie die *products.csv* Datei von Ihrem lokalen Computer (oder lab VM, falls zutreffend) hoch**.
