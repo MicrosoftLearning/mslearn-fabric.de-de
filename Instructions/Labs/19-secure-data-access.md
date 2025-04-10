@@ -46,7 +46,7 @@ Als Nächstes erstellen Sie ein Lakehouse in dem Arbeitsbereich, den Sie erstell
 
     ![Screenshot eines neuen Lakehouses in Fabric.](./Images/new-sample-lakehouse.png)
 
-4. Wählen Sie die Kachel **Mit Beispieldaten beginnen**. Nach einer Minute wird das Lakehouse mit Daten gefüllt.
+4. Wählen Sie die Kachel **Mit Beispieldaten beginnen** und wählen Sie dann das Beispiel **Feiertage**. Nach einer Minute wird das Lakehouse mit Daten gefüllt.
 
 ## Anwenden von Zugriffskontrollen für Arbeitsbereiche
 
