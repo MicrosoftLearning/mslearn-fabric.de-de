@@ -44,7 +44,7 @@ Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. S
 
    ![Screenshot des Eventstream-Canvas.](./Images/new-stock-stream.png)
 
-## Erstellen eines Eventhouses
+## Ein Eventhouse erstellen
 
 Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts damit. Erstellen wir ein Eventhouse, in dem die erfassten Daten in einer Tabelle gespeichert werden können.
 

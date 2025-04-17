@@ -30,20 +30,16 @@ Als Nächstes erstellen Sie eine Bereitstellungspipeline.
 
 1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** aus.
 2. Wählen Sie **Bereitstellungspipelines**, dann **Neue Pipeline**.
-3. Im Fenster **Neue Bereitstellungspipeline hinzufügen** geben Sie der Pipeline einen eindeutigen Namen.
-4. Übernehmen Sie die Standardeinstellungen im Fenster **Anpassen Ihrer Stages**.  
-
-   ![Screenshot der Pipeline-Stufen.](./Images/customize-stages.png)
-
-5. Klicken Sie auf **Erstellen**.
+3. Geben Sie im Fenster **Neue Bereitstellungspipeline hinzufügen** der Pipeline einen eindeutigen Namen und wählen Sie **Weiter**.
+4. Wählen Sie im Fenster der neuen Pipeline **Erstellen und fortfahren**.
 
 ## Arbeitsbereiche den Phasen einer Bereitstellungspipeline zuweisen
 
 Weisen Sie den Phasen der Bereitstellungspipeline Arbeitsbereiche zu.
 
 1. Wählen Sie in der linken Menüleiste die Pipeline, die Sie erstellt haben. 
-2. Wählen Sie in dem daraufhin angezeigten Fenster unter jeder Bereitstellungsphase das Wort **Auswählen** und wählen Sie den Namen des Arbeitsbereichs, der dem Namen der Phase entspricht.
-3. Wählen Sie **Einen Arbeitsbereich zuweisen** für jede Bereitstellungsphase.
+2. Erweitern Sie in dem daraufhin angezeigten Fenster die Optionen unter **Arbeitsbereich zuweisen** für jede Bereitstellungsphase und wählen Sie den Namen des Arbeitsbereichs aus, der dem Namen der Phase entspricht.
+3. Markieren Sie das Häkchen **Zuweisen** für jede Bereitstellungsphase.
 
   ![Screenshot der Bereitstellungspipeline.](./Images/deployment-pipeline.png)
 
@@ -53,16 +49,17 @@ Es wurden noch keine Fabric-Elemente in Ihren Arbeitsbereichen erstellt. Als Nä
 
 1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** aus.
 2. Wählen Sie den Arbeitsbereich **Entwicklung**.
-3. Wählen Sie **Neuer Artikel**
+3. Wählen Sie **Neues Element** aus.
 4. In dem erscheinenden Fenster wählen Sie **Seehaus** und im Fenster **Neues Lakehouse** nennen Sie das Lakehouse **LabLakehouse**.
 5. Klicken Sie auf **Erstellen**.
 6. Wählen Sie im Fenster Lakehouse Explorer **Mit Beispieldaten beginnen**, um das neue Lakehouse mit Daten zu füllen.
 
   ![Screenshot von Lakehouse Explorer.](./Images/lakehouse-explorer.png)
 
+7. Wählen Sie das Beispiel **NYCTaxi**.
 8. Wählen Sie in der Menüleiste auf der linken Seite die von Ihnen erstellte Pipeline.
-9. Wählen Sie in der **Entwicklungsphase** die **>**, bis Sie **Lakehouses** sehen. Das Lakehouse wird als neuer Inhalt in der Entwicklungsphase angezeigt. Zwischen den Stufen **Entwicklung** und **Test** befindet sich ein orangefarbenes **X** in einem Kreis. Das orangefarbene **X** zeigt an, dass die Entwicklungs- und Testphasen nicht synchronisiert sind.
-10. Wählen Sie den Abwärtspfeil unter dem orangefarbenen **X**, um den Inhalt in der Entwicklungs- und der Testumgebung zu vergleichen. Wählen Sie **Vergleichen**. Das LabLakehouse existiert nur in der Entwicklungsphase.  
+9. Wählen Sie die **Bereitstellungsphase**, und unter dem Canvas der Bereitstellungspipeline sehen Sie das von Ihnen erstellte Lakehouse als Phasenelement. Am linken Rand der **Testphase** befindet sich ein **X** innerhalb eines Kreises. Das **X** zeigt an, dass die Entwicklungs- und Testphasen nicht synchronisiert sind.
+10. Wählen Sie die Phase **Test** aus. Unter der Entwurfsübersicht für die Bereitstellung können Sie sehen, dass das von Ihnen erstellte Lakehouse nur ein Element der Phase „Quelle“ ist, die sich in diesem Fall auf die Phase **Entwicklung** bezieht.  
 
   ![Screenshot der Bereitstellungspipeline, der zeigt, dass die Inhalte der einzelnen Phasen nicht übereinstimmen.](./Images/lab-pipeline-compare.png)
 
