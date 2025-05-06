@@ -67,7 +67,7 @@ In dieser Übung fügen Sie einen Benutzer bzw. eine Benutzerin zu einer Arbeits
 7. Als Nächstes weisen Sie dem zweiten Benutzerkonto die Rolle **Betrachter im Arbeitsbereich** zu und sehen, dass die Rolle Lesezugriff auf das Warehouse im Arbeitsbereich gewährt.  
 8. Kehren Sie zum Browserfenster zurück, in dem Sie als Arbeitsbereichsadministrator angemeldet sind. Stellen Sie sicher, dass Sie sich noch auf der Seite befinden, auf der der von Ihnen erstellte Arbeitsbereich angezeigt wird. Er sollte Ihre neuen Arbeitsbereichselemente und das Musterlager und das Lakehouse am unteren Rand der Seite aufgeführt haben.
 9. Wählen Sie **Zugriff verwalten** oben rechts auf dem Bildschirm.
-10. Klicken Sie auf **Personen oder Gruppen hinzufügen**. Geben Sie die E-Mail des zweiten Benutzerkontos ein, mit dem Sie testen. Wählen Sie **Hinzufügen**, um den Benutzerkonto die Rolle **Betrachter** des Arbeitsbereichs zuzuweisen. 
+10. Klicken Sie auf **Personen oder Gruppen hinzufügen**. Geben Sie die E-Mail des zweiten Benutzerkontos ein, mit dem Sie testen. Wählen Sie **Hinzufügen**, um den Benutzerkonto die Rolle **Betrachter** des Arbeitsbereichs zuzuweisen.
 11. Kehren Sie zum InPrivate-Browserfenster zurück, in dem Sie als zweites Benutzerkonto angemeldet sind, und wählen Sie die Schaltfläche „Aktualisieren“ im Browser, um die dem zweiten Benutzerkonto zugewiesenen Sitzungsberechtigungen zu aktualisieren.
 12. Wählen Sie das Symbol **Arbeitsbereiche** in der linken Menüleiste (das Symbol sieht ähnlich aus wie &#128455;) und wählen Sie den Namen des Arbeitsbereichs aus, den Sie als Benutzerkonto mit Administratorrechten für den Arbeitsbereich erstellt haben. Das zweite Benutzerkonto kann nun alle Elemente im Arbeitsbereich sehen, da ihm die Rolle **Betrachter im Arbeitsbereich** zugewiesen wurde.
 
@@ -100,7 +100,7 @@ Elementberechtigungen steuern den Zugriff auf einzelne Fabric-Elemente in einem 
 
 9. Klicken Sie auf **Gewähren**.
 
-10. Kehren Sie zum Browserfenster zurück, in dem Sie als zweites Benutzerkonto angemeldet sind. Aktualisieren Sie die Browseransicht.  
+10. Kehren Sie zum Browserfenster zurück, in dem Sie als zweites Benutzerkonto angemeldet sind. Aktualisieren Sie die Browseransicht.
 
 11. Das zweite Benutzerkonto hat keinen Zugriff mehr auf den Arbeitsbereich und hat stattdessen nur Zugriff auf das Warehouse. Sie können Arbeitsbereiche im linken Navigationsbereich nicht mehr durchsuchen, um das Warehouse zu finden. Wählen Sie **OneLake** im linken Navigationsmenü, um das Warehouse zu finden. 
 
