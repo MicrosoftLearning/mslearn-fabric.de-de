@@ -60,7 +60,7 @@ Nachdem Sie nun über einen Arbeitsbereich, ein Lakehouse und die Sales-Tabelle 
 
     Nach einer Minute wird ein neues Warehouse erstellt:
 
-    ![Screenshot eines neuen Warehouse](./Images/new-data-warehouse.png)
+    ![Screenshot eines neuen Warehouse](./Images/new-empty-data-warehouse.png)
 
 ## Erstellen einer Faktentabelle, Dimensionen und Ansichten
 
@@ -109,6 +109,8 @@ Erstellen wir nun die Faktentabellen und Dimensionen für die Sales-Daten. Auße
     > **Wichtig:** In einem Data Warehouse sind Fremdschlüsseleinschränkungen auf Tabellenebene nicht immer erforderlich. Fremdschlüsseleinschränkungen können zwar dazu beitragen, die Datenintegrität zu gewährleisten, sie können aber auch den ETL-Prozess (Extrahieren, Transformieren, Laden) aufwendiger machen und das Laden von Daten verlangsamen. Die Entscheidung, Fremdschlüsseleinschränkungen in einem Data Warehouse zu verwenden, sollte auf einer sorgfältigen Abwägung der Nachteile auf Datenintegrität und Leistung beruhen.
 
 1. Navigieren Sie im **Explorer** zu **Schemas >> Sales >> Tabellen**. Beachten Sie die soeben erstellten Tabellen *Fact_Sales*, *Dim_Customer* und *Dim_Item*.
+
+    > **Hinweis**: Wenn Sie die neuen Schemata nicht sehen können, öffnen Sie das Menü **...** für **Tabellen** im Bereich **Explorer** und wählen Sie dann **Aktualisieren**.
 
 1. Öffnen Sie den Editor **Neue SQL-Abfrage**, kopieren Sie die folgende Abfrage und führen Sie sie aus. Aktualisieren Sie *<your lakehouse name>* mit dem von Ihnen erstellten Lakehouse.
 

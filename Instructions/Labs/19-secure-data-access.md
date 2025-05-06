@@ -21,17 +21,15 @@ Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit akti
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-empty-workspace.png)
 
-> **Hinweis:** Wenn Sie einen Arbeitsbereich erstellen, werden Sie automatisch Mitglied der Rolle „Arbeitsbereichsadministrator“. 
+> **Hinweis:** Wenn Sie einen Arbeitsbereich erstellen, werden Sie automatisch Mitglied der Rolle „Arbeitsbereichsadministrator“.
 
 ## Erstellen eines Data Warehouse
 
 Erstellen Sie als Nächstes ein Data Warehouse im von Ihnen erstellten Arbeitsbereich:
 
-1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* unter dem Abschnitt *Data Warehouse* die Option **Beispielwarehouse** und erstellen Sie ein neues Data Warehouse mit einem Namen Ihrer Wahl.
+1. Klicken Sie auf **+ Neues Element**. Wählen Sie auf der Seite *Neues Element* unter dem Abschnitt *Daten speichern* die Option **Beispielwarehouse** und erstellen Sie ein neues Data Warehouse mit einem Namen Ihrer Wahl.
 
-    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen.
-
-    Nach einer Minute wird ein neues Warehouse erstellt:
+     Nach einer Minute wird ein neues Warehouse erstellt:
 
     ![Screenshot eines neuen Warehouse](./Images/new-sample-warehouse.png)
 
@@ -156,8 +154,6 @@ In dieser Übung werden Sie eine Elementberechtigung zuweisen und eine OneLake-D
 
 17. Kehren Sie zum Browser zurück, in dem Sie als zweites Benutzerkonto angemeldet sind. Vergewissern Sie sich, dass Sie sich noch auf der Seite befinden, auf der das Lakehouse geöffnet ist. Aktualisieren Sie den Browser.  
 18. Wählen Sie die Tabelle **publicholidays** und warten Sie, bis die Daten geladen wurden. Das Benutzerkonto kann nur auf die Daten in der publicholidays-Tabelle zugreifen, da dem Benutzerkonto die benutzerdefinierte OneLake Datenzugriffsrolle zugewiesen wurde. Die Rolle erlaubt es ihnen, nur die Daten in der publicholidays-Tabelle zu finden, nicht aber die Daten in anderen Tabellen, Dateien oder Ordnern.
-
-       ![Screenshot dessen, was dem Benutzerkonto mit der OneLake-Datenzugriffsrolle angezeigt wird.](./Images/custom-role-view.png)
 
 ## Bereinigen von Ressourcen
 
