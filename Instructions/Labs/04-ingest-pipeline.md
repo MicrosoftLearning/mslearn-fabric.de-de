@@ -12,15 +12,16 @@ Fabric unterstützt auch Apache Spark, was es Ihnen ermöglicht, Code zu schreib
 
 Dieses Lab dauert ungefähr **45** Minuten.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> [!Note] 
+> Sie benötigen Zugriff auf einen [Microsoft Fabric-Mandanten](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
 
 ## Erstellen eines Arbeitsbereichs
 
 Erstellen Sie vor dem Arbeiten mit Daten in Fabric einen Arbeitsbereich mit aktivierter Fabric-Testversion.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric-developer` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric-developer) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
-1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
+1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
@@ -41,54 +42,52 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivität **Daten kopieren** in einer Pipeline, um die Daten aus einer Quelle zu extrahieren und in eine Datei im Lakehouse zu kopieren.
 
-1. Wählen Sie auf der Seite **Home** für Ihr Lakehouse **Daten abrufen** aus und wählen Sie dann **Neue Datenpipeline** aus und erstellen Sie eine neue Datenpipeline mit dem Namen **Ingest Sales Data**.
-2. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren > Kopier-Assistenten verwenden** aus.
-3. Geben Sie im Assistenten **Daten kopieren** auf der Seite **Datenquelle auswählen** in die Suchleiste „HTTP“ ein und wählen Sie dann **HTTP** im Abschnitt **Neue Quellen** aus.
-
+1. Wählen Sie auf der **Startseite** Ihres Lakehouses die Option **Daten abrufen** und anschließend **Neue Datenpipeline** aus und erstellen Sie eine neue Datenpipeline mit dem Namen `Ingest Sales Data`.
+1. Wenn der Assistent **Daten kopieren** nicht automatisch geöffnet wird, wählen Sie auf der Seite des Pipeline-Editors die Option **Daten kopieren > Kopier-Assistenten verwenden** aus.
+1. Geben Sie im Assistenten **Daten kopieren** auf der Seite **Datenquelle auswählen** in die Suchleiste „HTTP“ ein und wählen Sie dann **HTTP** im Abschnitt **Neue Quellen** aus.
 
     ![Screenshot: Die Seite „Datenquelle auswählen“](./Images/choose-data-source.png)
 
-4. Geben Sie im Bereich **Mit Datenquelle verbinden** die folgenden Einstellungen für die Verbindung mit Ihrer Datenquelle ein:
+1. Geben Sie im Bereich **Mit Datenquelle verbinden** die folgenden Einstellungen für die Verbindung mit Ihrer Datenquelle ein:
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Verbindung**: Neue Verbindung erstellen
     - **Name der Verbindung**: *Angeben eines eindeutigen Namens*
     - **Datengateway**: (keine)
     - **Authentifizierungsart**: Anonym
-5. Wählen Sie **Weiter** aus. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
+1. Wählen Sie **Weiter** aus. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
     - **Relative URL**: *Nicht ausfüllen*
     - **Anforderungsmethode**: GET
     - **Zusätzliche Kopfzeilen**: *Nicht ausfüllen*
     - **Binärkopie**: <u>Nicht</u>ausgewählt
     - **Anforderungstimeout**: *Nicht ausfüllen*
     - **Maximal zulässige Anzahl paralleler Verbindungen**: *Nicht ausfüllen*
-6. Wählen Sie **Weiter** aus, und warten Sie, bis die Daten in Stichproben erfasst werden. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
+1. Wählen Sie **Weiter** aus, und warten Sie, bis die Daten in Stichproben erfasst werden. Stellen Sie dann sicher, dass die folgenden Einstellungen ausgewählt sind:
     - **Dateiformat**: DelimitedText
     - **Spaltentrennzeichen**: Komma (,)
     - **Zeilen-Trennzeichen**: Zeilenvorschub (\n)
     - **Erste Zeile ist Überschrift**: Ausgewählt
     - **Komprimierungstyp**: Keiner
-7. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
-8. Legen Sie auf der Seite **Mit Datenziel verbinden** die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
+1. Wählen Sie **Vorschaudaten** aus, um ein Beispiel für die erfassten Daten anzuzeigen. Schließen Sie dann die Vorschaudaten, und wählen Sie **Weiter** aus.
+1. Legen Sie auf der Seite **Mit Datenziel verbinden** die folgenden Datenzieloptionen fest, und wählen Sie dann **Weiter** aus:
     - **Stammordner**: Files
     - **Ordnerpfadname**: new_data
     - **Dateiname**: sales.csv
     - **Kopierverhalten**: Keins
-10. Legen Sie die folgenden Dateiformatoptionen fest, und wählen Sie dann **Weiter** aus:
+1. Legen Sie die folgenden Dateiformatoptionen fest, und wählen Sie dann **Weiter** aus:
     - **Dateiformat**: DelimitedText
     - **Spaltentrennzeichen**: Komma (,)
     - **Zeilen-Trennzeichen**: Zeilenvorschub (\n)
     - **Header zu Datei hinzufügen**: Ausgewählt
     - **Komprimierungstyp**: Keiner
-11. Überprüfen Sie auf der Seite **Zusammenfassung kopieren** die Details Ihres Kopiervorgangs, und wählen Sie dann **Speichern und ausführen** aus.
+1. Überprüfen Sie auf der Seite **Zusammenfassung kopieren** die Details Ihres Kopiervorgangs, und wählen Sie dann **Speichern und ausführen** aus.
 
     Eine neue Pipeline wird wie folgt mit der Aktivität **Daten kopieren** erstellt:
 
     ![Screenshot: Eine Pipeline mit der Aktivität „Daten kopieren“](./Images/copy-data-pipeline.png)
 
-12. Wenn die Pipeline gestartet wird, können Sie ihren Status im Bereich **Ausgabe** unter dem Pipeline-Designer überwachen. Verwenden Sie das Symbol **&#8635;** (*Aktualisieren*), um den Status zu aktualisieren, und warten Sie, bis der Vorgang erfolgreich abgeschlossen ist.
-
-13. Wählen Sie in der Menüleiste auf der linken Seite Ihr Lakehouse aus.
-14. Erweitern Sie auf der Seite **Start** im Bereich **Lakehouse-Explorer** die Option **Dateien**, und wählen Sie den Ordner **new_data** aus, um zu überprüfen, ob die **sales.csv**-Datei kopiert wurde.
+1. Wenn die Pipeline gestartet wird, können Sie ihren Status im Bereich **Ausgabe** unter dem Pipeline-Designer überwachen. Verwenden Sie das Symbol **&#8635;** (*Aktualisieren*), um den Status zu aktualisieren, und warten Sie, bis der Vorgang erfolgreich abgeschlossen ist.
+1. Wählen Sie in der Menüleiste auf der linken Seite Ihr Lakehouse aus.
+1. Erweitern Sie auf der Seite **Startseite** im Bereich **Explorer** den Eintrag **Dateien** und wählen Sie den Ordner **new_data** aus, um zu überprüfen, ob die Datei **sales.csv** kopiert wurde.
 
 ## Erstellen eines Notebooks
 
@@ -133,8 +132,8 @@ Eine einfache Möglichkeit zum Erfassen von Daten ist das Verwenden der Aktivit�
 
     > **Hinweis**: Da Sie Spark-Code zum ersten Mal in dieser Sitzung ausführen, muss der Spark-Pool gestartet werden. Dadurch kann der Abschluss der ersten Zelle etwa eine Minute dauern.
 
-6. Wenn das Notebook ausgeführt worden ist, wählen Sie im Bereich **Lakehouse-Explorer** auf der linken Seite im Menü **...** für **Tabellen** die Option **Aktualisieren** aus, und überprüfen Sie, ob eine **Sales**-Tabelle erstellt wurde.
-7. Verwenden Sie in der Menüleiste des Notebooks das Symbol ⚙️ **Einstellungen**, um die Einstellungen des Notebooks anzuzeigen. Legen Sie dann den **Namen** des Notebooks auf **Sales laden** fest, und schließen Sie den Einstellungsbereich.
+6. Wenn das Notebook ausgeführt worden ist, wählen Sie im Bereich **Explorer** auf der linken Seite im Menü **...** für **Tabellen** die Option **Aktualisieren** aus, und überprüfen Sie, ob eine **Vertriebs**-Tabelle erstellt wurde.
+7. Verwenden Sie in der Menüleiste des Notebooks das Symbol ⚙️ **Einstellungen**, um die Einstellungen des Notebooks anzuzeigen. Legen Sie anschließend den **Namen** des Notebooks auf `Load Sales` fest und schließen Sie das Einstellungsfenster.
 8. Wählen Sie in der Hubmenüleiste auf der linken Seite Ihr Lakehouse aus.
 9. Aktualisieren Sie im Bereich **Explorer** die Ansicht. Erweitern Sie dann **Tabellen**, und wählen Sie die Tabelle **Sales** aus, um eine Vorschau der darin enthaltenen Daten anzuzeigen.
 
@@ -149,12 +148,12 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
 
 3. Wählen Sie die Bereich **Daten löschen** aus, und legen Sie im Bereich unterhalb des Entwurfsbereichs die folgenden Eigenschaften fest:
     - **Allgemein:**
-        - **Name**: Alte Dateien löschen
+        - **Name**: `Delete old files`
     - **Quelle**
         - **Verbindung**: *Ihr Lakehouse*
         - **Dateipfadtyp**: Platzhalterdateipfad
         - **Ordnerpfad**: Files/**new_data**
-        - **Platzhalterdateiname**: *.csv        
+        - **Platzhalterdateiname**: `*.csv`        
         - **Rekursiv**: *Ausgewählt*
     - **Protokollierungseinstellungen**:
         - **Protokollierung aktivieren**: *<u>Nicht</u> ausgewählt*
@@ -168,7 +167,7 @@ Nachdem Sie ein Notebook zum Transformieren von Daten und zum Laden von Tabellen
 
 6. Wählen Sie die Aktivität **Notebook** aus, und legen Sie dann im Bereich unterhalb des Design-Canvas die folgenden Eigenschaften fest:
     - **Allgemein:**
-        - **Name**: Notebook „Sales“ laden
+        - **Name**: `Load Sales notebook`
     - **Einstellungen**:
         - **Notebook**: Sales laden
         - **Basisparameter**: *Fügen Sie einen neuen Parameter mit den folgenden Eigenschaften hinzu:*

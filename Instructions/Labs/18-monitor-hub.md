@@ -16,7 +16,7 @@ Dieses Lab dauert ungefähr **30** Minuten.
 
 Bevor Sie mit Daten in Fabric arbeiten, erstellen Sie einen Arbeitsbereich in einem Mandanten mit aktivierter Fabric-Kapazität.
 
-1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
+1. Navigieren Sie in einem Browser unter `https://app.fabric.microsoft.com/home?experience=fabric-developer` zur [Microsoft Fabric-Startseite](https://app.fabric.microsoft.com/home?experience=fabric-developer) und melden Sie sich mit Ihren Fabric-Anmeldeinformationen an.
 1. Wählen Sie auf der Menüleiste auf der linken Seite **Arbeitsbereiche** aus (Symbol ähnelt &#128455;).
 1. Erstellen Sie einen neuen Arbeitsbereich mit einem Namen Ihrer Wahl, und wählen Sie im Bereich **Erweitert** einen Lizenzierungsmodus mit Fabric-Kapazitäten aus (*Testversion*, *Premium* oder *Fabric*).
 1. Wenn Ihr neuer Arbeitsbereich geöffnet wird, sollte er leer sein.
@@ -44,12 +44,10 @@ Jetzt, da Sie einen Arbeitsbereich haben, ist es an der Zeit, ein Data Lakehouse
 In Microsoft Fabric können Sie einen Dataflow (Gen2) verwenden, um Daten aus einer breiten Palette von Quellen aufzunehmen. In dieser Übung werden Sie einen Dataflow verwenden, um Daten aus einer CSV-Datei abzurufen und in eine Tabelle in Ihr Lakehouse zu laden.
 
 1. Wählen Sie auf der Seite **Home** für Ihr Lakehouse im Menü **Daten abrufen** die Option **Neuer Dataflow Gen2**.
-
-   Ein neuer Dataflow mit dem Namen **Dataflow 1** wird erstellt und geöffnet.
+1. Benennen Sie den neuen Datenfluss mit `Get Product Data` und wählen Sie **Erstellen**.
 
     ![Screenshot eines neuen Dataflows.](./Images/new-data-flow.png)
 
-1. Wählen Sie oben links auf der Dataflow-Seite **Dataflow 1**, um die Details zu sehen und benennen Sie den Dataflow in **Produktdaten abrufen** um.
 1. Wählen Sie im Dataflow-Designer die Option **Importieren aus einer Text/CSV-Datei**. Schließen Sie den Assistenten zum Abrufen von Daten ab, um eine Datenverbindung zu erstellen, indem Sie eine Verknüpfung zu `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` mit anonymer Authentifizierung herstellen. Wenn Sie den Assistenten abgeschlossen haben, wird eine Vorschau der Daten im Dataflow-Designer wie folgt angezeigt:
 
     ![Screenshot einer Dataflow-Abfrage.](./Images/data-flow-query.png)
@@ -68,14 +66,16 @@ In Microsoft Fabric können Sie einen Dataflow (Gen2) verwenden, um Daten aus ei
 
 In Microsoft Fabric können Sie Notebooks verwenden, um Spark-Code auszuführen.
 
-1. Wählen Sie im Navigationshub**Start** aus. Erstellen Sie auf der Datentechnik-Startseite ein neues **Notebook**.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* im Abschnitt *Datentechnik* die Option **Notebook** aus.
 
     Ein neues Notebook mit dem Namen **Notebook 1** wird erstellt und geöffnet.
 
     ![Screenshot eines neuen Notebooks](./Images/new-notebook.png)
 
-1. Wählen Sie oben links im Notebook **Notebook 1**, um seine Details anzuzeigen, und ändern Sie seinen Namen in **Abfrage Produkte**.
-1. Wählen Sie im Notebook-Editor im Bereich **Explorer** die Option **Seehäuser** und fügen Sie das zuvor erstellte Lakehouse hinzu.
+1. Wählen Sie oben links im Notizbuch **Notizbuch 1** aus, um dessen Details anzuzeigen, und ändern Sie den Namen in `Query Products`.
+1. Wählen Sie im Notizbuch-Editor im Bereich **Explorer** die Option **Datenelemente hinzufügen** und anschließend **Vorhandene Datenquellen**.
+1. Fügen Sie das zuvor erstellte Lakehouse hinzu.
+1. Erweitern Sie das Lakehouse-Element, bis Sie die **Produkttabelle** erreicht haben.
 1. Wählen Sie im Menü **...** für die Tabelle **Produkte** die Option **Daten laden** > **Spark**. Dadurch wird dem Notebook eine neue Codezelle hinzugefügt, wie hier gezeigt:
 
     ![Screenshot eines Notebooks mit Code zum Abfragen einer Tabelle.](./Images/load-spark.png)

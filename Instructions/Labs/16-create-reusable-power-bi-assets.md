@@ -58,7 +58,7 @@ In dieser Aufgabe erstellen Sie einen Bericht, indem Sie eine Verbindung mit dem
     ![Screenshot der verfügbaren Optionen in der Kategorie „Vorschaufunktionen“.](./Images/power-bi-enable-tmdl.png)
 
 1. Wählen Sie **Speichern unter** und wählen Sie den Dateityp aus, indem Sie beim Benennen der Datei auf den Pfeil im Dropdown-Menü klicken.
-1. Wählen Sie die Dateiendung **.*.pbip*** aus, geben Sie einen Namen für Ihren Bericht ein und speichern Sie ihn in einem Ordner, den Sie sich merken können.
+1. Wählen Sie die Dateiendung **.pbip** aus, geben Sie einen Namen für Ihren Bericht ein und speichern Sie ihn in einem Ordner, den Sie sich merken können.
 
     ![Screenshot der Auswahl „Speichern unter“ mit erweitertem Dropdown-Menü.](./Images/power-bi-save-file-types.png)
 
@@ -74,10 +74,10 @@ In dieser Aufgabe erstellen Sie einen Bericht, indem Sie eine Verbindung mit dem
 
 Sehen wir uns an, wie sich Änderungen in Power BI Desktop in den .tmdl-Dateien widerspiegeln.
 
-1. Navigieren Sie von Ihrem Desktop aus mit dem Datei-Explorer zu dem Ordner, in dem Sie die *.*.pbip**-Datei gespeichert haben.
+1. Navigieren Sie von Ihrem Desktop aus mit dem Datei-Explorer zu dem Ordner, in dem Sie die **.pbip**-Datei gespeichert haben.
 1. Sie sollten die folgenden Elemente sehen:
 
-    - YourReport.*.pbip*-Datei
+    - Datei „YourReport.pbip“
     - YourReport.Report-Ordner
     - YourReport.SemanticModel-Ordner
     - .gitignore („Git Ignore“-Quelldatei)
@@ -94,7 +94,7 @@ In dieser Aufgabe fügen Sie eine neue Tabelle hinzu, weil das semantische Model
 
 1. Sobald die Verbindung hergestellt ist, wird das Dialogfeld „Aus dem Web“ angezeigt. Lassen Sie das Optionsfeld „Basic“ ausgewählt. Geben Sie den folgenden Dateipfad als URL-Pfad ein.
 
-    `"C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html"`
+    `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
 1. Markieren Sie das Kästchen für **HTML-Tabellen > Tabelle 2** und wählen Sie dann **Daten transformieren**, um fortzufahren.
 
