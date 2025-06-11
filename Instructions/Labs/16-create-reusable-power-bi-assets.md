@@ -6,7 +6,7 @@ lab:
 
 # Erstellen wiederverwendbarer Power BI-Ressourcen
 
-In dieser Übung erstellen Sie wiederverwendbare Ressourcen zur Unterstützung des semantischen Modells und der Berichtsentwicklung. Zu diesen Ressourcen gehören Power BI-Projekt- und Vorlagendateien und freigegebene Semantikmodelle. Am Ende werden Sie die Herkunftsansicht erkunden, um zu sehen, wie diese Elemente im Power BI-Dienst miteinander in Beziehung stehen.
+In dieser Übung erstellen Sie wiederverwendbare Assets zur Unterstützung der Entwicklung von semantischen Modellen und Berichten. Zu diesen Ressourcen gehören Power BI-Projekt- und Vorlagendateien und freigegebene Semantikmodelle. Am Ende zeigt die Herkunftsansicht, wie sich diese Elemente im Power BI-Dienst zueinander verhalten.
 
    > Hinweis: Diese Übung erfordert keine Fabric-Lizenz und kann in einer Power BI- oder Microsoft Fabric-Umgebung durchgeführt werden.
 
@@ -19,27 +19,6 @@ Bevor Sie mit dieser Übung beginnen können, müssen Sie einen Webbrowser öffn
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrahieren Sie den Ordner in den Ordner **C:\Users\Student\Downloads\16-reusable-assets**.
-
-## Veröffentlichen eines Berichts im Power BI-Dienst
-
-In dieser Aufgabe verwenden Sie einen vorhandenen Bericht, um ein freigegebenes Semantikmodell für die Wiederverwendung zu erstellen, um andere Berichte zu entwickeln.
-
-1. Navigieren Sie in einem Webbrowser zum Fabric-Dienst und melden Sie sich dort an: [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
-1. Navigieren Sie zur Power BI-Oberfläche, und erstellen Sie einen neuen Arbeitsbereich mit einem eindeutigen Namen Ihrer Wahl.
-
-    ![Screenshot des Arbeitsbereichsfensters mit Hervorhebung der Schaltfläche „+ Neuer Arbeitsbereich“.](./Images/power-bi-new-workspace.png)
-
-1. Wählen Sie im oberen Menüband Ihres neuen Arbeitsbereichs **Hochladen > Durchsuchen**.
-1. Navigieren Sie im neuen Dialogfeld „Datei-Explorer“ zur Starterdatei *.pbix* und wählen Sie sie aus. Wählen Sie dann zum Hochladen **Öffnen** aus.
-1. Beachten Sie, wie Sie jetzt zwei verschiedene Elemente im Arbeitsbereich mit demselben Namen haben:
-
-    - Report
-    - Semantikmodell
-
-1. Öffnen Sie den Bericht, und beachten Sie das verwendete Farbdesign. *Das werden Sie in einer späteren Aufgabe ändern.*
-1. Sie können nun Ihren Webbrowser schließen.
-
-> Power BI *.pbix*-Dateien enthalten sowohl das semantische Modell als auch die Berichtsgrafiken. Wenn Sie Berichte im Dienst veröffentlichen, werden diese Elemente getrennt. Diese Trennung wird später wieder angezeigt.
 
 ## Erstellen eines neuen Power-BI-Projekts
 
@@ -219,26 +198,23 @@ In dieser Aufgabe erstellen Sie eine Vorlagendatei, damit Sie eine einfache Date
 
 > Jetzt haben Sie eine Vorlage mit einem konsistenten Design ohne vorinstallierte Daten.
 
-## Veröffentlichen und Erkunden Ihrer Assets
+### Überprüfen des Endzustands
 
-In dieser Aufgabe veröffentlichen Sie Ihre Power BI Project-Datei und sehen sich die zugehörigen Elemente in der Herkunftsansicht des Dienstes an.
+Im folgenden Screenshot haben Sie Ihre Power BI-Projekt-Datei erstellt und sie in einem Arbeitsbereich veröffentlicht. Sie haben dann zum Arbeitsbereich im Power BI-Dienst navigiert und zur **Herkunftsansicht** gewechselt, um zu sehen, wie Ihr neuer Bericht von anderen Datenquellen abhängt.
 
-> Wichtig: Wir haben ein lokales DirectQuery-Modell erstellt, als wir die HTML-Datenquelle hinzugefügt haben. Veröffentlichte Berichte benötigen ein Gateway, um auf die lokalen Daten zuzugreifen, daher erhalten Sie eine Fehlermeldung. Dies wirkt sich nicht auf den Wert dieser Aufgabe aus, kann aber verwirrend sein.
+Von links nach rechts sind die folgenden Elemente sichtbar:
 
-1. Wählen Sie in Ihrer Power BI-Projektdatei **Veröffentlichen**.
-1. **Speichern** Sie Ihre Datei, wenn Sie dazu aufgefordert werden.
-1. **Aktualisieren Sie nicht** die *PBIR*-Version, wenn Sie dazu aufgefordert werden.
-1. Wählen Sie den Arbeitsbereich, den Sie zu Beginn dieser Übung erstellt haben.
-1. Wählen Sie **„YourReport.*.pbip*“ in Power BI öffnen**, wenn Sie die Meldung erhalten, dass die Datei zwar veröffentlicht, aber nicht mehr verbunden wurde.
+- Datenquellen: 2 Text/csv-Dateien und eine SQL-Serververbindung.
+- 16-Starter-Sales Analysis-Semantikmodell, das mit den Datenquellen verbunden ist.
+- 16-Starter-Sales Analysis-Bericht, der mit dem Semantikmodell 16-Starter-Sales Analysis verbunden ist.
+- Mein neues Berichtssemantikmodell, das mit dem Semantikmodell 16-Starter-Sales Analysis verbunden ist.
+- Mein neuer Bericht, der mit dem neuen Semantikmodell "Mein neuer Bericht" verbunden ist.
 
-    ![Screenshot der Meldung, dass die Datei veröffentlicht wurde, aber die Verbindung unterbrochen wurde.](./Images/power-bi-published-disconnected-message.png)
+> Wenn Semantikmodelle mit anderen Semantikmodellen in Beziehung stehen, nennt man das **Verkettung**. In diesem Lab wird das semantische Einstiegsmodell mit dem neu erstellten semantischen Modell verknüpft, sodass es für einen speziellen Zweck wiederverwendet werden kann.
 
-1. Sobald Sie sich in Ihrem Arbeitsbereich befinden, können Sie das vorherige semantische Modell und den Bericht sowie Ihr neues semantisches Modell und den Bericht sehen.
-1. Wählen Sie in der rechten Ecke unter Arbeitsbereichseinstellungen die **Herkunftsansicht** aus, um zu sehen, wie Ihr neuer Bericht von anderen Datenquellen abhängt.
+![Screenshot der Herkunftsansicht mit einer Datenbank und zwei Textdateien, die mit einem einzigen semantischen Modell aus unserer Starterdatei verbunden sind. Dasselbe semantische Modell ist mit dem Bericht der Starterdatei verbunden und hat ein neues semantisches Modell, das mit dem neuen Bericht verbunden ist.](./Images/power-bi-lineage-view.png)
 
-    ![Screenshot der Herkunftsansicht mit einer Datenbank und zwei Textdateien, die mit einem einzigen semantischen Modell aus unserer Starterdatei verbunden sind. Dasselbe semantische Modell ist mit dem Bericht der Starterdatei verbunden und hat ein neues semantisches Modell, das mit dem neuen Bericht verbunden ist.](./Images/power-bi-lineage-view.png)
 
-> Wenn semantische Modelle mit anderen semantischen Modellen in Beziehung stehen, nennt man das Verkettung. In diesem Lab wird das semantische Einstiegsmodell mit dem neu erstellten semantischen Modell verknüpft, sodass es für einen speziellen Zweck wiederverwendet werden kann.
 
 ## Bereinigen
 

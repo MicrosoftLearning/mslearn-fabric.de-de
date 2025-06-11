@@ -130,42 +130,6 @@ Während viele Datenexpert*innen mit SQL vertraut sind, können Data Analysts mi
 
     ![Screenshot: Visuelle Abfrage mit Ergebnissen](./Images/visual-query-results.png)
 
-## Erstellen eines Berichts
-
-Die Tabellen in Ihrem Lakehouse werden automatisch zu einem standardmäßigen Semantikmodell für die Berichterstellung mit Power BI hinzugefügt.
-
-
-1. Wählen Sie in der Symbolleiste **Modelllayouts** aus. Das Datenmodellschema für das semantische Modell wird angezeigt.
-
-    ![Screenshot von Modelllayouts](./Images/lakehouse-model-layouts.png)
-
-    > **Hinweis 1**: In dieser Übung besteht das semantische Modell aus einer einzelnen Tabelle. In einem realen Szenario würden Sie wahrscheinlich mehrere Tabellen in Ihrem Lakehouse erstellen, von denen jede im Modell enthalten wäre. Sie können dann Beziehungen zwischen diesen Tabellen im Modell definieren.
-    
-    > **Hinweis 2**: Die Ansichten **frequently_run_queries**, **long_running_queries**, **exec_s exec_sessions_history** und **exec_requests_history** sind Teil des **queryinsights**-Schemas, das automatisch von Fabric erstellt wird. Es ist ein Feature, das eine ganzheitliche Ansicht der historischen Abfrageaktivität auf dem SQL-Analyseendpunkt bietet. Da dieses Feature außerhalb des Umfangs dieser Übung liegt, sollten diese Ansichten vorerst ignoriert werden.
-
-2. Klicken Sie auf dem Menüband auf die Registerkarte **Berichterstellung**, und wählen Sie dann **Neuer Bericht** aus. Ihre aktuelle Seite ändert sich in eine Berichts-Designeransicht.
-
-    ![Screenshot: Berichts-Designer](./Images/report-designer.png)
-
-3. Erweitern Sie im Bereich **Daten** auf der rechten Seite die Tabelle **sales**. Wählen Sie dann die folgenden Felder aus:
-    - **Element**
-    - **Menge**
-
-    Dem Bericht wird eine Tabellenvisualisierung hinzugefügt:
-
-    ![Screenshot: Bericht mit einer Tabelle](./Images/table-visualization.png)
-
-4. Blenden Sie die Bereiche **Daten** und **Filter** im Sinne der Übersichtlichkeit aus. Stellen Sie dann sicher, dass die Tabellenvisualisierung ausgewählt ist, ändern Sie die Visualisierungseinstellung im Bereich **Visualisierungen** in **Balkendiagramm (gruppiert)** , und ändern Sie die Größe wie im Folgenden gezeigt.
-
-    ![Screenshot: Bericht mit einem gruppierten Balkendiagramm](./Images/clustered-bar-chart.png)
-
-5. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als `Item Sales Report` in dem zuvor erstellten Arbeitsbereich.
-6. Wählen Sie nun in der Menüleiste links Ihren Arbeitsbereich aus, um zu überprüfen, ob er die folgenden Elemente enthält:
-    - Ihr Lakehouse
-    - SQL-Analyseendpunkt für Ihr Lakehouse.
-    - Standardmäßiges Semantikmodell für die Tabellen in Ihrem Lakehouse.
-    - Bericht **Item Sales Report**
-
 ## Bereinigen von Ressourcen
 
 In dieser Übung haben Sie ein Lakehouse erstellt und Daten in das Lakehouse importiert. Sie haben erfahren, dass ein Lakehouse aus Dateien und Tabellen besteht, die in einem OneLake-Datenspeicher gespeichert sind. Die verwalteten Tabellen können mithilfe von SQL abgefragt werden und sind in einem standardmäßigen Semantikmodell enthalten, um Datenvisualisierungen zu unterstützen.
