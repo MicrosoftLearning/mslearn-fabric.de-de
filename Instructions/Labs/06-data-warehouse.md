@@ -176,7 +176,7 @@ Ein Data Warehouse in Microsoft Fabric verfügt über viele der Funktionen, die 
    ORDER BY CalendarYear, MonthOfYear, SalesRegion;
     ```
 
-### Erstellen einer visuellen Abfrage
+## Erstellen einer visuellen Abfrage
 
 Anstatt SQL-Code zu schreiben, können Sie den grafischen Abfrage-Designer verwenden, um die Tabellen in Ihrem Data Warehouse abzufragen. Diese Benutzeroberfläche ähnelt der von Power Query Online, bei der Sie Datentransformationsschritte ohne Code erstellen können. Für komplexere Aufgaben können Sie die Sprache M (Mashup) von Power Query verwenden.
 
@@ -199,48 +199,9 @@ Anstatt SQL-Code zu schreiben, können Sie den grafischen Abfrage-Designer verwe
 
 1. Hier können Sie die Ergebnisse dieser einzelnen Abfrage analysieren, indem Sie **Ergebnisse visualisieren** oder **Excel-Datei herunterladen** auswählen. Sie können nun genau sehen, was der Manager angefordert hat, sodass wir die Ergebnisse nicht weiter analysieren müssen.
 
-### Visualisieren Ihrer Daten
-
-Sie können die Daten ganz einfach in einer einzelnen Abfrage oder in Ihrem Data Warehouse visualisieren. Blenden Sie vor dem Visualisieren Spalten und bzw. oder Tabellen aus, die für Berichts-Designer nicht geeignet sind.
-
-1. Wählen Sie die Schaltfläche **Modelllayouts** aus. 
-
-1. Blenden Sie die folgenden Spalten in den Fakten- und Dimensionstabellen aus, die zum Erstellen eines Berichts nicht erforderlich sind. Beachten Sie, dass dadurch die Spalten nicht aus dem Modell entfernt werden, sondern sie einfach aus der Ansicht im Berichtscanvas ausgeblendet werden.
-   1. FactSalesOrder
-      - **SalesOrderDateKey**
-      - **CustomerKey**
-      - **ProductKey**
-   1. DimCustomer
-      - **CustomerKey**
-      - **CustomerAltKey**
-   1. DimDate
-      - **DateKey**
-      - **DateAltKey**
-   1. DimProduct
-      - **ProductKey**
-      - **ProductAltKey** 
-
-1. Jetzt können Sie einen Bericht erstellen und dieses Dataset für andere Personen verfügbar machen. Wählen Sie im Berichtsmenü die Option **Neuer Bericht** aus. Dadurch wird ein neues Fenster geöffnet, in dem Sie einen Power BI-Bericht erstellen können.
-
-1. Erweitern Sie **FactSalesOrder** im Bereich **Daten**. Beachten Sie, dass die Spalten, die Sie ausgeblendet haben, nicht mehr sichtbar sind. 
-
-1. Wählen Sie **SalesTotal** aus. Dadurch wird die Spalte dem **Berichtscanvas** hinzugefügt. Da es sich bei der Spalte um einen numerischen Wert handelt, ist das Standardvisual ein **Säulendiagramm**.
-1. Stellen Sie sicher, dass das Säulendiagramm auf dem Canvas aktiv ist (mit einem grauen Rahmen und Handles), und wählen Sie dann **Kategorie** aus der **DimProduct**-Tabelle aus, um dem Säulendiagramm eine Kategorie hinzuzufügen.
-1. Ändern Sie im Bereich **Visualisierungen** den Diagrammtyp von einem Säulendiagramm in ein **gruppiertes Balkendiagramm**. Ändern Sie dann die Größe des Diagramms nach Bedarf, um sicherzustellen, dass die Kategorien lesbar sind.
-
-    ![Screenshot des Visualisierungsbereichs mit ausgewähltem Balkendiagramm](./Images/visualizations-pane.png)
-
-1. Wählen Sie im Bereich **Visualisierungen** die Registerkarte **Visual formatieren** aus, und ändern Sie auf der Unterregisterkarte **Allgemein** im Abschnitt **Titel** den **Text** in **Gesamtumsatz nach Kategorie**.
-
-1. Klicken Sie im Menü **Datei** auf **Speichern**. Speichern Sie dann den Bericht als **Umsatzbericht** in dem Arbeitsbereich, den Sie zuvor erstellt haben.
-
-1. Navigieren Sie im Menühub auf der linken Seite zurück zum Arbeitsbereich. Beachten Sie, dass Sie jetzt drei Elemente in Ihrem Arbeitsbereich gespeichert haben: Ihr Data Warehouse, das semantische Standardmodell und den Bericht, den Sie erstellt haben.
-
-    ![Screenshot des Arbeitsbereichs mit den drei aufgeführten Elementen](./Images/workspace-items.png)
-
 ## Bereinigen von Ressourcen
 
-In dieser Übung haben Sie ein Data Warehouse erstellt, das mehrere Tabellen enthält. Sie haben SQL verwendet, um Daten in die Tabellen einzufügen und abzufragen und haben auch das visuelle Abfragetool verwendet. Schließlich haben Sie das Datenmodell für das Standarddataset des Data Warehouse verbessert und als Quelle für einen Bericht verwendet.
+In dieser Übung haben Sie ein Data Warehouse erstellt, das mehrere Tabellen enthält. Sie haben SQL verwendet, um Daten in die Tabellen einzuführen und haben Tabellen mithilfe von T-SQL und dem visuellen Abfragetool verwendet. Schließlich haben Sie das Datenmodell für das Standard-Dataset des Data Warehouse für nachgelagerte Analysen und Berichterstellung erweitert.
 
 Wenn Sie Ihr Data Warehouse erkundet haben, können Sie den Arbeitsbereich löschen, den Sie für diese Übung erstellt haben.
 

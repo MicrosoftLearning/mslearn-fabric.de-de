@@ -1,7 +1,7 @@
 ---
 lab:
   title: Erzwingen der Sicherheit des Semantikmodells
-  module: Design and build tabular models
+  module: Enforce semantic model security
 ---
 
 # Erzwingen der Sicherheit des Semantikmodells
@@ -17,7 +17,7 @@ In dieser Übung lernen Sie Folgendes:
 
 Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
-> **Hinweis:** Sie benötigen eine [Microsoft Fabric-Testversion](https://learn.microsoft.com/fabric/get-started/fabric-trial), um diese Übung abzuschließen.
+> **Hinweis**: Sie benötigen Zugriff auf eine Power BI-Umgebung, um diese Übung abzuschließen.
 
 ## Erste Schritte
 
@@ -33,7 +33,7 @@ In dieser Übung bereiten Sie Ihre Umgebung vor.
 
 ### Anmelden beim Power BI-Dienst
 
-In dieser Aufgabe melden Sie sich beim Power BI-Dienst an, starten eine Testlizenz und erstellen einen Arbeitsbereich.
+In dieser Aufgabe melden Sie sich beim Power BI-Dienst an, starten eine Testlizenz und greifen auf „Mein Arbeitsbereich“ zu.
 
 1. Rufen Sie in einem Webbrowser `https://app.powerbi.com/` auf.
 
@@ -43,19 +43,9 @@ In dieser Aufgabe melden Sie sich beim Power BI-Dienst an, starten eine Testliz
 
     *Tipp: Die Power BI-Webbrowseroberfläche wird als **Power BI-Dienst** bezeichnet.*
 
-### Erstellen eines Arbeitsbereichs
+## Erstellen statischer Rollen
 
-In dieser Aufgabe erstellen Sie einen Arbeitsbereich.
-
-1. Wählen Sie zum Erstellen eines Arbeitsbereichs im Power BI-Dienst im Bereich **Navigation** auf der linken Seite die Option **Arbeitsbereiche** aus, und klicken Sie dann auf **+ Neuer Arbeitsbereich**.
-
-2. Geben Sie im Bereich **Arbeitsbereich erstellen** auf der rechten Seite im Feld **Name** einen Namen für den Arbeitsbereich ein.
-
-    *Der Arbeitsbereichsname muss innerhalb des Mandanten eindeutig sein.*
-
-3. Wählen Sie **Übernehmen**.
-
-    *Nachdem der Arbeitsbereich erstellt wurde, wird er geöffnet. In einer späteren Übung veröffentlichen Sie ein Semantikmodell in diesem Arbeitsbereich.*
+In dieser Übung erstellen und überprüfen Sie statische Rollen, und anschließend erfahren Sie, wie Sie den Rollen des Semantikmodells Sicherheitsprinzipale zuordnen.
 
 ### Überprüfen Sie das Datenmodell
 
@@ -79,11 +69,7 @@ In dieser Aufgabe überprüfen Sie das Datenmodell.
 
     *Die Spalte **Region** speichert die Verkaufsregionen von Adventure Works. In dieser Organisation dürfen Vertriebsmitarbeiter nur Daten sehen, die sich auf ihr zugewiesenes Vertriebsgebiet beziehen. In dieser Übung werden Sie zwei verschiedene Sicherheitstechniken auf Zeilenebene implementieren, um Datenberechtigungen zu erzwingen.*
 
-## Erstellen statischer Rollen
-
-In dieser Übung erstellen und überprüfen Sie statische Rollen, und anschließend erfahren Sie, wie Sie den Rollen des Semantikmodells Sicherheitsprinzipale zuordnen.
-
-### Erstellen statischer Rollen
+### Erstellen von statischen Rollen
 
 In dieser Aufgabe werden Sie zwei statische Rollen erstellen.
 
@@ -166,7 +152,7 @@ In dieser Aufgabe wird der Bericht veröffentlicht.
 
     ![](Images/enforce-model-security-image28.png)
 
-3. Wählen Sie im Fenster **In Power BI veröffentlichen** Ihren Arbeitsbereich und wählen Sie dann **Auswählen**.
+3. Wählen Sie im Fenster **In Power BI veröffentlichen** die Option **Mein Arbeitsbereich** und anschließend **Auswählen**.
 
     ![](Images/enforce-model-security-image29.png)
 
@@ -174,11 +160,11 @@ In dieser Aufgabe wird der Bericht veröffentlicht.
 
     ![](Images/enforce-model-security-image30.png)
 
-### Konfigurieren der Sicherheit auf Zeilenebene (*optional*)
+#### Konfigurieren der Sicherheit auf Zeilenebene (optional)
 
 In dieser Aufgabe erfahren Sie, wie Sie die Sicherheit auf Zeilenebene im Power BI-Dienst konfigurieren.
 
-Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Australia** in dem Mandanten voraus, in dem Sie arbeiten. Diese Sicherheitsgruppe ist nicht automatisch im Mandanten vorhanden. Wenn Sie über Berechtigungen für Ihren Mandanten verfügen, können Sie die folgenden Schritte ausführen. Wenn Sie einen Mandanten verwenden, der Ihnen in der Schulung zur Verfügung gestellt wird, verfügen Sie nicht über die entsprechenden Berechtigungen zum Erstellen von Sicherheitsgruppen. Bitte lesen Sie die Aufgaben durch, beachten Sie jedoch, dass Sie diese nicht abschließen können, wenn die Sicherheitsgruppe nicht vorhanden ist. **Nach dem Durchlesen fahren Sie mit der Aufgabe "Bereinigung" fort.**
+> Hinweis: Diese Aufgabe setzt voraus, dass in dem Mandanten, in dem Sie arbeiten, eine Sicherheitsgruppe namens **Salespeople_Australia** vorhanden ist. Diese Sicherheitsgruppe ist nicht automatisch im Mandanten vorhanden. Wenn Sie über Berechtigungen für Ihren Mandanten verfügen, können Sie die folgenden Schritte ausführen. Wenn Sie einen Mandanten verwenden, der Ihnen in der Schulung zur Verfügung gestellt wird, verfügen Sie nicht über die entsprechenden Berechtigungen zum Erstellen von Sicherheitsgruppen. Bitte lesen Sie die Aufgaben durch, beachten Sie jedoch, dass Sie diese nicht abschließen können, wenn die Sicherheitsgruppe nicht vorhanden ist. **Nach dem Durchlesen fahren Sie mit der Aufgabe "Bereinigung" fort.**
 
 1. Wechseln Sie zum Power BI-Dienst (Webbrowser).
 
@@ -218,7 +204,7 @@ Diese Aufgabe setzt das Vorhandensein einer Sicherheitsgruppe **Salespeople_Aust
 
     *In der nächsten Übung erstellen Sie eine dynamische Rolle, die datengesteuert ist. Dieser Entwurfsansatz kann dabei helfen, den obigen Nachteilen entgegenzuwirken.*
 
-8. Um zur Landing Page des Arbeitsbereichs zurückzukehren, wählen Sie im Bereich **Navigation** den Arbeitsbereich aus.
+8. Um zur Landing Page des Arbeitsbereichs zurückzukehren, wählen Sie im Bereich **Navigation** Ihren Arbeitsbereich aus.
 
 ### Bereinigen der Lösung
 
@@ -440,11 +426,11 @@ In dieser Aufgabe überprüfen Sie die dynamische Rolle.
 
 In dieser Aufgabe schließen Sie den Entwurf ab, indem Sie den Bericht veröffentlichen und eine Sicherheitsgruppe der Rolle zuordnen.
 
-*Die Schritte in dieser Aufgabe sind bewusst kurz. Ausführliche Informationen finden Sie in den Aufgabenschritten der vorherigen Übung.*
+*Die Schritte in dieser Aufgabe sind bewusst kurz gehalten. Ausführliche Informationen zu den einzelnen Schritten finden Sie in den Aufgabenschritten der vorherigen Übung.*
 
 1. Speichern Sie die Power BI Desktop-Datei.
 
-2. Veröffentlichen Sie den Bericht im Arbeitsbereich, den Sie am Anfang des Labs erstellt haben.
+2. Veröffentlichen Sie den Bericht in **Mein Arbeitsbereich**.
 
 3. Schließen Sie Power BI Desktop.
 

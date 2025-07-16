@@ -66,15 +66,17 @@ Es wurden noch keine Fabric-Elemente in Ihren Arbeitsbereichen erstellt. Als Nä
 ## Inhalte zwischen den Phasen bereitstellen
 
 Stellen Sie das Lakehouse von der **Entwicklungsphase** in die **Testphase** und **Produktionsphase** ein.
-1. Wählen Sie in der **Entwicklungsphase** der Pipeline die Schaltfläche **Bereitstellen** aus, um das Lakehouse in seinem aktuellen Zustand in die Textphase zu kopieren. 
-2. Wählen Sie im Fenster **Zur nächsten Stufe verlagern** die Option **Verlagern**.
-3. Zwischen der Test- und der Produktionsphase befindet sich ein orangefarbenes X. Wählen Sie den nach unten gerichteten Pfeil unter dem orangefarbenen X aus. Das Lakehouse befindet sich in der Entwicklungs- und Testphase, aber noch nicht in der Produktionsphase.
-4. Wählen Sie in der Phase **Test** die Option **Einsetzen**.
-5. Wählen Sie im Fenster **Zur nächsten Stufe verlagern** die Option **Verlagern**. Das grüne Häkchen zwischen den Etappen zeigt an, dass alle Etappen synchronisiert sind und denselben Inhalt enthalten.
-6. Die Verwendung von Bereitstellungspipelines zur Bereitstellung zwischen den Phasen aktualisiert auch den Inhalt in den Arbeitsbereichen, die der Bereitstellungsphase entsprechen. Lassen Sie uns das bestätigen.
-7. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** aus.
-8. Wählen Sie den Arbeitsbereich **Test**. Das Lakehouse wurde dort kopiert.
-9. Öffnen Sie den Arbeitsbereich **Produktion** über das Symbol **Arbeitsbereiche** im linken Menü. Das Lakehouse wurde ebenfalls in den Arbeitsbereich Produktion kopiert.
+1. Wählen Sie die **Testphase** im Canvas der Bereitstellungspipeline aus.
+1. Aktivieren Sie im Canvas der Bereitstellungspipeline das Kontrollkästchen neben dem Lakehouse-Element. Wählen Sie anschließend die Schaltfläche **Bereitstellen**, um das Lakehouse in seinem aktuellen Zustand in die **Textphase** zu kopieren.
+1. Wählen Sie im daraufhin angezeigten Fenster **In nächste Phase bereitstellen** die Option **Bereitstellen**.
+ Nun befindet sich ein X in einem Kreis in der Produktionsphase im Canvas der Bereitstellungspipeline. Das Lakehouse befindet sich in der Entwicklungs- und Testphase, jedoch noch nicht in der Produktionsphase.
+1. Wählen Sie die **Produktionsphase** im Bereitstellungsbereich aus.
+1. Aktivieren Sie im Canvas der Bereitstellungspipeline das Kontrollkästchen neben dem Lakehouse-Element. Wählen Sie anschließend die Schaltfläche **Bereitstellen**, um das Lakehouse in seinem aktuellen Zustand in die **Produktionsphase** zu kopieren.
+1. Wählen Sie im daraufhin angezeigten Fenster **In nächste Phase bereitstellen** die Option **Bereitstellen**. Die grünen Häkchen zwischen den Phasen zeigen an, dass alle Phasen synchron sind und denselben Inhalt enthalten.
+1. Die Verwendung von Bereitstellungspipelines zur Bereitstellung zwischen den Phasen aktualisiert auch den Inhalt in den Arbeitsbereichen, die der Bereitstellungsphase entsprechen. Lassen Sie uns das bestätigen.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Arbeitsbereiche** aus.
+1. Wählen Sie den Arbeitsbereich **Test**. Das Lakehouse wurde dort kopiert.
+1. Öffnen Sie den Arbeitsbereich **Produktion** über das Symbol **Arbeitsbereiche** im linken Menü. Das Lakehouse wurde ebenfalls in den Arbeitsbereich Produktion kopiert.
 
 ## Bereinigen
 
