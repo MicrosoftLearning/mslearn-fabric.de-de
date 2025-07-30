@@ -39,7 +39,7 @@ Da Sie nun einen Arbeitsbereich besitzen, ist es an der Zeit, ein Data Lakehouse
 
 Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin erfassen. Eine Möglichkeit dazu ist das Definieren eines Dataflows, der einen Prozess zum *Extrahieren, Transformieren und Laden* (ETL) kapselt.
 
-1. Wählen Sie auf der Startseite für Ihren Arbeitsbereich **Daten abrufen** > **Neuer Dataflow Gen2** aus. Nach einigen Sekunden wird wie nachfolgend dargestellt der Power Query-Editor für Ihren neuen Dataflow geöffnet:
+1. Wählen Sie auf der Startseite für das Lakehouse die Option **Daten abrufen** > **Neuer Dataflow Gen2** aus. Nach einigen Sekunden wird wie nachfolgend dargestellt der Power Query-Editor für Ihren neuen Dataflow geöffnet:
 
  ![Neuer Dataflow](./Images/new-dataflow.png)
 
@@ -74,7 +74,7 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
 1. Wählen Sie auf der Symbolleiste die Registerkarte **Start** aus, und wählen Sie dann im Dropdownmenü **Datenziel hinzufügen** die Option **Lakehouse** aus.
 
-   > **Hinweis:** Wenn diese Option ausgegraut ist, verfügen Sie möglicherweise bereits über einen Datenzielsatz. Überprüfen Sie das Datenziel unten im Bereich der „Abfrageeinstellungen“ auf der rechten Seite des Power Query-Editors. Wenn ein Ziel bereits festgelegt ist, können Sie es mit dem Zahnradsymbol ändern.
+   > **Hinweis:** Wenn diese Option ausgegraut ist, verfügen Sie möglicherweise bereits über einen Datenzielsatz. Überprüfen Sie das Datenziel unten im Bereich der „Abfrageeinstellungen“ auf der rechten Seite des Power Query-Editors. Wenn bereits ein Standardziel festgelegt ist, können Sie es entfernen und ein neues hinzufügen.
 
 2. Bearbeiten Sie die Verbindung im Dialogfeld **Herstellen einer Verbindung mit dem Datenziel**, und melden Sie sich mit Ihrem Power BI-Unternehmenskonto an, um die Identität festzulegen, die der Dataflow für den Zugriff auf das Lakehouse verwendet.
 
@@ -93,13 +93,13 @@ Nachdem Sie über ein Lakehouse verfügen, müssen Sie nun einige Daten darin er
 
    ![Abfrage mit einem Lakehouseziel](./Images/lakehouse-destination.png)
 
-6. Wählen Sie **Veröffentlichen** aus, um den Bericht zu veröffentlichen. Warten Sie dann, bis der **Dataflow 1**-Dataflow in Ihrem Arbeitsbereich erstellt wird.
+6. Wählen Sie auf dem Menüband der Symbolleiste die Registerkarte **Start** aus. Wählen Sie anschließend **Speichern und ausführen** aus, und warten Sie, bis der Dataflow **Dataflow 1** in Ihrem Arbeitsbereich erstellt wird.
 
 ## Hinzufügen eines Dataflows zu einer Pipeline
 
 Sie können einen Dataflow als Aktivität in eine Pipeline einschließen. Pipelines werden zum Orchestrieren von Datenerfassungs- und Verarbeitungsaktivitäten verwendet. Dadurch können Sie Dataflows mit anderen Arten von Vorgängen in einem einzelnen geplanten Prozess kombinieren. Pipelines können in verschiedenen Umgebungen erstellt werden, z. B. in Data Factory.
 
-1. Stellen Sie in Ihrem Fabric-fähigen Arbeitsbereich sicher, dass Sie sich weiterhin in **Datentechnik** befinden. Wählen Sie **+ Neues Element** > **Datenpipeline** aus, und erstellen Sie dann eine neue Pipeline mit dem Namen **Daten laden**, wenn Sie dazu aufgefordert werden.
+1. Wählen Sie in Ihrem Arbeitsbereich mit Fabric-Unterstützung **+ Neues Element** > **Datenpipeline** aus, und erstellen Sie dann eine neue Pipeline mit dem Namen **Daten laden**, wenn Sie dazu aufgefordert werden.
 
    Der Pipeline-Editor wird geöffnet.
 
@@ -107,7 +107,7 @@ Sie können einen Dataflow als Aktivität in eine Pipeline einschließen. Pipeli
 
    > **Tipp**: Wenn der Assistent „Daten kopieren“ automatisch geöffnet wird, schließen Sie ihn.
 
-2. Wählen Sie **Pipelineaktivität hinzufügen** aus, und fügen Sie der Pipeline eine **Dataflow**-Aktivität hinzu.
+2. Wählen Sie **Pipelineaktivität** aus, und fügen Sie der Pipeline eine **Dataflow**-Aktivität hinzu.
 
 3. Wählen Sie bei ausgewählter **neuer Dataflow1**-Aktivität auf der Registerkarte **Einstellungen** in der Dropdownliste **Dataflow** die Option **Dataflow 1** (der zuvor erstellte Dataflow) aus.
 

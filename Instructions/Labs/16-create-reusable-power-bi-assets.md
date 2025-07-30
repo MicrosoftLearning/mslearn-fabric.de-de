@@ -22,31 +22,24 @@ Extrahieren Sie den Ordner in den Ordner **C:\Users\Student\Downloads\16-reusabl
 
 ## Erstellen eines neuen Power-BI-Projekts
 
-In dieser Aufgabe erstellen Sie einen Bericht, indem Sie eine Verbindung mit dem veröffentlichten Semantikmodell herstellen und als Power BI-Projektdatei (*PBIP*) speichern. Power BI Project-Dateien speichern die Berichts- und Semantikmodelldetails in Flachdateien, die mit der Quellcodeverwaltung arbeiten. Sie können Visual Studio Code verwenden, um diese Dateien zu ändern, oder Git, um Änderungen zu verfolgen.
+In diesem Vorgang speichern Sie einen Bericht als Power BI-Projektdatei (*.pbip*). Power BI Project-Dateien speichern die Berichts- und Semantikmodelldetails in Flachdateien, die mit der Quellcodeverwaltung arbeiten. Sie können Visual Studio Code verwenden, um diese Dateien zu ändern, oder Git, um Änderungen zu verfolgen.
 
-1. Öffnen Sie auf Ihrem Desktop die Power BI Desktop-App und erstellen Sie einen leeren Bericht.
-
-    > Wenn Sie dazu aufgefordert werden, melden Sie sich mit demselben Konto an, das im Fabric-Dienst verwendet wird.
+1. Öffnen Sie die Datei **16-Starter-Sales Analysis.pbix** im Ordner **16-reusable-assets**.
 
 1. Wählen Sie **Datei** > **Optionen und Einstellungen** > **Optionen** > **Vorschaufunktionen** und wählen Sie die Option **Semantisches Modell im TMDL-Format speichern** und **OK**.
 
-    > Dies ermöglicht die Option, das semantische Modell mithilfe der Tabular Model Definition Language (TMDL) zu speichern, die derzeit eine Vorschaufunktion ist.
-
-1. Wenn Sie aufgefordert werden, Power BI Desktop neu zu starten, tun Sie dies, bevor Sie die Übung fortsetzen.
+    > Dies ermöglicht die Option, das semantische Modell mithilfe der Tabular Model Definition Language (TMDL) zu speichern, die derzeit eine Vorschaufunktion ist. Wenn Sie aufgefordert werden, Power BI Desktop neu zu starten, tun Sie dies, bevor Sie die Übung fortsetzen.
 
     ![Screenshot der verfügbaren Optionen in der Kategorie „Vorschaufunktionen“.](./Images/power-bi-enable-tmdl.png)
 
-1. Wählen Sie **Speichern unter** und wählen Sie den Dateityp aus, indem Sie beim Benennen der Datei auf den Pfeil im Dropdown-Menü klicken.
+1. Wählen Sie **Speichern unter** und dann den Dateityp aus, indem Sie beim Benennen der Datei den Pfeil im Dropdownmenü auswählen.
+
 1. Wählen Sie die Dateiendung **.pbip** aus, geben Sie einen Namen für Ihren Bericht ein und speichern Sie ihn in einem Ordner, den Sie sich merken können.
 
     ![Screenshot der Auswahl „Speichern unter“ mit erweitertem Dropdown-Menü.](./Images/power-bi-save-file-types.png)
 
 1. Beachten Sie oben im Power BI Desktop-Fenster, dass neben dem Namen Ihres Berichts **(Power BI Project)** steht.
-1. Navigieren Sie im Menüband „Startseite“ zu **Daten abrufen > Power BI-Semantikmodelle**, um eine Verbindung zu dem veröffentlichten semantischen Modell herzustellen.
 
-    ![Screenshot des Power BI-Semantikmodell-Connectors im Abschnitt „Daten abrufen“.](./Images/power-bi-connect-semantic-models.png)
-
-1. Sobald die Verbindung hergestellt ist, sollten Sie im Datenbereich 9 Tabellen sehen.
 1. **Speichern** Sie Ihre Datei erneut.
 
 ### Überprüfen der Details der Power BI-Projektdatei
@@ -66,12 +59,8 @@ Sehen wir uns an, wie sich Änderungen in Power BI Desktop in den .tmdl-Dateien 
 In dieser Aufgabe fügen Sie eine neue Tabelle hinzu, weil das semantische Modell nicht alle Daten enthält, die Sie benötigen.
 
 1. Navigieren Sie in Power BI Desktop zu **Daten abrufen > Web**, um die neuen Daten hinzuzufügen.
-1. Beachten Sie die Meldung, dass eine DirectQuery-Verbindung erforderlich ist. Wählen Sie **Lokales Modell hinzufügen**, um fortzufahren.
-1. In einem neuen Dialogfeld werden eine Datenbank und Tabellen angezeigt, die Sie auswählen können. Wählen Sie „Alle“ und dann **Übermitteln**.
 
-    > Das semantische Modell wird als SQL Server Analysis Server-Datenbank behandelt.
-
-1. Sobald die Verbindung hergestellt ist, wird das Dialogfeld „Aus dem Web“ angezeigt. Lassen Sie das Optionsfeld „Basic“ ausgewählt. Geben Sie den folgenden Dateipfad als URL-Pfad ein.
+1. Sobald die Verbindung hergestellt ist, wird das Dialogfeld „Aus dem Web“ angezeigt. Lassen Sie das Optionsfeld **Basic** aktiviert. Geben Sie den folgenden Dateipfad als URL-Pfad ein.
 
     `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
@@ -88,7 +77,7 @@ In dieser Aufgabe fügen Sie eine neue Tabelle hinzu, weil das semantische Model
 1. **Speichern** Sie Ihre Datei.
 1. Wenn Sie dazu aufgefordert werden, **führen Sie kein Upgrade** auf das erweiterte Power BI-Berichtsformat durch.
 
-### Überprüfen der Details der Power BI-Projektdatei
+### Erstellen einer Beziehung
 
 In dieser Aufgabe nehmen wir Änderungen an dem Bericht in Power BI Desktop vor und sehen uns die Änderungen in den flachen .tmdl-Dateien an.
 
@@ -200,7 +189,7 @@ In dieser Aufgabe erstellen Sie eine Vorlagendatei, damit Sie eine einfache Date
 
 ### Überprüfen des Endzustands
 
-Im folgenden Screenshot haben Sie Ihre Power BI-Projekt-Datei erstellt und sie in einem Arbeitsbereich veröffentlicht. Sie haben dann zum Arbeitsbereich im Power BI-Dienst navigiert und zur **Herkunftsansicht** gewechselt, um zu sehen, wie Ihr neuer Bericht von anderen Datenquellen abhängt.
+In dieser Aufgabe überprüfen Sie den folgenden Screenshot des Endergebnisses der in dieser Übung ausgeführten Aufgaben. Um dies zu erreichen, haben Sie Ihre Power BI-Projektdatei erstellt und in einem Arbeitsbereich veröffentlicht. Sie sind dann im Power BI-Dienst zum Arbeitsbereich navigiert und haben auf die **Herkunftsansicht** gewechselt, um zu sehen, wie Ihr neuer Bericht von anderen Datenquellen abhängt.
 
 Von links nach rechts sind die folgenden Elemente sichtbar:
 

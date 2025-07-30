@@ -67,6 +67,7 @@ Sie können nun ein Fabric-Notizbuch erstellen, um mit Ihren Daten zu arbeiten. 
     ```
 
 1. Klicken Sie an einer beliebigen Stelle im Notebook außerhalb der Zelle, um die Bearbeitung zu beenden.
+1. Wählen Sie im **Explorer**-Bereich die Option **Datenelemente hinzufügen** und dann **Vorhandene Datenquellen** aus. Stellen Sie eine Verbindung mit dem zuvor erstellten Lakehouse her.
 1. Fügen Sie eine neue Codezelle hinzu, und fügen Sie den folgenden Code ein, um die Produktdaten mit Hilfe eines definierten Schemas in einen DataFrame zu lesen:
 
     ```python
