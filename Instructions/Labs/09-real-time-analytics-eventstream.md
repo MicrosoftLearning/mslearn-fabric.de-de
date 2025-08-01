@@ -24,7 +24,7 @@ Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit akt
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-## Erstellen eines Eventhouses
+## Ein Eventhouse erstellen
 
 Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Stoffobjekte beginnen, die Sie für Ihre Real-Time Intelligence-Lösung benötigen. wir beginnen mit der Erstellung eines Eventhouses.
 
@@ -97,7 +97,7 @@ Der von Ihnen erstellte Eventstream übernimmt Daten aus der Beispielquelle für
     | where ingestion_time() between (now(-1d) .. now())
     ```
 
-1. Wählen Sie den Abfragecode aus und führen Sie ihn aus, um 100 Datenzeilen aus der Tabelle anzuzeigen.
+1. Wählen Sie den Abfragecode aus, und führen Sie ihn aus, um Tabellendaten eines 24-Stunden-Zeitraums anzuzeigen.
 
     ![Screenshot einer KQL-Abfrage.](./Images/kql-query.png)
 
