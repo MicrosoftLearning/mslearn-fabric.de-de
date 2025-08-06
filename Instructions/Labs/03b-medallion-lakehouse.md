@@ -204,6 +204,8 @@ Nachdem Sie nun einige Daten in der Bronzeschicht Ihres Lakehouses haben, könne
 
     Sie verfügen nun über Daten in Ihrer Silber-Deltatabelle, die für die weitere Transformation und Modellierung bereit sind.
 
+1. Nachdem Sie die letzte Zelle ausgeführt haben, wählen Sie über dem Menüband die Registerkarte **Ausführen** und dann **Sitzung beenden** aus, um die vom Notebook verwendete Computeressource zu beenden.
+
 ## Untersuchen von Daten in der Silberebene mithilfe des SQL-Endpunkts
 
 Nachdem die Silberebene nun Daten enthält, können Sie den SQL-Endpunkt verwenden, um sie zu untersuchen und einige grundlegende Analysen auszuführen. Dies ist eine gute Option für Sie, wenn Sie mit SQL vertraut sind und eine grundlegende Untersuchung Ihrer Daten durchführen möchten. In dieser Übung verwenden wir die SQL-Endpunktansicht in Fabric. Beachten Sie jedoch, dass Sie auch andere Tools wie SQL Server Management Studio (SSMS) und Azure Data Explorer verwenden können.
@@ -260,6 +262,8 @@ Beachten Sie, dass Sie all dies in einem einzelnen Notebook hätten tun können,
    df = spark.read.table("Sales.sales_silver")
     ```
 
+    > **Hinweis:** Wenn beim Ausführen der ersten Zelle der Fehler `[TooManyRequestsForCapacity]` angezeigt wird, stellen Sie sicher, dass Sie die Sitzung beendet haben, die zuvor im ersten Notebook ausgeführt wurde.
+ 
 1. **Fügen Sie einen neuen Codeblock hinzu**, und fügen Sie den folgenden Code ein, um Ihre Datumsdimensionstabelle zu erstellen, und führen Sie sie aus:
 
     ```python
