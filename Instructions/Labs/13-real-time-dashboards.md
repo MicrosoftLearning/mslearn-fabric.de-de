@@ -23,7 +23,7 @@ Bevor Sie mit Daten in Fabric arbeiten, müssen Sie einen Arbeitsbereich mit akt
 
     ![Screenshot eines leeren Arbeitsbereichs in Fabric](./Images/new-workspace.png)
 
-## Erstellen eines Eventhouses
+## Ein Eventhouse erstellen
 
 Jetzt, da Sie einen Arbeitsbereich haben, können Sie mit der Erstellung der Stoffobjekte beginnen, die Sie für Ihre Real-Time Intelligence-Lösung benötigen. wir beginnen mit der Erstellung eines Eventhouses.
 
@@ -80,19 +80,22 @@ Derzeit enthält die Datenbank keine Tabellen. Wir verwenden einen Eventstream, 
 
 Jetzt, wo Sie einen Stream von Echtzeitdaten haben, der in eine Tabelle im Eventhouse geladen wird, können Sie ihn mit einem Echtzeit-Dashboard visualisieren.
 
-1. Wählen Sie in der Menüleiste auf der linken Seite den **Startseite**-Hub aus. Erstellen Sie dann auf der Startseite ein neues **Echtzeit-Dashboard** mit dem Namen `bikes-dashboard`.
+1. Wählen Sie in der Menüleiste auf der linken Seite **Erstellen** aus. Wählen Sie auf der Seite *Neu* im Abschnitt *Echtzeitintelligenz* die Option **Echtzeitdashboard** aus, und geben Sie den Namen `bikes-dashboard` dafür ein.
+
+    >**Hinweis**: Wenn die Option **Erstellen** nicht an die Seitenleiste angeheftet ist, müssen Sie zuerst die Ellipses-Option (**…**) auswählen. 
 
     Es wird ein neues leeres Dashboard erstellt.
 
 
     ![Screenshot eines neuen Dashboards.](./Images/new-dashboard.png)
 
-1. Wählen Sie in der Symbolleiste **Neue Datenquelle** und fügen Sie eine neue **One Lake Data Hub** Datenquelle hinzu. Wählen Sie dann Ihr Eventhouse und erstellen Sie eine neue Datenquelle mit den folgenden Einstellungen:
+1. Wählen Sie auf der Symbolleiste **Neue Datenquelle** und dann **Eventhouse/KQL-Datenbank** aus. Wählen Sie dann Ihr Eventhouse und erstellen Sie eine neue Datenquelle mit den folgenden Einstellungen:
     - **Anzeigename**: `Bike Rental Data`
     - **Datenbank**: *Die Standard-Datenbank in Ihrem Eventhouse*.
     - **Durchgangsidentität**: *Ausgewählt*
 
-1. Schließen Sie den Bereich **Datenquellen** und wählen Sie dann im Dashboard Design Canvas **Kachel hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie auf der Dashboardentwurfscanvas die Option **Kachel hinzufügen** aus.
 1. Stellen Sie im Abfrage-Editor sicher, dass die Quelle **Fahrradverleihdaten** ausgewählt ist und geben Sie den folgenden KQL-Code ein:
 
     ```kql
@@ -175,7 +178,7 @@ Ihr Dashboard enthält zwei visuelle Darstellungen, die auf ähnlichen Abfragen 
     | order by Neighbourhood asc
     ```
 
-1. Wenden Sie die Änderungen an und überprüfen Sie, ob das Balkendiagramm noch Daten für alle Nachbarschaften anzeigt.
+1. Wenden Sie die Änderungen an, und überprüfen Sie, ob das Balkendiagramm noch Daten für alle Stadtteile anzeigt.
 
 1. Bearbeiten Sie die Karte **Fahrradstandorte**, und ändern Sie die Abfrage in den folgenden Code:
 
@@ -189,7 +192,7 @@ Ihr Dashboard enthält zwei visuelle Darstellungen, die auf ähnlichen Abfragen 
 
 ## Hinzufügen eines Parameters
 
-Ihr Dashboard zeigt derzeit die neuesten Fahrrad-, Dock- und Standortdaten für alle Nachbarschaften an. Fügen Sie nun einen Parameter hinzu, damit Sie eine bestimmte Nachbarschaft auswählen können.
+Ihr Dashboard zeigt derzeit die neuesten Fahrrad-, Dock- und Standortdaten für alle Stadtteile an. Fügen Sie nun einen Parameter hinzu, damit Sie einen bestimmten Stadtteil auswählen können.
 
 1. Wählen Sie in der Symbolleiste des Dashboards auf der Registerkarte **Verwalten** die Option **Parameter**.
 1. Beachten Sie alle vorhandenen Parameter, die automatisch erstellt wurden (zum Beispiel einen *Zeitbereich*-Parameter). Dann **Löschen** Sie sie.
@@ -220,7 +223,7 @@ Ihr Dashboard zeigt derzeit die neuesten Fahrrad-, Dock- und Standortdaten für 
 
 1. Wählen Sie **Fertig** aus, um den Parameter zu erstellen.
 
-    Jetzt, da Sie einen Parameter hinzugefügt haben, müssen Sie die Basisabfrage ändern, um die Daten nach den ausgewählten Stadtvierteln zu filtern.
+    Jetzt, da Sie einen Parameter hinzugefügt haben, müssen Sie die Basisabfrage ändern, um die Daten nach den ausgewählten Stadtteilen zu filtern.
 
 1. Wählen Sie in der Symbolleiste **Basisabfragen**. Wählen Sie dann die Abfrage **base_bike_data** aus und bearbeiten Sie sie, um der **where**-Klausel eine **and**-Bedingung hinzuzufügen, um auf der Grundlage der ausgewählten Parameterwerte zu filtern, wie im folgenden Code gezeigt:
 
@@ -233,7 +236,7 @@ Ihr Dashboard zeigt derzeit die neuesten Fahrrad-, Dock- und Standortdaten für 
 
 1. Wählen Sie **Fertig**, um die Basisabfrage zu speichern.
 
-1. Verwenden Sie im Dashboard den Parameter **Nachbarschaft**, um die Daten auf der Grundlage der von Ihnen ausgewählten Nachbarschaften zu filtern.
+1. Verwenden Sie auf dem Dashboard den Parameter **Stadtteil**, um die Daten auf der Grundlage der von Ihnen ausgewählten Stadtteile zu filtern.
 
    ![Ein Bildschirmfoto eines Dashboards mit ausgewählten Parametern.](./Images/dashboard-parameters.png)
 
@@ -254,7 +257,7 @@ Ihr Dashboard besteht derzeit aus einer einzigen Seite. Sie können weitere Seit
     | order by latest_observation desc
     ```
 
-1. Übernehmen Sie die Änderungen. Ändern Sie dann die Größe der Kachel so, dass sie die Höhe des Dashboards ausfüllt.
+1. Wenden Sie die Änderungen an. Ändern Sie dann die Größe der Kachel so, dass sie die Höhe des Dashboards ausfüllt.
 
    ![Screenshot eines Dashboards mit zwei Seiten](./Images/dashboard-page-2.png)
 
@@ -262,7 +265,7 @@ Ihr Dashboard besteht derzeit aus einer einzigen Seite. Sie können weitere Seit
 
 Sie können das Dashboard manuell aktualisieren, aber es kann sinnvoll sein, die Daten in einem bestimmten Intervall automatisch zu aktualisieren.
 
-1. Wählen Sie in der Symbolleiste des Dashboards auf der Registerkarte **Verwalten** die Option **Automatische Aktualisierung**.
+1. Wählen Sie auf der Symbolleiste des Dashboards auf der Registerkarte **Verwalten** die Option **Automatisch aktualisieren** aus.
 1. Konfigurieren Sie im Bereich **Automatische Aktualisierung** die folgenden Einstellungen:
     - **Aktiviert**: *Ausgewählt*
     - **Minimalzeitintervall**: Alle Aktualisierungsintervalle zulassen

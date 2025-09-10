@@ -40,7 +40,7 @@ Jetzt können Sie Echtzeitdaten aus einer Streamingquelle suchen und erfassen. S
 
     ![Screenshot eines neuen Eventstreams.](./Images/name-eventstream.png)
 
-1. Wählen Sie **Weiter** aus; warten Sie, bis der Quell- und Eventstream erstellt wurde, und wählen Sie dann **Eventstream öffnen** aus. Der Eventstream zeigt die **Aktien**-Quelle und **stock-data-stream** im Entwurfsbereich an:
+1. Wählen Sie **Weiter** und dann **Verbinden** aus. Warten Sie, bis die Quelle und der Eventstream erstellt wurden, und wählen Sie dann **Eventstream öffnen** aus. Der Eventstream zeigt die **Aktien**-Quelle und **stock-data-stream** im Entwurfsbereich an:
 
    ![Screenshot des Eventstream-Canvas.](./Images/new-stock-stream.png)
 
@@ -73,7 +73,7 @@ Der Eventstream erfasst die Echtzeit-Bestandsdaten, macht aber derzeit nichts da
 
     Die Verbindung zwischen dem Datenstrom und der Tabelle wurde erstellt. Überprüfen wir dies im Eventstream.
 
-1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit**-Hub aus und zeigen Sie dann die Seite **Meine Datenströme** an. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
+1. Wählen Sie in der Menüleiste auf der linken Seite den **Echtzeit-Hub** aus. Wählen Sie im Menü **...** für den Datenstrom **stock-data-stream** die Option **Eventstream öffnen** aus.
 
     Der Eventstream zeigt nun ein Ziel für den Datenstrom an:
 
@@ -119,14 +119,14 @@ Der Eventstream erfasst Echtzeit-Börsendaten und lädt sie in eine Tabelle in I
 Nun, da Sie eine Tabelle haben, die mit Datenströmen gefüllt wird, können Sie ein Echtzeit-Dashboard verwenden, um die Daten zu visualisieren.
 
 1. Wählen Sie im Abfrage-Editor die KQL-Abfrage, die Sie zum Abrufen der durchschnittlichen Aktienkurse der letzten 5 Minuten verwendet haben.
-1. Wählen Sie in der Symbolleiste **An Dashboard anheften**. Dann heften Sie die Abfrage **in ein neues Dashboard** mit den folgenden Einstellungen:
+1. Wählen Sie auf der Symbolleiste **Im Dashboard speichern** aus. Dann heften Sie die Abfrage **in ein neues Dashboard** mit den folgenden Einstellungen:
     - **Dashboard-Name**: `Stock Dashboard`
     - **Kachelname**: `Average Prices`
 1. Erstellen Sie das Dashboard und öffnen Sie es. Diese sollte wie folgt aussehen:
 
     ![Screenshot eines neuen Dashboards.](./Images/stock-dashboard-table.png)
 
-1. Wechseln Sie am oberen Rand des Dashboards vom Modus **Betrachten** in den Modus **Bearbeiten**.
+1. Wechseln Sie oben rechts auf dem Dashboard vom Modus **Anzeigen** in den Modus **Bearbeiten**.
 1. Wählen Sie das Symbol **Bearbeiten** (*Bleistift*) für die Kachel **Durchschnittspreise**.
 1. Ändern Sie im Bereich **Visuelle Formatierung** das **Visuelle** von *Tabelle* in *Säulendiagramm*:
 

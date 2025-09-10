@@ -8,7 +8,7 @@ lab:
 
 Gemeinsam steuern Microsoft Fabric-Berechtigungen und granulare SQL-Berechtigungen den Warehouse-Zugriff und Benutzerberechtigungen. In dieser Übung sichern Sie Daten mithilfe präziser Berechtigungen, Sicherheit auf Spaltenebene, Sicherheit auf Zeilenebene und dynamischer Datenmaske.
 
-> **Hinweis:** Um die Übungen in diesem Lab abzuschließen, benötigen Sie zwei Benutzer: einem Benutzer sollte die Rolle „Arbeitsbereichsadministrator“ zugewiesen sein, und der andere sollte über die Rolle „Arbeitsbereichsbetrachter“ verfügen. Informationen zum Zuweisen von Rollen zu Arbeitsbereichen finden Sie unter [ Gewähren des Zugriffs auf Ihren Arbeitsbereich ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
+> **Hinweis:** Um die Übungen in diesem Lab vollständig abzuschließen, benötigen Sie zwei Benutzer: einem Benutzer sollte die Rolle „Arbeitsbereichsadministrator“ zugewiesen sein, und der andere sollte über die Rolle „Arbeitsbereichsbetrachter“ verfügen. Informationen zum Zuweisen von Rollen zu Arbeitsbereichen finden Sie unter [ Gewähren des Zugriffs auf Ihren Arbeitsbereich ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Wenn Sie keinen Zugriff auf ein zweites Konto in derselben Organisation haben, können Sie die Übung weiterhin als Arbeitsbereichsadministrator ausführen und die Schritte überspringen, die als Arbeitsbereichbetrachter ausgeführt wurden. Auf den Screenshots der Übung wird gezeigt, worauf ein Arbeitsbereichbetrachter Zugriff hat.
 
 Sie werden ungefähr **45** Minuten für dieses Lab benötigen.
 
@@ -67,27 +67,11 @@ Dynamische Datenformatierungsregeln werden auf einzelne Spalten auf Tabelleneben
 
 3. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **dbo** > **Tabellen**, und vergewissern Sie sich, dass die Tabelle **Customers** erstellt wurde. Die `SELECT`-Anweisung gibt Ihnen unmaskierte Daten zurück, da Sie als Arbeitsbereichsersteller Mitglied der Rolle „Arbeitsbereichsadministrator“ sind, die unmaskierte Daten sehen kann.
 
-4. Stellen Sie eine Verbindung als Testbenutzer her, der Mitglied der Arbeitsbereichsrolle **Betrachter** ist, und führen Sie die folgende T-SQL-Anweisung aus.
-
-    ```T-SQL
-    SELECT * FROM dbo.Customers;
-    ```
-    
-    Dem Testbenutzer wurde keine UNMASK-Berechtigung erteilt, sodass Daten, die für die Spalten "FirstName", "Phone" und "Email" zurückgegeben werden, maskiert sind, da diese Spalten in der `CREATE TABLE`-Anweisung mit einer Maske definiert wurden.
-
-5. Verbinden Sie sich als Arbeitsbereichsadministrator, und führen Sie die folgenden T-SQL-Dateien aus, um für den Testbenutzer die Maske von den Daten zu entfernen. Ersetzen Sie `<username>@<your_domain>.com` durch den Namen des Benutzers, den Sie testen möchten und der Mitglied der Arbeitsbereichsrolle **Betrachter** ist. 
-
-    ```T-SQL
-    GRANT UNMASK ON dbo.Customers TO [<username>@<your_domain>.com];
-    ```
-
-6. Verbinden Sie sich wieder als Testbenutzer und führen Sie die folgende T-SQL-Anweisung aus.
-
-    ```T-SQL
-    SELECT * FROM dbo.Customers;
-    ```
-
-    Die Daten werden unmaskiert zurückgegeben, da dem Testbenutzer die `UNMASK`-Berechtigung erteilt wurde.
+    >**Hinweis:** Wenn Sie als Testbenutzer, der Mitglied der Arbeitsbereichsrolle **Betrachter** ist, eine Verbindung herstellen und eine `SELECT`-Anweisung für die Tabelle **Customers** ausführen, werden die folgenden Ergebnisse für die maskierten Daten angezeigt.
+   
+    ![Screenshot der Tabelle „Customers“ mit maskierten Daten](./Images/masked-table.png)
+ 
+    Dem Testbenutzer wurde keine UNMASK-Berechtigung erteilt, sodass Daten, die für die Spalten „FirstName“, „Phone“ und „Email“ zurückgegeben werden, maskiert sind, da diese Spalten in der `CREATE TABLE`-Anweisung mit einer Maske definiert wurden.
 
 ## Anwenden von Sicherheitsmaßnahmen auf Zeilenebene
 
@@ -151,18 +135,20 @@ Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, 
     ```
 
 6. Verwenden Sie die Schaltfläche **&#9655; Ausführen**, um das SQL-Skript auszuführen.
-7. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **rls** > **Funktionen**, und überprüfen Sie, ob die Funktion erstellt wurde.
+7. Erweitern Sie dann im Bereich **Explorer** **Schemas** > **rls** > **Funktionen** > **Tabellenwertfunktionen**, und überprüfen Sie, ob die Funktion erstellt wurde.
 8. Melden Sie sich bei Fabric als der Benutzer an, durch den Sie `<username1>@<your_domain>.com` in der `INSERT`-Anweisung für die Tabelle „Sales“ ersetzt haben. Vergewissern Sie sich, dass Sie als dieser Benutzer angemeldet sind, indem Sie die folgende T-SQL-Datei ausführen.
 
     ```T-SQL
    SELECT USER_NAME();
     ```
 
-9. Fragen Sie die Tabelle **Sales** ab, um zu bestätigen, dass die Sicherheit auf Zeilenebene wie erwartet funktioniert. Sie sollten nur Daten sehen, die die Bedingungen im sicherheitsrelevanten Prädikat erfüllen, das für den Benutzer definiert ist, als der Sie angemeldet sind.
+9. Fragen Sie die Tabelle **Sales** ab, um zu bestätigen, dass die Sicherheit auf Zeilenebene wie erwartet funktioniert. Sie sollten nur Daten sehen, die die Bedingungen im sicherheitsrelevanten Prädikat erfüllen, das für den Benutzer definiert ist, als der Sie angemeldet sind:
 
     ```T-SQL
    SELECT * FROM dbo.Sales;
     ```
+
+    ![Screenshot der Tabelle „Sales“ mit RLS](./Images/rls-table.png)
 
 ## Implementieren der Sicherheit auf Spaltenebene
 
@@ -184,23 +170,25 @@ Mithilfe der Sicherheit auf Spaltenebene können Sie festlegen, welche Benutzer 
    (2341, 6785, '222222222222222'),
    (3412, 7856, '333333333333333');   
    SELECT * FROM dbo.Orders;
-     ```
+    ```
 
-3. Verweigern Sie die Berechtigung zum Anzeigen einer Spalte in der Tabelle. Die T-SQL-Anweisung verhindert, dass `<username>@<your_domain>.com` die Spalte „CreditCard“ in der Tabelle „Orders“ sieht. Ersetzen Sie in der `DENY`-Anweisung `<username>@<your_domain>.com` durch einen Benutzernamen in Ihrem System, der über **Betrachter**-Berechtigungen für den Arbeitsbereich verfügt.
+3. Verweigern Sie die Berechtigung zum Anzeigen einer Spalte in der Tabelle. Die T-SQL-Anweisung verhindert, dass `<username1>@<your_domain>.com` die Spalte „CreditCard“ in der Tabelle „Orders“ sieht. Ersetzen Sie in der `DENY`-Anweisung `<username1>@<your_domain>.com` durch einen Benutzernamen in Ihrem System, der über **Betrachter**-Berechtigungen für den Arbeitsbereich verfügt.
 
-     ```T-SQL
-   DENY SELECT ON dbo.Orders (CreditCard) TO [<username>@<your_domain>.com];
-     ```
+    ```T-SQL
+   DENY SELECT ON dbo.Orders (CreditCard) TO [<username1>@<your_domain>.com];
+    ```
 
 4. Testen Sie die Sicherheit auf Spaltenebene, indem Sie sich bei Fabric als der Benutzer anmelden, dem die Auswahlberechtigung verweigert wird.
 
-5. Fragen Sie die Tabelle „Orders“ ab, um zu bestätigen, dass die Sicherheit auf Spaltenebene wie erwartet funktioniert. Die folgende Abfrage gibt nur die Spalten „OrderID“ und „CustomerID“ zurück und nicht die Spalte „CreditCard“.  
+5. Fragen Sie die Tabelle „Orders“ ab, um zu bestätigen, dass die Sicherheit auf Spaltenebene wie erwartet funktioniert:
 
     ```T-SQL
    SELECT * FROM dbo.Orders;
     ```
 
-    Sie erhalten eine Fehlermeldung, da der Zugriff auf die Spalte „CreditCard“ eingeschränkt wurde.  Versuchen Sie, nur die Felder „OrderID“ und „CustomerID“ auszuwählen. Die Abfrage wird erfolgreich ausgeführt.
+    ![Screenshot: Abfrage der Tabelle „Orders“ mit Fehler](./Images/cls-table.png)
+
+    Sie erhalten eine Fehlermeldung, da der Zugriff auf die Spalte „CreditCard“ eingeschränkt wurde. Versuchen Sie, nur die Felder „OrderID“ und „CustomerID“ auszuwählen. Die Abfrage wird erfolgreich ausgeführt.
 
     ```T-SQL
    SELECT OrderID, CustomerID from dbo.Orders
@@ -210,11 +198,11 @@ Mithilfe der Sicherheit auf Spaltenebene können Sie festlegen, welche Benutzer 
 
 Fabric verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten auf Arbeitsbereichsebene und auf Elementebene steuern können. Wenn Sie eine genauere Kontrolle darüber benötigen, was Benutzer mit sicherungsfähigen Daten in einem Fabric Warehouse tun können, können Sie die standardmäßigen DCL-Befehle (SQL Data Control Language) `GRANT`, `DENY` und `REVOKE` verwenden. In dieser Übung erstellen Sie Objekte, sichern sie mithilfe von `GRANT` und `DENY`, und führen dann Abfragen aus, um die Auswirkung der Anwendung präziser Berechtigungen anzuzeigen.
 
-1. Wählen Sie im Warehouse, das Sie in der vorherigen Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus. Wählen Sie unter der Kopfzeile **Leer** die Option **Neue SQL-Abfrage** aus.  
+1. Wählen Sie im Warehouse, das Sie in der vorherigen Übung erstellt haben, die Dropdownliste **Neue SQL-Abfrage** aus. Wählen Sie **Neue SQL-Abfrage** aus.  
 
 2. Erstellen Sie eine gespeicherten Prozedur und eine Tabelle. Führen Sie dann die Prozedur aus, und fragen Sie die Tabelle ab.
 
-     ```T-SQL
+    ```T-SQL
    CREATE PROCEDURE dbo.sp_PrintMessage
    AS
    PRINT 'Hello World.';
@@ -236,24 +224,26 @@ Fabric verfügt über ein Berechtigungsmodell, mit dem Sie den Zugriff auf Daten
    EXEC dbo.sp_PrintMessage;
    GO   
    SELECT * FROM dbo.Parts
-     ```
+    ```
 
-3. Wenden Sie als Nächstes `DENY SELECT`-Berechtigungen auf die Tabelle für einen Benutzer an, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist und `GRANT EXECUTE` auf die Prozedur für denselben Benutzer. Ersetzen Sie `<username>@<your_domain>.com` durch einen Benutzernamen aus Ihrer Umgebung, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist.
+3. Wenden Sie als Nächstes `DENY SELECT`-Berechtigungen auf die Tabelle für einen Benutzer an, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist und `GRANT EXECUTE` auf die Prozedur für denselben Benutzer. Ersetzen Sie `<username1>@<your_domain>.com` durch einen Benutzernamen aus Ihrer Umgebung, der Mitglied der Rolle **Arbeitsbereichsbetrachter** ist.
 
-     ```T-SQL
-   DENY SELECT on dbo.Parts to [<username>@<your_domain>.com];
+    ```T-SQL
+   DENY SELECT on dbo.Parts to [<username1>@<your_domain>.com];
 
-   GRANT EXECUTE on dbo.sp_PrintMessage to [<username>@<your_domain>.com];
-     ```
+   GRANT EXECUTE on dbo.sp_PrintMessage to [<username1>@<your_domain>.com];
+    ```
 
-4. Melden Sie sich bei Fabric als der Benutzer an, den Sie in den `DENY`-und `GRANT`-Anweisungen anstelle von `<username>@<your_domain>.com` angegeben haben. Testen Sie dann die granularen Berechtigungen, die Sie angewendet haben, indem Sie die gespeicherte Prozedur ausführen und die Tabelle abfragen.  
+4. Melden Sie sich bei Fabric als der Benutzer an, den Sie in den `DENY`-und `GRANT`-Anweisungen anstelle von `<username1>@<your_domain>.com` angegeben haben. Testen Sie dann die granularen Berechtigungen, die Sie angewendet haben, indem Sie die gespeicherte Prozedur ausführen und die Tabelle abfragen.
 
-     ```T-SQL
+    ```T-SQL
    EXEC dbo.sp_PrintMessage;
    GO
    
    SELECT * FROM dbo.Parts;
-     ```
+    ```
+
+    ![Screenshot: Abfrage der Tabelle „Parts“ mit Fehler](./Images/grant-deny-table.png)
 
 ## Bereinigen von Ressourcen
 
