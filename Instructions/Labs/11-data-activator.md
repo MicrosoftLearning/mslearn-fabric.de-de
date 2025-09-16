@@ -1,6 +1,11 @@
-# Verwenden vom Data Activator in Fabric
+---
+lab:
+  title: Verwenden Activator in Microsoft Fabric
+  module: Use Activator in Microsoft Fabric
+---
+# Verwenden von Activator in Fabric
 
-Data Activator in Microsoft Fabric ergreift Maßnahmen auf der Grundlage dessen, was in Ihren Daten geschieht. Mit einer Activator-Instanz können Sie Ihre Daten überwachen und Trigger erstellen, um auf Ihre Datenänderungen zu reagieren.
+Activator in Microsoft Fabric ergreift Maßnahmen auf der Grundlage dessen, was in Ihren Daten geschieht. Mit einer Activator-Instanz können Sie Ihre Daten überwachen und Trigger erstellen, um auf Ihre Datenänderungen zu reagieren.
 
 Dieses Lab dauert ungefähr **30** Minuten.
 
@@ -35,7 +40,7 @@ Als Nächstes erstellen Sie eine Activator-Instanz in dem Arbeitsbereich, den Si
 
     Nach etwa einer Minute wird eine neue Activator-Instanz erstellt:
 
-    ![Screenshot des Startbildschirms von Data Activator.](./Images/activator-home-screen.png)
+    ![Screenshot: Startseite für Activator](./Images/activator-home-screen.png)
 
     In einer realen Produktivumgebung würden Sie Ihre eigenen Daten verwenden. Für dieses Lab verwenden Sie jedoch die von Activator bereitgestellten Beispieldaten. 
 
@@ -45,7 +50,7 @@ Als Nächstes erstellen Sie eine Activator-Instanz in dem Arbeitsbereich, den Si
 
 1. Wählen Sie das Pulldownmenü neben dem aktuellen Activator-Namen in der oberen linken Ecke aus, und ändern Sie den Namen für unser Beispiel in ***Contoso Shipping Activator***.
 
-    ![Screenshot des Reflex-Startbildschirms von Data Activator.](./Images/activator-reflex-home-screen.png)
+    ![Screenshot: Startseite für Activator](./Images/activator-reflex-home-screen.png)
 
 Unser Activator-Projekt wird jetzt erstellt, und wir können mit dem Navigieren durch seine Objekte, Eigenschaften und Regeln beginnen.
 
@@ -104,7 +109,7 @@ Sehen wir uns an, was Ihre Regel tun soll: *Sie möchten eine Warnungsregel erst
 1. Klicken Sie auf **Erstellen**.
 1. Eine neue Regel mit dem Standardnamen *Temperaturwarnung* wird erstellt. Ändern Sie den Namen in ***Medicine temp out of range*** (Medikamententemperatur außerhalb des Bereichs), indem Sie das Stiftsymbol neben dem Namen der Regel im mittleren Bereich auswählen.
 
-    ![Screenshot: Neue Data Activator-Regel](./Images/activator-new-rule.png)
+    ![Screenshot: Neue Regel für Activator](./Images/activator-new-rule.png)
 
     Bisher haben Sie die Eigenschaft und Bedingung definiert, für die die Regel ausgelöst werden soll. Das sind aber noch nicht alle erforderlichen Parameter. Sie müssen weiterhin sicherstellen, dass der Trigger nur für die *Stadt* **Redmond** und für die erforderliche Art der*besonderen Behandlung* für **Medikamente** ausgelöst wird. Fahren wir fort und fügen wir einige Filter für diese Bedingungen hinzu.  
 
@@ -124,7 +129,7 @@ Sehen wir uns an, was Ihre Regel tun soll: *Sie möchten eine Warnungsregel erst
     - **Überschrift**: *Temperatur zu hoch*
     - **Kontext**: Wählen Sie aus der Liste der Kontrollkästchen die Eigenschaft *Temperature* aus.
 
-    ![Screenshot der Aktion „Data Activator definieren“.](./Images/activator-define-action.png)
+    ![Screenshot: Definieren einer Aktion für Activator](./Images/activator-define-action.png)
 
 1. Wählen Sie **Speichern und starten**.
 
